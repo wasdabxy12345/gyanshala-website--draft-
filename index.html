@@ -145,33 +145,35 @@
         }
 
         .approach-section {
-            border-left: 3px solid #0d6efd;
-            padding-left: 20px;
-            position: relative;
+            border-left: 2px solid #0d6efd;
+            padding-left: 25px;
+            margin-left: 10px;
         }
 
         .approach-item {
             position: relative;
-            padding-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
         }
 
         .approach-item::before {
             content: '';
             position: absolute;
-            left: -27px;
-            top: 5px;
+            left: -32px;
+            /* Centers the dot on the line */
+            top: 6px;
             width: 12px;
             height: 12px;
             background: #0d6efd;
             border-radius: 50%;
+            border: 3px solid #fff;
+            /* Adds a clean gap between dot and line */
         }
 
         .approach-title {
-            color: #0d6efd;
+            color: #2d3436;
             font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
         }
     </style>
 </head>
@@ -350,39 +352,44 @@
             </div>
         </div>
         <div class="my-5 p-4 bg-white rounded shadow-sm">
-            <h2 class="text-center mb-4">OUR 5A APPROACH</h2>
-            <p class="text-muted text-center mb-5">We’ve adopted a 5A approach to counter academic challenges while
-                addressing socio-economic barriers:</p>
+            <h2 class="text-center mb-5">OUR 5A APPROACH</h2>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="approach-section ms-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center">
+                    <img src="https://gyanshala.org/wp-content/uploads/2023/12/approach-300x243.png"
+                        alt="5A Approach Diagram" class="img-fluid rounded shadow-sm"
+                        style="max-width: 100%; height: auto;">
+                    <p class="text-muted mt-3 small fst-italic">Countering academic challenges through socio-economic
+                        barriers.</p>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="approach-section">
 
                         <div class="approach-item">
                             <div class="approach-title">Awareness</div>
-                            <p class="mb-0">Behavioral Change towards education (especially girl child) through
-                                continuous community engagement to create awareness and generate motivation towards
-                                child’s education.</p>
+                            <p class="small text-secondary">Behavioral Change towards education (especially girl child)
+                                through continuous community engagement to create awareness and generate motivation.</p>
                         </div>
 
                         <div class="approach-item">
                             <div class="approach-title">Availability & Accessibility</div>
-                            <p class="mb-0">Equitable residential education wherein class sessions are held in rooms
-                                hired within the community where children live (walking distance). Class timings are
-                                kept according to suitability, consisting of 3.5-4 hours of daily academics.</p>
+                            <p class="small text-secondary">Equitable residential education held within the community
+                                (walking distance). Class timings are kept according to suitability, consisting of 3.5-4
+                                hours daily academics.</p>
                         </div>
 
                         <div class="approach-item">
                             <div class="approach-title">Affordability</div>
-                            <p class="mb-0">No indirect costs of education which acts as a significant barrier to poor
-                                families—meaning no cost for books, transport, stationeries, or commute time.</p>
+                            <p class="small text-secondary">No Indirect costs of education (books, transport, or
+                                stationeries) which acts as a significant barrier to poor families.</p>
                         </div>
 
                         <div class="approach-item">
                             <div class="approach-title">Accountability</div>
-                            <p class="mb-0">Daily learning evaluations (worksheets) along with bi-yearly internal and
-                                yearly external assessments. Supported by a dedicated MEL staff for continuous
-                                monitoring and course correction.</p>
+                            <p class="small text-secondary">Daily evaluations and bi-yearly internal/yearly external
+                                assessments by reputed agencies, guided by dedicated MEL staff for effective course
+                                correction.</p>
                         </div>
 
                     </div>
