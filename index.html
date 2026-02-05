@@ -16,7 +16,6 @@
             background-color: #f8f9fa;
         }
 
-        /* Modern White Navbar with Shadow */
         .custom-navbar {
             background: #ffffff !important;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
@@ -29,7 +28,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Link Styling */
         .navbar-nav .nav-link {
             font-size: 0.9rem;
             font-weight: 500;
@@ -39,7 +37,6 @@
             transition: color 0.3s ease;
         }
 
-        /* Animated Underline Effect */
         .navbar-nav .nav-link::after {
             content: '';
             position: absolute;
@@ -48,7 +45,6 @@
             bottom: 0;
             left: 50%;
             background-color: #0d6efd;
-            /* Brand Blue */
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -62,69 +58,7 @@
             color: #0d6efd !important;
         }
 
-        /* Remove vertical dividers for a cleaner look */
-        @media (min-width: 992px) {
-            .navbar-nav {
-                column-gap: 5px;
-            }
-        }
-
-        /* Search Bar Beautification */
-        .search-input {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 8px 10px !important;
-            font-size: 0.9rem;
-        }
-
-        .search-input:focus {
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
-            border-color: #0d6efd;
-        }
-
-        .search-icon {
-            color: #adb5bd;
-        }
-
-        /* Dropdown Styling */
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 10px;
-        }
-
-        .dropdown-item {
-            border-radius: 6px;
-            padding: 8px 15px;
-            font-size: 0.85rem;
-        }
-
-        /* 1. Remove the default Bootstrap arrow (the 'carrot') */
-        .dropdown-toggle::after {
-            display: none !important;
-        }
-
-        /* 2. Add a cleaner, smaller chevron icon via Bootstrap Icons */
-        .dropdown-toggle::before {
-            content: "\F282";
-            /* This is the bi-chevron-down code */
-            font-family: "bootstrap-icons";
-            font-size: 0.7rem;
-            margin-right: 5px;
-            vertical-align: middle;
-            opacity: 0.5;
-            transition: transform 0.3s ease;
-        }
-
-        /* 3. Optional: Rotate the icon when the menu is open */
-        .show.dropdown-toggle::before {
-            transform: rotate(180deg);
-        }
-
-        /* Pushes the search bar to a fixed, compact width */
+        /* Fixed Search Bar Styling */
         .search-container {
             background-color: #f1f3f5;
             border-radius: 50px;
@@ -133,23 +67,16 @@
             align-items: center;
             transition: all 0.3s ease;
             border: 1px solid transparent;
-            /* Adjust this width to match your "Search..." text perfectly */
-            width: 140px;
+            /* Width set just long enough for "Search..." */
+            width: 130px;
         }
 
-        .search-container:focus-within {
-            background-color: #fff;
-            border-color: #0d6efd;
-            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
-        }
-
-        /* Ensure the input doesn't force the container to grow */
         .search-input {
             background: transparent !important;
             border: none !important;
             box-shadow: none !important;
-            padding: 6px 5px !important;
-            font-size: 0.9rem;
+            padding: 4px 5px !important;
+            font-size: 0.85rem;
             width: 100%;
         }
 
@@ -157,8 +84,35 @@
             background-color: #fff;
             border-color: #0d6efd;
             box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
-            width: 180px;
-            /* Optional: slight grow effect when clicking it */
+            width: 160px;
+            /* Slight expansion for focus */
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .dropdown-toggle::after {
+            display: none !important;
+        }
+
+        .dropdown-toggle::before {
+            content: "\F282";
+            font-family: "bootstrap-icons";
+            font-size: 0.7rem;
+            margin-right: 5px;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 991px) {
+            .search-container {
+                margin-top: 15px;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -177,7 +131,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
 
                     <li class="nav-item dropdown">
@@ -210,16 +164,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Reports</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Primary Education</a></li>
-                            <li><a class="dropdown-item" href="#">Secondary Education</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gallery</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Primary Education</a></li>
-                            <li><a class="dropdown-item" href="#">Secondary Education</a></li>
+                            <li><a class="dropdown-item" href="#">Annual Report</a></li>
+                            <li><a class="dropdown-item" href="#">Financials</a></li>
                         </ul>
                     </li>
 
@@ -227,26 +173,16 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Get
                             Involved</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Primary Education</a></li>
-                            <li><a class="dropdown-item" href="#">Secondary Education</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Contact</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Primary Education</a></li>
-                            <li><a class="dropdown-item" href="#">Secondary Education</a></li>
+                            <li><a class="dropdown-item" href="#">Volunteer</a></li>
+                            <li><a class="dropdown-item" href="#">Donate</a></li>
                         </ul>
                     </li>
                 </ul>
 
                 <form class="d-flex" role="search">
-                    <div class="input-group">
-                        <span class="input-group-text bg-transparent border-0 pe-0">
-                            <i class="bi bi-search text-muted"></i>
-                        </span>
-                        <input class="form-control search-input border-0" type="search" placeholder="Search..."
+                    <div class="search-container">
+                        <i class="bi bi-search text-muted small"></i>
+                        <input class="form-control search-input" type="search" placeholder="Search..."
                             aria-label="Search">
                     </div>
                 </form>
