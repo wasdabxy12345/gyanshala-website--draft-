@@ -4,7 +4,7 @@
 }
 /* Gives each link its own defined space */
 .navbar-nav .nav-item {
-    margin: 0 5px; /* Physical space between items */
+    margin: 0 1px; /* Physical space between items */
 }
 
 .navbar-nav .nav-link {
