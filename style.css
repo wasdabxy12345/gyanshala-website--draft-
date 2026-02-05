@@ -1,0 +1,27 @@
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+/* Gives each link its own defined space */
+.navbar-nav .nav-item {
+    margin: 0 5px; /* Physical space between items */
+}
+
+.navbar-nav .nav-link {
+    padding: 8px 15px !important; /* Internal space within the link */
+    border-radius: 6px; /* Rounded corners for the 'button' look */
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+/* The magic part: shows the boundary when you hover */
+.navbar-nav .nav-link:hover {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #000;
+}
+
+/* Keep the active link looking distinct */
+.navbar-nav .nav-link.active {
+    background-color: #e9ecef;
+    font-weight: 600;
+}
