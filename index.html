@@ -179,23 +179,32 @@
         /* Logo Slider Container */
         .logo-slider {
             overflow: hidden;
-            padding: 30px 0;
+            padding: 40px 0;
             background: white;
             white-space: nowrap;
             position: relative;
         }
 
-        /* The actual sliding track */
+        /* The sliding track */
         .logo-track {
             display: inline-block;
-            animation: scroll 30s linear infinite;
+            animation: scroll-logos 40s linear infinite;
+        }
+
+        .logo-track a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 45px;
+            text-decoration: none;
         }
 
         .logo-track img {
-            height: 60px;
-            margin: 0 40px;
+            height: 55px;
+            /* Consistent height */
+            width: auto;
             filter: grayscale(100%);
-            opacity: 0.6;
+            opacity: 0.7;
             transition: all 0.3s ease;
         }
 
@@ -205,8 +214,8 @@
             transform: scale(1.1);
         }
 
-        /* Keyframes for smooth infinite loop */
-        @keyframes scroll {
+        /* Smooth Infinite Loop */
+        @keyframes scroll-logos {
             from {
                 transform: translateX(0);
             }
@@ -216,13 +225,13 @@
             }
         }
 
-        /* Gradient fade on edges */
+        /* Fade effect on the edges */
         .logo-slider::before,
         .logo-slider::after {
             content: "";
             position: absolute;
             top: 0;
-            width: 100px;
+            width: 150px;
             height: 100%;
             z-index: 2;
         }
@@ -465,44 +474,66 @@
         </div>
 
         <div class="my-5 p-4 bg-white rounded shadow-sm text-center">
-            <h4 class="text-muted small fw-bold text-uppercase mb-4" style="letter-spacing: 2px;">Our Supporters &
+            <h4 class="text-muted small fw-bold text-uppercase mb-4" style="letter-spacing: 2px;">Our Valued Donors &
                 Partners</h4>
 
             <div class="logo-slider">
                 <div class="logo-track">
-                    <a href="https://www.msdf.org/" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/MSDF_logo.svg/1200px-MSDF_logo.svg.png"
-                            alt="Dell Foundation">
-                    </a>
-                    <a href="https://www.tatatrusts.org/" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1024px-Tata_logo.svg.png"
-                            alt="Tata Trusts">
-                    </a>
-                    <a href="https://www.icicifoundation.org/" target="_blank">
-                        <img src="https://www.icicifoundation.org/wp-content/uploads/2021/03/icici-foundation-logo.png"
-                            alt="ICICI Foundation">
-                    </a>
-                    <a href="https://gyanshala.org/major-donors/" target="_blank">
-                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/gyan-shala-logo-300x300.png"
-                            alt="Nalanda Foundation">
-                    </a>
+                    <a href="https://www.sbifoundation.in/" target="_blank"><img
+                            src="https://www.sbifoundation.in/assets/img/logo.png" alt="SBI Foundation"></a>
+                    <a href="https://www.tatatrusts.org/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1024px-Tata_logo.svg.png"
+                            alt="Tata Trusts"></a>
+                    <a href="https://www.bandhanbank.com/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Bandhan_Bank_Logo.svg/1200px-Bandhan_Bank_Logo.svg.png"
+                            alt="Gruh Finance"></a>
+                    <a href="https://www.macfound.org/" target="_blank"><img
+                            src="https://www.macfound.org/static/images/logo.png" alt="MacArthur Foundation"></a>
+                    <a href="https://www.icicifoundation.org/" target="_blank"><img
+                            src="https://www.icicifoundation.org/wp-content/uploads/2021/03/icici-foundation-logo.png"
+                            alt="ICICI Foundation"></a>
+                    <a href="https://www.janvikas.in/" target="_blank"><img
+                            src="https://www.janvikas.in/static/media/logo.80b96887.png" alt="Janvikas"></a>
+                    <a href="https://www.dell.org/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/MSDF_logo.svg/1200px-MSDF_logo.svg.png"
+                            alt="Dell Foundation"></a>
+                    <a href="https://educateachild.org/" target="_blank"><img
+                            src="https://educateachild.org/sites/default/files/eac_logo_footer.png"
+                            alt="Educate A Child"></a>
+                    <a href="https://shareandcare.org/" target="_blank"><img
+                            src="https://shareandcare.org/wp-content/uploads/2021/05/share-care-logo.png"
+                            alt="Share and Care Foundation"></a>
+                    <a href="https://www.packard.org/" target="_blank"><img
+                            src="https://www.packard.org/wp-content/themes/packard/assets/img/logo.png"
+                            alt="Packard Foundation"></a>
 
-                    <a href="https://www.msdf.org/" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/MSDF_logo.svg/1200px-MSDF_logo.svg.png"
-                            alt="Dell Foundation">
-                    </a>
-                    <a href="https://www.tatatrusts.org/" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1024px-Tata_logo.svg.png"
-                            alt="Tata Trusts">
-                    </a>
-                    <a href="https://www.icicifoundation.org/" target="_blank">
-                        <img src="https://www.icicifoundation.org/wp-content/uploads/2021/03/icici-foundation-logo.png"
-                            alt="ICICI Foundation">
-                    </a>
-                    <a href="https://gyanshala.org/major-donors/" target="_blank">
-                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/gyan-shala-logo-300x300.png"
-                            alt="Nalanda Foundation">
-                    </a>
+                    <a href="https://www.sbifoundation.in/" target="_blank"><img
+                            src="https://www.sbifoundation.in/assets/img/logo.png" alt="SBI Foundation"></a>
+                    <a href="https://www.tatatrusts.org/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1024px-Tata_logo.svg.png"
+                            alt="Tata Trusts"></a>
+                    <a href="https://www.bandhanbank.com/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Bandhan_Bank_Logo.svg/1200px-Bandhan_Bank_Logo.svg.png"
+                            alt="Gruh Finance"></a>
+                    <a href="https://www.macfound.org/" target="_blank"><img
+                            src="https://www.macfound.org/static/images/logo.png" alt="MacArthur Foundation"></a>
+                    <a href="https://www.icicifoundation.org/" target="_blank"><img
+                            src="https://www.icicifoundation.org/wp-content/uploads/2021/03/icici-foundation-logo.png"
+                            alt="ICICI Foundation"></a>
+                    <a href="https://www.janvikas.in/" target="_blank"><img
+                            src="https://www.janvikas.in/static/media/logo.80b96887.png" alt="Janvikas"></a>
+                    <a href="https://www.dell.org/" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/5/52/MSDF_logo.svg/1200px-MSDF_logo.svg.png"
+                            alt="Dell Foundation"></a>
+                    <a href="https://educateachild.org/" target="_blank"><img
+                            src="https://educateachild.org/sites/default/files/eac_logo_footer.png"
+                            alt="Educate A Child"></a>
+                    <a href="https://shareandcare.org/" target="_blank"><img
+                            src="https://shareandcare.org/wp-content/uploads/2021/05/share-care-logo.png"
+                            alt="Share and Care Foundation"></a>
+                    <a href="https://www.packard.org/" target="_blank"><img
+                            src="https://www.packard.org/wp-content/themes/packard/assets/img/logo.png"
+                            alt="Packard Foundation"></a>
                 </div>
             </div>
         </div>
