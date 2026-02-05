@@ -124,22 +124,41 @@
             transform: rotate(180deg);
         }
 
-        /* --- Fix Search Bar Layout --- */
+        /* Pushes the search bar to a fixed, compact width */
         .search-container {
             background-color: #f1f3f5;
             border-radius: 50px;
-            /* Makes it pill-shaped */
-            padding: 2px 15px;
+            padding: 2px 12px;
             display: flex;
             align-items: center;
             transition: all 0.3s ease;
             border: 1px solid transparent;
+            /* Adjust this width to match your "Search..." text perfectly */
+            width: 140px;
         }
 
         .search-container:focus-within {
             background-color: #fff;
             border-color: #0d6efd;
             box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+        }
+
+        /* Ensure the input doesn't force the container to grow */
+        .search-input {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 6px 5px !important;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .search-container:focus-within {
+            background-color: #fff;
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+            width: 180px;
+            /* Optional: slight grow effect when clicking it */
         }
     </style>
 </head>
