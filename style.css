@@ -25,3 +25,14 @@
     background-color: #e9ecef;
     font-weight: 600;
 }
+
+@media (min-width: 992px) {
+    .navbar-nav .nav-item:not(:last-child) {
+        border-right: 1px solid #ddd; /* The divider line */
+    }
+    
+    .navbar-nav .nav-link {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
