@@ -185,18 +185,40 @@
             position: relative;
         }
 
-        /* The sliding track */
+        /* Update the track to use Flex for perfect alignment */
         .logo-track {
-            display: inline-block;
+            display: flex;
+            /* Changed from inline-block */
+            width: max-content;
+            /* Ensures the track stays as long as the content */
             animation: scroll-logos 40s linear infinite;
         }
 
+        /* PAUSE ON HOVER */
+        .logo-slider:hover .logo-track {
+            animation-play-state: paused;
+        }
+
+        /* Ensure images don't shrink and maintain spacing */
         .logo-track a {
-            display: inline-flex;
+            flex-shrink: 0;
+            display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 45px;
             text-decoration: none;
+        }
+
+        /* Smooth Infinite Loop Fix */
+        @keyframes scroll-logos {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                /* This moves exactly half of the duplicated track */
+                transform: translateX(-50%);
+            }
         }
 
         .logo-track img {
@@ -212,17 +234,6 @@
             filter: grayscale(0%);
             opacity: 1;
             transform: scale(1.1);
-        }
-
-        /* Smooth Infinite Loop */
-        @keyframes scroll-logos {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
         }
 
         /* Fade effect on the edges */
@@ -479,18 +490,15 @@
 
             <div class="logo-slider">
                 <div class="logo-track">
-                    <a href="https://www.sbifoundation.in/" target="_blank"><img
-                            src="/media/images/SBI_foundation.png"
+                    <a href="https://www.sbifoundation.in/" target="_blank"><img src="/media/images/SBI_foundation.png"
                             alt="SBI Foundation"></a>
                     <a href="https://www.tatatrusts.org/" target="_blank"><img
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMOLEvMqzjpMEtpu8ClCtAIeEtnKn_t6St9Q&s"
                             alt="Tata Trusts"></a>
                     <a href="https://www.bandhan.bank.in/" target="_blank"><img
-                            src="/media/images/Gruh_Finance_Limited.png"
-                            alt="Gruh Finance Limited"></a>
+                            src="/media/images/Gruh_Finance_Limited.png" alt="Gruh Finance Limited"></a>
                     <a href="https://www.macfound.org/" target="_blank"><img
-                            src="/media/images/MacArthur_Foundation.png"
-                            alt="MacArthur Foundation"></a>
+                            src="/media/images/MacArthur_Foundation.png" alt="MacArthur Foundation"></a>
                     <a href="https://www.icicifoundation.org/" target="_blank"><img
                             src="https://impact.icicifoundation.org/public/assets/img/foundation_logo.png"
                             alt="ICICI Foundation"></a>
@@ -501,8 +509,7 @@
                             src="https://s3.ap-south-1.amazonaws.com/assets.ynos.in/fund-logos/FUND_000188.png"
                             alt="Michael & Susan Dell Foundation"></a>
                     <a href="https://www.educationaboveall.org/our-programmes/educate-a-child" target="_blank"><img
-                            src="/media/images/educate_a_child.png"
-                            alt="Educate A Child"></a>
+                            src="/media/images/educate_a_child.png" alt="Educate A Child"></a>
                     <a href="https://shareandcare.org/" target="_blank"><img
                             src="https://shareandcare.org/wp-content/uploads/2024/01/SAC_logo_stacked_420x200_v4.png"
                             alt="Share & Care Foundation"></a>
