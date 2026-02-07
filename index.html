@@ -97,6 +97,28 @@
             box-shadow: none;
         }
 
+        @media (min-width: 992px) {
+
+            /* Show dropdown on hover */
+            .navbar .dropdown:hover>.dropdown-menu {
+                display: block;
+            }
+
+            /* Fix spacing jump */
+            .navbar .dropdown:hover>.dropdown-menu {
+                margin-top: 0;
+            }
+
+            /* Optional: rotate the arrow */
+            .navbar .dropdown-toggle::after {
+                transition: transform 0.2s ease;
+            }
+
+            .navbar .dropdown:hover .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+        }
+
         /* =====================================================
    Search Bar
 ===================================================== */
