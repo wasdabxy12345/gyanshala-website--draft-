@@ -11,11 +11,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
     <style>
+        /* =====================================================
+   Base & Typography
+===================================================== */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
+            color: #2d3436;
         }
 
+        /* =====================================================
+   Navbar
+===================================================== */
         .custom-navbar {
             background: #ffffff !important;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
@@ -24,8 +31,8 @@
 
         .navbar-brand {
             font-weight: 700;
-            color: #2d3436 !important;
             letter-spacing: -0.5px;
+            color: #2d3436 !important;
         }
 
         .navbar-nav .nav-link {
@@ -44,9 +51,14 @@
             height: 2px;
             bottom: 0;
             left: 50%;
-            background-color: #0d6efd;
-            transition: all 0.3s ease;
             transform: translateX(-50%);
+            background-color: #0d6efd;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #0d6efd !important;
         }
 
         .navbar-nav .nav-link:hover::after,
@@ -54,30 +66,18 @@
             width: 70%;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #0d6efd !important;
-        }
-
-        /* Fixed Search Bar Styling */
+        /* =====================================================
+   Search Bar
+===================================================== */
         .search-container {
-            background-color: #f1f3f5;
-            border-radius: 50px;
-            padding: 2px 12px;
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            /* Width set just long enough for "Search..." */
             width: 130px;
-        }
-
-        .search-input {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 4px 5px !important;
-            font-size: 0.85rem;
-            width: 100%;
+            padding: 2px 12px;
+            border-radius: 50px;
+            background-color: #f1f3f5;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
         }
 
         .search-container:focus-within {
@@ -85,52 +85,37 @@
             border-color: #0d6efd;
             box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
             width: 160px;
-            /* Slight expansion for focus */
         }
 
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 10px;
-        }
-
-        .dropdown-toggle::after {
-            display: none !important;
-        }
-
-        .dropdown-toggle::before {
-            content: "\F282";
-            font-family: "bootstrap-icons";
-            font-size: 0.7rem;
-            margin-right: 5px;
-            vertical-align: middle;
-            opacity: 0.5;
+        .search-input {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            font-size: 0.85rem;
+            padding: 4px 5px !important;
         }
 
         @media (max-width: 991px) {
             .search-container {
-                margin-top: 15px;
                 width: 100%;
+                margin-top: 15px;
             }
         }
 
-        /* Card Sizing & Styling */
+        /* =====================================================
+   Cards (Global)
+===================================================== */
         .card {
             border: none !important;
             max-width: 300px;
-            /* This keeps them slightly smaller as requested */
-            width: 100%;
             margin: 0 auto;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s ease;
         }
 
-        /* Hover effect (Optional but recommended for borderless cards) */
         .card:hover {
             transform: translateY(-5px);
         }
 
-        /* Tighten spacing for smaller cards */
         .card-body {
             padding: 1.25rem;
         }
@@ -140,124 +125,9 @@
             font-weight: 600;
         }
 
-        .text-align-justify {
-            text-align: justify;
-        }
-
-        .approach-section {
-            border-left: 2px solid #0d6efd;
-            padding-left: 25px;
-            margin-left: 10px;
-        }
-
-        .approach-item {
-            position: relative;
-            padding-bottom: 1.2rem;
-        }
-
-        .approach-item::before {
-            content: '';
-            position: absolute;
-            left: -32px;
-            /* Centers the dot on the line */
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            background: #0d6efd;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            /* Adds a clean gap between dot and line */
-        }
-
-        .approach-title {
-            color: #2d3436;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        /* Logo Slider Container */
-        .logo-slider {
-            overflow: hidden;
-            padding: 40px 0;
-            background: white;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        /* Update the track to use Flex for perfect alignment */
-        .logo-track {
-            display: flex;
-            /* Changed from inline-block */
-            width: max-content;
-            /* Ensures the track stays as long as the content */
-            animation: scroll-logos 60s linear infinite;
-            will-change: transform;
-        }
-
-        /* PAUSE ON HOVER */
-        .logo-slider:hover .logo-track {
-            animation-play-state: paused;
-        }
-
-        /* Ensure images don't shrink and maintain spacing */
-        .logo-track a {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 45px;
-            text-decoration: none;
-        }
-
-        /* Smooth Infinite Loop Fix */
-        @keyframes scroll-logos {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                /* This moves exactly half of the duplicated track */
-                transform: translateX(-50%);
-            }
-        }
-
-        .logo-track img {
-            height: 55px;
-            /* Consistent height */
-            width: auto;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .logo-track img:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        /* Fade effect on the edges */
-        .logo-slider::before,
-        .logo-slider::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 2;
-        }
-
-        .logo-slider::before {
-            left: 0;
-            background: linear-gradient(to right, white, transparent);
-        }
-
-        .logo-slider::after {
-            right: 0;
-            background: linear-gradient(to left, white, transparent);
-        }
-
+        /* =====================================================
+   Vision / Mission / Goal
+===================================================== */
         .vm-card {
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
@@ -274,9 +144,11 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto;
         }
 
+        /* =====================================================
+   Values
+===================================================== */
         .values-section {
             background-color: #f8f9fa;
         }
@@ -284,98 +156,160 @@
         .value-item {
             padding: 15px;
             border-radius: 12px;
-            background: white;
+            background: #ffffff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        /* Enhanced Footer Styling */
-        footer {
-            background-color: #212529;
-            color: #f8f9fa;
+        /* =====================================================
+   Approach Section
+===================================================== */
+        .approach-section {
+            border-left: 2px solid #0d6efd;
+            padding-left: 25px;
+            margin-left: 10px;
+        }
+
+        .approach-item {
+            position: relative;
+            padding-bottom: 1.2rem;
+        }
+
+        .approach-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: #0d6efd;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+
+        .approach-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #2d3436;
+        }
+
+        /* =====================================================
+   Logo Slider
+===================================================== */
+        .logo-slider {
             position: relative;
             overflow: hidden;
+            padding: 40px 0;
+            background: #ffffff;
+        }
+
+        .logo-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-logos 60s linear infinite;
+        }
+
+        .logo-slider:hover .logo-track {
+            animation-play-state: paused;
+        }
+
+        .logo-track a {
+            margin: 0 45px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-track img {
+            height: 55px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .logo-track img:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll-logos {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* =====================================================
+   Footer
+===================================================== */
+        footer {
+            background-color: #212529;
+            color: #adb5bd;
         }
 
         footer h5,
         footer h6 {
             color: #ffffff;
-            letter-spacing: 0.5px;
         }
 
-        .footer-links a {
+        /* Footer links (non-link look) */
+        footer a.footer-link,
+        footer a.footer-link:link,
+        footer a.footer-link:visited,
+        footer a.footer-link:hover,
+        footer a.footer-link:active,
+        footer a.footer-link:focus {
+            color: #adb5bd !important;
+            text-decoration: none !important;
+        }
+
+        footer a.footer-link:hover {
+            color: #ffffff !important;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* Contact info */
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            width: 25px;
             color: #adb5bd;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+            margin-top: 2px;
+            transition: color 0.2s ease;
         }
 
-        .footer-links a:hover {
+        .contact-info a:hover i {
             color: #0d6efd;
-            transform: translateX(5px);
         }
 
+        /* Social icons */
         .social-links a {
             width: 38px;
             height: 38px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
             border-radius: 50%;
-            margin-right: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
             transition: all 0.3s ease;
-            text-decoration: none;
         }
 
         .social-links a:hover {
             background: #0d6efd;
-            color: white;
             transform: translateY(-3px);
-        }
-
-        .contact-info i {
-            color: #0d6efd;
-            width: 25px;
         }
 
         .footer-bottom {
             background: rgba(0, 0, 0, 0.2);
             padding: 20px 0;
             margin-top: 50px;
-        }
-
-        /* Footer contact links – look like normal text */
-        footer .footer-link {
-            color: #adb5bd;
-            /* same as footer text */
-            text-decoration: none;
-            /* remove underline */
-            font-weight: 400;
-        }
-
-        footer .footer-link:hover,
-        footer .footer-link:focus {
-            color: #ffffff;
-            /* subtle highlight on hover */
-            text-decoration: none;
-        }
-
-        footer .footer-link:focus-visible {
-            outline: 2px dashed #0d6efd;
-            /* accessibility-friendly focus */
-            outline-offset: 3px;
-        }
-
-        footer .footer-link {
-            cursor: pointer;
-        }
-
-        footer .footer-link:hover {
-            text-decoration: underline;
-            text-underline-offset: 3px;
         }
     </style>
 </head>
