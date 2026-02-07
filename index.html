@@ -346,6 +346,28 @@
             padding: 20px 0;
             margin-top: 50px;
         }
+
+        /* Footer contact links – look like normal text */
+        footer .footer-link {
+            color: #adb5bd;
+            /* same as footer text */
+            text-decoration: none;
+            /* remove underline */
+            font-weight: 400;
+        }
+
+        footer .footer-link:hover,
+        footer .footer-link:focus {
+            color: #ffffff;
+            /* subtle highlight on hover */
+            text-decoration: none;
+        }
+
+        footer .footer-link:focus-visible {
+            outline: 2px dashed #0d6efd;
+            /* accessibility-friendly focus */
+            outline-offset: 3px;
+        }
     </style>
 </head>
 
@@ -786,10 +808,16 @@
                             <i class="bi bi-envelope me-2"></i>
                             <a href="mailto:info@gyanshala.org">info@gyanshala.org</a>
                         </p>
-                        <p class="small mb-3 d-flex align-items-start">
-                            <i class="bi bi-telephone me-2"></i>
-                            <a href="tel:+917926604840">+91 79266 04840</a> / <br>
-                            <a href="tel:+917926604940">+91 79266 04940</a>
+                        <p class="small mb-1 d-flex align-items-start contact-info">
+                            <i class="bi bi-telephone me-2 mt-1"></i>
+                            <span>
+                                <a href="tel:+911234567890" class="footer-link d-block">
+                                    +91 12345 67890
+                                </a>
+                                <a href="tel:+919876543210" class="footer-link d-block">
+                                    +91 98765 43210
+                                </a>
+                            </span>
                         </p>
 
                         <a href="#" class="btn btn-primary btn-sm">Donate Now</a>
