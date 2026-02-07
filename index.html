@@ -254,62 +254,26 @@
             color: #ffffff;
         }
 
-        /* Footer links (non-link look) */
-        footer a.footer-link,
-        footer a.footer-link:link,
-        footer a.footer-link:visited,
-        footer a.footer-link:hover,
-        footer a.footer-link:active,
-        footer a.footer-link:focus {
+        /* =====================================================
+   FOOTER LINK RESET – OVERRIDES BOOTSTRAP COMPLETELY
+===================================================== */
+        footer a,
+        footer a:link,
+        footer a:visited,
+        footer a:hover,
+        footer a:active,
+        footer a:focus,
+        footer a:focus-visible {
             color: #adb5bd !important;
             text-decoration: none !important;
+            background: none !important;
+            box-shadow: none !important;
         }
 
-        footer a.footer-link:hover {
+        footer a:hover {
             color: #ffffff !important;
             text-decoration: underline;
             text-underline-offset: 3px;
-        }
-
-        /* Contact info */
-        .contact-info {
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .contact-info i {
-            width: 25px;
-            color: #adb5bd;
-            margin-top: 2px;
-            transition: color 0.2s ease;
-        }
-
-        .contact-info a:hover i {
-            color: #0d6efd;
-        }
-
-        /* Social icons */
-        .social-links a {
-            width: 38px;
-            height: 38px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #0d6efd;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px 0;
-            margin-top: 50px;
         }
     </style>
 </head>
@@ -701,7 +665,8 @@
                     <!-- About -->
                     <div class="col-12 col-md-3">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="logo.png" alt="Gyan Shala" width="36" class="me-2 rounded-circle">
+                            <img src="https://media.licdn.com/dms/image/v2/C4E0BAQG25LZAHqT6iA/company-logo_200_200/company-logo_200_200/0/1631313914309?e=2147483647&v=beta&t=1NbYXM-JtvLPJQu6PG76sYmqykQlfATeCAwqxvccTlU"
+                                alt="Gyan Shala" width="36" class="me-2 rounded-circle">
                             <h5 class="mb-0 fw-bold">Gyan Shala</h5>
                         </div>
                         <p class="small text-muted">
@@ -771,8 +736,8 @@
 
                 <!-- Bottom Bar -->
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small">
-                    <p class="mb-2 mb-md-0 text-muted">
-                        © 2026 Gyan Shala. All rights reserved.
+                    <p class="mb-2 mb-md-0">
+                        Powered by <a href="https://www.defindia.org/" class="text-muted">Digital Empowerment Foundation</a>
                     </p>
 
                     <div class="footer-social">
