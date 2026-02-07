@@ -289,62 +289,75 @@
         }
 
         /* Enhanced Footer Styling */
-        footer {
-            background-color: #212529;
-            color: #f8f9fa;
+        .main-footer {
+            background-color: #1a1d20;
+            color: #dee2e6;
             position: relative;
-            overflow: hidden;
         }
 
-        footer h5,
-        footer h6 {
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-links a {
+        .footer-link {
             color: #adb5bd;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
+            margin-bottom: 0.5rem;
             font-size: 0.9rem;
-            margin-bottom: 8px;
         }
 
-        .footer-links a:hover {
+        .footer-link:hover {
             color: #0d6efd;
             transform: translateX(5px);
         }
 
-        .social-links a {
-            width: 38px;
-            height: 38px;
+        .footer-heading {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background: #0d6efd;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border-radius: 50%;
-            margin-right: 10px;
+            border-radius: 8px;
+            color: #adb5bd;
             transition: all 0.3s ease;
             text-decoration: none;
         }
 
-        .social-links a:hover {
+        .social-icon:hover {
             background: #0d6efd;
             color: white;
             transform: translateY(-3px);
         }
 
-        .contact-info i {
-            color: #0d6efd;
-            width: 25px;
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         .footer-bottom {
-            background: rgba(0, 0, 0, 0.2);
+            background: #141619;
             padding: 20px 0;
-            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
@@ -730,73 +743,78 @@
             </div>
         </div>
 
-        <footer class="mt-5 pt-5">
-            <div class="container">
+        <footer class="main-footer mt-5 pt-5">
+            <div class="container pb-4">
                 <div class="row g-4">
                     <div class="col-12 col-lg-4">
                         <div class="d-flex align-items-center mb-3">
                             <img src="https://media.licdn.com/dms/image/v2/C4E0BAQG25LZAHqT6iA/company-logo_200_200/company-logo_200_200/0/1631313914309?e=2147483647&v=beta&t=1NbYXM-JtvLPJQu6PG76sYmqykQlfATeCAwqxvccTlU"
-                                alt="Gyan Shala" width="40" height="40" class="me-2 rounded-circle">
-                            <h5 class="mb-0 fw-bold">Gyan Shala</h5>
+                                alt="Gyan Shala" width="40" height="40"
+                                class="me-2 rounded-circle border border-secondary">
+                            <h5 class="mb-0 fw-bold text-white">Gyan Shala</h5>
                         </div>
-                        <p class="small text-secondary pe-lg-5">
-                            Bridging education quality gaps for underserved communities through innovative,
-                            scalable schooling models and outcome-driven curriculum.
+                        <p class="small text-muted mb-4">
+                            Working to bridge schooling quality gaps and enable equitable learning
+                            outcomes for children from underserved communities across India.
                         </p>
-                        <div class="social-links mt-4">
-                            <a href="#"><i class="bi bi-facebook"></i></a>
-                            <a href="#"><i class="bi bi-twitter-x"></i></a>
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
 
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <h6 class="fw-bold text-uppercase mb-4 small">Organization</h6>
-                        <ul class="list-unstyled footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Our Programs</a></li>
-                            <li><a href="#">Annual Reports</a></li>
-                            <li><a href="#">Curriculum</a></li>
-                            <li><a href="#">Career</a></li>
+                    <div class="col-6 col-md-3 col-lg-2 offset-lg-1">
+                        <h6 class="footer-heading mb-4">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Our Programs</a></li>
+                            <li><a href="#" class="footer-link">Curriculum</a></li>
+                            <li><a href="#" class="footer-link">Annual Reports</a></li>
+                            <li><a href="#" class="footer-link">Get Involved</a></li>
                         </ul>
                     </div>
 
                     <div class="col-6 col-md-3 col-lg-2">
-                        <h6 class="fw-bold text-uppercase mb-4 small">Get Involved</h6>
-                        <ul class="list-unstyled footer-links">
-                            <li><a href="#">Donate Now</a></li>
-                            <li><a href="#">Volunteer</a></li>
-                            <li><a href="#">Partnerships</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                        <h6 class="footer-heading mb-4">Support</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="footer-link">Volunteer</a></li>
+                            <li><a href="#" class="footer-link">Donate</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Terms of Use</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
                         </ul>
                     </div>
 
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h6 class="fw-bold text-uppercase mb-4 small">Contact Info</h6>
-                        <div class="contact-info small text-secondary">
-                            <p class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i> 123, Education Hub, Ahmedabad,
-                                Gujarat, India</p>
-                            <p class="mb-2"><i class="bi bi-envelope-fill me-2"></i> info@gyanshala.org</p>
-                            <p class="mb-2"><i class="bi bi-telephone-fill me-2"></i> +91 79 1234 5678</p>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h6 class="footer-heading mb-4">Contact Us</h6>
+                        <div class="contact-item">
+                            <i class="bi bi-geo-alt text-primary"></i>
+                            <span class="text-muted">623, Advait Complex, Near Sandesh Press, Vastrapur, Ahmedabad,
+                                Gujarat 380015</span>
                         </div>
-                        <div class="mt-4">
-                            <button class="btn btn-outline-primary btn-sm px-4">Subscribe to Newsletter</button>
+                        <div class="contact-item">
+                            <i class="bi bi-telephone text-primary"></i>
+                            <span class="text-muted">+91 79 2676 3456</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="bi bi-envelope text-primary"></i>
+                            <span class="text-muted">info@gyanshala.org</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-bottom mt-5">
+            <div class="footer-bottom">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 text-center text-md-start">
-                            <p class="small text-secondary mb-0">© 2026 Gyan Shala. All rights reserved.</p>
+                            <p class="small text-muted mb-0">&copy; 2026 Gyan Shala Organization. All rights reserved.
+                            </p>
                         </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <p class="small text-secondary mb-0">Designed with <i
-                                    class="bi bi-heart-fill text-danger mx-1"></i> for Education</p>
+                        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                            <p class="small text-muted mb-0">Designed with ❤️ for Education</p>
                         </div>
                     </div>
                 </div>
