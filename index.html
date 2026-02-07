@@ -275,6 +275,40 @@
             text-decoration: underline;
             text-underline-offset: 3px;
         }
+
+        /* Footer bottom bar – compact height */
+        .footer-bottom {
+            padding: 8px 0;
+            /* ↓ reduce vertical height */
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            /* remove extra paragraph height */
+            line-height: 1.4;
+        }
+
+        /* Footer social icons spacing */
+        .footer-bottom .social-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            /* ↑ increase spacing between icons */
+        }
+
+        .footer-bottom .social-links a {
+            font-size: 1.1rem;
+            /* optional: slightly larger icons */
+        }
+
+        @media (max-width: 767px) {
+            .footer-bottom .social-links {
+                justify-content: center;
+                margin-top: 6px;
+            }
+        }
     </style>
 </head>
 
