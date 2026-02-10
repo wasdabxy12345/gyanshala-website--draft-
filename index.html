@@ -11,18 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
     <style>
-        /* =====================================================
-   Base & Typography
-===================================================== */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
             color: #2d3436;
         }
 
-        /* =====================================================
-   Navbar – Clean, Trustworthy NGO Style
-===================================================== */
         .custom-navbar {
             background: #ffffff;
             padding: 0.9rem 1.5rem;
@@ -30,7 +24,6 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* Brand */
         .navbar-brand {
             font-weight: 700;
             font-size: 1.05rem;
@@ -41,7 +34,6 @@
             gap: 0.4rem;
         }
 
-        /* Nav links */
         .navbar-nav .nav-link {
             font-size: 0.9rem;
             font-weight: 500;
@@ -53,21 +45,18 @@
             text-decoration: none !important;
         }
 
-        /* Hover & focus */
         .navbar-nav .nav-link:hover,
         .navbar-nav .nav-link:focus {
             color: #0d6efd !important;
             background-color: rgba(13, 110, 253, 0.08);
         }
 
-        /* Active page */
         .navbar-nav .nav-link.active {
             color: #0d6efd !important;
             background-color: rgba(13, 110, 253, 0.12);
             font-weight: 600;
         }
 
-        /* Dropdown menu */
         .navbar .dropdown-menu {
             border: none;
             border-radius: 12px;
@@ -75,7 +64,6 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
 
-        /* Dropdown items */
         .navbar .dropdown-item {
             font-size: 0.9rem;
             padding: 8px 18px;
@@ -88,7 +76,6 @@
             color: #0d6efd;
         }
 
-        /* Toggler (mobile) */
         .navbar-toggler {
             box-shadow: none;
         }
@@ -99,17 +86,14 @@
 
         @media (min-width: 992px) {
 
-            /* Show dropdown on hover */
             .navbar .dropdown:hover>.dropdown-menu {
                 display: block;
             }
 
-            /* Fix spacing jump */
             .navbar .dropdown:hover>.dropdown-menu {
                 margin-top: 0;
             }
 
-            /* Optional: rotate the arrow */
             .navbar .dropdown-toggle::after {
                 transition: transform 0.2s ease;
             }
@@ -119,9 +103,6 @@
             }
         }
 
-        /* =====================================================
-   Search Bar
-===================================================== */
         .search-container {
             display: flex;
             align-items: center;
@@ -155,9 +136,6 @@
             }
         }
 
-        /* =====================================================
-   Cards (Global)
-===================================================== */
         .card {
             border: none !important;
             max-width: 300px;
@@ -178,9 +156,6 @@
             font-weight: 600;
         }
 
-        /* =====================================================
-   Vision / Mission / Goal
-===================================================== */
         .vm-card {
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
@@ -199,9 +174,6 @@
             justify-content: center;
         }
 
-        /* =====================================================
-   Values
-===================================================== */
         .values-section {
             background-color: #f8f9fa;
         }
@@ -213,9 +185,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        /* =====================================================
-   Approach Section
-===================================================== */
         .approach-section {
             border-left: 2px solid #0d6efd;
             padding-left: 25px;
@@ -245,9 +214,6 @@
             color: #2d3436;
         }
 
-        /* =====================================================
-   Logo Slider
-===================================================== */
         .logo-slider {
             position: relative;
             overflow: hidden;
@@ -294,9 +260,6 @@
             }
         }
 
-        /* =====================================================
-   Footer
-===================================================== */
         footer {
             background-color: #212529;
             color: #adb5bd;
@@ -307,9 +270,6 @@
             color: #ffffff;
         }
 
-        /* =====================================================
-   FOOTER LINK RESET – OVERRIDES BOOTSTRAP COMPLETELY
-===================================================== */
         footer a,
         footer a:link,
         footer a:visited,
@@ -329,31 +289,23 @@
             text-underline-offset: 3px;
         }
 
-        /* Footer bottom bar – compact height */
         .footer-bottom {
             padding: 3px 0;
-            /* ↓ reduce vertical height */
-            /* background: rgba(0, 0, 0, 0.2); */
         }
 
         .footer-bottom p {
             margin: 0;
-            /* remove extra paragraph height */
-            /* line-height: 1.4; */
         }
 
-        /* Footer social icons spacing */
         .footer-bottom .social-links {
             display: flex;
             justify-content: flex-end;
             align-items: center;
             gap: 20px;
-            /* ↑ increase spacing between icons */
         }
 
         .footer-bottom .social-links a {
             font-size: 1.1rem;
-            /* optional: slightly larger icons */
         }
 
         @media (max-width: 767px) {
