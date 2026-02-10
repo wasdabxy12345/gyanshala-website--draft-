@@ -136,7 +136,7 @@ body {
 }
 
 .scrollspy {
-    /* background-color: #ffffff; */
+    background-color: #ffffff;
     /* padding: 0.5rem 1rem; */
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
     /* border-radius: 8px; */
@@ -147,11 +147,11 @@ body {
 }
 
 .scrollspy .nav-link {
-    font-size: 0.9rem;
-    color: #495057 !important;
-    padding: 0.4rem 0.75rem !important;
-    border-radius: 6px;
-    transition: all 0.25s ease;
+    /* font-size: 0.9rem; */
+    /* color: #495057 !important; */
+    /* padding: 0.4rem 0.75rem !important; */
+    /* border-radius: 6px; */
+    /* transition: all 0.25s ease; */
 }
 
 .search-container {
