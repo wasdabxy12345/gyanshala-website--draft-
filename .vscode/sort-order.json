@@ -1,0 +1,9 @@
+{
+  ".": [
+    ".git",
+    ".vscode",
+    "index.html",
+    "style.css",
+    "media"
+  ]
+}
