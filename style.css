@@ -135,6 +135,19 @@ body {
     }
 }
 
+.scrollspy {
+    top: 56px;
+    z-index: 1020;
+}
+
+.scrollspy .nav-link {
+    font-size: 0.9rem;
+    color: #495057 !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
 .search-container {
     display: flex;
     align-items: center;
