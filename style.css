@@ -1,5 +1,5 @@
 [id] {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 70px;
 }
 
 .nav-link {
@@ -152,11 +152,11 @@ body {
 }
 
 .scrollspy .nav-link {
-    /* font-size: 0.9rem; */
-    /* color: #495057 !important; */
-    /* padding: 0.4rem 0.75rem !important; */
-    /* border-radius: 6px; */
-    /* transition: all 0.25s ease; */
+    font-size: 0.9rem;
+    color: #495057 !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 6px;
+    transition: all 0.25s ease;
 }
 
 .search-container {
