@@ -249,10 +249,7 @@ body {
 }
 
 /* Target the section containers specifically */
-#welcome,
-#vision,
-#approach,
-#donors {
+#section {
     scroll-margin-top: 130px;
     /* Combined height of both navbars */
 }
