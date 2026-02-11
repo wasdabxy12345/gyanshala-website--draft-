@@ -250,7 +250,7 @@ body {
 
 /* Target the section containers specifically */
 .section {
-    scroll-margin-top: 130px;
+    scroll-margin-top: 140px;
     /* Combined height of both navbars */
 }
 
