@@ -1,4 +1,3 @@
-// Function to load HTML components
 async function loadComponent(id, file) {
     try {
         const response = await fetch(file);
@@ -6,103 +5,55 @@ async function loadComponent(id, file) {
         const data = await response.text();
         document.getElementById(id).innerHTML = data;
 
-        // RE-INITIALIZE BOOTSTRAP COMPONENTS
-        // Because the header is added AFTER the page loads, 
-        // Bootstrap needs a manual nudge to recognize dropdowns.
         if (id === 'header-load') {
-            const navbar1 = document.querySelector('.custom-navbar');
-            const navbar2 = document.querySelector('.scrollspy');
-
-            // Calculate combined height (e.g., 60px + 40px = 100px)
-            const combinedHeight = navbar1.offsetHeight + navbar2.offsetHeight;
-
-            // Initialize ScrollSpy with the exact dynamic height
-            let scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
-            if (scrollSpyInstance) {
-                scrollSpyInstance.dispose(); // Clear old settings
-            }
-
-            new bootstrap.ScrollSpy(document.body, {
-                target: '.scrollspy',
-                offset: combinedHeight + 10, // Added 10px buffer for "scrolling up" logic
-                smoothScroll: true
-            });
-
-            // Update CSS variables dynamically so scroll-margin-top matches exactly
-            document.documentElement.style.setProperty('--nav-height', (combinedHeight) + 'px');
-            
+            // 1. Re-init Dropdowns
             const dropdowns = document.querySelectorAll('.dropdown-toggle');
             dropdowns.forEach(el => new bootstrap.Dropdown(el));
+
+            // 2. Calculate heights and Sync ScrollSpy
+            const mainNav = document.querySelector('.custom-navbar');
+            const secondNav = document.querySelector('.scrollspy');
+            
+            // We wait a tiny bit for the browser to render the heights
+            setTimeout(() => {
+                const totalHeight = mainNav.offsetHeight + secondNav.offsetHeight;
+                
+                // Update CSS variable so the scroll stops perfectly
+                document.documentElement.style.setProperty('--nav-height', totalHeight + 'px');
+
+                // Initialize or Refresh ScrollSpy
+                let scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
+                if (scrollSpyInstance) scrollSpyInstance.dispose();
+
+                new bootstrap.ScrollSpy(document.body, {
+                    target: '.scrollspy',
+                    offset: totalHeight + 20, // Offset slightly larger than margin for reliable triggering
+                    smoothScroll: true
+                });
+            }, 100);
+
+            // 3. Horizontal Scroll for active link
+            document.body.addEventListener('activate.bs.scrollspy', function () {
+                const activeLink = document.querySelector('.scrollspy .nav-link.active');
+                const navContainer = document.querySelector('.scrollspy .navbar-nav');
+                if (activeLink && navContainer) {
+                    const linkOffset = activeLink.offsetLeft;
+                    const linkWidth = activeLink.offsetWidth;
+                    const containerWidth = navContainer.offsetWidth;
+                    navContainer.scrollTo({
+                        left: linkOffset - (containerWidth / 2) + (linkWidth / 2),
+                        behavior: 'smooth'
+                    });
+                }
+            });
         }
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-// Initialize when the DOM is ready
+// Initial Call
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('header-load', 'header.html');
     loadComponent('footer-load', 'footer.html');
 });
-
-async function loadComponent(id, file) {
-    try {
-        const response = await fetch(file);
-        const data = await response.text();
-        document.getElementById(id).innerHTML = data;
-
-        if (id === 'header-load') {
-            // 1. Re-initialize Dropdowns
-            const dropdowns = document.querySelectorAll('.dropdown-toggle');
-            dropdowns.forEach(el => new bootstrap.Dropdown(el));
-
-            // 2. RE-INITIALIZE SCROLLSPY
-            // We find the body and tell it to look at the newly loaded navbar
-            const scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
-            if (scrollSpyInstance) {
-                scrollSpyInstance.refresh();
-            } else {
-                new bootstrap.ScrollSpy(document.body, {
-                    target: '.scrollspy', // Matches the class on your 2nd <nav>
-                    offset: 90           // Adjust based on your header height
-                });
-            }
-        }
-    } catch (error) {
-        console.error('Error loading component:', error);
-    }
-
-    if (id === 'header-load') {
-        // 1. Re-init Dropdowns
-        const dropdowns = document.querySelectorAll('.dropdown-toggle');
-        dropdowns.forEach(el => new bootstrap.Dropdown(el));
-
-        // 2. Init/Refresh ScrollSpy
-        let scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
-        if (!scrollSpyInstance) {
-            scrollSpyInstance = new bootstrap.ScrollSpy(document.body, {
-                target: '.scrollspy',
-                offset: 160
-            });
-        }
-
-        // 3. AUTO-SCROLL HORIZONTAL NAV
-        // Listen for when a new section becomes "active"
-        document.body.addEventListener('activate.bs.scrollspy', function () {
-            const activeLink = document.querySelector('.scrollspy .nav-link.active');
-            if (activeLink) {
-                const navContainer = document.querySelector('.scrollspy .navbar-nav');
-
-                // Calculate how far to scroll to center the active link
-                const linkOffset = activeLink.offsetLeft;
-                const linkWidth = activeLink.offsetWidth;
-                const containerWidth = navContainer.offsetWidth;
-
-                navContainer.scrollTo({
-                    left: linkOffset - (containerWidth / 2) + (linkWidth / 2),
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
-}
