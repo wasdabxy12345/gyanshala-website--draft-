@@ -27,7 +27,7 @@ async function loadComponent(id, file) {
 
                 new bootstrap.ScrollSpy(document.body, {
                     target: '.scrollspy',
-                    offset: totalHeight + 50, // Offset slightly larger than margin for reliable triggering
+                    offset: totalHeight, // Offset slightly larger than margin for reliable triggering
                     smoothScroll: true
                 });
             }, 100);
