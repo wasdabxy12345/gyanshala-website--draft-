@@ -16,7 +16,7 @@
 .navbar-nav .nav-link {
     padding: 8px 15px !important;
     /* Internal space within the link */
-    border-radius: 6px;
+    /* border-radius: 6px; */
     /* Rounded corners for the 'button' look */
     transition: all 0.3s ease;
     color: #333;
@@ -76,7 +76,7 @@ body {
     font-weight: 500;
     color: #495057 !important;
     padding: 0.55rem 1rem !important;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     position: relative;
     transition: all 0.25s ease;
     text-decoration: none !important;
@@ -96,7 +96,7 @@ body {
 
 .navbar .dropdown-menu {
     border: none;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     padding: 10px 0;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
