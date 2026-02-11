@@ -212,6 +212,14 @@ body {
     padding-top: 2rem !important;
 }
 
+#welcome h1, 
+#vision h2, 
+#approach h2,
+#donors h4 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 html {
     scroll-behavior: smooth;
 }
