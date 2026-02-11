@@ -3,7 +3,7 @@
 }
 
 [id] {
-    scroll-margin-top: var(--nav-height);
+    scroll-margin-top: calc(var(--nav-height) + 10px);
 }
 
 .nav-link {
