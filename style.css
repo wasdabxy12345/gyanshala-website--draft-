@@ -274,6 +274,10 @@ body {
     padding-top: 2rem !important;
 }
 
+.section {
+    min-height: 80vh;
+}
+
 .section h1, h2, h4 {
     margin-top: 0;
     padding-top: 0;
