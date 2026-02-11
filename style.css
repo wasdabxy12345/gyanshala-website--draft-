@@ -2,10 +2,6 @@
     --nav-height: 100px; /* Default fallback */
 }
 
-[id] {
-    scroll-margin-top: calc(var(--nav-height) + 10px);
-}
-
 .nav-link {
     font-size: 0.95rem;
     font-weight: 500;
@@ -271,6 +267,10 @@ body {
 
 .shadow-sm {
     padding-top: 2rem !important;
+}
+
+section {
+    scroll-margin-top: calc(var(--nav-height) + 10px);
 }
 
 .section h1, h2, h4 {
