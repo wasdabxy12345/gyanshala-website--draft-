@@ -169,11 +169,13 @@ body {
 .scrollspy .navbar-nav {
     display: flex;
     flex-direction: row; /* Ensure horizontal */
-    flex-nowrap: nowrap; /* Prevent wrapping to next line */
+    flex-wrap: nowrap; /* Prevent wrapping to next line */
     overflow-x: auto;    /* Enable horizontal scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
     white-space: nowrap; /* Keep text on one line */
     padding-bottom: 5px; /* Tiny gap for the scrollbar */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Add some spacing between the horizontal links */
