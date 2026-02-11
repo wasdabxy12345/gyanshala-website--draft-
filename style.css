@@ -197,6 +197,19 @@ body {
     }
 }
 
+/* Apply this to all sections that have an ID used for navigation */
+#welcome,
+#vision,
+#approach,
+#donors {
+    scroll-margin-top: 160px;
+    /* Adjust this number based on your actual navbar heights */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 .card {
     border: none !important;
     max-width: 300px;
