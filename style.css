@@ -165,6 +165,22 @@ body {
     font-weight: 600;
 }
 
+/* Force the nav items to stay in one line */
+.scrollspy .navbar-nav {
+    display: flex;
+    flex-direction: row; /* Ensure horizontal */
+    flex-nowrap: nowrap; /* Prevent wrapping to next line */
+    overflow-x: auto;    /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+    white-space: nowrap; /* Keep text on one line */
+    padding-bottom: 5px; /* Tiny gap for the scrollbar */
+}
+
+/* Add some spacing between the horizontal links */
+.scrollspy .nav-item {
+    padding: 0 10px;
+}
+
 .search-container {
     display: flex;
     align-items: center;
