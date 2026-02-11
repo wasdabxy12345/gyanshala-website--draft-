@@ -189,6 +189,8 @@ body {
     /* Hide scrollbar for aesthetics */
     -ms-overflow-style: none;
     scrollbar-width: none;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .scrollspy .navbar-nav::-webkit-scrollbar {
