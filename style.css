@@ -3,8 +3,7 @@
 }
 
 [id] {
-    /* Add 20px (or more) of extra space so the heading isn't touching the navbar */
-    scroll-margin-top: calc(var(--nav-height) + 10px) !important;
+    scroll-margin-top: var(--nav-height);
 }
 
 .nav-link {
