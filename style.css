@@ -144,10 +144,10 @@ body {
     background-color: #ffffff;
     padding: 0.5rem 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
+    /* border-radius: 8px; */
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    top: 56px;
+    top: 22px;
     z-index: 1020;
 }
 
