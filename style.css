@@ -181,6 +181,23 @@ body {
     padding: 0 10px;
 }
 
+.scrollspy .container-fluid {
+    position: relative;
+    /* This creates the fade on both left and right edges */
+    -webkit-mask-image: linear-gradient(to right, 
+        transparent, 
+        black 5%, 
+        black 95%, 
+        transparent
+    );
+    mask-image: linear-gradient(to right, 
+        transparent, 
+        black 5%, 
+        black 95%, 
+        transparent
+    );
+}
+
 .search-container {
     display: flex;
     align-items: center;
