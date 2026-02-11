@@ -159,6 +159,11 @@ body {
     transition: all 0.25s ease;
 }
 
+.scrollspy .navlink.active {
+    color: #0d6efd !important;
+    font-weight: 600;
+}
+
 .search-container {
     display: flex;
     align-items: center;

@@ -23,3 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
     loadComponent('header-load', 'header.html');
     loadComponent('footer-load', 'footer.html');
 });
+
+async function loadComponent(id, file) {
+    try {
+        const response = await fetch(file);
+        const data = await response.text();
+        document.getElementById(id).innerHTML = data;
+
+        if (id === 'header-load') {
+            // 1. Re-initialize Dropdowns
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach(el => new bootstrap.Dropdown(el));
+
+            // 2. RE-INITIALIZE SCROLLSPY
+            // We find the body and tell it to look at the newly loaded navbar
+            const scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
+            if (scrollSpyInstance) {
+                scrollSpyInstance.refresh();
+            } else {
+                new bootstrap.ScrollSpy(document.body, {
+                    target: '.scrollspy', // Matches the class on your 2nd <nav>
+                    offset: 150           // Adjust based on your header height
+                });
+            }
+        }
+    } catch (error) {
+        console.error('Error loading component:', error);
+    }
+}
