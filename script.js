@@ -10,6 +10,27 @@ async function loadComponent(id, file) {
         // Because the header is added AFTER the page loads, 
         // Bootstrap needs a manual nudge to recognize dropdowns.
         if (id === 'header-load') {
+            const navbar1 = document.querySelector('.custom-navbar');
+            const navbar2 = document.querySelector('.scrollspy');
+
+            // Calculate combined height (e.g., 60px + 40px = 100px)
+            const combinedHeight = navbar1.offsetHeight + navbar2.offsetHeight;
+
+            // Initialize ScrollSpy with the exact dynamic height
+            let scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
+            if (scrollSpyInstance) {
+                scrollSpyInstance.dispose(); // Clear old settings
+            }
+
+            new bootstrap.ScrollSpy(document.body, {
+                target: '.scrollspy',
+                offset: combinedHeight + 10, // Added 10px buffer for "scrolling up" logic
+                smoothScroll: true
+            });
+
+            // Update CSS variables dynamically so scroll-margin-top matches exactly
+            document.documentElement.style.setProperty('--nav-height', (combinedHeight) + 'px');
+            
             const dropdowns = document.querySelectorAll('.dropdown-toggle');
             dropdowns.forEach(el => new bootstrap.Dropdown(el));
         }
@@ -43,7 +64,7 @@ async function loadComponent(id, file) {
             } else {
                 new bootstrap.ScrollSpy(document.body, {
                     target: '.scrollspy', // Matches the class on your 2nd <nav>
-                    offset: 95           // Adjust based on your header height
+                    offset: 90           // Adjust based on your header height
                 });
             }
         }
