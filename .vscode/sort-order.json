@@ -4,6 +4,7 @@
     ".vscode",
     "index.html",
     "style.css",
-    "media"
+    "media",
+    "header.html"
   ]
 }
