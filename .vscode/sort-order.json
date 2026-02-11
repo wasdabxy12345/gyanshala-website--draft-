@@ -3,9 +3,10 @@
     ".git",
     ".vscode",
     "index.html",
-    "style.css",
-    "media",
     "header.html",
-    "footer.html"
+    "footer.html",
+    "style.css",
+    "script.js",
+    "media"
   ]
 }
