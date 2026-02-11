@@ -270,14 +270,6 @@ body {
     }
 }
 
-/* Target the section containers specifically */
-.section {
-    /* scroll-margin-top: 130px; */
-    
-}
-
-/* Optional: Normalize the top padding of your sections 
-   to ensure the content inside starts at the same level */
 .shadow-sm {
     padding-top: 2rem !important;
 }
