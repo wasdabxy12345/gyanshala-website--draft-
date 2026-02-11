@@ -1,5 +1,5 @@
 [id] {
-    scroll-margin-top: 140px;
+    scroll-margin-top: 110px;
 }
 
 .nav-link {
@@ -70,6 +70,11 @@ body {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+}
+
+.navbar-brand img {
+    height: 28px !important;
+    width: 28px !important;
 }
 
 .navbar-nav .nav-link {
