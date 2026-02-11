@@ -176,6 +176,15 @@ body {
     padding-bottom: 5px; /* Tiny gap for the scrollbar */
     padding-left: 10px;
     padding-right: 10px;
+    /* This makes the JS .scrollTo() work smoothly */
+    scroll-behavior: smooth; 
+    /* Hide scrollbar for aesthetics */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollspy .navbar-nav::-webkit-scrollbar {
+    display: none;
 }
 
 /* Add some spacing between the horizontal links */
