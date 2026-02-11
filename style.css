@@ -155,6 +155,9 @@ body {
     transition: all 0.3s ease;
     top: 0.1rem;
     z-index: 1020;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: auto;
 }
 
 .scrollspy .nav-link {
