@@ -43,7 +43,7 @@ async function loadComponent(id, file) {
             } else {
                 new bootstrap.ScrollSpy(document.body, {
                     target: '.scrollspy', // Matches the class on your 2nd <nav>
-                    offset: 150           // Adjust based on your header height
+                    offset: 90           // Adjust based on your header height
                 });
             }
         }
