@@ -197,13 +197,19 @@ body {
     }
 }
 
-/* Apply this to all sections that have an ID used for navigation */
+/* Target the section containers specifically */
 #welcome,
 #vision,
 #approach,
 #donors {
-    scroll-margin-top: 100px;
-    /* Adjust this number based on your actual navbar heights */
+    scroll-margin-top: 150px;
+    /* Combined height of both navbars */
+}
+
+/* Optional: Normalize the top padding of your sections 
+   to ensure the content inside starts at the same level */
+.shadow-sm {
+    padding-top: 2rem !important;
 }
 
 html {
