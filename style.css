@@ -81,7 +81,7 @@ body {
     font-size: 0.9rem;
     font-weight: 500;
     color: #495057 !important;
-    padding: 0.55rem 1rem !important;
+    padding: 0.1rem 1rem !important;
     /* border-radius: 6px; */
     position: relative;
     transition: all 0.25s ease;
@@ -160,7 +160,7 @@ body {
 .scrollspy .nav-link {
     font-size: 0.9rem;
     color: #495057 !important;
-    padding: 0.3rem 0.75rem !important;
+    padding: 0.1rem 0.75rem !important;
     /* border-radius: 6px; */
     transition: all 0.25s ease;
 }
