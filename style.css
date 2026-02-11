@@ -202,7 +202,7 @@ body {
 #vision,
 #approach,
 #donors {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 100px;
     /* Adjust this number based on your actual navbar heights */
 }
 
