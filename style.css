@@ -3,8 +3,8 @@
 }
 
 [id] {
-    /* This ensures the 'stop' point matches the 'detection' point */
-    scroll-margin-top: var(--nav-height) !important;
+    /* Add 20px (or more) of extra space so the heading isn't touching the navbar */
+    scroll-margin-top: calc(var(--nav-height) + 20px) !important;
 }
 
 .nav-link {
