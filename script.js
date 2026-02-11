@@ -51,3 +51,39 @@ async function loadComponent(id, file) {
         console.error('Error loading component:', error);
     }
 }
+
+// ... existing loadComponent code ...
+
+if (id === 'header-load') {
+    // 1. Re-init Dropdowns
+    const dropdowns = document.querySelectorAll('.dropdown-toggle');
+    dropdowns.forEach(el => new bootstrap.Dropdown(el));
+
+    // 2. Init/Refresh ScrollSpy
+    let scrollSpyInstance = bootstrap.ScrollSpy.getInstance(document.body);
+    if (!scrollSpyInstance) {
+        scrollSpyInstance = new bootstrap.ScrollSpy(document.body, {
+            target: '.scrollspy',
+            offset: 160
+        });
+    }
+
+    // 3. AUTO-SCROLL HORIZONTAL NAV
+    // Listen for when a new section becomes "active"
+    document.body.addEventListener('activate.bs.scrollspy', function () {
+        const activeLink = document.querySelector('.scrollspy .nav-link.active');
+        if (activeLink) {
+            const navContainer = document.querySelector('.scrollspy .navbar-nav');
+
+            // Calculate how far to scroll to center the active link
+            const linkOffset = activeLink.offsetLeft;
+            const linkWidth = activeLink.offsetWidth;
+            const containerWidth = navContainer.offsetWidth;
+
+            navContainer.scrollTo({
+                left: linkOffset - (containerWidth / 2) + (linkWidth / 2),
+                behavior: 'smooth'
+            });
+        }
+    });
+}
