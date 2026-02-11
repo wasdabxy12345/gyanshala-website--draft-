@@ -260,10 +260,7 @@ body {
     padding-top: 2rem !important;
 }
 
-#welcome h1, 
-#vision h2, 
-#approach h2,
-#donors h4 {
+.section h1, h2, h4 {
     margin-top: 0;
     padding-top: 0;
 }
