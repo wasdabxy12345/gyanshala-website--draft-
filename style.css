@@ -155,7 +155,7 @@ body {
 .scrollspy .nav-link {
     font-size: 0.9rem;
     color: #495057 !important;
-    padding: 0.4rem 0.75rem !important;
+    padding: 0.3rem 0.75rem !important;
     /* border-radius: 6px; */
     transition: all 0.25s ease;
 }
