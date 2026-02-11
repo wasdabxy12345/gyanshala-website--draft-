@@ -270,7 +270,9 @@ body {
 }
 
 section {
-    scroll-margin-top: calc(var(--nav-height) + 10px);
+    /* scroll-margin-top: calc(var(--nav-height) + 10px); */
+    padding-top: var(--nav-height);
+    margin-top: calc(var(--nav-height) * -1);
 }
 
 .section h1, h2, h4 {
