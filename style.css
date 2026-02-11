@@ -1,5 +1,10 @@
+:root {
+    --nav-height: 100px; /* Default fallback */
+}
+
 [id] {
-    scroll-margin-top: 90px !important;
+    /* This ensures the 'stop' point matches the 'detection' point */
+    scroll-margin-top: var(--nav-height) !important;
 }
 
 .nav-link {
