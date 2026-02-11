@@ -178,7 +178,7 @@ body {
     overflow-x: auto;    /* Enable horizontal scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
     white-space: nowrap; /* Keep text on one line */
-    padding-bottom: 5px; /* Tiny gap for the scrollbar */
+    /* padding-bottom: 5px; */
     padding-left: 10px;
     padding-right: 10px;
     /* This makes the JS .scrollTo() work smoothly */
