@@ -1,3 +1,13 @@
+header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-bottom: 2rem;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
