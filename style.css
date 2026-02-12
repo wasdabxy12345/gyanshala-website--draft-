@@ -355,17 +355,30 @@ footer a:hover {
     gap: 20px;
 }
 
-.footer-bottom a {
-    color: #ffd700 !important;
-    /* Gold/Yellow for high contrast */
+.footer-highlight-link {
+    background-color: #ffc107;
+    /* Bootstrap warning yellow */
+    color: #000000 !important;
+    padding: 0 4px;
+    /* Small padding for the highlight */
+    border-radius: 2px;
     font-weight: 600;
-    text-decoration: underline !important;
-    text-underline-offset: 3px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
 }
 
-.footer-bottom a:hover {
+.footer-highlight-link:hover {
+    background-color: #ffffff;
+    /* color: var(--primary-color) !important; */
+    /* transform: translateY(-1px); */
+    display: inline-block;
+    /* visual lift */
+}
+
+/* Ensure generic links in footer bottom don't conflict excessively, though specific class handles it */
+.footer-bottom a:not(.footer-highlight-link):not(.social-links a) {
     color: #ffffff !important;
-    text-decoration: none !important;
+    text-decoration: underline !important;
 }
 
 .footer-bottom .social-links a {
