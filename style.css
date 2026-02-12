@@ -356,15 +356,16 @@ footer a:hover {
 }
 
 .footer-bottom a {
-    color: #ffffff !important;
-    font-weight: 500;
+    color: #ffd700 !important;
+    /* Gold/Yellow for high contrast */
+    font-weight: 600;
     text-decoration: underline !important;
     text-underline-offset: 3px;
 }
 
 .footer-bottom a:hover {
+    color: #ffffff !important;
     text-decoration: none !important;
-    opacity: 0.9;
 }
 
 .footer-bottom .social-links a {
