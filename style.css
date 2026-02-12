@@ -1,11 +1,174 @@
+:root {
+    --primary-color: rgb(0, 175, 239);
+    --primary-hover: rgb(0, 150, 210);
+    --text-color: #2d3436;
+    --light-bg: #f8f9fa;
+}
+
+/* Override Bootstrap Primary Color */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
 header {
     background-color: #ffffff;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    /* Soft, premium shadow */
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+#main-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #4b5563 !important;
+    /* Neutral gray */
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color) !important;
+    /* Bootstrap primary */
+}
+
+/* Hover underline effect for desktop */
+/* Hover underline effect for desktop, only for non-dropdown links */
+@media (min-width: 992px) {
+    .navbar-nav .nav-link:not(.dropdown-toggle)::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0px;
+        left: 50%;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .navbar-nav .nav-link:not(.dropdown-toggle):hover::after {
+        width: 80%;
+    }
+}
+
+/* Dropdown arrow styling */
+.dropdown-toggle::after {
+    transition: transform 0.2s ease;
+    margin-left: 0.5em;
+    vertical-align: 0.255em;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Secondary Nav (Page Nav) styling */
+header>.navbar:nth-of-type(2) {
+    background-color: #f8f9fa;
+    /* Slight contrast */
+    padding: 0;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+header>.navbar:nth-of-type(2) .nav-link {
+    color: #6c757d !important;
+    padding: 0.1rem 0.75rem;
+}
+
+header>.navbar:nth-of-type(2) .nav-link:hover,
+header>.navbar:nth-of-type(2) .nav-link.active {
+    color: var(--primary-color) !important;
+    background-color: rgba(0, 175, 239, 0.05);
+    /* Using strict RGB for simplicity with alpha */
+    border-radius: 20px;
+}
+
+/* Dropdown animation */
+.dropdown-menu {
+    border: none;
+    margin-top: 10px !important;
+    /* Spacing from nav */
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4b5563;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    padding-left: 1.75rem;
+    /* Slide effect */
+}
+
+/* Search Input Focus */
+.search-input {
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+.search-input:focus {
+    width: 240px;
+    /* Expand on focus */
+    background-color: #fff !important;
+    box-shadow: 0 0 0 4px rgba(0, 175, 239, 0.1);
+}
+
+#header-load {
     position: sticky;
     top: 0;
     z-index: 1000;
-    margin-bottom: 2rem;
+    width: 100%;
 }
 
 body {
@@ -65,7 +228,7 @@ body {
 }
 
 .approach-section {
-    border-left: 2px solid #0d6efd;
+    border-left: 2px solid var(--primary-color);
     padding-left: 25px;
     margin-left: 10px;
 }
@@ -82,7 +245,7 @@ body {
     top: 6px;
     width: 12px;
     height: 12px;
-    background: #0d6efd;
+    background: var(--primary-color);
     border-radius: 50%;
     border: 3px solid #fff;
 }
@@ -139,8 +302,17 @@ body {
     }
 }
 
+/* Scroll offset for sticky header */
+#welcome,
+#vision,
+#approach,
+#donors {
+    scroll-margin-top: var(--header-height, 120px);
+    /* Uses dynamic variable with fallback */
+}
+
 footer {
-    background-color: rgb(0, 175, 239);
+    background-color: var(--primary-color);
     color: #ddddff;
 }
 
@@ -181,6 +353,18 @@ footer a:hover {
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
+}
+
+.footer-bottom a {
+    color: #ffffff !important;
+    font-weight: 500;
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+}
+
+.footer-bottom a:hover {
+    text-decoration: none !important;
+    opacity: 0.9;
 }
 
 .footer-bottom .social-links a {
