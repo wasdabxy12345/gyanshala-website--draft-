@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact | Gyan Shala</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF.js for rendering PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+        }
+
+        .impact-hero {
+            background: #f8fafc;
+            padding: 100px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 50px;
+        }
+
+        /* Assessment & Review Cards */
+        .assessment-box {
+            background: #f1f5f9;
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 80px;
+        }
+
+        .chart-placeholder {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            /* Ensure image corners wrap */
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .testimonial-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .testimonial-card i.quote-icon {
+            font-size: 2.5rem;
+            color: #f1f5f9;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Modal Video */
+        .modal-video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            background: #000;
+        }
+
+        .modal-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .story-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        /* Horizontal Scroll with Arrows */
+        .testimonial-slider-container {
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .testimonial-scroll-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0 40px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+            scroll-behavior: smooth;
+        }
+
+        .testimonial-scroll-row::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari */
+        }
+
+        .testimonial-col {
+            flex: 0 0 calc(33.333% - 14px);
+            /* Show 3 cards */
+            scroll-snap-align: start;
+        }
+
+        @media (min-width: 1400px) {
+            .testimonial-col {
+                flex: 0 0 calc(25% - 15px);
+                /* Show 4 wider cards on very large screens */
+            }
+        }
+
+        @media (max-width: 992px) {
+            .testimonial-col {
+                flex: 0 0 calc(50% - 10px);
+                /* Show 2 cards */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .testimonial-col {
+                flex: 0 0 85%;
+            }
+
+            .testimonial-slider-container {
+                padding: 0 20px;
+            }
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .nav-btn.prev {
+            left: 0;
+        }
+
+        .nav-btn.next {
+            right: 0;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Annual Report Cards */
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-load"></div>
+
+    <main>
+        <!-- Hero -->
+        <section class="impact-hero">
+            <div class="container text-center">
+                <h1 class="display-3 fw-extrabold section-title mb-4">Education that Works</h1>
+                <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                    From measurable learning gains to inspiring life stories, discover how Gyan Shala is reshaping the
+                    educational landscape for India's underserved children.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stories of Change -->
+        <section class="py-5" id="testimonials">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold section-title">Stories of Change</h2>
+                    <p class="text-muted">Real stories of resilience and academic excellence from our students.</p>
+                </div>
+                <div class="testimonial-slider-container">
+                    <button class="nav-btn prev" id="prevBtn"><i class="bi bi-chevron-left"></i></button>
+                    <button class="nav-btn next" id="nextBtn"><i class="bi bi-chevron-right"></i></button>
+
+                    <div class="testimonial-scroll-row" id="testimonialSlider">
+                        <!-- Amisha -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/amisha.jpg" alt="Amisha Parmar" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "Gyan Shala helped me achieve 98.97 percentile. I am now pursuing my dream of
+                                        becoming a doctor."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Amisha Parmar</h5>
+                                            <span class="text-muted small">Medical Student (MBBS)</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#amishaModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Meena Parmar -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/meena.jpg" alt="Meena Parmar" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "Teachers personally motivated me to stay in school and successfully pass my
+                                        10th board exams."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Meena Parmar</h5>
+                                            <span class="text-muted small">Grade 10 Graduate</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#meenaModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Chavda sisters -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/images/Screenshot 2026-03-06 at 12-16-34 Chavda Sisters - YouTube.png"
+                                    alt="Chavda sisters" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "We are blessed to have Gyan Shala platform which helped us to continue our
+                                        education even though in sheer struggles. We will continue with our studies to
+                                        stand still in the future so that we could alleviate the pain of our parents and
+                                        could improve our financial condition."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Chavda sisters</h5>
+                                            <!-- <span class="text-muted small">Grade 10 Graduate</span> -->
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#chavdaModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tulsi Meghwal -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/tulsi.jpg" alt="Tulsi Meghwal" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "As a daughter of a vegetable vendor, Gyan Shala gave me the foundation to score
+                                        89% in 12th Science."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Tulsi Meghwal</h5>
+                                            <span class="text-muted small">Computer Engineering Student</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#tulsiModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Arun Dantani -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/arun.jpg" alt="Arun Dantani" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "Working after school didn't stop me from scoring 74% in 10th Board. I want to
+                                        be an engineer."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Arun Dantani</h5>
+                                            <span class="text-muted small">Aspirant Engineer</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#arunModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mahesh Vaghela -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/mahesh.jpg" alt="Mahesh Vaghela" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "Now I'm ensuring my younger brother gets the higher education I once dreamed
+                                        of."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Mahesh Vaghela</h5>
+                                            <span class="text-muted small">Entrepreneur</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#maheshModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Dipak Sargara -->
+                        <div class="testimonial-col">
+                            <div class="testimonial-card shadow-sm h-100">
+                                <img src="media/dipak.jpg" alt="Dipak Sargara" class="testimonial-img">
+                                <div class="testimonial-body">
+                                    <p class="testimonial-text mb-4">
+                                        "Despite being bed-ridden for 4 months, I passed. Today, I pay my own college
+                                        fees."
+                                    </p>
+                                    <div class="testimonial-author mt-auto">
+                                        <div class="author-info">
+                                            <h5 class="mb-0 fw-bold">Dipak Sargara</h5>
+                                            <span class="text-muted small">B.Com Student</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm mt-3 w-100 py-2 rounded-pill"
+                                        data-bs-toggle="modal" data-bs-target="#dipakModal">Read Full Story</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- External Assessments -->
+        <section class="py-5 bg-light" id="assessments">
+            <div class="container">
+                <div class="assessment-box bg-white shadow-sm mx-auto p-4 p-md-5"
+                    style="max-width: 1000px; border-radius: 24px;">
+                    <div class="align-items-center g-5">
+                        <h2 class="fw-bold section-title text-center">External Student Assessments</h2>
+                        <p class="text-muted mx-auto" style="max-width: 900px;">
+                            Gyan Shala adapts best global practices from various education experts to the local context,
+                            ensuring high-quality and effective education through a dedicated team of around 1,500
+                            teachers, field supervisors and designers cum managers.
+                        </p>
+                        <p class="text-muted mx-auto" style="max-width: 900px;">
+                            We prove that geography doesn't define potential by bringing best classroom practices such
+                            as whole-class teaching, peer learning via group activities in small groups, and specialized
+                            workbooks for daily self-learning into urban slum settings, we maintain classroom standards
+                            that rival elite institutions.
+                        </p>
+                        <p class="text-muted mx-auto" style="max-width: 900px;">
+                            To ensure we stay on track and improve our practices, we invite credible third-party
+                            agencies to audit our processes and student achievements. These periodic external
+                            assessments allow us to maintain total transparency and make data-driven course corrections.
+                        </p>
+                        <p class="text-muted mx-auto" style="max-width: 900px;">
+                            Our children performed on par with, or better than, India's top CBSE schools in independent
+                            assessments by <strong>Educational Initiatives (EI–India)</strong>, <strong>CfBT Trust –
+                                UK</strong> and <strong>DFID, UK</strong>.
+                        </p>
+                        <p class="text-muted mx-auto" style="max-width: 900px;">
+                            Assessments also show significant improvement in student outcomes at <strong>AMC
+                                schools</strong> following Gyan Shala's intervention.
+                        </p>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <div class="d-flex gap-3 align-items-start">
+                                    <div class="bg-success-subtle p-2 rounded-circle flex-shrink-0"
+                                        style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-equals"></i>
+                                    </div>
+                                    <span class="small"><strong>National Parity:</strong> Scoring in the top
+                                        brackets of elite private schools.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex gap-3 align-items-start">
+                                    <div class="bg-success-subtle p-2 rounded-circle flex-shrink-0"
+                                        style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-expand-arrows-alt"></i>
+                                    </div>
+                                    <span class="small"><strong>Proven Scalability:</strong> Measurable gains across
+                                        multiple municipal centers.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <a href="student-assessments.html"
+                                class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm">
+                                Learn more <i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Program Reviews -->
+        <section class="py-5" id="reviews">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold section-title">Program Reviews</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="review-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary-subtle p-2 rounded-3 me-3">
+                                    <i class="bi bi-journal-check text-primary fs-4"></i>
+                                </div>
+                                <h4 class="fw-bold mb-0">Academic Audit</h4>
+                            </div>
+                            <p class="text-muted">
+                                Comprehensive reviews by education experts of our six-tiered teaching model, curriculum
+                                design, and field supervisor effectiveness.
+                            </p>
+                            <a href="#" class="text-primary fw-bold text-decoration-none small">READ EVALUATION <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="review-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary-subtle p-2 rounded-3 me-3">
+                                    <i class="bi bi-buildings text-primary fs-4"></i>
+                                </div>
+                                <h4 class="fw-bold mb-0">Institutional Evaluation</h4>
+                            </div>
+                            <p class="text-muted">
+                                External evaluation of our scalable model, investigating how we maintain high-quality
+                                learning at such low per-pupil costs.
+                            </p>
+                            <a href="#" class="text-primary fw-bold text-decoration-none small">READ FULL REVIEW <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Annual Reports -->
+        <section class="py-5 bg-light" id="annual-reports">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold section-title">Annual Reports</h2>
+                    <p class="text-muted">Detailed archives of our annual progress, beneficiaries, and milestones.</p>
+                </div>
+                <div class="row g-4 row-cols-1 row-cols-md-3 row-cols-lg-5">
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2021-22.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-21"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2021-22</h3>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2020-21.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-20"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2020-21</h3>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2019-20.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-19"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2019-20</h3>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2018-19.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-18"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2018-19</h3>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2017-18.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-17"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2017-18</h3>
+                        </div>
+                    </div>
+                    <div class="col d-none extra-report">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2016-17.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-16"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2016-17</h3>
+                        </div>
+                    </div>
+                    <div class="col d-none extra-report">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2015-16.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-15"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2015-16</h3>
+                        </div>
+                    </div>
+                    <div class="col d-none extra-report">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2014-15.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-14"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2014-15</h3>
+                        </div>
+                    </div>
+                    <div class="col d-none extra-report">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2012-13.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-12"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2012-13</h3>
+                        </div>
+                    </div>
+                    <div class="col d-none extra-report">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Annual-Report-2000-2010.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-report-00"></canvas>
+                            </div>
+                            <h3 class="doc-title text-center">2000-10</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <button id="btnShowMoreReports" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold">
+                        View Older Reports <i class="bi bi-chevron-down ms-2"></i>
+                    </button>
+                    <button id="btnShowLessReports"
+                        class="btn btn-outline-secondary rounded-pill px-5 py-2 fw-bold d-none">
+                        Show Recent Only <i class="bi bi-chevron-up ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Testimonial Modals -->
+
+    <!-- Amisha Modal -->
+    <div class="modal fade" id="amishaModal" tabindex="-1" aria-labelledby="amishaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube-nocookie.com/embed/vCpyweZIwNw?si=5dylEwl_OlWGiG7q&amp;controls=0&amp;start=7"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/amisha.jpg" alt="Amisha Parmar" class="testimonial-img mb-0 me-3"
+                            style="width: 60px; height: 60px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Amisha Parmar</h4>
+                            <span class="text-primary">Medical Student (MBBS)</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Amisha sets an exemplary example that no obstacle is too big when pulled by your dreams.
+                            Scoring an incredible <strong>98.97 percentile</strong> in her 12th Grade Science Boards,
+                            she is now pursuing her lifelong dream of becoming a doctor.</p>
+
+                        <p>Living in the Gupta Nagar slums of Ahmedabad, Amisha’s father was the sole breadwinner for a
+                            family of six. The financial strain was immense, but the presence of a Gyan Shala center in
+                            her vicinity provided her the opportunity to kick-start her journey. She studied with us
+                            from Grade 1 through Grade 10, achieving a 97.94 percentile in her 10th Board exams.</p>
+
+                        <p>Her parents recall with pride: "We heartily accolade Gyan Shala’s profound impact on our girl
+                            and its efforts to germinate the seeds of education and build a foundation stone for
+                            Amisha’s career." Amisha’s dogged spirit and perseverance continue to inspire her younger
+                            siblings and the entire Gyan Shala community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meena Modal -->
+    <div class="modal fade" id="meenaModal" tabindex="-1" aria-labelledby="meenaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/lyR6KaE_ckw?enablejsapi=1" title="Meena's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/meena.jpg" alt="Meena Parmar" class="testimonial-img mb-0 me-3"
+                            style="width: 60px; height: 60px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Meena Parmar</h4>
+                            <span class="text-primary">Grade 10 Graduate</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Meena Parmar, from Khodiyanagar, Ahmedabad, is a prime example of fighting all odds with a
+                            never-give-up attitude. At age 8, Meena's family faced a tragedy when her father passed
+                            away, leaving her mother to support seven siblings through field labor. The abject poverty
+                            reached a stage where survival was the only goal, and her brothers had to polish shoes to
+                            earn a few cents for meals.</p>
+
+                        <p>During this dark period, Gyan Shala motivated Meena to stay in school. With her dogged spirit
+                            and the holistic platform provided by our teachers, she successfully passed her 10th Board
+                            exams—the only one among her seven siblings to study that far.</p>
+
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 font-italic">
+                            "I want to give special thanks to Gyan Shala and my teachers who always guided me in the
+                            right direction and played a role of parents. Their support was beyond a teacher’s role. I
+                            pledge to support such organizations that help children like us unleash our potentials."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chavda Modal -->
+    <div class="modal fade" id="chavdaModal" tabindex="-1" aria-labelledby="chavdaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/watch?v=_uEOpZlU_Vk" title="Chanda sister's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="/media/images/Screenshot 2026-03-06 at 12-16-34 Chavda Sisters - YouTube.png"
+                            alt="Chanda sisters" class="testimonial-img mb-0 me-3" style="width: 60px; height: 60px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Chanda sisters</h4>
+                            <!-- <span class="text-primary">Computer Engineering Student</span> -->
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Can you imagine the struggle of parents to fund the education of two daughters, who even face
+                            difficulties in managing the daily chores and two-time meals?</p>
+
+                        <p>This story is a strong case of real struggle and challenges of life. Jinkal (elder) and
+                            Kinjal (younger) are two sisters living with their parents in Pragati Nagar slums of
+                            Ahmedabad. In order to support livelihood, their parents have struggled a lot. Their father
+                            had no option other than to work as traffic police even though his health was not supporting
+                            him while mother was working as a field labourer. If this was not enough, they faced extreme
+                            conditions when their father suffered from brain damage. Against all odds, Jinkal (elder
+                            daughter) recently passed grade 12 examination with 90 percentile while Kinjal (younger
+                            daughter) passed grade 10 examination with 89 percentile.</p>
+
+                        <p>On being interviewed, they shared</p>
+
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 font-italic">
+                            "We are blessed to have Gyan Shala platform which helped us to continue our education even
+                            though in sheer struggles. We will continue with our studies to stand still in the future so
+                            that we could alleviate the pain of our parents and could improve our financial condition."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tulsi Modal -->
+    <div class="modal fade" id="tulsiModal" tabindex="-1" aria-labelledby="tulsiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/J-d5cgKhYEQ?enablejsapi=1" title="Tulsi's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/tulsi.jpg" alt="Tulsi Meghwal" class="testimonial-img mb-0 me-3"
+                            style="width: 60px; height: 60px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Tulsi Meghwal</h4>
+                            <span class="text-primary">Computer Engineering Student</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Tulsi Khetaji Meghwal, a bright student and a daughter of a vegetable vendor, studied until
+                            Grade 7 under Gyan Shala’s guidance in the Yogeshwarnagar slum area of Ahmedabad. One of our
+                            brightest minds, she achieved a distinction (89%) in her 12th Grade Science stream and is
+                            now successfully pursuing her degree in Computer Engineering.</p>
+
+                        <p>She aims to pursue a Master’s degree in the future and remains a beacon of hope for her
+                            community. Reflecting on her journey, Tulsi shares:</p>
+
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 font-italic">
+                            "Every child should be made to undergo education like me. What quality education enables a
+                            child to do cannot be easily measured. With basic education and inner motivation, it can
+                            work wonders for an underprivileged child. Gyan Shala’s continuous support has helped me
+                            immensely in believing in myself and moving forward in life."
+                        </blockquote>
+
+                        <p>Tulsi is also committed to ensuring her younger brother follows in her footsteps, advocating
+                            for the power of quality education to break the cycle of poverty.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arun Modal -->
+    <div class="modal fade" id="arunModal" tabindex="-1" aria-labelledby="arunModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/arun.jpg" alt="Arun Dantani" class="testimonial-img mb-0 me-3"
+                            style="width: 80px; height: 80px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Arun Dantani</h4>
+                            <span class="text-primary">Aspirant Engineer</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Arun Lalabhai Dantani, a 15-year-old living in the Guptanagar slums of Ahmedabad, is a
+                            shining example of dedication. Arun’s parents are vegetable vendors, and the family often
+                            struggled to meet basic needs.</p>
+
+                        <p>He joined Gyan Shala in Grade 1 with no knowledge of alphabets or numbers. Ten years later,
+                            his daily routine is a testament to his drive: waking at 5 AM to study, attending Gyan Shala
+                            until 1:30 PM, and then working in a wheat-grinding shop from 3:30 PM to 9:30 PM to support
+                            his family.</p>
+
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 font-italic">
+                            "Now I can read, write; recite poems in Gujarati and English as well. I never thought of
+                            dropping from school despite a hectic schedule due to my parent’s support along with Gyan
+                            Shala’s able guidance."
+                        </blockquote>
+
+                        <p>Arun secured a distinction with 74% in his 10th Grade exams (2018). His favorite subjects are
+                            English, Maths, and Science, and he is now pursuing a diploma in engineering to fulfill his
+                            dream of becoming an engineer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mahesh Modal -->
+    <div class="modal fade" id="maheshModal" tabindex="-1" aria-labelledby="maheshModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/mahesh.jpg" alt="Mahesh Vaghela" class="testimonial-img mb-0 me-3"
+                            style="width: 80px; height: 80px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Mahesh Vaghela</h4>
+                            <span class="text-primary">Entrepreneur</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Mahesh Vinodbhai Vaghela (age 20) is a rising star of Gyan Shala whose journey was tested
+                            early. When he was just 15, his father—the family's sole earner—passed away, thrusting
+                            Mahesh into the role of primary provider.</p>
+
+                        <p>To support his mother and two siblings, Mahesh began working as a vegetable vendor, waking at
+                            4:30 AM every day. While these constraints prevented him from pursuing higher education
+                            immediately, he didn't let his dreams fade.</p>
+
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 font-italic">
+                            "After that incident, I grew stronger. Due to financial and time constraints, I could not
+                            pursue higher education. But with renewed vigor in the form of my brother, I will make sure
+                            to fulfill his dreams of achieving higher education."
+                        </blockquote>
+
+                        <p>Mahesh credits Gyan Shala with building his faith and understanding, and he now focuses his
+                            energy on ensuring his brother (currently in Grade 9 at Gyan Shala) reaches the academic
+                            heights he once envisioned for himself.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dipak Modal -->
+    <div class="modal fade" id="dipakModal" tabindex="-1" aria-labelledby="dipakModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/dipak.jpg" alt="Dipak Sargara" class="testimonial-img mb-0 me-3"
+                            style="width: 80px; height: 80px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Dipak Sargara</h4>
+                            <span class="text-primary">B.Com Student</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Dipak Sargara (age 18), the son of a businessman, is a prime example of the self-reliance
+                            Gyan Shala instills in its students. His resilience was put to the test when a severe injury
+                            left him bed-ridden for four months during his critical 10th Grade year.</p>
+
+                        <p>Despite missing months of instruction, the motivation from Gyan Shala helped him pass with
+                            flying colors. Since Grade 11, Dipak has been entirely self-reliant, paying his own school
+                            and tuition fees.</p>
+
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 font-italic">
+                            "With Gyan Shala’s support, I have achieved a good level of self-confidence. I have been
+                            working on Computer Accounting for the past three years and am bearing my own education
+                            expenses. Gyan Shala is home to me."
+                        </blockquote>
+
+                        <p>Now in his first year of B.Com, Dipak earns around 10,000 INR per month through computer
+                            accounting and dreams of supporting the education of other children in low-income
+                            communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdfModal">
+        <div class="pdf-toolbar">
+            <div class="pdf-toolbar-group">
+                <button onclick="changeZoom(0.2)"><i class="bi bi-zoom-in"></i> Zoom In</button>
+                <button onclick="changeZoom(-0.2)"><i class="bi bi-zoom-out"></i> Zoom Out</button>
+            </div>
+
+            <div class="pdf-page-indicator">
+                Page: <span id="page_num">1</span> / <span id="page_count">0</span>
+            </div>
+
+            <div class="pdf-toolbar-group">
+                <button onclick="downloadPDF()" class="btn-download">
+                    <i class="bi bi-download"></i> Download
+                </button>
+                <button onclick="closeModal()" class="btn-close-viewer">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="scroll-container">
+            <div id="canvas-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Set worker globally and explicitly
+        const PDF_JS_VERSION = '3.11.174';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDF_JS_VERSION}/pdf.worker.min.js`;
+
+        let pdfDoc = null;
+        let scale = 1.5;
+        let currentUrl = '';
+        let renderQueue = new Set();
+
+        async function renderThumbnail(url, canvasId) {
+            const canvasElement = document.getElementById(canvasId);
+            if (!canvasElement) return;
+
+            const container = canvasElement.parentElement;
+
+            try {
+                const path = url.startsWith('http') ? url : './' + url;
+                const loadingTask = pdfjsLib.getDocument({
+                    url: path,
+                    disableAutoFetch: true,
+                    disableStream: true
+                });
+
+                const doc = await loadingTask.promise;
+                const page = await doc.getPage(1);
+
+                const context = canvasElement.getContext('2d');
+                const viewport = page.getViewport({ scale: 0.4 });
+
+                canvasElement.height = viewport.height;
+                canvasElement.width = viewport.width;
+
+                await page.render({ canvasContext: context, viewport: viewport }).promise;
+                canvasElement.style.display = 'block';
+            } catch (e) {
+                console.error(`[Thumbnail] Error [${canvasId}]:`, e);
+                container.innerHTML = `
+                    <div style="text-align:center; padding: 20px; color: #64748b;">
+                        <i class="bi bi-file-earmark-pdf" style="font-size: 2rem; color:#ef4444;"></i>
+                        <div style="font-size:0.75rem; margin-top:5px;">Preview unavailable</div>
+                    </div>`;
+            }
+        }
+
+        async function openModal(url) {
+            if (!url || url === '#') return;
+            currentUrl = url.startsWith('http') ? url : './' + url;
+
+            const modal = document.getElementById('pdfModal');
+            const container = document.getElementById('scroll-container');
+            const wrapper = document.getElementById('canvas-wrapper');
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            container.scrollTop = 0;
+            wrapper.innerHTML = '<div style="color:white; padding: 40px; font-family: sans-serif;">Loading Document...</div>';
+
+            try {
+                const loadingTask = pdfjsLib.getDocument({
+                    url: currentUrl,
+                    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+                    cMapPacked: true,
+                });
+                pdfDoc = await loadingTask.promise;
+                document.getElementById('page_count').textContent = pdfDoc.numPages;
+                renderAllPages();
+            } catch (e) {
+                console.error("[Viewer] Load failed:", e);
+                window.open(url, '_blank');
+                closeModal();
+            }
+        }
+
+        async function renderAllPages(maintainScroll = false) {
+            const wrapper = document.getElementById('canvas-wrapper');
+            const container = document.getElementById('scroll-container');
+            const currentRatio = container.scrollTop / container.scrollHeight;
+
+            wrapper.innerHTML = '';
+            if (!pdfDoc) return;
+
+            const firstPage = await pdfDoc.getPage(1);
+            const targetWidth = 500;
+            const unscaledViewport = firstPage.getViewport({ scale: 1 });
+            const fitScale = (targetWidth * scale) / unscaledViewport.width;
+
+            for (let i = 1; i <= pdfDoc.numPages; i++) {
+                const pageContainer = document.createElement('div');
+                pageContainer.className = 'page-container';
+                pageContainer.dataset.pageNumber = i;
+                pageContainer.dataset.fitScale = fitScale;
+                pageContainer.style.height = (unscaledViewport.height * fitScale) + 'px';
+                pageContainer.style.width = (unscaledViewport.width * fitScale) + 'px';
+                wrapper.appendChild(pageContainer);
+                observer.observe(pageContainer);
+            }
+
+            if (maintainScroll && container.scrollHeight > 0) {
+                container.scrollTop = currentRatio * container.scrollHeight;
+            }
+        }
+
+        const visibilityMap = new Map();
+        let updateTimeout;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                visibilityMap.set(entry.target.dataset.pageNumber, entry.intersectionRatio);
+
+                if (entry.isIntersecting) {
+                    const container = entry.target;
+                    const pageNum = parseInt(container.dataset.pageNumber);
+                    if (!container.querySelector('canvas') && !renderQueue.has(pageNum)) {
+                        renderLazyPage(pageNum, container);
+                    }
+                }
+            });
+
+            // Stabilize the page number update
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(() => {
+                let maxRatio = -1;
+                let activePage = '1';
+
+                visibilityMap.forEach((ratio, page) => {
+                    if (ratio > maxRatio) {
+                        maxRatio = ratio;
+                        activePage = page;
+                    }
+                });
+
+                if (maxRatio > 0) {
+                    const indicator = document.getElementById('page_num');
+                    if (indicator) indicator.textContent = activePage;
+                }
+            }, 100); // 100ms stabilization period
+        }, { root: document.getElementById('scroll-container'), threshold: [0, 0.25, 0.5, 0.75, 1.0] });
+
+        async function renderLazyPage(num, container) {
+            renderQueue.add(num);
+            const canvas = document.createElement('canvas');
+            container.appendChild(canvas);
+            const page = await pdfDoc.getPage(num);
+            const fitScale = parseFloat(container.dataset.fitScale);
+            const viewport = page.getViewport({ scale: fitScale });
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            await page.render({ canvasContext: context, viewport: viewport }).promise;
+            renderQueue.delete(num);
+        }
+
+        function changeZoom(delta) {
+            scale = Math.max(0.2, Math.min(3.0, scale + delta));
+            renderAllPages(true);
+        }
+
+        async function downloadPDF() {
+            try {
+                const response = await fetch(currentUrl);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = currentUrl.split('/').pop() || 'document.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(blobUrl);
+            } catch (e) {
+                window.open(currentUrl, '_blank');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('pdfModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Initialize thumbnails
+        document.addEventListener('DOMContentLoaded', () => {
+            renderThumbnail('documents-pdf/Annual-Report-2021-22.pdf', 'thumb-report-21');
+            renderThumbnail('documents-pdf/Annual-Report-2020-21.pdf', 'thumb-report-20');
+            renderThumbnail('documents-pdf/Annual-Report-2019-20.pdf', 'thumb-report-19');
+            renderThumbnail('documents-pdf/Annual-Report-2018-19.pdf', 'thumb-report-18');
+            renderThumbnail('documents-pdf/Annual-Report-2017-18.pdf', 'thumb-report-17');
+        });
+
+        // Show More/Less Reports Logic
+        const btnShowMore = document.getElementById('btnShowMoreReports');
+        const btnShowLess = document.getElementById('btnShowLessReports');
+        const annualReportsSection = document.getElementById('annual-reports');
+
+        if (btnShowMore && btnShowLess) {
+            btnShowMore.addEventListener('click', function () {
+                const hiddenReports = document.querySelectorAll('.extra-report');
+                hiddenReports.forEach(report => {
+                    report.classList.remove('d-none');
+                });
+
+                // Render thumbnails for revealed reports
+                renderThumbnail('documents-pdf/Annual-Report-2016-17.pdf', 'thumb-report-16');
+                renderThumbnail('documents-pdf/Annual-Report-2015-16.pdf', 'thumb-report-15');
+                renderThumbnail('documents-pdf/Annual-Report-2014-15.pdf', 'thumb-report-14');
+                renderThumbnail('documents-pdf/Annual-Report-2012-13.pdf', 'thumb-report-12');
+                renderThumbnail('documents-pdf/Annual-Report-2000-2010.pdf', 'thumb-report-00');
+
+                this.classList.add('d-none'); // Hide Show More
+                btnShowLess.classList.remove('d-none'); // Show Show Less
+            });
+
+            btnShowLess.addEventListener('click', function () {
+                const extraReports = document.querySelectorAll('.extra-report');
+                extraReports.forEach(report => {
+                    report.classList.add('d-none');
+                });
+
+                this.classList.add('d-none'); // Hide Show Less
+                btnShowMore.classList.remove('d-none'); // Show Show More
+
+                // Smooth scroll back to top of reports for better UX
+                if (annualReportsSection) {
+                    annualReportsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
+        // PDF Viewer background click to close
+        document.getElementById('scroll-container').addEventListener('click', (e) => {
+            if (e.target.id === 'scroll-container' || e.target.id === 'canvas-wrapper') {
+                closeModal();
+            }
+        });
+
+        // Escape key to close
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+
+        // Testimonial logic (re-merged)
+        const testimonialModals = document.querySelectorAll('.modal');
+        testimonialModals.forEach(modal => {
+            modal.addEventListener('hidden.bs.modal', function () {
+                const iframe = modal.querySelector('iframe');
+                if (iframe) {
+                    const iframeSrc = iframe.src;
+                    iframe.src = iframeSrc;
+                }
+            });
+        });
+
+        const slider = document.getElementById('testimonialSlider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        if (slider && prevBtn && nextBtn) {
+            const getScrollAmount = () => {
+                const firstCard = slider.querySelector('.testimonial-col');
+                return firstCard ? firstCard.offsetWidth + 20 : slider.offsetWidth * 0.8;
+            };
+            nextBtn.addEventListener('click', () => slider.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }));
+            prevBtn.addEventListener('click', () => slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
+        }
+    </script>
+    <!-- Assessment Details Modal -->
+    <div class="modal fade" id="assessmentModal" tabindex="-1" aria-labelledby="assessmentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0 shadow-sm bg-light"
+                    style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                    <h4 class="fw-bold mb-0 ps-3 py-3 text-primary"><i
+                            class="bi bi-bar-chart-line-fill me-2"></i>Comprehensive Assessment & Impact Report</h4>
+                    <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5">
+                    <!-- Framework Section -->
+                    <div class="mb-5">
+                        <h3 class="fw-bold mb-3 border-bottom pb-2">Assessment Framework</h3>
+                        <p class="text-secondary mb-4">
+                            Gyan Shala utilizes independent, international-standard agencies to verify its educational
+                            impact across different parameters:
+                        </p>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div
+                                    class="p-4 border rounded-4 bg-white shadow-sm h-100 border-start border-4 border-primary">
+                                    <h5 class="fw-bold mb-2">EI-India (Educational Initiatives)</h5>
+                                    <p class="small text-muted mb-0">Administers the **ASSET** (Assessment of Scholastic
+                                        Skills through Educational Testing) to benchmark Gyan Shala against elite
+                                        private schools.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div
+                                    class="p-4 border rounded-4 bg-white shadow-sm h-100 border-start border-4 border-success">
+                                    <h5 class="fw-bold mb-2">CfBT Trust – UK</h5>
+                                    <p class="small text-muted mb-0">Conducts external impact assessments and
+                                        institutional audits to ensure quality standards and scalability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Longitudinal Performance -->
+                    <div class="mb-5">
+                        <div class="text-center mb-4">
+                            <h4 class="fw-bold text-dark">Longitudinal Participation (2012-2017)</h4>
+                            <p class="text-muted">Total number of students tested in Ahmedabad centres across different
+                                grades and subjects.</p>
+                        </div>
+                        <div class="assessment-table-container border">
+                            <table class="assessment-table">
+                                <thead>
+                                    <tr>
+                                        <th>Subject & Grade</th>
+                                        <th class="text-center">Mar ’17</th>
+                                        <th class="text-center">Mar ’16</th>
+                                        <th class="text-center">Mar ’15</th>
+                                        <th class="text-center">Mar ’14</th>
+                                        <th class="text-center">Mar ’13</th>
+                                        <th class="text-center">Mar ’12</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Maths (Grade 3)</strong></td>
+                                        <td class="text-center">1,013</td>
+                                        <td class="text-center">689</td>
+                                        <td class="text-center">1,126</td>
+                                        <td class="text-center">1,079</td>
+                                        <td class="text-center">1,189</td>
+                                        <td class="text-center">1,016</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>EVS (Grade 3)</strong></td>
+                                        <td class="text-center">1,039</td>
+                                        <td class="text-center">714</td>
+                                        <td class="text-center">1,126</td>
+                                        <td class="text-center">1,079</td>
+                                        <td class="text-center">1,189</td>
+                                        <td class="text-center">298</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Maths (Grade 5)</strong></td>
+                                        <td class="text-center">355</td>
+                                        <td class="text-center">528</td>
+                                        <td class="text-center">522</td>
+                                        <td class="text-center">464</td>
+                                        <td class="text-center">259</td>
+                                        <td class="text-center">1,016</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>EVS (Grade 5)</strong></td>
+                                        <td class="text-center">363</td>
+                                        <td class="text-center">557</td>
+                                        <td class="text-center">496</td>
+                                        <td class="text-center">453</td>
+                                        <td class="text-center">250</td>
+                                        <td class="text-center">185</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Maths (Grade 7)</strong></td>
+                                        <td class="text-center">110</td>
+                                        <td class="text-center">116</td>
+                                        <td class="text-center">73</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Science (Grade 7)</strong></td>
+                                        <td class="text-center">113</td>
+                                        <td class="text-center">118</td>
+                                        <td class="text-center">73</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Language (Grade 7)</strong></td>
+                                        <td class="text-center">112</td>
+                                        <td class="text-center">117</td>
+                                        <td class="text-center">73</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                        <td class="text-center">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Performance Comparison -->
+                    <div class="mb-5">
+                        <div class="text-center mb-4">
+                            <h4 class="fw-bold text-dark">National Benchmark Comparison (2016-17)</h4>
+                            <p class="text-muted">Average percentage performance compared to national private school
+                                averages.</p>
+                        </div>
+                        <div class="row g-4 align-items-center">
+                            <div class="col-lg-6">
+                                <div class="assessment-table-container border mb-0 bg-white">
+                                    <table class="assessment-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Subject</th>
+                                                <th class="text-center">Gyan Shala Avg %</th>
+                                                <th class="text-center">National Private Avg %</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>English</td>
+                                                <td class="text-center">51.5%</td>
+                                                <td class="text-center">55.4%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold text-primary">Maths</td>
+                                                <td class="text-center fw-bold text-success-custom">51.4%</td>
+                                                <td class="text-center">49.3%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold text-primary">Science</td>
+                                                <td class="text-center fw-bold text-success-custom">49.5%</td>
+                                                <td class="text-center">45.4%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div
+                                    class="p-4 bg-success-subtle rounded-4 h-100 border border-success border-opacity-25">
+                                    <h5 class="fw-bold text-success mb-3"><i class="bi bi-stars me-2"></i>Record
+                                        Breaking Efficiency</h5>
+                                    <p class="mb-0 text-dark opacity-75">
+                                        Gyan Shala students, despite their socioeconomic background, **outperformed
+                                        national private school averages** in both Mathematics and Science. This
+                                        demonstrates that with the right pedagogy, high quality education can be
+                                        provided to all children.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Scaled Scores -->
+                    <div class="mb-5">
+                        <div class="text-center mb-4">
+                            <h4 class="fw-bold text-dark">Detailed Scaled Scores (2017)</h4>
+                            <p class="text-muted">Classification based on proximity to the ASSET Scaled Score Benchmark
+                                (500).</p>
+                        </div>
+                        <div class="assessment-table-container border">
+                            <table class="assessment-table">
+                                <thead>
+                                    <tr>
+                                        <th>Grade & Subject</th>
+                                        <th class="text-center">Gyan Shala Score</th>
+                                        <th class="text-center">Benchmark</th>
+                                        <th class="text-center">Diff</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>G3 Maths</td>
+                                        <td class="text-center">475</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-25</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-success-subtle text-success py-2 px-3 rounded-pill border border-success border-opacity-25">Close
+                                                to ASSET</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>G3 EVS</td>
+                                        <td class="text-center">464</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-36</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-success-subtle text-success py-2 px-3 rounded-pill border border-success border-opacity-25">Close
+                                                to ASSET</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>G5 Maths</td>
+                                        <td class="text-center">472</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-28</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-success-subtle text-success py-2 px-3 rounded-pill border border-success border-opacity-25">Close
+                                                to ASSET</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>G5 EVS</td>
+                                        <td class="text-center">456</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-44</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-success-subtle text-success py-2 px-3 rounded-pill border border-success border-opacity-25">Close
+                                                to ASSET</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>G5 Language</td>
+                                        <td class="text-center">427</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-73</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-secondary-subtle text-secondary py-2 px-3 rounded-pill border border-secondary border-opacity-25">Developing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>G7 Maths</td>
+                                        <td class="text-center">452</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-48</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-success-subtle text-success py-2 px-3 rounded-pill border border-success border-opacity-25">Close
+                                                to ASSET</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>G7 Science</td>
+                                        <td class="text-center">425</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-75</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-secondary-subtle text-secondary py-2 px-3 rounded-pill border border-secondary border-opacity-25">Developing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>G7 Language</td>
+                                        <td class="text-center">491</td>
+                                        <td class="text-center">500</td>
+                                        <td class="text-center font-monospace">-9</td>
+                                        <td class="text-center"><span
+                                                class="badge bg-success-subtle text-success py-2 px-3 rounded-pill border border-success border-opacity-25">Close
+                                                to ASSET</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="small text-muted mt-3 italic text-center">Note: A difference of <strong>-50 to
+                                +50</strong> is considered "Close to ASSET" per standard educational assessment
+                            categories.</p>
+                    </div>
+
+                    <!-- Cost Efficiency Section -->
+                    <div class="mb-5">
+                        <h4 class="fw-bold mb-4 text-center text-dark">Economic Impact & Efficiency</h4>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div
+                                    class="p-4 border border-primary border-opacity-25 rounded-4 bg-white shadow-sm text-center h-100">
+                                    <div class="fs-2 fw-bold text-primary mb-1">₹3,000</div>
+                                    <div class="small fw-bold text-uppercase letter-spacing-1 text-muted">Min. Yearly
+                                        Cost</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div
+                                    class="p-4 border border-primary border-opacity-25 rounded-4 bg-white shadow-sm text-center h-100">
+                                    <div class="fs-2 fw-bold text-primary mb-1">1/3rd</div>
+                                    <div class="small fw-bold text-uppercase letter-spacing-1 text-muted">Govt School
+                                        Cost</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div
+                                    class="p-4 border border-primary border-opacity-25 rounded-4 bg-white shadow-sm text-center h-100">
+                                    <div class="fs-2 fw-bold text-primary mb-1">100%</div>
+                                    <div class="small fw-bold text-uppercase letter-spacing-1 text-muted">Verification
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="small text-muted text-center mt-3">Gyan Shala's per-child cost is approximately 1/3rd
+                            to 1/2 of the cost incurred by government and elite private schools for similar learning
+                            outcomes.</p>
+                    </div>
+
+                    <!-- Repository & Links -->
+                    <div>
+                        <h4 class="fw-bold mb-4 border-bottom pb-2 text-dark">Detailed Reports & Digitized Data</h4>
+                        <div class="row g-3">
+                            <div class="col-lg-6">
+                                <a href="https://drive.google.com/open?id=1COuvLdx6oLT6_UNQgKnz6e4f_aY_gzPi"
+                                    target="_blank"
+                                    class="d-flex align-items-center p-3 border rounded-3 text-decoration-none hover-bg-light bg-white transition-all shadow-hover">
+                                    <i class="bi bi-google-drive fs-3 text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">EI Student Assessments (2009-2018)</h6>
+                                        <span class="small text-muted">Browse the complete Google Drive
+                                            repository</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="https://gyanshala.org/wp-content/uploads/2018/12/GyanShala-AGP-Program-Report.pdf"
+                                    target="_blank"
+                                    class="d-flex align-items-center p-3 border rounded-3 text-decoration-none hover-bg-light bg-white transition-all shadow-hover">
+                                    <i class="bi bi-file-earmark-pdf fs-3 text-danger me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">GyanShala AGP Program Report</h6>
+                                        <span class="small text-muted">In-depth program impact analysis</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="https://gyanshala.org/wp-content/uploads/2018/12/GyanShala_External-Impact-Assessment-Elementary-Education_CfBT_UK_Feb-2010.pdf"
+                                    target="_blank"
+                                    class="d-flex align-items-center p-3 border rounded-3 text-decoration-none hover-bg-light bg-white transition-all shadow-hover">
+                                    <i class="bi bi-file-earmark-pdf fs-3 text-danger me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">External Impact Assessment (CfBT UK)</h6>
+                                        <span class="small text-muted">Independent audit from UK team (2010)</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="dropdown h-100">
+                                    <button
+                                        class="btn border p-3 rounded-3 w-100 h-100 d-flex align-items-center justify-content-between bg-white shadow-hover"
+                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-files fs-3 text-secondary me-3"></i>
+                                            <div class="text-start">
+                                                <h6 class="fw-bold mb-0 text-dark">Other Intervention Reports</h6>
+                                                <span class="small text-muted">AMC & High School PDFs</span>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu w-100 border-0 shadow-lg mt-2">
+                                        <li><a class="dropdown-item py-2"
+                                                href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-AMC-Intervention-%E2%80%93-Government-Schools-2010.pdf"
+                                                target="_blank">AMC Intervention Report (2010)</a></li>
+                                        <li><a class="dropdown-item py-2"
+                                                href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-AMC-Intervention-%E2%80%93-Government-Schools-2011.pdf"
+                                                target="_blank">AMC Intervention Report (2011)</a></li>
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                        </li>
+                                        <li><a class="dropdown-item py-2"
+                                                href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-High-School-Program-2016.pdf"
+                                                target="_blank">High School Program 2016</a></li>
+                                        <li><a class="dropdown-item py-2"
+                                                href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-High-School-Program-2017.pdf"
+                                                target="_blank">High School Program 2017</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <p class="small text-muted mb-2">Original assessment data source provided by Gyan Shala
+                            Organization.</p>
+                        <a href="https://gyanshala.org/student-assessments/" target="_blank"
+                            class="btn btn-outline-primary btn-sm rounded-pill px-4">
+                            Visit official page <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-load"></div>
+</body>
+
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparency & Accountability | Gyan Shala</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF.js for rendering PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .breadcrumb-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-link:hover {
+            color: white;
+        }
+
+        .transparency-section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-weight: 800;
+            color: #1e293b;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .doc-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            border-color: var(--primary-color);
+        }
+
+
+
+        .doc-icon {
+            width: 48px;
+            height: 48px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .doc-title {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        .doc-desc {
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        .btn-download {
+            background: #f1f5f9;
+            color: #475569;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .year-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .year-link {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .year-link:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+            background: #f8fafc;
+        }
+
+        .year-link i {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .stat-banner {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 40px;
+        }
+
+        /* PDF Styles from Practice Project */
+        .pdf-thumbnail-container {
+            position: relative;
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            overflow: hidden;
+            background: #f1f5f9;
+            margin-bottom: 12px;
+        }
+
+        .pdf-thumbnail-container canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #pdfModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.13);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+
+        .toolbar {
+            height: 50px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+            color: white;
+        }
+
+        .toolbar button {
+            background: #444;
+            color: white;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .toolbar button:hover {
+            background: #555;
+        }
+
+        #scroll-container {
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+            text-align: center;
+            background: transparent;
+            padding: 40px 0;
+        }
+
+        #scroll-container canvas {
+            display: block;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-container {
+            background-color: white;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .page-container canvas {
+            max-width: 100%;
+            height: auto !important;
+        }
+
+        /* Tab Styles */
+        /* Tab Styles */
+        .financial-tabs .tabs-nav-container {
+            background: #f1f5f9;
+            padding: 8px;
+            border-radius: 100px;
+            margin: 0 auto 40px;
+            max-width: fit-content;
+            border: 1px solid #e2e8f0;
+        }
+
+        .financial-tabs .nav-tabs {
+            border: none;
+            flex-wrap: nowrap;
+        }
+
+        .financial-tabs .nav-link {
+            border-radius: 100px !important;
+            border: none !important;
+            padding: 10px 30px;
+            color: rgba(0, 175, 239, 0.7) !important;
+            font-weight: 700;
+            background: transparent !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .financial-tabs .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .financial-tabs .nav-link.active {
+            background: white !important;
+            color: var(--primary-color) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-load"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section text-center">
+            <div class="container">
+                <h1 class="display-4 fw-bold mb-3">Transparency & Governance</h1>
+                <p class="lead opacity-75 mx-auto" style="max-width: 700px;">
+                    We are committed to the highest standards of accountability. Our impact is measured through external
+                    evaluations and our financial integrity is verified by independent audits.
+                </p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Statutory & Legal Documents -->
+            <section class="transparency-section" id="statutory-documents">
+                <div class="section-header">
+                    <h2>Statutory & Legal Documents</h2>
+                    <p>Foundational registrations and tax exemption certificates.</p>
+                </div>
+
+                <div class="row g-4 row-cols-1 row-cols-md-3 row-cols-lg-5">
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/MoA.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-trust-deed"></canvas>
+                            </div>
+                            <h3 class="doc-title">Memorandum of Association (MoA)</h3>
+                            <p class="doc-desc">Foundational document outlining the organization's constitution and
+                                objectives.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/Registration-certificate.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-registration"></canvas>
+                            </div>
+                            <h3 class="doc-title">Registration Certificate</h3>
+                            <p class="doc-desc">Official registration certificate under the Societies Registration Act /
+                                Trust Act.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/12AA.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-12a"></canvas>
+                            </div>
+                            <h3 class="doc-title">12A Certificate</h3>
+                            <p class="doc-desc">Income tax exemption certificate for charitable trusts under Section
+                                12A.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/80G.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-80g"></canvas>
+                            </div>
+                            <h3 class="doc-title">80G Certificate</h3>
+                            <p class="doc-desc">Tax deduction certificate for donors under Section 80G of Income Tax
+                                Act.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/FCRA.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-fcra"></canvas>
+                            </div>
+                            <h3 class="doc-title">FCRA Registration</h3>
+                            <p class="doc-desc">Permission from Ministry of Home Affairs to receive foreign
+                                contributions for social work.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Financial Reports Section (Tabs) -->
+            <section class="transparency-section" id="financial-reports">
+                <div class="section-header">
+                    <h2>Financial Reports</h2>
+                    <p>Access our detailed audit reports and income tax return acknowledgments.</p>
+                </div>
+
+                <div class="financial-tabs">
+                    <div class="tabs-nav-container shadow-sm">
+                        <ul class="nav nav-tabs justify-content-center" id="financialTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="audits-tab" data-bs-toggle="tab"
+                                    data-bs-target="#audits" type="button" role="tab" aria-controls="audits"
+                                    aria-selected="true">
+                                    <img src="icons/audit_icon.png" alt="Audit"
+                                        style="height: 24px; vertical-align: middle; filter: invert(48%) sepia(82%) saturate(2421%) hue-rotate(167deg) brightness(97%) contrast(101%);"
+                                        class="me-2"> Audit Reports
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="itr-tab" data-bs-toggle="tab" data-bs-target="#itr"
+                                    type="button" role="tab" aria-controls="itr" aria-selected="false">
+                                    <img src="icons/tax_icon_v2.png" alt="Taxes"
+                                        style="height: 24px; vertical-align: middle; filter: invert(48%) sepia(82%) saturate(2421%) hue-rotate(167deg) brightness(97%) contrast(101%);"
+                                        class="me-2"> Income Tax Returns
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content mt-4" id="financialTabsContent">
+                        <!-- Audit Reports Tab -->
+                        <div class="tab-pane fade show active" id="audits" role="tabpanel" aria-labelledby="audits-tab">
+                            <div class="row g-4 row-cols-1 row-cols-md-3 row-cols-lg-5">
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2023-24.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-23"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2023-24</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2022-23.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-22"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2022-23</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2021-22.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-21"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2021-22</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2020-21.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-20"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2020-21</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2019-20.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-19"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2019-20</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-report-2018-19.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-18"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2018-19</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-report-2017-18.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-17"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2017-18</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2016-17.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-16"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2016-17</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-report-2015-16.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-15"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2015-16</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/Audit-Report-2014-15.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-audit-14"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">FY 2014-15</h3>
+                                        <p class="doc-desc">Annual Statutory Audit Report</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IT Returns Tab -->
+                        <div class="tab-pane fade" id="itr" role="tabpanel" aria-labelledby="itr-tab">
+                            <div class="row g-4 row-cols-1 row-cols-md-3 row-cols-lg-5">
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/ITR-5-2022-23.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-itr-22"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">AY 2023-24</h3>
+                                        <p class="doc-desc">ITR-V Filing Acknowledgment</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/ITR-5-2021-22.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-itr-21"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">AY 2022-23</h3>
+                                        <p class="doc-desc">ITR-V Filing Acknowledgment</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/ITR-5-2020-21.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-itr-20"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">AY 2021-22</h3>
+                                        <p class="doc-desc">ITR-V Filing Acknowledgment</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/ITR-5-2019-20.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-itr-19"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">AY 2020-21</h3>
+                                        <p class="doc-desc">ITR-V Filing Acknowledgment</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/ITR-5-2018-19.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-itr-18"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">AY 2019-20</h3>
+                                        <p class="doc-desc">ITR-V Filing Acknowledgment</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="doc-card" onclick="openModal('documents-pdf/ITR-5-2017-18.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-itr-17"></canvas>
+                                        </div>
+                                        <h3 class="doc-title">AY 2018-19</h3>
+                                        <p class="doc-desc">ITR-V Filing Acknowledgment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Final Trust Note -->
+            <section class="mb-5 py-5 text-center">
+                <div class="stat-banner bg-white shadow-sm">
+                    <h3 class="fw-bold mb-3">Questions about our finances?</h3>
+                    <p class="text-muted mb-4 mx-auto" style="max-width: 600px;">
+                        We believe that trust is earned through openness. If you require any additional information or
+                        clarification regarding our statutory documents or financial reporting, please reach out to us.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary rounded-pill px-5 py-2 fw-bold">Contact Support</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-load"></div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdfModal">
+        <div class="pdf-toolbar">
+            <div class="pdf-toolbar-group">
+                <button onclick="changeZoom(0.2)"><i class="bi bi-zoom-in"></i> Zoom In</button>
+                <button onclick="changeZoom(-0.2)"><i class="bi bi-zoom-out"></i> Zoom Out</button>
+            </div>
+
+            <div class="pdf-page-indicator">
+                Page: <span id="page_num">1</span> / <span id="page_count">0</span>
+            </div>
+
+            <div class="pdf-toolbar-group">
+                <button onclick="downloadPDF()" class="btn-download">
+                    <i class="bi bi-download"></i> Download
+                </button>
+                <button onclick="closeModal()" class="btn-close-viewer">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="scroll-container">
+            <div id="canvas-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Set worker globally and explicitly
+        const PDF_JS_VERSION = '3.11.174';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDF_JS_VERSION}/pdf.worker.min.js`;
+
+        let pdfDoc = null;
+        let scale = 1.5;
+        let currentUrl = '';
+        let renderQueue = new Set();
+
+        async function renderThumbnail(url, canvasId) {
+            const canvasElement = document.getElementById(canvasId);
+            if (!canvasElement) return;
+
+            const container = canvasElement.parentElement;
+            console.log(`[Thumbnail] Fetching: ${url}`);
+
+            try {
+                // Ensure the path is relative for the server
+                const path = url.startsWith('http') ? url : './' + url;
+
+                const loadingTask = pdfjsLib.getDocument({
+                    url: path,
+                    disableAutoFetch: true,
+                    disableStream: true
+                });
+
+                const doc = await loadingTask.promise;
+                const page = await doc.getPage(1);
+
+                const newCanvas = document.getElementById(canvasId);
+                const context = newCanvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 0.4 });
+
+                newCanvas.height = viewport.height;
+                newCanvas.width = viewport.width;
+
+                await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                newCanvas.setAttribute('data-rendered', 'true');
+                const loader = document.getElementById(`loader-${canvasId}`);
+                if (loader) loader.style.display = 'none';
+                newCanvas.style.display = 'block';
+                console.log(`[Thumbnail] Success: ${canvasId}`);
+            } catch (e) {
+                console.error(`[Thumbnail] Error [${canvasId}]:`, e);
+                container.innerHTML = `
+                    <div style="text-align:center; padding: 20px; color: #64748b;">
+                        <i class="bi bi-file-earmark-pdf" style="font-size: 2rem; color:#ef4444;"></i>
+                        <div style="font-size:0.75rem; margin-top:5px;">Preview unavailable</div>
+                        <div style="font-size:0.6rem; color:#94a3b8;">${e.message.substring(0, 40)}</div>
+                    </div>`;
+            }
+        }
+
+        async function openModal(url) {
+            if (!url || url === '#') return;
+
+            currentUrl = url.startsWith('http') ? url : './' + url;
+            console.log(`[Viewer] Target: ${currentUrl}`);
+
+            const modal = document.getElementById('pdfModal');
+            const container = document.getElementById('scroll-container');
+            const wrapper = document.getElementById('canvas-wrapper');
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            container.scrollTop = 0;
+            wrapper.innerHTML = '<div style="color:white; padding: 40px; font-family: sans-serif;">Loading Document...</div>';
+
+            try {
+                const loadingTask = pdfjsLib.getDocument({
+                    url: currentUrl,
+                    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+                    cMapPacked: true,
+                });
+                pdfDoc = await loadingTask.promise;
+                document.getElementById('page_count').textContent = pdfDoc.numPages;
+                renderAllPages();
+            } catch (e) {
+                console.error("[Viewer] Load failed:", e);
+                window.open(url, '_blank');
+                closeModal();
+            }
+        }
+
+        async function renderAllPages(maintainScroll = false) {
+            const wrapper = document.getElementById('canvas-wrapper');
+            const container = document.getElementById('scroll-container');
+            const currentRatio = container.scrollTop / container.scrollHeight;
+
+            wrapper.innerHTML = '';
+            if (!pdfDoc) return;
+
+            // Get Page 1 to determine the scale for a consistent width (e.g., 700px)
+            const firstPage = await pdfDoc.getPage(1);
+            const targetWidth = 500; // Fixed visual width for consistency
+            const unscaledViewport = firstPage.getViewport({ scale: 1 });
+            const fitScale = (targetWidth * scale) / unscaledViewport.width;
+
+            const viewport = firstPage.getViewport({ scale: fitScale });
+
+            for (let i = 1; i <= pdfDoc.numPages; i++) {
+                const pageContainer = document.createElement('div');
+                pageContainer.className = 'page-container';
+                pageContainer.dataset.pageNumber = i;
+                pageContainer.dataset.fitScale = fitScale; // Store for lazy rendering
+                pageContainer.style.height = (unscaledViewport.height * fitScale) + 'px';
+                pageContainer.style.width = (unscaledViewport.width * fitScale) + 'px';
+                wrapper.appendChild(pageContainer);
+                observer.observe(pageContainer);
+            }
+
+            if (maintainScroll && container.scrollHeight > 0) {
+                container.scrollTop = currentRatio * container.scrollHeight;
+            }
+        }
+
+        const visibilityMap = new Map();
+        let updateTimeout;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                visibilityMap.set(entry.target.dataset.pageNumber, entry.intersectionRatio);
+
+                if (entry.isIntersecting) {
+                    const container = entry.target;
+                    const pageNum = parseInt(container.dataset.pageNumber);
+                    if (!container.querySelector('canvas') && !renderQueue.has(pageNum)) {
+                        renderLazyPage(pageNum, container);
+                    }
+                }
+            });
+
+            // Stabilize the page number update
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(() => {
+                let maxRatio = -1;
+                let activePage = '1';
+
+                visibilityMap.forEach((ratio, page) => {
+                    if (ratio > maxRatio) {
+                        maxRatio = ratio;
+                        activePage = page;
+                    }
+                });
+
+                if (maxRatio > 0) {
+                    const indicator = document.getElementById('page_num');
+                    if (indicator) indicator.textContent = activePage;
+                }
+            }, 100); // 100ms stabilization period
+        }, { root: document.getElementById('scroll-container'), threshold: [0, 0.25, 0.5, 0.75, 1.0] });
+
+
+        async function renderLazyPage(num, container) {
+            renderQueue.add(num);
+            const canvas = document.createElement('canvas');
+            container.appendChild(canvas);
+
+            const page = await pdfDoc.getPage(num);
+            const fitScale = parseFloat(container.dataset.fitScale);
+            const viewport = page.getViewport({ scale: fitScale });
+
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            await page.render({ canvasContext: context, viewport: viewport }).promise;
+            renderQueue.delete(num);
+        }
+
+        function changeZoom(delta) {
+            scale = Math.max(0.2, Math.min(3.0, scale + delta));
+            renderAllPages(true);
+        }
+
+        async function downloadPDF() {
+            try {
+                const response = await fetch(currentUrl);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = currentUrl.split('/').pop() || 'document.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(blobUrl);
+            } catch (e) {
+                window.open(currentUrl, '_blank');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('pdfModal').style.display = 'none';
+            document.body.style.overflow = '';
+            const wrapper = document.getElementById('canvas-wrapper');
+            wrapper.innerHTML = '';
+            pdfDoc = null;
+            renderQueue.clear();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const docs = [
+                { url: 'documents-pdf/MoA.pdf', id: 'thumb-trust-deed' },
+                { url: 'documents-pdf/Registration-certificate.pdf', id: 'thumb-registration' },
+                { url: 'documents-pdf/12AA.pdf', id: 'thumb-12a' },
+                { url: 'documents-pdf/80G.pdf', id: 'thumb-80g' },
+                { url: 'documents-pdf/FCRA.pdf', id: 'thumb-fcra' },
+                // Financials - Audits
+                { url: 'documents-pdf/Audit-Report-2023-24.pdf', id: 'thumb-audit-23' },
+                { url: 'documents-pdf/Audit-Report-2022-23.pdf', id: 'thumb-audit-22' },
+                { url: 'documents-pdf/Audit-Report-2021-22.pdf', id: 'thumb-audit-21' },
+                { url: 'documents-pdf/Audit-Report-2020-21.pdf', id: 'thumb-audit-20' },
+                { url: 'documents-pdf/Audit-Report-2019-20.pdf', id: 'thumb-audit-19' },
+                { url: 'documents-pdf/Audit-report-2018-19.pdf', id: 'thumb-audit-18' },
+                { url: 'documents-pdf/Audit-report-2017-18.pdf', id: 'thumb-audit-17' },
+                { url: 'documents-pdf/Audit-Report-2016-17.pdf', id: 'thumb-audit-16' },
+                { url: 'documents-pdf/Audit-report-2015-16.pdf', id: 'thumb-audit-15' },
+                { url: 'documents-pdf/Audit-Report-2014-15.pdf', id: 'thumb-audit-14' },
+                // Financials - IT returns
+                { url: 'documents-pdf/ITR-5-2022-23.pdf', id: 'thumb-itr-22' },
+                { url: 'documents-pdf/ITR-5-2021-22.pdf', id: 'thumb-itr-21' },
+                { url: 'documents-pdf/ITR-5-2020-21.pdf', id: 'thumb-itr-20' },
+                { url: 'documents-pdf/ITR-5-2019-20.pdf', id: 'thumb-itr-19' },
+                { url: 'documents-pdf/ITR-5-2018-19.pdf', id: 'thumb-itr-18' },
+                { url: 'documents-pdf/ITR-5-2017-18.pdf', id: 'thumb-itr-17' }
+            ];
+
+            docs.forEach(doc => {
+                renderThumbnail(doc.url, doc.id);
+            });
+
+            // Re-render thumbnails when tab is switched (in case they didn't render while hidden)
+            const tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]');
+            tabEl.forEach(el => {
+                el.addEventListener('shown.bs.tab', () => {
+                    docs.forEach(doc => {
+                        const canvas = document.getElementById(doc.id);
+                        if (canvas && canvas.offsetParent !== null && !canvas.getAttribute('data-rendered')) {
+                            renderThumbnail(doc.url, doc.id);
+                        }
+                    });
+                });
+            });
+        });
+
+        document.getElementById('scroll-container').addEventListener('click', (e) => {
+            // Close if clicking the background area (container or wrapper)
+            if (e.target.id === 'scroll-container' || e.target.id === 'canvas-wrapper') {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+
+</html>

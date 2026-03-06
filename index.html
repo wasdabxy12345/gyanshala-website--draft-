@@ -12,14 +12,138 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
+
+    <style>
+        /* Container padding creates space for the arrows */
+        .impact-slider-container {
+            padding: 60px 80px;
+            /* Top/Bottom 60px, Sides 80px */
+            background: #fff;
+            position: relative;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            margin-bottom: 60px;
+            /* Room for the dots so they don't overlap the next section */
+            overflow: visible;
+            /* Crucial: allows dots to be seen outside the container */
+        }
+
+        /* Fix images from being too huge or overlapping */
+        .impact-slide-image {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Content spacing */
+        .impact-slide-content {
+            padding-left: 40px;
+            padding-right: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Position the arrows in the side gutters */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 60px;
+            /* Limits the arrow clickable area to the padding zone */
+        }
+
+        /* Make arrows black so they show up on your white background */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1);
+        }
+
+        /* 1. Move the indicator area below the actual content */
+        .carousel-indicators {
+            bottom: 5px;
+            margin-bottom: 0;
+            /* color: #111; */
+        }
+
+        /* 2. Style the dots (rectangles) */
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            background-color: #ddd !important;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            margin: 0 6px;
+            margin-left: 6px !important;
+            margin-right: 6px !important;
+            padding: 0;
+        }
+
+        /* 3. Style the "Active" dot */
+        .carousel-indicators .active {
+            opacity: 1;
+            background-color: var(--primary-color) !important;
+            /* Use your brand primary color here */
+            transform: scale(1.2);
+            /* Makes the active slide dot slightly larger */
+        }
+
+        /* Responsive fix for mobile */
+        @media (max-width: 991px) {
+            .impact-slider-container {
+                padding: 40px 15px;
+            }
+
+            .impact-slide-content {
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+                /* Hide arrows on small phones to save space */
+            }
+        }
+
+        /* New clickable slide styles */
+        .impact-slider-container .carousel-item {
+            cursor: pointer;
+        }
+
+        .impact-slider-container .carousel-item:hover .impact-slide-image {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        /* Modal Video */
+        .modal-video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            background: #000;
+        }
+
+        .modal-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
     <div id="header-load"></div>
 
     <main class="container-fluid px-3 px-md-5">
-        <div id="img-carousel" class="carousel slide carousel-fade my-4" data-bs-ride="carousel">
+        <div id="img-carousel" class="carousel slide carousel-fade mb-4" data-bs-ride="carousel" data-bs-pause="hover">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#img-carousel" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -28,6 +152,22 @@
                 <button type="button" data-bs-target="#img-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
                 <button type="button" data-bs-target="#img-carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
             </div>
+
+            <!-- Stationary Welcome Message Overlay -->
+            <div class="carousel-welcome-overlay">
+                <div class="container text-center">
+                    <h1 class="display-3 fw-bold mb-3 text-white">Welcome to Gyan Shala</h1>
+                    <p class="lead text-white mx-auto mb-4" style="max-width: 800px;">
+                        Providing high-quality, low-cost education to children in urban slums since 1999, bridging the
+                        gap to elite schooling.
+                    </p>
+                    <div>
+                        <a href="about_us.html" class="btn btn-primary btn-lg px-4 me-2">Learn More</a>
+                        <a href="programs.html" class="btn btn-outline-light btn-lg px-4">Our Programs</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="https://gyanshala.org/wp-content/uploads/2016/12/High-School.png" alt=""
@@ -60,27 +200,72 @@
             </button>
         </div>
 
-        <div id="welcome" class="my-4 p-4 bg-white rounded">
-            <h1 class="text-center">Welcome to Gyan Shala</h1>
-            <p>We are a non-profit organization dedicated to providing quality education to underprivileged children by
-                offering free educational resources, mentorship, and support programs.</p>
+        <div id="welcome" class="my-4 p-5 bg-white rounded shadow-sm text-center">
+            <h1 class="display-5 fw-bold text-primary mb-3">Empowering Every Child's Future Since 1999</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 800px;">
+                At Gyan Shala, we believe that quality education is the most powerful tool for breaking the cycle of
+                poverty. For over 25 years, we have brought elite-level schooling directly into the heart of India's
+                urban slums, ensuring that every child has the opportunity to dream, learn, and succeed.
+            </p>
         </div>
 
-        <div class="my-4 p-4 bg-white rounded">
-            <h2 class="text-center">Why we exists?</h2>
-            <ul class="mt-3 mb-0">
-                <li class="mb-2">To develop a model for high quality schooling on a large scale for learners from modest
-                    social
-                    backgrounds, using available quality of teacher and financial resources.</li>
-                <li class="mb-2">To implement the model for groups of 10000-15000 children in 3-5 states, thus setting
-                    up state level
-                    demonstration and improvement centers in the area of school education to evolve effective state
-                    level curriculum and teaching solutions.</li>
-                <li class="mb-2">Work with State Government school system to introduce new model curriculum design and
-                    material to
-                    help improve learning outcomes.</li>
-            </ul>
+        <!-- Impact Bar -->
+        <div id="impact-bar" class="my-5 p-4 bg-primary text-white rounded-4 shadow-sm">
+            <div class="row text-center g-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2 class="fw-bold mb-0">1,200+</h2>
+                        <p class="small mb-0 opacity-75">Classes Operating</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2 class="fw-bold mb-0">25,000+</h2>
+                        <p class="small mb-0 opacity-75">Children Enrolled</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2 class="fw-bold mb-0">4 States</h2>
+                        <p class="small mb-0 opacity-75">National Footprint</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2 class="fw-bold mb-0">1/4th</h2>
+                        <p class="small mb-0 opacity-75">Govt. School Cost</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- Our Roots & Model -->
+        <div id="roots" class="my-5 p-4 p-md-5 bg-light rounded-4 border-0">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Our Roots</h2>
+                    <p class="text-secondary mb-0">
+                        Gyan Shala was founded by <strong>Prof. Pankaj Jain</strong> and a team of academic colleagues
+                        from
+                        <strong>IIMA</strong> and <strong>IRMA</strong>. Driven by the mission to provide "elite-school"
+                        quality education at a fraction of the cost, they established a model that bridges the learning
+                        gap for children in India's most marginalized urban slum communities.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm border-start border-primary border-4">
+                        <h4 class="fw-bold mb-3"><i class="bi bi-cpu text-primary me-2"></i>The Gyan Shala Model</h4>
+                        <p class="small text-muted mb-0">
+                            Our unique pedagogy uses <strong>daily worksheets</strong> and a highly structured
+                            <strong>team-based teaching</strong> approach. This system ensures high accountability,
+                            rigorous periodic assessments, and learning outcomes that consistently match or exceed
+                            those of top private schools.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div id="vision" class="my-5 p-4 p-md-5 bg-white rounded">
             <div class="text-center mb-5">
@@ -93,16 +278,56 @@
             <div class="row g-4">
                 <!-- Vision -->
                 <div class="col-12 col-lg-4">
-                    <div class="card h-100 border-0 vm-card text-center">
-                        <div class="card-body">
-                            <div class="icon-circle bg-primary text-white mb-3">
-                                <i class="bi bi-eye fs-4"></i>
+                    <div class="card h-100 vm-card text-center">
+                        <div class="card-body p-0">
+                            <div class="icon-circle bg-soft-primary mb-4">
+                                <svg viewBox="0 0 800 600" height="200" width="800" xmlns="http://www.w3.org/2000/svg"
+                                    transform="translate(0, -9)">
+                                    <defs>
+                                        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feDropShadow dx="0" dy="8" stdDeviation="5" flood-opacity="0.2" />
+                                        </filter>
+                                    </defs>
+
+                                    <g transform="translate(-130, 220) scale(1.3)" stroke="#2E7A95" stroke-width="13"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- <line x1="150" y1="300" x2="650" y2="300" /> -->
+                                        <!-- <line x1="150" y1="300" x2="202" y2="105" /> -->
+                                        <!-- <line x1="650" y1="300" x2="598" y2="105" /> -->
+                                        <!-- <line x1="202" y1="105" x2="228" y2="105" /> -->
+                                        <!-- <line x1="572" y1="105" x2="598" y2="105" /> -->
+                                        <path d="M180 285 Q290 275 400 300" />
+                                        <path d="M620 285 Q510 275 400 300" />
+                                        <line x1="180" y1="285" x2="232" y2="90" />
+                                        <line x1="620" y1="285" x2="568" y2="90" />
+                                        <line x1="232" y1="90" x2="258" y2="90" />
+                                        <line x1="542" y1="90" x2="568" y2="90" />
+                                        <path d="M210 270 Q290 245 400 300" />
+                                        <path d="M590 270 Q510 245 400 300" />
+                                        <line x1="210" y1="270" x2="262" y2="75" />
+                                        <line x1="590" y1="270" x2="538" y2="75" />
+                                        <line x1="262" y1="75" x2="286" y2="75" />
+                                        <line x1="514" y1="75" x2="538" y2="75" />
+                                        <path d="M240 245 Q290 225 400 300" />
+                                        <path d="M560 245 Q510 225 400 300" />
+                                        <line x1="240" y1="245" x2="287" y2="69" />
+                                        <line x1="560" y1="245" x2="513" y2="69" />
+                                        <path d="M287 69 Q343 50 400 105" />
+                                        <path d="M513 69 Q457 50 400 105" />
+                                        <line x1="400" y1="105" x2="400" y2="300" />
+                                    </g>
+
+                                    <g transform="translate(250, 37) scale(0.6)">
+                                        <path
+                                            d="m 215.2163,738.62564 -4,-2.84704 -5.08396,-4.77739 -5.08397,-4.77738 -2.58571,-4.16224 -2.58571,-4.16225 -2.73664,-11.17108 -2.73662,-11.1711 -4.80426,-12.66666 -4.80425,-12.66667 -3.9362,-8 -3.9362,-8 -5.01572,-6.66667 -5.01572,-6.66666 -4.17085,-10.95699 -4.17086,-10.95699 v -3.31493 -3.31493 l -3.95422,-12.19948 -3.95423,-12.19949 -6.04578,-10.31244 -6.04577,-10.31246 v -0.87925 -0.87925 l -3.817,-8.3369 -3.81701,-8.33689 -1.48505,-4 -1.48505,-4 -1.42982,-12 -1.42982,-12 -4.14814,-15.92888 -4.14815,-15.92888 1.54669,-0.51557 1.54668,-0.51556 v -3.36487 -3.36488 l -1.81762,0.6975 -1.81763,0.69748 -0.85927,-10.30346 -0.85928,-10.30345 2.77715,-8.4596 2.77715,-8.45961 -2.95944,-9.20386 -2.95943,-9.20386 2.85918,-3.86726 2.85919,-3.86725 v -0.62793 -0.62792 l -2.82757,-0.42607 -2.82757,-0.42607 -0.53124,-5.97786 -0.53125,-5.97787 -1.83309,-1.83308 -1.83308,-1.83309 -1.47477,6.87658 -1.47476,6.87658 -0.005,2.93437 -0.005,2.93437 -2.693839,4.41843 -2.69383,4.41844 -8.35049,3.90767 -8.350489,3.90766 -7.55505,1.39663 -7.55505,1.39663 -5.28474,-3.33611 -5.28474,-3.33612 -5.1109,-6.26743 -5.1109,-6.26744 -6.29777,-7.09401 -6.29777,-7.09403 -3.58171,-5.41234 -3.58172,-5.41234 1.39566,-1.39566 1.39566,-1.39566 0.89585,1.44951 0.89584,1.44951 5.58798,-0.008 5.58798,-0.008 4.83022,-1.3417 4.83022,-1.34169 6.2277,-5.48184 6.2277,-5.48184 -0.50394,-0.50394 -0.50394,-0.50394 -8.78786,2.16862 -8.78785,2.16862 -4.48755,-0.84186 -4.48755,-0.84187 -7.54448,-4.71911 -7.54448,-4.7191 -2.06743,-4.14426 -2.06753,-4.14313 v -1.6418 -1.6418 l 3.44902,-2.25988 3.44902,-2.25989 -0.72543,-0.72542 -0.72542,-0.72542 -4.79981,2.83196 -4.79981,2.83196 h -0.67902 -0.67901 l 0.42189,-3.66667 0.4219,-3.66667 4.97993,-0.41262 4.97994,-0.41263 1.96682,-2.80804 1.96683,-2.80804 5.71991,0.17657 5.71991,0.17656 7.64598,0.83928 7.64599,0.83928 6.69897,-1.71689 6.69897,-1.71689 1.58837,1.58838 1.58838,1.58838 h 3.15432 3.15433 l 2.49487,-1.33522 2.49488,-1.33522 -0.75993,-4.99811 -0.75994,-4.99812 -3.15593,-9.83685 -3.15593,-9.83687 v -1.8406 -1.8406 l -5.34549,-2.13884 -5.34548,-2.13884 -0.80513,-3.20788 -0.80512,-3.20787 0.91322,-7.30916 0.91322,-7.30916 h -2.82883 -2.82882 l -3.91447,-2.02425 -3.91447,-2.02425 -0.80629,-3.2125 -0.80628,-3.2125 1.1203,-1.95513 1.12031,-1.95512 9.50149,-10.14146 9.5015,-10.14145 h 2.74199 2.74198 l 0.80815,2.54625 0.80816,2.54627 1.67494,1.39008 1.67494,1.39008 9.94009,-1.78487 9.940089,-1.78486 2,-0.90115 1.999999,-0.90113 5.33334,-6.7847 5.33333,-6.78468 3.72072,-3.46565 3.72071,-3.46564 5.93016,-5.83483 5.93016,-5.83481 3.55728,-7.27084 3.55729,-7.27083 3.45851,-2.1405 3.45851,-2.14051 3,-2.65292 3,-2.65293 v -1.91003 -1.91004 l 5.45108,-6.85755 5.45108,-6.85754 1.66944,-0.94715 1.66942,-0.94716 -0.31645,-9.05284 -0.31645,-9.05285 2.02382,-2.28313 2.02384,-2.28315 4.83878,-1.55729 4.83877,-1.5573 1.66667,-1.32282 1.66666,-1.32283 v -1.85407 -1.85406 l -5.76484,-2.80079 -5.76485,-2.80077 -1.45267,-3.84856 -1.45253,-3.84856 h -2.59459 -2.5946 l -7.85456,-3.95934 -7.85456,-3.95934 -1.57907,-17.70733 -1.57908,-17.707325 7.47046,-6.786157 7.47045,-6.786156 -0.89811,-2.340429 -0.8981,-2.34043 -2.58502,-0.675996 -2.58501,-0.675996 -0.40827,-2.858883 -0.40825,-2.858883 -4.66667,-2.194372 -4.66667,-2.194372 -2.53998,-2.810829 -2.53999,-2.810829 h -3.74643 -3.74644 l -1.45411,-2.717031 -1.45411,-2.717029 0.74048,-2.333039 0.74048,-2.333038 6.72316,-6.616599 6.72317,-6.616597 h 6.94355 6.94356 l -0.45187,-2.594964 -0.45185,-2.594964 1.85544,1.53988 1.85544,1.539881 3.92975,-2.097217 3.92976,-2.097217 9.73397,-0.217171 9.73397,-0.217172 9.06994,8.702805 9.06993,8.702805 4.40104,3.271139 4.40103,3.27114 2.6031,4.411929 2.60311,4.411929 5.85861,1.475219 5.85863,1.475217 v 2.50838 2.50838 h 5.14564 5.14564 l 7.58808,-4.049225 7.58808,-4.049227 6.13351,-0.62063 6.13351,-0.620631 1.70365,-1.413913 1.70367,-1.413914 4.02957,2.083771 4.02956,2.083769 h 1.96391 1.96392 l 4.10229,3.451859 4.10231,3.451857 v 2.339408 2.339408 l -2.56184,7.446105 -2.56183,7.446105 -5.03233,4.746637 -5.03234,4.746639 -1.40582,4.287074 -1.40584,4.287069 -4.66667,0.0623 -4.66667,0.0622 v 4.21767 4.21768 l -1,1.00455 -1,1.00454 v 3.13269 3.13268 l 4.66667,2.22538 4.66667,2.22537 0.0472,2.75305 0.0472,2.75305 1.9055,3.33334 1.90551,3.33333 0.0472,1.70851 0.0472,1.70852 -2.33333,0.822 -2.33334,0.82198 -4.34937,3.21626 -4.34939,3.21625 -2.31728,-4.07167 -2.31729,-4.07165 -1.50341,-0.008 -1.5034,-0.008 -1.7146,2.06597 -1.7146,2.06596 2.99361,7.22264 2.99361,7.22263 0.96058,7.07852 0.96057,7.07852 0.99231,1.60557 0.99229,1.60558 2.63773,-1.63936 2.63774,-1.63936 3.2599,4.15804 3.2599,4.15804 7.57764,3.58784 7.57762,3.58784 2.6316,3.34553 2.6316,3.34553 7.03387,3.11071 7.03388,3.11071 -6.91036,7.13454 -6.91036,7.13455 -3.14015,10.57763 -3.14014,10.57762 3.84796,3.07908 3.84794,3.07909 1.20044,0.007 1.20044,0.007 7.46623,3.5886 7.46623,3.58858 2.99262,2.88888 2.99262,2.88888 5.67405,2.7075 5.67404,2.70749 4.66667,1.63416 4.66667,1.63417 3.70365,0.67096 3.70365,0.67096 1.31255,2.45254 1.31256,2.45252 4.50292,0.84476 4.50292,0.84474 9.8142,-1.55618 9.81421,-1.5562 4.80499,2.03856 4.80499,2.03857 2.21452,3.37977 2.2145,3.37976 5.26072,2.68383 5.26071,2.68381 h 3.88987 3.88985 l 1.52101,1.83271 1.52102,1.83271 6.97557,0.99337 6.97559,0.99336 6.96587,0.25089 6.96585,0.25091 0.92303,0.92303 0.92302,0.92302 8.11112,-0.0204 8.11111,-0.0204 1.61844,-1.02846 1.61844,-1.02846 0.10853,-15.95112 0.10854,-15.95112 0.086,-2.91381 0.086,-2.91381 5.38509,-2.15468 5.38509,-2.15468 1.40227,1.40226 1.40228,1.40228 0.38401,9.5432 0.384,9.54319 2.03242,3.10187 2.03241,3.10185 3.6498,1.00557 3.6498,1.00559 8.66667,-0.20035 8.66666,-0.20033 6,-0.20389 6,-0.2039 15.04815,-2.13725 15.04815,-2.13727 -0.88471,-6.10958 -0.88469,-6.10959 -0.65955,-1.13604 -0.65954,-1.13605 -4.50391,-1.88184 -4.50389,-1.88186 v -2.73862 -2.73863 l 2.82554,0.8968 2.82555,0.89679 3.50779,-1.61398 3.50778,-1.61398 4.54252,-2.18224 4.54254,-2.18226 0.58048,-2.21973 0.58046,-2.21975 5.21034,-4.18713 5.21033,-4.18715 v -1.98454 -1.98455 l 5.89897,-2.5286 5.89896,-2.52858 7.78179,-8.17726 7.78177,-8.17725 3.98592,2.07835 3.98592,2.07834 4.25224,0.008 4.25224,0.008 6.0931,-5.27353 6.09309,-5.27353 3.07748,2.9402 3.0775,2.9402 -1.0895,1.26666 -1.08948,1.26667 v 2.56325 2.56327 l 2.14428,-1.7796 2.1443,-1.7796 1.8557,2.53785 1.85572,2.53784 -0.0472,1.41183 -0.0472,1.41183 -1.9055,3.33333 -1.90551,3.33333 -0.0472,1.05771 -0.0472,1.05771 4.33333,-0.2973 4.33334,-0.2973 4.96926,0.23958 4.96926,0.2396 2.23409,3.40966 2.23409,3.40965 -2.88893,3.59034 -2.88893,3.59035 -1.49258,2.92128 -1.49257,2.92127 2.79985,4.7454 2.79986,4.74538 h -1.03354 -1.03352 l -2.58817,-1.9576 -2.58817,-1.95758 -2.79936,-0.0424 -2.79936,-0.0424 -5.38843,3.66666 -5.38843,3.66667 -8.81221,8.28771 -8.81222,8.28769 v 11.11993 11.11992 l -3.43397,4.59238 -3.43397,4.59237 0.71976,5.33333 0.71976,5.33334 -4.21271,12 -4.21271,12 -1.25398,0.85716 -1.25398,0.85715 -7.77806,-0.70529 -7.77807,-0.70529 1.29229,4.506 1.29231,4.506 v 8.19948 8.19948 l -2,0.76748 -2,0.76746 v 13.12035 13.12033 l -1.66667,2.13243 -1.66666,2.13241 -2.92642,-1.14072 -2.92641,-1.14073 -0.87372,-5.07019 -0.87371,-5.07018 -3.11882,-12 -3.11883,-12 -1.75353,-5.33334 -1.75352,-5.33333 h -1.97623 -1.97621 l -1.8764,3.91499 -1.87642,3.91498 -0.65174,5.7823 -0.65175,5.78229 -1.35809,0.83935 -1.35811,0.83936 -2.58125,-3.54351 -2.58127,-3.54349 -1.04625,0.64662 -1.04626,0.64662 -2.29006,-5.99647 -2.29008,-5.99647 1.78588,-5.56113 1.78586,-5.56113 3.87506,-1.02258 3.87505,-1.02257 4.39667,-4.26142 4.39668,-4.26142 0.97984,-4.13149 0.97984,-4.13149 -0.31002,-1.66667 -0.31001,-1.66667 h 1.55504 1.55504 l -1.65985,-2 -1.65986,-2 -22.83673,-0.13293 -22.83675,-0.13293 -3.33333,-0.92696 -3.33334,-0.92698 -0.96818,-7.94012 -0.96818,-7.94013 -1.51006,-3.33333 -1.51006,-3.33334 -1.99806,2.9704 -1.99807,2.97039 -2.85703,-1.47487 -2.85702,-1.47486 -3.08122,-3.49554 -3.08121,-3.49552 -0.69656,1.66667 -0.69657,1.66667 -2.22222,-0.0424 -2.22222,-0.0424 -2.58818,-1.95759 -2.58817,-1.9576 h -1.15719 -1.15717 l 0.76739,1.24165 0.76738,1.24167 -3.35537,4.9444 -3.35536,4.9444 v 1.26105 1.26106 l 4.33333,3.81332 4.33334,3.8133 4.56388,3.07291 4.56386,3.07291 0.54724,1.66666 0.54724,1.66667 h -2.80757 -2.80757 l -5.9702,5.50315 -5.97022,5.50314 v 2.429 2.429 l 4.45919,3.40119 4.45919,3.40118 h 2.18208 2.18208 l 0.80509,3.20775 0.80509,3.20775 -2.24342,3.42389 -2.24342,3.42389 2.79706,4.52574 2.79706,4.52574 v 2.30078 2.30078 l 2.56204,0.66999 2.56206,0.66999 -0.61258,4.20518 -0.61256,4.20519 2.58803,10.56085 2.58804,10.56087 -0.68017,1.77247 -0.68016,1.77248 h -3.23759 -3.2376 l -3.35488,2.1982 -3.35488,2.19821 -1.13545,-1.19821 -1.13546,-1.1982 -0.46276,-2.56956 -0.46274,-2.56956 -3.48502,5.23622 -3.48501,5.23623 -6.83025,2.38175 -6.83026,2.38174 -3.61598,3.11035 -3.61599,3.11033 1.49424,6.50792 1.49424,6.50791 -1.89632,2.10499 -1.89632,2.10498 v 2.18391 2.18389 l -4.56725,4.56726 -4.56726,4.56725 -7.35017,3.4772 -7.35019,3.47718 h -1.97145 -1.97146 l -0.52441,-1.57321 -0.5244,-1.57321 -2.26491,0.86912 -2.2649,0.86913 -1.63688,3.70409 -1.63688,3.70408 -9.53804,12.66667 -9.53804,12.66667 -7.60648,6.51918 -7.60648,6.51918 -3.89774,5.38068 -3.89774,5.38068 -6.30932,3.63956 -6.30934,3.63956 -3,2.84585 -3,2.84585 v 5.219 5.219 l -6.33333,2.95159 -6.33334,2.95157 -5.25897,0.1108 -5.25899,0.1108 -4.07434,5.47402 -4.07436,5.47401 -1.70722,2.52599 -1.70721,2.52598 -0.73723,-1.66666 -0.73724,-1.66667 h -3.59221 -3.59221 l -2.98119,2.08811 -2.9812,2.0881 -2.69829,5.28912 -2.69831,5.28911 0.63792,13.66356 0.63793,13.66356 1.41156,3.71268 1.41156,3.71269 v 1.24653 1.24654 h -2 -2 v 1.28642 1.28642 l 2.83419,1.51681 2.8342,1.51681 -0.86745,7.3807 -0.86747,7.38068 -1.74589,3.48274 -1.7459,3.48275 -3.76314,7.23493 -3.76316,7.23495 0.23496,16.76505 0.23496,16.76507 0.71644,2.28892 0.71644,2.28892 -3.07576,0.6788 -3.07575,0.67881 -3.91979,0.3656 -3.91977,0.36561 -3.0138,5.33334 -3.01379,5.33333 -2.34532,4.40032 -2.34532,4.40032 1.50588,2.41131 1.5059,2.4113 -6.91764,1.5481 -6.91763,1.54809 -4.21623,2.56405 -4.21624,2.56404 -0.86989,5.80086 -0.86988,5.80085 -6.41975,3.60871 -6.41975,3.60872 -3.80349,-0.0423 -3.80349,-0.0423 -4,-2.84704 z"
+                                            fill="rgb(229, 247, 253)" stroke="#2E7A95" stroke-width="28" />
+                                    </g>
+                                </svg>
                             </div>
-                            <h5 class="fw-semibold mb-3">Our Vision</h5>
-                            <p class="small text-secondary">
-                                To become one of India’s most effective NGO programs addressing
-                                schooling quality gaps and contributing to improved national
-                                performance on social development indicators.
+                            <h4 class="fw-bold mb-3 text-dark">Our Vision</h4>
+                            <p class="text-secondary mb-0 leading-relaxed">
+                                An India where everyone has access to high quality education, achieving 100% literacy
+                                regardless of identity or circumstance through universal and easy accessibility.
                             </p>
                         </div>
                     </div>
@@ -110,35 +335,43 @@
 
                 <!-- Mission -->
                 <div class="col-12 col-lg-4">
-                    <div class="card h-100 border-0 vm-card">
-                        <div class="card-body text-center">
-                            <div class="icon-circle bg-success text-white mb-3">
-                                <i class="bi bi-bullseye fs-4"></i>
+                    <div class="card h-100 vm-card text-center">
+                        <div class="card-body p-0">
+                            <div class="icon-circle bg-soft-success mb-4">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" width="7" height="7" rx="1" y="15" />
+                                    <rect x="15" width="7" height="7" rx="1" y="15" />
+                                    <rect x="8.5" width="7" height="7" rx="1" y="2" />
+                                    <path d="M5.5 15v-3.5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2V15" />
+                                </svg>
                             </div>
-                            <h5 class="fw-semibold mb-3">Our Mission</h5>
-                            <ul class="list-unstyled small text-secondary text-start mb-0">
-                                <li class="mb-2">• To evolve a total system solution model for quality school education
-                                    on a nationwide scale, without discrimination.</li>
-                                <li class="mb-2">• To drive systemic transformation by improving pedagogy practices with
-                                    high accountability and measurable learning outcomes.</li>
-                                <li>• To implement programs at scale and generate credible evidence to inform government
-                                    policy and program design.</li>
-                            </ul>
+                            <h4 class="fw-bold mb-3 text-dark">Our Mission</h4>
+                            <p class="text-secondary mb-0 leading-relaxed">
+                                To develop a high-quality pedagogical model that matches premium standards at a fraction
+                                of the cost, and is scalable nationwide without compromising student outcomes.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Goal -->
                 <div class="col-12 col-lg-4">
-                    <div class="card h-100 border-0 vm-card text-center">
-                        <div class="card-body">
-                            <div class="icon-circle bg-warning text-white mb-3">
-                                <i class="bi bi-flag fs-4"></i>
+                    <div class="card h-100 vm-card text-center">
+                        <div class="card-body p-0">
+                            <div class="icon-circle bg-soft-warning mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 20h18" />
+                                    <path d="M3 12c4 0 4 4 4 4s0-4 4-4 4 4 4 4 0-4 4-4 4 4 4 4" />
+                                    <path d="M7 16v4M17 16v4" />
+                                </svg>
                             </div>
-                            <h5 class="fw-semibold mb-3">Our Goal</h5>
-                            <p class="small text-secondary">
-                                To enable every child from poor urban and rural families to attain
-                                learning levels comparable to children studying in elite schools.
+                            <h4 class="fw-bold mb-3 text-dark">Our Goal</h4>
+                            <p class="text-secondary mb-0 leading-relaxed">
+                                To bridge the educational divide in India by ensuring children in urban slums and rural
+                                villages receive the same caliber of learning as the nation's most privileged children.
                             </p>
                         </div>
                     </div>
@@ -177,88 +410,224 @@
             </div>
         </div>
 
-        <div id="approach" class="my-5 p-4 p-md-5 bg-white rounded">
+        <div id="stories" class="my-5 p-4 p-md-5 bg-white rounded">
             <div class="text-center mb-5">
-                <h2 class="fw-bold mb-3">Our Approach</h2>
-                <p class="text-muted fst-italic mb-5">“An innovative schooling model providing cost-effective higher
-                    learning outcomes at scale”</p>
+                <h2 class="fw-bold mb-3">Impact Stories</h2>
+                <p class="text-muted mx-auto" style="max-width: 900px;">Real impact is best measured by the lives we
+                    transform. Meet our students who are breaking the cycle of poverty.</p>
+            </div>
 
-                <div class="row text-center g-4 justify-content-center">
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                        <div class="card h-100 border-0 bg-transparent">
-                            <img src="media/images/card1.png" class="card-img-top mx-auto" style="max-width: 200px;"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold">Child-Centered</h5>
-                                <p class="card-text small text-secondary">Focus more on children’s capability to learn
-                                    than only on teachers’ capacity to teach</p>
+            <div id="impact" class="carousel slide impact-slider-container" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="0" class="active"
+                        aria-current="true"></button>
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="4"></button>
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="5"></button>
+                    <button type="button" data-bs-target="#impact" data-bs-slide-to="6"></button>
+                </div>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#tulsiModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/tulsi.jpg" alt="Tulsi Khetaji Meghwal" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Tulsi Khetaji Meghwal</h3>
+                                    <p class="impact-slide-quote">Daughter of a vegetable vendor, Tulsi scored 89% in
+                                        Grade 12 Science. "Every child should be made to undergo education like me."</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                        <div class="card h-100 border-0 bg-transparent">
-                            <img src="media/images/card2.png" class="card-img-top mx-auto" style="max-width: 200px;"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold">Integrated Solution</h5>
-                                <p class="card-text small text-secondary">Combine teaching, learning and curriculum
-                                    design into an integrated package</p>
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#meenaModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/meena.jpg" alt="Meena Parmar" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Meena Parmar</h3>
+                                    <p class="impact-slide-quote">The only sibling out of seven to reach the 10th board
+                                        exams. "I want to give special thanks to Gyan Shala."</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                        <div class="card h-100 border-0 bg-transparent">
-                            <img src="media/images/card3.png" class="card-img-top mx-auto" style="max-width: 200px;"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold">Outcome Driven</h5>
-                                <p class="card-text small text-secondary">Measure students’ learning through independent
-                                    assessments by external agencies</p>
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#amishaModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/amisha.jpg" alt="Amisha Parmar" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Amisha Parmar</h3>
+                                    <p class="impact-slide-quote">Scored 98.97 percentile in Grade 12 Science. She now
+                                        aspires to become a doctor.</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#chavdaModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/images/Screenshot 2026-03-06 at 12-16-34 Chavda Sisters - YouTube.png"
+                                    alt="Chavda Sisters" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Jinkal & Kinjal Chavda</h3>
+                                    <p class="impact-slide-quote">Despite family struggles, both sisters passed their
+                                        boards with 89th and 90th percentiles.</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#arunModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/arun.jpg" alt="Arun Dantani" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Arun Dantani</h3>
+                                    <p class="impact-slide-quote">Son of vegetable vendors, Arun secured a distinction
+                                        in Grade 10 and wants to be an engineer.</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#maheshModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/mahesh.jpg" alt="Mahesh Vaghela" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Mahesh Vinodbhai Vaghela</h3>
+                                    <p class="impact-slide-quote">Worked as a vendor from 4:30 AM to support his family
+                                        while completing his basic education.</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#dipakModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/dipak.jpg" alt="Dipak Sargara" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Dipak Sargara</h3>
+                                    <p class="impact-slide-quote">Currently pursuing B.Com and working in computer
+                                        accounting for 3 years.</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#impact" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#impact" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="get-involved" class="my-5 p-4 p-md-5 bg-white rounded">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Get Involved</h2>
+                <p class="text-muted mx-auto" style="max-width: 700px;">
+                    Join us in our mission to transform lives through quality education.
+                </p>
             </div>
 
-            <div class="rounded-4 p-4 p-lg-5" style="background-color: #f8f9fa;">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-5 text-center order-last order-lg-first">
-                        <img src="https://gyanshala.org/wp-content/uploads/2023/12/approach-300x243.png"
-                            alt="5A Approach Diagram" class="img-fluid"
-                            style="max-width: 100%; height: auto; mix-blend-mode: multiply;">
+            <div class="row g-4">
+                <!-- Volunteer -->
+                <div class="col-md-6">
+                    <div class="involved-grid-item">
+                        <div class="involved-grid-icon-box">
+                            <i class="bi bi-person-heart"></i>
+                        </div>
+                        <div class="involved-grid-content">
+                            <h5 class="mb-2">Volunteer</h5>
+                            <p class="text-muted small mb-3">We welcome professionals to mentor, teach, or support our
+                                operations and children's education.</p>
+                            <a href="mailto:info@gyanshala.org"
+                                class="btn btn-sm btn-outline-primary rounded-pill px-3">Email Us</a>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="col-lg-7">
-                        <h3 class="fw-bold mb-4" style="color: #2d3436; font-size: 1.5rem;">The 5A Implementation</h3>
-                        <p class="small">We’ve adopted a 5A approach to counter the academic challenges keeping in mind
-                            the
-                            socio-economic barriers as follows:</p>
-                        <div class="approach-section border-primary">
-                            <div class="approach-item">
-                                <div class="approach-title text-primary">Awareness</div>
-                                <p class="small text-secondary mb-0">Behavioral Change towards education through
-                                    continuous community engagement and motivation.</p>
-                            </div>
+                <!-- Donate -->
+                <div class="col-md-6">
+                    <div class="involved-grid-item">
+                        <div class="involved-grid-icon-box">
+                            <i class="bi bi-gift"></i>
+                        </div>
+                        <div class="involved-grid-content">
+                            <h5 class="mb-2">Donate</h5>
+                            <p class="text-muted small mb-3">Your contributions help us sustain and scale our inclusive
+                                education model in urban slums.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3">Support Now</a>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="approach-item">
-                                <div class="approach-title text-primary">Availability & Accessibility</div>
-                                <p class="small text-secondary mb-0">Equitable residential education held within the
-                                    community (walking distance) with suitable timings.</p>
-                            </div>
+                <!-- Join Team -->
+                <div class="col-md-6">
+                    <div class="involved-grid-item">
+                        <div class="involved-grid-icon-box">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <div class="involved-grid-content">
+                            <h5 class="mb-2">Careers</h5>
+                            <p class="text-muted small mb-3">Join a passionate team. Build a career with social impact
+                                in education and management.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3">View Jobs</a>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="approach-item">
-                                <div class="approach-title text-primary">Affordability</div>
-                                <p class="small text-secondary mb-0">No indirect costs (books, transport, stationeries),
-                                    removing barriers for poor families.</p>
-                            </div>
-
-                            <div class="approach-item">
-                                <div class="approach-title text-primary">Accountability</div>
-                                <p class="small text-secondary mb-0">Daily evaluations and external assessments guided
-                                    by dedicated MEL staff for course correction.</p>
-                            </div>
+                <!-- Partner -->
+                <div class="col-md-6">
+                    <div class="involved-grid-item">
+                        <div class="involved-grid-icon-box">
+                            <i class="bi bi-building-check"></i>
+                        </div>
+                        <div class="involved-grid-content">
+                            <h5 class="mb-2">Partner</h5>
+                            <p class="text-muted small mb-3">We collaborate with governments and institutions for
+                                large-scale adoption of our model.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3">Collaborate</a>
                         </div>
                     </div>
                 </div>
@@ -326,6 +695,279 @@
             </div>
         </div>
     </main>
+
+    <!-- Student Story Modals -->
+    <!-- Tulsi Modal -->
+    <div class="modal fade" id="tulsiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/J-d5cgKhYEQ?enablejsapi=1" title="Tulsi's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/tulsi.jpg" alt="Tulsi Meghwal" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Tulsi Meghwal</h4>
+                            <span class="text-primary fw-bold">Computer Engineering Student</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>Tulsi Khetaji Meghwal, a bright student and a daughter of a vegetable vendor, studied until
+                            Grade 7 under Gyan Shala’s guidance in the Yogeshwarnagar slum area of Ahmedabad. One of our
+                            brightest minds, she achieved a distinction (89%) in her 12th Grade Science stream and is
+                            now successfully pursuing her degree in Computer Engineering.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "Every child should be made to undergo education like me. What quality education enables a
+                            child to do cannot be easily measured. With basic education and inner motivation, it can
+                            work wonders for an underprivileged child."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meena Modal -->
+    <div class="modal fade" id="meenaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/lyR6KaE_ckw?enablejsapi=1" title="Meena's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/meena.jpg" alt="Meena Parmar" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Meena Parmar</h4>
+                            <span class="text-primary fw-bold">Grade 10 Graduate</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>At age 8, Meena's family faced a tragedy when her father passed away, leaving her mother to
+                            support seven siblings through field labor. Poverty reached a stage where her brothers had
+                            to polish shoes to earn meals.</p>
+                        <p>During this period, Gyan Shala motivated Meena to stay in school. She successfully passed her
+                            10th Board exams—the only one among her seven siblings to study that far.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "I want to give special thanks to Gyan Shala and my teachers who always guided me in the
+                            right direction and played a role of parents."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amisha Modal -->
+    <div class="modal fade" id="amishaModal" tabindex="-1" aria-labelledby="amishaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube-nocookie.com/embed/vCpyweZIwNw?si=5dylEwl_OlWGiG7q&amp;controls=0&amp;start=7&amp;rel=0"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/amisha.jpg" alt="Amisha Parmar" class="testimonial-img mb-0 me-3"
+                            style="width: 60px; height: 60px;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Amisha Parmar</h4>
+                            <span class="text-primary">Medical Student (MBBS)</span>
+                        </div>
+                    </div>
+                    <div class="story-content">
+                        <p>Amisha sets an exemplary example that no obstacle is too big when pulled by your dreams.
+                            Scoring an incredible <strong>98.97 percentile</strong> in her 12th Grade Science Boards,
+                            she is now pursuing her lifelong dream of becoming a doctor.</p>
+
+                        <p>Living in the Gupta Nagar slums of Ahmedabad, Amisha’s father was the sole breadwinner for a
+                            family of six. The financial strain was immense, but the presence of a Gyan Shala center in
+                            her vicinity provided her the opportunity to kick-start her journey. She studied with us
+                            from Grade 1 through Grade 10, achieving a 97.94 percentile in her 10th Board exams.</p>
+
+                        <p>Her parents recall with pride: "We heartily accolade Gyan Shala’s profound impact on our girl
+                            and its efforts to germinate the seeds of education and build a foundation stone for
+                            Amisha’s career." Amisha’s dogged spirit and perseverance continue to inspire her younger
+                            siblings and the entire Gyan Shala community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chavda Modal -->
+    <div class="modal fade" id="chavdaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/_uEOpZlU_Vk" title="Chavda sisters' Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/images/Screenshot 2026-03-06 at 12-16-34 Chavda Sisters - YouTube.png"
+                            alt="Chavda sisters" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Chavda sisters</h4>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>Can you imagine the struggle of parents to fund the education of two daughters, who even face
+                            difficulties in managing the daily chores and two-time meals?</p>
+                        <p>Jinkal (elder) and Kinjal (younger) are two sisters living with their parents in Pragati
+                            Nagar slums of Ahmedabad. Against all odds, Jinkal recentemente passed grade 12 examination
+                            with 90 percentile while Kinjal passed grade 10 examination with 89 percentile.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "We are blessed to have Gyan Shala platform which helped us to continue our education even
+                            though in sheer struggles."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Arun Modal -->
+    <div class="modal fade" id="arunModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <p class="text-muted text-center py-5">Video not available for this student.</p>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/arun.jpg" alt="Arun Dantani" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Arun Dantani</h4>
+                            <span class="text-primary fw-bold">Aspirant Engineer</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>Arun wakes at 5 AM to study, attends Gyan Shala until 1:30 PM, and then works in a
+                            wheat-grinding shop from 3:30 PM to 9:30 PM to support his family. He secured a distinction
+                            with 74% in his 10th Grade exams and is now pursuing a diploma in engineering.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "I never thought of dropping from school despite a hectic schedule due to my parent’s
+                            support along with Gyan Shala’s able guidance."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mahesh Modal -->
+    <div class="modal fade" id="maheshModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <p class="text-muted text-center py-5">Video not available for this student.</p>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/mahesh.jpg" alt="Mahesh Vaghela" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Mahesh Vaghela</h4>
+                            <span class="text-primary fw-bold">Entrepreneur</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>After his father passed away when he was 15, Mahesh became the primary provider as a
+                            vegetable vendor, waking at 4:30 AM every day. He now focuses his energy on ensuring his
+                            younger brother reaches the academic heights he once envisioned.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "With renewed vigor in the form of my brother, I will make sure to fulfill his dreams of
+                            achieving higher education."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dipak Modal -->
+    <div class="modal fade" id="dipakModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <p class="text-muted text-center py-5">Video not available for this student.</p>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/dipak.jpg" alt="Dipak Sargara" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Dipak Sargara</h4>
+                            <span class="text-primary fw-bold">B.Com Student</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>Despite being bed-ridden for four months in 10th grade, Dipak passed with flying colors.
+                            Since Grade 11, he has been entirely self-reliant, paying his own school and college
+                            expenses through computer accounting work.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "Gyan Shala is home to me."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Stop video playback when modal is closed
+        document.addEventListener('DOMContentLoaded', function () {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('hidden.bs.modal', function () {
+                    const iframe = modal.querySelector('iframe');
+                    if (iframe) {
+                        const iframeSrc = iframe.src;
+                        iframe.src = iframeSrc;
+                    }
+                });
+            });
+        });
+    </script>
 
     <div id="footer-load"></div>
 

@@ -1,38 +1,24 @@
 <header>
     <nav class="navbar navbar-expand-lg py-1" id="main-navbar">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+        <div class="container-fluid px-md-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="https://media.licdn.com/dms/image/v2/C4E0BAQG25LZAHqT6iA/company-logo_200_200/company-logo_200_200/0/1631313914309?e=2147483647&v=beta&t=1NbYXM-JtvLPJQu6PG76sYmqykQlfATeCAwqxvccTlU"
                     alt="Logo" width="32" height="32" class="me-2 rounded-circle shadow-sm">
-                <span class="fw-bold text-primary" style="letter-spacing: -0.5px;">Gyan Shala</span>
+                <span class="fw-bold text-white" style="letter-spacing: -0.5px;">Gyan Shala</span>
             </a>
 
             <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#mainNav">
-                <span class="bi bi-list fs-1 text-primary"></span>
+                <span class="bi bi-list fs-1 text-white"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
-                    <li class="nav-item"><a class="nav-link px-3 active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link px-3 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">About
-                            Us</a>
-                        <ul class="dropdown-menu border-0 shadow-sm rounded-3 mt-2">
-                            <li><a class="dropdown-item py-2" href="#">Our Mission</a></li>
-                            <li><a class="dropdown-item py-2" href="#">Our Team</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link px-3" href="about_us.html">About Us</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link px-3 dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Programs</a>
-                        <ul class="dropdown-menu border-0 shadow-sm rounded-3 mt-2">
-                            <li><a class="dropdown-item py-2" href="#">Primary Education</a></li>
-                            <li><a class="dropdown-item py-2" href="#">Secondary Education</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link px-3" href="programs.html">Programs</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link px-3 dropdown-toggle" href="#" role="button"
@@ -43,14 +29,9 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link px-3 dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown">Reports</a>
-                        <ul class="dropdown-menu border-0 shadow-sm rounded-3 mt-2">
-                            <li><a class="dropdown-item py-2" href="#">Annual Report</a></li>
-                            <li><a class="dropdown-item py-2" href="#">Financials</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link px-3" href="impact.html">Impact</a></li>
+
+
 
                     <li class="nav-item dropdown">
                         <a class="nav-link px-3 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Get
@@ -71,28 +52,16 @@
                                 placeholder="Search..." aria-label="Search">
                         </div>
                     </form>
-                    <a href="#"
-                        class="btn btn-primary rounded-pill px-4 fw-semibold shadow-sm d-none d-lg-block">Donate</a>
+                    <a href="#" class="btn btn-warning rounded-pill px-4 fw-bold shadow-sm d-none d-lg-block">Donate</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <nav class="navbar border-top bg-light">
-        <div class="container d-flex justify-content-start">
-            <ul class="navbar-nav flex-row gap-4 align-items-center mb-0">
-                <li class="nav-item">
-                    <a href="#welcome" class="nav-link py-1">Welcome</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#vision" class="nav-link py-1">Vision & Mission</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#approach" class="nav-link py-1">Approach</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#donors" class="nav-link py-1">Donors</a>
-                </li>
+    <nav class="navbar py-0">
+        <div class="container-fluid px-3 px-md-5 d-flex justify-content-start overflow-auto">
+            <ul class="navbar-nav flex-row flex-nowrap gap-3 align-items-center mb-0" id="secondary-nav-list">
+                <!-- Links will be dynamically generated here -->
             </ul>
         </div>
     </nav>

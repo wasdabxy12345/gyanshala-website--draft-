@@ -3,10 +3,20 @@
     ".git",
     ".vscode",
     "index.html",
+    "about_us.html",
+    "team.html",
+    "programs.html",
+    "impact.html",
+    "transparency.html",
     "header.html",
     "footer.html",
     "style.css",
     "script.js",
-    "media"
+    "media",
+    "icons",
+    "extract_full_paths.py",
+    "extract_paths.py",
+    "target_paths.txt",
+    "trace_p21.py"
   ]
 }

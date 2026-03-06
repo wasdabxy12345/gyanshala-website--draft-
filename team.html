@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Gyan Shala</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .joining-year {
+            display: block;
+            font-size: 0.9rem;
+            color: #6c757d;
+            /* Professional grey */
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        /* Adds a small blue vertical line to the left of the year */
+        .joining-year::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 3px;
+            background-color: #00afef;
+        }
+
+        .staff-section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            color: #1e293b;
+        }
+
+        .staff-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .state-banner {
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .state-banner h2 {
+            color: inherit;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .banner-national {
+            background-color: #cbd5e1;
+            color: #1e293b;
+        }
+
+        .banner-gujarat {
+            background-color: #fde68a;
+            color: #92400e;
+        }
+
+        .banner-bihar {
+            background-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .banner-up {
+            background-color: #c7d2fe;
+            color: #3730a3;
+        }
+
+        .banner-haryana {
+            background-color: #99f6e4;
+            color: #115e59;
+        }
+
+        /* Teal */
+
+        .compact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .compact-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .compact-card .name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .compact-card .role {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .compact-card .qual {
+            font-size: 0.75rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .group-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #334155;
+            margin: 3rem 0 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .group-title i {
+            margin-right: 12px;
+            color: var(--primary-color);
+        }
+
+        .program-badge {
+            font-size: 0.7rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        /* Custom Tab Styles */
+        #teamTabs .nav-link {
+            background-color: transparent;
+            color: #00afef !important;
+            /* Muted gray for inactive text */
+            border: 1px solid transparent;
+            /* Prevents layout jump when border appears */
+            transition: all 0.3s ease;
+        }
+
+        /* Active and Hover States */
+        #teamTabs .nav-link.active,
+        #teamTabs .nav-link:hover {
+            background-color: #ffffff !important;
+            color: #00afef !important;
+            border: 1px solid #00afef !important;
+        }
+
+        /* Optional: Smooth transition for the container shadow */
+        #teamTabs {
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Full-Width Horizontal Card Style */
+        .trustee-full-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            border: 1px solid #edf2f7;
+            /* Soft border for definition */
+        }
+
+        .trustee-photo-container {
+            flex: 0 0 180px;
+            height: 180px;
+            background-color: #f8f9fa;
+            border: 2px solid #00afef;
+            border-radius: 15px;
+            margin-right: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .trustee-photo-container i {
+            font-size: 4rem;
+            color: #dee2e6;
+        }
+
+        .trustee-info {
+            flex: 1;
+        }
+
+        .trustee-header {
+            margin-bottom: 1rem;
+        }
+
+        .trustee-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 0.25rem;
+        }
+
+        .trustee-meta {
+            font-size: 1rem;
+            color: #00afef;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .trustee-year {
+            color: #636e72;
+            font-weight: 400;
+            font-size: 0.9rem;
+            padding-left: 10px;
+            border-left: 1px solid #cbd5e0;
+        }
+
+        .trustee-bio {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #4a5568;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Fix */
+        @media (max-width: 768px) {
+            .trustee-full-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .trustee-photo-container {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+
+            .trustee-meta {
+                justify-content: center;
+            }
+        }
+
+        /* Governing Board - 2 Column Horizontal Style */
+        .board-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            height: 100%;
+            /* Ensures cards in the same row are equal height */
+            border: 1px solid #edf2f7;
+            transition: transform 0.2s ease;
+        }
+
+        .board-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .board-photo-container {
+            flex: 0 0 100px;
+            /* Compact photo size for 2-column layout */
+            height: 100px;
+            background-color: #f8f9fa;
+            border: 2px solid #00afef;
+            border-radius: 12px;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .board-photo-container i {
+            font-size: 2.5rem;
+            color: #dee2e6;
+        }
+
+        .board-info {
+            flex: 1;
+        }
+
+        .board-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 0.15rem;
+        }
+
+        .board-meta {
+            font-size: 0.9rem;
+            color: #00afef;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .board-year {
+            color: #636e72;
+            font-weight: 400;
+            margin-left: 8px;
+            padding-left: 8px;
+            border-left: 1px solid #cbd5e0;
+        }
+
+        .board-bio {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+
+        /* Tablet/Mobile optimization */
+        @media (max-width: 991px) {
+            .board-card {
+                padding: 1.25rem;
+            }
+
+            .board-photo-container {
+                flex: 0 0 80px;
+                height: 80px;
+                margin-right: 1rem;
+            }
+        }
+
+        /* National Team - Professional Text-Only Style */
+        .national-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            height: 100%;
+            border: 1px solid #edf2f7;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .national-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+            border-color: #00afef;
+        }
+
+        .national-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 0.25rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        /* Subtle brand accent on the left of the name */
+        .national-name::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 3px;
+            background-color: #00afef;
+            border-radius: 2px;
+        }
+
+        .national-meta {
+            font-size: 0.85rem;
+            color: #636e72;
+            /* Muted grey for a cleaner look */
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-left: 15px;
+            display: block;
+        }
+
+        .national-qual {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #4a5568;
+            margin-top: auto;
+            /* Pushes qualification to bottom if name/role heights vary */
+            padding-top: 0.75rem;
+            border-top: 1px dotted #e2e8f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-load"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="about-hero" class="text-white py-5 mb-5" style="min-height: 40vh;">
+            <div class="container py-5 text-center">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="index.html"
+                                class="text-white opacity-75 text-decoration-none small">Home</a></li>
+                        <li class="breadcrumb-item"><a href="about_us.html"
+                                class="text-white opacity-75 text-decoration-none small">About Us</a></li>
+                        <li class="breadcrumb-item active text-white small fw-bold" aria-current="page">Our Team</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 fw-bold mb-3">Our Team</h1>
+                <p class="lead mb-0 opacity-75 mx-auto" style="max-width: 700px;">
+                    The people behind Gyan Shala's mission to provide quality education for all.
+                </p>
+            </div>
+        </section>
+
+        <div class="container px-3 px-md-5 mt-n5">
+            <!-- Team Tabs Navigation -->
+            <ul class="nav nav-pills justify-content-center mb-5 gap-2 p-3 bg-white shadow-sm rounded-pill border"
+                id="teamTabs" role="tablist" style="margin-top: -40px; position: relative; z-index: 10;">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active rounded-pill px-4 fw-bold" id="trustees-tab" data-bs-toggle="pill"
+                        data-bs-target="#trustees-pane" type="button" role="tab">Trustees</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="governing-tab" data-bs-toggle="pill"
+                        data-bs-target="#governing-pane" type="button" role="tab">Board</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="national-tab" data-bs-toggle="pill"
+                        data-bs-target="#national-pane" type="button" role="tab">National</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="gujarat-tab" data-bs-toggle="pill"
+                        data-bs-target="#gujarat-pane" type="button" role="tab">Gujarat</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="bihar-tab" data-bs-toggle="pill"
+                        data-bs-target="#bihar-pane" type="button" role="tab">Bihar</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="up-tab" data-bs-toggle="pill"
+                        data-bs-target="#up-pane" type="button" role="tab">Uttar Pradesh</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="haryana-tab" data-bs-toggle="pill"
+                        data-bs-target="#haryana-pane" type="button" role="tab">Haryana</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="teamTabContent">
+                <!-- Trustees Section -->
+                <section id="trustees-pane" class="mb-5 py-5 tab-pane fade show active" role="tabpanel"
+                    aria-labelledby="trustees-tab">
+                    <div class="container">
+
+                        <div class="trustee-full-card shadow-sm">
+                            <div class="trustee-photo-container">
+                                <img src="./media/images/pankaj jain.jpg" alt="Pankaj Jain" class="img-fluid">
+                            </div>
+                            <div class="trustee-info">
+                                <div class="trustee-header">
+                                    <h3 class="trustee-name">Dr. Pankaj Jain</h3>
+                                    <div class="trustee-meta">
+                                        Founder & Trustee <span class="trustee-year">Since 1996</span>
+                                    </div>
+                                </div>
+                                <p class="trustee-bio">BE (IITR), Ph.D. (IIMA), Faculty (IRMA) 1982–94, visiting faculty
+                                    in UK/USA leading universities, international development consultant
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="trustee-full-card shadow-sm">
+                            <div class="trustee-photo-container">
+                                <img src="./media/images/8620.jpg" alt="Ajay Pandey" class="img-fluid">
+                            </div>
+                            <div class="trustee-info">
+                                <div class="trustee-header">
+                                    <h3 class="trustee-name">Prof. Ajay Pandey</h3>
+                                    <div class="trustee-meta">
+                                        Trustee <span class="trustee-year">Since 2013</span>
+                                    </div>
+                                </div>
+                                <p class="trustee-bio">Professor, IIM Ahmedabad (2001 onwards); associated earlier with
+                                    MDI Gurgaon, ASCI Hyderabad, and IIM Lucknow in faculty positions</p>
+                            </div>
+                        </div>
+
+                        <div class="trustee-full-card shadow-sm">
+                            <div class="trustee-photo-container">
+                                <img src="https://faculty.iimu.ac.in/wp-content/uploads/2025/08/Rajesh-Agrawal-2025_1.jpg"
+                                    alt="Rajesh Agarwal" class="img-fluid">
+                            </div>
+                            <div class="trustee-info">
+                                <div class="trustee-header">
+                                    <h3 class="trustee-name">Rajesh Agarwal</h3>
+                                    <div class="trustee-meta">
+                                        Trustee <span class="trustee-year">Since 2024</span>
+                                    </div>
+                                </div>
+                                <p class="trustee-bio">Professor of Practice (Chairperson of Executive MBA Programs) at
+                                    IIM Udaipur; former Associate Professor at IRMA and IIM Ahmedabad; former Director
+                                    of Finance at ADG (Finance)</p>
+                            </div>
+                        </div>
+
+                        <div class="trustee-full-card shadow-sm">
+                            <div class="trustee-photo-container">
+                                <img src="https://www.trif.in/india-rural-colloquy-2023/wp-content/uploads/2023/07/Neelima-Khetan.png"
+                                    alt="Neelima Khetan" class="img-fluid">
+                            </div>
+                            <div class="trustee-info">
+                                <div class="trustee-header">
+                                    <h3 class="trustee-name">Neelima Khetan</h3>
+                                    <div class="trustee-meta">
+                                        Trustee <span class="trustee-year">Since 2024</span>
+                                    </div>
+                                </div>
+                                <p class="trustee-bio">Visiting fellow, Brookings India; former Group CSR head, Vedanta
+                                    Group; VP of CSR at Hindustan Zinc; Director, CSR and Sustainability, Coca-Cola
+                                    India and SouthWest Asia; India Country Director, American India Foundation; CEO,
+                                    Seva Mandir; Acting Director, Institute of Rural Management, Anand (IRMA)</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Governing Board -->
+                <section id="governing-pane" class="mb-5 py-5 bg-light rounded-4 px-3 tab-pane fade" role="tabpanel"
+                    aria-labelledby="governing-tab">
+                    <div class="row g-4">
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="./media/images/pankaj jain.jpg" alt="Pankaj Jain" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Pankaj Suman Jain</h4>
+                                    <div class="board-meta">Founder & Chairman <span class="board-year">Since
+                                            2000</span></div>
+                                    <p class="board-bio">BE (IITR), Ph.D. (IIMA), Faculty (IRMA) 1982–94, visiting
+                                        faculty in UK/USA leading universities, international development consultant</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://i1.rgstatic.net/ii/profile.image/11431281165494653-1686031231293_Q512/Tushaar-Shah.jpg"
+                                        alt="Dr. Tushaar Shah" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Dr. Tushaar Shah</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2000</span>
+                                    </div>
+                                    <p class="board-bio">Ph.D from IIMA, Director-IRMA (1987-97), Senior
+                                        Scientist-Advisor (International Water Management Institute, a UN agency), Board
+                                        member, ICICI Bank, Member of various Central Govt. committees on water
+                                        resources</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="./media/images/arvind sharma.jpg" alt="Arvind Sharma" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Arvind Sharma</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2002</span>
+                                    </div>
+                                    <p class="board-bio">MBA (IIMA), Chairman (Leo Burnett Asia), acknowledged
+                                        advertising industry leader, credited with UPA win in 2004</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://www.pulakprasad.com/wp-content/uploads/2023/02/orjb594rvq7t1tl9m7nonvvv22._SX300_CR0000_-1.jpg"
+                                        alt="Pulak Prasad" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Pulak Prasad</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2012</span>
+                                    </div>
+                                    <p class="board-bio">MBA (IIMA), Sr. Consultant at McKinsey, heads an investment
+                                        firm with assets under management of $4 Billion</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://ahduni.edu.in/site/assets/files/45417/fhckv657untitled_1png.1400x0.png"
+                                        alt="Abhay Mangaldas" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Abhay Mangaldas</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2018</span>
+                                    </div>
+                                    <p class="board-bio">MA., Entrepreneur, heads Shreyas School, which was one of two
+                                        schools set up by Maria Montessori herself</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://www.trif.in/india-rural-colloquy-2022/wp-content/uploads/elementor/thumbs/Apoorva-Oza-q7lmxbrybn60ohp023v89t7a4fr4k2crq16mfzidgg.png"
+                                        alt="Apoorva Oza" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Apoorva Oza</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2021</span>
+                                    </div>
+                                    <p class="board-bio">Global Lead, Aga Khan Foundation; engineer and MBA from
+                                        Institute of Rural Management, Anand; served as Chief Executive of Aga Khan
+                                        Rural Support Program (AKRSP-I) for more than a decade</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSamjz4zELalULlZBHe0Vs6p6GIQz8Ukw2C4HY0k4s4pNl4k74I"
+                                        alt="Sridhar Rajagopalan" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Sridhar Rajagopalan</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2021</span>
+                                    </div>
+                                    <p class="board-bio">Engineer from IIT and MBA from IIM Ahmedabad; Founder Chief
+                                        Executive of Educational Initiatives (EI), the premier educational testing
+                                        organization of India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaEMVXupMub0VH6C5eOpKD_yCrf1E25y2lnQ&s"
+                                        alt="Ashutosh Dikshit" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Ashutosh Dikshit</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2022</span>
+                                    </div>
+                                    <p class="board-bio">Consultant, Deloitte; formerly Indian Revenue Services</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR4pvZNorWtTPwa8BoQ2xhmv9pJHRdMVvB3Xh1q6sbQbod5ErTZ"
+                                        alt="Neharika Vohra" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Neharika Vohra</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2023</span>
+                                    </div>
+                                    <p class="board-bio">Professor, Organization Behaviour Area, IIM Ahmedabad</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="board-card shadow-sm">
+                                <div class="board-photo-container">
+                                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQisi_WmXx3BfXQ6R5B7Xk3XULlFeud77L_LzP0l_hoVAsM82-p"
+                                        alt="Janat Shah" class="img-fluid">
+                                </div>
+                                <div class="board-info">
+                                    <h4 class="board-name">Janat Shah</h4>
+                                    <div class="board-meta">Board Member <span class="board-year">Since 2023</span>
+                                    </div>
+                                    <p class="board-bio">Founding Director and Professor, IIM Udaipur</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- NATIONAL TEAM -->
+                <section id="national-pane" class="mb-5 py-5 tab-pane fade" role="tabpanel"
+                    aria-labelledby="national-tab">
+                    <div class="row g-4">
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Chirantan Shah</h5>
+                                <span class="national-meta">Chief Executive Officer</span>
+                                <p class="national-qual">B.Tech. (NIT, Nagpur), PGDM (IIM K)</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Zalak Desai</h5>
+                                <span class="national-meta">Deputy CEO</span>
+                                <p class="national-qual">M. Sc., MEP (IIM A), HHH fellowship (Fulbright-US)</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Hetal Raval</h5>
+                                <span class="national-meta">Language Mentor</span>
+                                <p class="national-qual">M. Com., B. Ed.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Neha Shah</h5>
+                                <span class="national-meta">Finance – Core team Officer</span>
+                                <p class="national-qual">M. Com.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Nisha Goswami</h5>
+                                <span class="national-meta">Accounts – Core team Officer</span>
+                                <p class="national-qual">M. Com., B. Ed.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Yogini Parekh</h5>
+                                <span class="national-meta">MIS – Core team Officer</span>
+                                <p class="national-qual">M. Com., B. Ed.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Tabassum Shaikh</h5>
+                                <span class="national-meta">MIS – Senior Supervisor</span>
+                                <p class="national-qual">B. A.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Kareena Chavda</h5>
+                                <span class="national-meta">Accounts Supervisor</span>
+                                <p class="national-qual">B. Com., M.B. A.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="national-card shadow-sm">
+                                <h5 class="national-name">Padma Parmar</h5>
+                                <span class="national-meta">Stock – Materials Supervisor</span>
+                                <p class="national-qual">B. A.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- GUJARAT STATE -->
+                <section id="gujarat-pane" class="mb-5 py-5 tab-pane fade" role="tabpanel"
+                    aria-labelledby="gujarat-tab">
+
+                    <!-- Elementary Program -->
+                    <div class="group-title">Elementary Program</div>
+                    <div class="row g-4 mb-5">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-card border-primary">
+                                <h5 class="team-name">Sejal Parikh</h5>
+                                <span class="team-role">Team Leader</span>
+                                <p class="small text-muted mb-0">D. Pharm., M. Sc., B. Ed.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Design Management Team</h6>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Vaishali Shah</div>
+                                <div class="qual">B. E. (Mechanical)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Jayanti A Parmar</div>
+                                <div class="qual">M. A., B. Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team</span>
+                                <div class="name">Sharmistha Parmar</div>
+                                <div class="qual">B. Com., B. Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team</span>
+                                <div class="name">Divyarajsinh Parmar</div>
+                                <div class="qual">M.Sc.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team</span>
+                                <div class="name">Monalika Solanki</div>
+                                <div class="qual">M.com.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team</span>
+                                <div class="name">Megha Desai</div>
+                                <div class="qual">B.E.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team</span>
+                                <div class="name">Shirinbanu Rangrej</div>
+                                <div class="qual">M.A., B.Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Nayana Sooryavanshi</div>
+                                <div class="qual">M.A. B.Ed.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Design Team (Surat)</h6>
+                    <div class="row g-4 mb-5">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="compact-card"><span class="role">Core team Maths</span>
+                                <div class="name">Pravina Chaudhari</div>
+                                <div class="qual">B.E Computer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field
+                        Supervisors (Ahmedabad)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Neeru Makwana</div>
+                                <div class="qual">S.Y. B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rekha Chavda</div>
+                                <div class="qual">M.A. B.Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Nirmala Parmar</div>
+                                <div class="qual">H.S.C PASS</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sangita Solanki</div>
+                                <div class="qual">B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Geeta Makwana</div>
+                                <div class="qual">H.S.C PASS</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Falguni Chavda</div>
+                                <div class="qual">B.Sc</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Samim Ajmeri</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Pragna Shete</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Nanda Parmar</div>
+                                <div class="qual">B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Deena Makwana</div>
+                                <div class="qual">M.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Pratiksha Parmar</div>
+                                <div class="qual">B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Bharti Parmar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Kamini Solanki</div>
+                                <div class="qual">B.Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Farhad Saiyad</div>
+                                <div class="qual">12th</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Julekha Pathan</div>
+                                <div class="qual">12th</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Shahenaj Shaikh</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Jayshree Parmar</div>
+                                <div class="qual">B.A B.Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Jayshreeben Kapadia</div>
+                                <div class="qual">12th</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Farjana Shaikh</div>
+                                <div class="qual">12th</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rachna Shah</div>
+                                <div class="qual">S.S.C. P.T.C.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Fatma Julaya</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field
+                        Supervisors (Surat)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ruksanaben Shaikh</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Priyankaben Kanthariya</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Heena Ansari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ritaben Rathod</div>
+                                <div class="qual">12 Pass</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Hamida Multani</div>
+                                <div class="qual">B.A (Ele, MS)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Shabnam Pathan</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Dipika Mistry</div>
+                                <div class="qual">B.A B.ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Pooja Pandey</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle School Program -->
+                    <div class="group-title">Middle School Program</div>
+                    <div class="row g-4 mb-5">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-card border-primary">
+                                <h5 class="team-name">Meghna Bhatt</h5>
+                                <span class="team-role">Team Leader</span>
+                                <p class="small text-muted mb-0">M. Sc., B.ed., Hubert Humphrey fellow</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Design Management Team</h6>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Prachi Shah</div>
+                                <div class="qual">B.E.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Kausha Zalavadia</div>
+                                <div class="qual">B.E.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Dipti Pandya</div>
+                                <div class="qual">MA</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Mohan Makwana</div>
+                                <div class="qual">M. A., M. Phil., B. Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Hemali Shah</div>
+                                <div class="qual">MSC</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team Officer</span>
+                                <div class="name">Neha Solanki</div>
+                                <div class="qual">MA</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Aksha Chauhan</div>
+                                <div class="qual">M.Sc.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Deep Kapadia</div>
+                                <div class="qual">M.Sc.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Dharmesh Patel</div>
+                                <div class="qual">M.A.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field Supervisors (Middle School)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Geeta Pasi</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Hemlata Rathod</div>
+                                <div class="qual">M.A B.Ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Pragna Parmar</div>
+                                <div class="qual">B.Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rachna Dave</div>
+                                <div class="qual">S.Y. B.com.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Parmar Shilpa</div>
+                                <div class="qual">M.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Parmar Dipika</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Shimali Harshidaben</div>
+                                <div class="qual">M.R S.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Bhavna Bhatt</div>
+                                <div class="qual">B.Sc. (Chem)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Moved Senior Field Team here -->
+                    <div class="mt-5 pt-4">
+                        <div class="text-center mb-5">
+                            <h4 class="fw-bold">Field Operations Senior Team</h4>
+                            <p class="text-muted">Leading implementation across all programs</p>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Field Officer</span>
+                                    <div class="name">Hargovan Desai</div>
+                                    <div class="qual">M.A., B.P.Ed. (Ele, MS)</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Vijaya Bhitora</div>
+                                    <div class="qual">B. A., B. Ed. (Ele, MS)</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Firdoshjahan Zulaya</div>
+                                    <div class="qual">B. A., B. Ed. (Ele, MS)</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Rizwana Mapara</div>
+                                    <div class="qual">B.Com (Ele, MS)</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Taslim Patel</div>
+                                    <div class="qual">B.A. (ele MS)</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor (Surat)</span>
+                                    <div class="name">Neha Parmar</div>
+                                    <div class="qual">B.A (Ele, MS)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Moved Special Programs here -->
+                    <div class="mt-5 pt-4">
+                        <div class="group-title">Affordable Private Schools Program</div>
+                        <div class="row g-4 mb-4">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="compact-card"><span class="role">Team Leader (Academics)</span>
+                                    <div class="name">Sonal Mody</div>
+                                    <div class="qual">B. E. (Civil)</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="compact-card"><span class="role">Team Leader (School Operations)</span>
+                                    <div class="name">Maitree Joshi</div>
+                                    <div class="qual">M. A., B. Ed., Diploma in Linguistics</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase text-muted fw-bold mb-3"
+                            style="font-size: 0.8rem; letter-spacing: 1px;">
+                            Design Management Team</h6>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-4">
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Core team Officer</span>
+                                    <div class="name">Niharika Parmar</div>
+                                    <div class="qual">B. Com., L.L.B., B. Ed.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Core team Officer</span>
+                                    <div class="name">Sumaiyaanjum Pathan</div>
+                                    <div class="qual">B. Com., B. Ed.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Core team Officer</span>
+                                    <div class="name">Kavyashri Dave</div>
+                                    <div class="qual">B,E.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Core team Officer</span>
+                                    <div class="name">Nipam Dhvanil Pandit</div>
+                                    <div class="qual">M.Sc.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Core team Officer</span>
+                                    <div class="name">Hiral Solanki</div>
+                                    <div class="qual">BE</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Uzmazabi Pathan</div>
+                                    <div class="qual">M.Sc.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Simranbanu Sipai</div>
+                                    <div class="qual">M.A.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Imroza Saiyad</div>
+                                    <div class="qual">M.Sc.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase text-muted fw-bold mb-3"
+                            style="font-size: 0.8rem; letter-spacing: 1px;">
+                            Relationship & Support</h6>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-5">
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Relationship Manager</span>
+                                    <div class="name">Pragna Chavda</div>
+                                    <div class="qual">B. A., B. Ed.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Falguni Parmar</div>
+                                    <div class="qual">B.A</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Supervisor</span>
+                                    <div class="name">Meenaben Solanki</div>
+                                    <div class="qual">B. A.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="compact-card"><span class="role">Supervisor</span>
+                                    <div class="name">Singal Vandanaben</div>
+                                    <div class="qual">B.A. B.Ed.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="group-title">Jamnabai GyanShala Partnership
+                        </div>
+                        <div class="row g-4 mb-5">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                    <div class="name">Paresha Goswami</div>
+                                    <div class="qual">B.Sc.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BIHAR STATE -->
+                <section id="bihar-pane" class="mb-5 py-5 tab-pane fade" role="tabpanel" aria-labelledby="bihar-tab">
+                    <div class="group-title">Patna Team</div>
+                    <div class="row g-4 mb-5">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-card border-primary">
+                                <h5 class="team-name">Shweta Shrivastava</h5>
+                                <span class="team-role">Team Leader</span>
+                                <p class="small text-muted mb-0">M.Sc (Chem.), DCA</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-card">
+                                <h5 class="team-name">Anuj Kumar</h5>
+                                <span class="team-role">Team Leader</span>
+                                <p class="small text-muted mb-0">M.Sc (Chem.), B.Ed, SIMAP, PGD-ISM, DCA, Volag-MAP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Design Management Team (Bihar)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Math)</span>
+                                <div class="name">Aditya Anand</div>
+                                <div class="qual">B.E (Com. Sci.)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Eng.)</span>
+                                <div class="name">Shashi Ranjanam</div>
+                                <div class="qual">M.A, PhD (Pursuing)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Eng.)</span>
+                                <div class="name">Kumar Mayank</div>
+                                <div class="qual">M.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Math)</span>
+                                <div class="name">Dheeraj Kumar</div>
+                                <div class="qual">M.Sc, B.Ed, B.Sc(IT)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Math)</span>
+                                <div class="name">Anjali Kumari</div>
+                                <div class="qual">M.Sc (Chem.)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Hindi)</span>
+                                <div class="name">Pooja Kumari</div>
+                                <div class="qual">B.A ,D.El.Ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Project)</span>
+                                <div class="name">Rupesh Kumar Sinha</div>
+                                <div class="qual">M.Sc (Elec.), B.Ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Parbind Kumar Singh</div>
+                                <div class="qual">B.A, B.Ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Bullu Kumari</div>
+                                <div class="qual">M.A, B.Ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Shashi Kumar</div>
+                                <div class="qual">M.Sc (Phy.)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">S.M. Sharique</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor (Stock)</span>
+                                <div class="name">Mani Bhushan Vidyarthi</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field
+                        Operations Team (Patna)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Field Officer</span>
+                                <div class="name">Rinku Kumar</div>
+                                <div class="qual">B.Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Khurshid Jahan</div>
+                                <div class="qual">M.B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Raj Kumar Gupta</div>
+                                <div class="qual">M. Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Deepak Kr. Mishra</div>
+                                <div class="qual">M.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ajay Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Kumod Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Manju Shree</div>
+                                <div class="qual">Inter</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sunita Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rajesh Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sunita Devi II</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ruby Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Md. Amjad Ali</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Shobha Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Renu Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sunita Devi III</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Azad Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rimjhim Kumari</div>
+                                <div class="qual">M.Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Anjali Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sujata Singh</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Shahnaz</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Mukesh Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rupam Kumari</div>
+                                <div class="qual">B.Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ashwini Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Braj Kishor</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sachin Kumar</div>
+                                <div class="qual">B.Sc</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Deepak Kumar</div>
+                                <div class="qual">B.Sc</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Romi Devi</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Babita Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Arun Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Saniya Perween</div>
+                                <div class="qual">M.A.(II Yr.)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group-title">Bihar Sharif Team</div>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team (Field)</span>
+                                <div class="name">Jitendra Kumar</div>
+                                <div class="qual">B. Tech (I.T.)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Santosh Kumar</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Md. Saddam Hussain</div>
+                                <div class="qual">B. Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Nigar Bashiri</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ankit Kumar</div>
+                                <div class="qual">B.Sc.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Mohammad Sayeed Akhter</div>
+                                <div class="qual">B.Sc.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Darakshan Mustafa</div>
+                                <div class="qual">BCA</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Rakesh Kumar</div>
+                                <div class="qual">B.Sc.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group-title">Muzaffarpur Team</div>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Kirti Murary</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sanjay Kumar Sharan</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Niraj Tiwary</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Sunita Kumari</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Gulshan Ara</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Simmi Naaz</div>
+                                <div class="qual">B.Com</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Prince Kumar</div>
+                                <div class="qual">B.Com</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- UTTAR PRADESH STATE -->
+                <section id="up-pane" class="mb-5 py-5 tab-pane fade" role="tabpanel" aria-labelledby="up-tab">
+                    <div class="group-title">Lucknow Team</div>
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Design Management Team</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 mb-4">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Coordinator</span>
+                                <div class="name">Shivani Verma</div>
+                                <div class="qual">B. Tech (EC)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team English</span>
+                                <div class="name">Vivek Kumar</div>
+                                <div class="qual">B. Tech (IT)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team Hindi</span>
+                                <div class="name">Pradeep Kumar</div>
+                                <div class="qual">M.A , M.Phil</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team Hindi</span>
+                                <div class="name">Suneeta Nishad</div>
+                                <div class="qual">M.A., B. Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Kiran Vishwkarma</div>
+                                <div class="qual">M. A., M. Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Toyaj Chitranshi</div>
+                                <div class="qual">B. Tech (ME)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field
+                        Operations (Lucknow)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior Supervisor</span>
+                                <div class="name">Rajkumari Gupta</div>
+                                <div class="qual">M.A, MSW</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Tarun Singh</div>
+                                <div class="qual">MSW</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Sunaina Mishra</div>
+                                <div class="qual">M.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Suman Singh</div>
+                                <div class="qual">MSW</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Meera Mishra</div>
+                                <div class="qual">M.A, L.L.B</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Monika</div>
+                                <div class="qual">M.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Sanjeevani</div>
+                                <div class="qual">B.A</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Supervisor</span>
+                                <div class="name">Meenu Shukla</div>
+                                <div class="qual">M.A</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group-title">Farrukhabad Team</div>
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Design Management Team</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 mb-4">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Coordination</span>
+                                <div class="name">Abhishek Tiwari</div>
+                                <div class="qual">B.Sc, M.C.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core Team Officer</span>
+                                <div class="name">Md.Asib Khan Pathan</div>
+                                <div class="qual">M. Sc.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team member</span>
+                                <div class="name">Abhishek Singh</div>
+                                <div class="qual">B.techD.EL.ED</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Core team member</span>
+                                <div class="name">Lalu Yadav</div>
+                                <div class="qual">B. Tech (I.T.)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior supervisor</span>
+                                <div class="name">Shadab Mohd. Khan</div>
+                                <div class="qual">M.Sc.(Math)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field
+                        Operations (Farrukhabad)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">Senior supervisor</span>
+                                <div class="name">Gaurav Mishra</div>
+                                <div class="qual">B.Sc, B.Ed</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Priti Prabha</div>
+                                <div class="qual">B.A. ,LLB</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Gazala</div>
+                                <div class="qual">B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Ashish Maurya</div>
+                                <div class="qual">B.A. M.B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Pankaj Gautam</div>
+                                <div class="qual">BSc, B. Ed.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Nisha</div>
+                                <div class="qual">B.A.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Huma Khan</div>
+                                <div class="qual">M.A. (ENGLISH)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card">
+                                <div class="name">Anurag</div>
+                                <div class="qual">M.A.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group-title">UP Government Program (SARAS)</div>
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="compact-card"><span class="role">Coordination</span>
+                                <div class="name">Shishir Yadav</div>
+                                <div class="qual">B.E., M.A., B. Ed. (Bahraich, Chandauli)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">
+                        Field
+                        Operations (Bahraich & Chandauli)</h6>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 mb-5">
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Karam Chand Yadav</div>
+                                <div class="qual">B.A (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Yogesh Kumar Mishra</div>
+                                <div class="qual">B.Sc (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Rahul Kumar shukla</div>
+                                <div class="qual">B.A, M.A (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Neeraj Kumar Pathak</div>
+                                <div class="qual">B.Sc, M.Sc (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Ali abbas Siddiqui</div>
+                                <div class="qual">B.A, B.Ed (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Hirday Ram Yadav</div>
+                                <div class="qual">B.A,M.A, B.Ed (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Kishan Jaisawal</div>
+                                <div class="qual">B.A (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Chandan Tripathi</div>
+                                <div class="qual">B.SC, D.El.Ed (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Veer Bahadur</div>
+                                <div class="qual">B.A, BTC (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Anand Mohan Tiwari</div>
+                                <div class="qual">B.A, B.Ed (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Arvind Kumar Yadav</div>
+                                <div class="qual">B.A, ITI (Bahraich)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Jaiprakash Dixit</div>
+                                <div class="qual">M.A, B.Ed (Bahraich)</div>
+                            </div>
+                        </div>
+                        <!-- Chandauli -->
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Sunil Kumar Kanoujiya</div>
+                                <div class="qual">B.Com, M.A (Chandauli)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Rajiv Yadav</div>
+                                <div class="qual">B.A, M.A (Chandauli)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Rakesh Singh</div>
+                                <div class="qual">B.A (Chandauli)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Vikas Babu</div>
+                                <div class="qual">B. Tech, BTC (Chandauli)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Raghavendra Pratap Singh</div>
+                                <div class="qual">B.A (Chandauli)</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="compact-card"><span class="role">School Monitor</span>
+                                <div class="name">Sanjeev Sharma</div>
+                                <div class="qual">B.A, B.Ed (Chandauli)</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- HARYANA STATE -->
+                <section id="haryana-pane" class="mb-5 py-5 tab-pane fade" role="tabpanel"
+                    aria-labelledby="haryana-tab">
+                    <div class="row g-4 mb-5">
+                        <div class="col-lg-4 col-md-6 mx-auto">
+                            <div class="compact-card"><span class="role">Coordination</span>
+                                <div class="name">Ankit Pathak</div>
+                                <div class="qual">B.Tech, PGDMIA</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Global Impact Note -->
+                <section class="mb-5 py-5 text-center">
+                    <div class="card bg-primary text-white p-5 rounded-4 shadow-sm" style="max-width: 100%;">
+                        <h3 class="fw-bold mb-3">And over 1,200 more...</h3>
+                        <p class="lead mb-0">
+                            Our work is powered by a massive dedicated team, including teachers, field supervisors,
+                            and managers across multiple states. Together, we are bridging the literacy gap for
+                            underprivileged children across India.
+                        </p>
+                        <div class="mt-4">
+                            <a href="about_us.html" class="btn btn-light rounded-pill px-4 fw-bold">Learn Our
+                                Story</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-load"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

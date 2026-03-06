@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assessments | Gyan Shala</title>
+    <meta name="description"
+        content="Independent student assessment results for Gyan Shala — benchmarked against India's top CBSE schools by Educational Initiatives (EI-India), CfBT Trust UK, and DFID UK.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+        }
+
+        .sa-hero {
+            background: linear-gradient(135deg, #00afef 0%, #0070b8 100%);
+            padding: 90px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sa-hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -80px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #fff;
+        }
+
+        .breadcrumb-item.active {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+        }
+
+        .section-heading {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* Agency cards */
+        .agency-card {
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 26px 22px;
+            height: 100%;
+        }
+
+
+
+        .agency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .badge-blue {
+            background: rgba(0, 175, 239, 0.1);
+            color: #0070b8;
+        }
+
+        .badge-green {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        .badge-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #b45309;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 32px 40px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 6px;
+        }
+
+        /* Tables */
+        .assessment-table-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .assessment-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .assessment-table thead {
+            background: #f1f5f9;
+        }
+
+        .assessment-table thead th {
+            padding: 12px 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .assessment-table tbody td {
+            padding: 11px 14px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+
+        .assessment-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .assessment-table tbody tr:hover td {
+            background: #f8fafc;
+        }
+
+        .text-success-custom {
+            color: #16a34a !important;
+        }
+
+        /* Legend */
+        .legend-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .legend-table td {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .legend-table tr:first-child td {
+            background: #f1f5f9;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #475569;
+        }
+
+        .legend-vfar {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .legend-far {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .legend-close {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .legend-sbetter {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .legend-better {
+            background: #3b82f6;
+            color: #fff;
+        }
+
+        /* Charts */
+        .chart-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Resource links */
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 16px 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            text-decoration: none;
+            background: #fff;
+            gap: 14px;
+            height: 100%;
+        }
+
+        .resource-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .icon-drive {
+            background: rgba(0, 175, 239, 0.1);
+            color: #0070b8;
+        }
+
+        .icon-pdf {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .icon-files {
+            background: rgba(100, 116, 139, 0.1);
+            color: #64748b;
+        }
+
+        .note-box {
+            background: #f8fafc;
+            border-left: 3px solid var(--primary-color);
+            padding: 12px 16px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.83rem;
+            color: #475569;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 3.5rem 0;
+        }
+
+        @media(max-width:767px) {
+
+            .assessment-table thead th,
+            .assessment-table tbody td {
+                padding: 8px 8px;
+                font-size: 0.74rem;
+            }
+
+            .stats-strip {
+                padding: 24px 16px;
+            }
+
+            .sa-hero {
+                padding: 60px 0 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-load"></div>
+
+    <main>
+        <!-- HERO -->
+        <section class="sa-hero">
+            <div class="container position-relative" style="z-index:2;">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="impact.html">Our Impact</a></li>
+                        <li class="breadcrumb-item active">Student Assessments</li>
+                    </ol>
+                </nav>
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill"
+                            style="background:rgba(255,255,255,0.15);font-size:0.8rem;color:#fff;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">
+                            <i class="bi bi-bar-chart-line-fill"></i> Data-Driven Impact
+                        </div>
+                        <h1 class="display-4 fw-bold text-white mb-4" style="letter-spacing:-0.03em;line-height:1.1;">
+                            External Student<br>Assessments
+                        </h1>
+                        <p class="lead mb-4" style="color:rgba(255,255,255,0.85);max-width:560px;">
+                            Independent, internationally benchmarked assessments confirming Gyan Shala students
+                            perform on par with — or better than — India's best CBSE schools.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#results" class="btn rounded-pill px-4 py-2 fw-bold shadow"
+                                style="background:#fff;color:var(--primary-color);">
+                                View Results <i class="bi bi-arrow-down ms-1"></i>
+                            </a>
+                            <a href="#resources" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">
+                                Download Reports
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="rounded-4 p-4 text-center"
+                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+                                    <div class="fw-bold fs-3 text-white">2009–18</div>
+                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">EI Assessment Period
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="rounded-4 p-4 text-center"
+                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+                                    <div class="fw-bold fs-3 text-white">3</div>
+                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Global Audit Bodies
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="rounded-4 p-4 text-center"
+                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+                                    <div class="fw-bold fs-3 text-white">₹3–6K</div>
+                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Per Child / Year</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="rounded-4 p-4 text-center"
+                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+                                    <div class="fw-bold fs-3 text-white">Gr. 3,5,7</div>
+                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Grades Tested</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OVERVIEW -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 text-center mb-5">
+                        <div class="section-eyebrow mb-2">External Assessments</div>
+                        <h2 class="section-heading mb-4">Transparent. Verified. Accountable.</h2>
+                        <p class="text-muted" style="font-size:1.05rem;line-height:1.8;">
+                            Gyan Shala learns from various education experts as well as best practices from the world
+                            and ensures
+                            implementation through its team of around <strong>1,500 people</strong> including teachers,
+                            field
+                            supervisors and designers cum managers. Although Gyan Shala classes are held in slum
+                            settings, it
+                            follows best classroom transactions such as whole class teaching, small group activities for
+                            peer
+                            learning and self-learning through daily workbooks.
+                        </p>
+                        <p class="text-muted" style="line-height:1.8;">
+                            Gyan Shala facilitates external program and student assessments by reputed agencies
+                            periodically to
+                            establish the effectiveness of the program and to make necessary on-course corrections. Gyan
+                            Shala
+                            children performed on par or better than India's best CBSE schools, as per credible
+                            independent
+                            assessments by <strong>Educational Initiatives (EI–India)</strong>, <strong>CfBT Trust –
+                                UK</strong>
+                            and <strong>DFID, UK</strong>.
+                        </p>
+                    </div>
+                </div>
+                <!-- Stats strip -->
+                <div class="stats-strip">
+                    <div class="row g-4 text-center">
+                        <div class="col-6 col-md-3">
+                            <div class="stat-value">Gr. 3, 5, 7</div>
+                            <div class="stat-label">Grades Assessed</div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="stat-value">2009–18</div>
+                            <div class="stat-label">EI Assessment Period</div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="stat-value">15,000+</div>
+                            <div class="stat-label">Students per ASSET cycle</div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="stat-value">₹3–6K</div>
+                            <div class="stat-label">Per Child per Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASSESSMENT AGENCIES -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-heading">Assessment Framework</h2>
+                    <p class="text-muted mx-auto mt-3" style="max-width:600px;">
+                        Three independent, internationally respected bodies audit Gyan Shala's processes and student
+                        outcomes.
+                    </p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="agency-card blue">
+                            <h5 class="fw-bold mb-2">EI-India (Educational Initiatives)</h5>
+                            <p class="text-muted small mb-0">
+                                Administers the <strong>ASSET</strong> (Assessment of Scholastic Skills through
+                                Educational
+                                Testing) for Gyan Shala students in Grades 3, 5 and 7 for the period 2009–18. ASSET is
+                                taken
+                                by more than 15,000 students from 500 schools every year in each grade, making it a
+                                robust
+                                national benchmark against leading CBSE schools.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="agency-card green">
+                            <h5 class="fw-bold mb-2">CfBT Trust – UK</h5>
+                            <p class="text-muted small mb-0">
+                                Conducted comprehensive program reviews in 2010 and 2013 covering student attainment and
+                                progress, teaching &amp; learning quality, curriculum design, internal assessment,
+                                staffing,
+                                parent partnerships, and leadership. Benchmarked Gyan Shala against UK public schools
+                                and
+                                international schools in Dubai.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="agency-card amber">
+                            <h5 class="fw-bold mb-2">DFID – UK</h5>
+                            <p class="text-muted small mb-0">
+                                The UK Department for International Development analysed the Gyan Shala model to
+                                evaluate
+                                its viability, replicability, and sustainability. DFID also supported Gyan Shala's
+                                expansion
+                                in Bihar (2007–08), validating the model's transportability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- STUDENT ASSESSMENTS — MAIN RESULTS -->
+        <section class="py-5" id="results">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-heading">Student Assessment Results</h2>
+                    <p class="text-muted mx-auto mt-3" style="max-width:680px;">
+                        Education Initiatives conducted ASSET assessments of Gyan Shala students in Grades 3, 5 and 7
+                        for the period 2009–18. Results below cover the Ahmedabad centres for 2012–17.
+                    </p>
+                </div>
+
+                <!-- Table 1: Participation 2012–17 -->
+                <h5 class="fw-bold mb-1">Number of Students Tested (2012–17)</h5>
+                <p class="text-muted small mb-3">Total students assessed per subject, grade and year across Ahmedabad
+                    centres.</p>
+                <div class="assessment-table-wrap mb-5">
+                    <table class="assessment-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Grade</th>
+                                <th class="text-center">Mar '17</th>
+                                <th class="text-center">Mar '16</th>
+                                <th class="text-center">Mar '15</th>
+                                <th class="text-center">Mar '14</th>
+                                <th class="text-center">Mar '13</th>
+                                <th class="text-center">Mar '12</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Maths</td>
+                                <td>3</td>
+                                <td class="text-center">1,013</td>
+                                <td class="text-center">689</td>
+                                <td class="text-center">1,126</td>
+                                <td class="text-center">1,079</td>
+                                <td class="text-center">1,189</td>
+                                <td class="text-center">1,016</td>
+                            </tr>
+                            <tr>
+                                <td>EVS</td>
+                                <td>3</td>
+                                <td class="text-center">1,039</td>
+                                <td class="text-center">714</td>
+                                <td class="text-center">1,126</td>
+                                <td class="text-center">1,079</td>
+                                <td class="text-center">1,189</td>
+                                <td class="text-center">298</td>
+                            </tr>
+                            <tr>
+                                <td>Language</td>
+                                <td>3</td>
+                                <td class="text-center text-muted">–</td>
+                                <td class="text-center text-muted">–</td>
+                                <td class="text-center text-muted">–</td>
+                                <td class="text-center text-muted">–</td>
+                                <td class="text-center text-muted">–</td>
+                                <td class="text-center">185</td>
+                            </tr>
+                            <tr>
+                                <td>Maths</td>
+                                <td>5</td>
+                                <td class="text-center">355</td>
+                                <td class="text-center">528</td>
+                                <td class="text-center">522</td>
+                                <td class="text-center">464</td>
+                                <td class="text-center">259</td>
+                                <td class="text-center">1,016</td>
+                            </tr>
+                            <tr>
+                                <td>EVS</td>
+                                <td>5</td>
+                                <td class="text-center">302</td>
+                                <td class="text-center">452</td>
+                                <td class="text-center">522</td>
+                                <td class="text-center">464</td>
+                                <td class="text-center">259</td>
+                                <td class="text-center">298</td>
+                            </tr>
+                            <tr>
+                                <td>Language</td>
+                                <td>5</td>
+                                <td class="text-center">321</td>
+                                <td class="text-center">601</td>
+                                <td class="text-center">512</td>
+                                <td class="text-center">480</td>
+                                <td class="text-center">237</td>
+                                <td class="text-center">297</td>
+                            </tr>
+                            <tr>
+                                <td>Maths</td>
+                                <td>7</td>
+                                <td class="text-center">237</td>
+                                <td class="text-center">298</td>
+                                <td class="text-center">332</td>
+                                <td class="text-center">183</td>
+                                <td class="text-center">104</td>
+                                <td class="text-center">185</td>
+                            </tr>
+                            <tr>
+                                <td>EVS</td>
+                                <td>7</td>
+                                <td class="text-center">260</td>
+                                <td class="text-center">262</td>
+                                <td class="text-center">332</td>
+                                <td class="text-center">183</td>
+                                <td class="text-center">104</td>
+                                <td class="text-center">185</td>
+                            </tr>
+                            <tr>
+                                <td>Language</td>
+                                <td>7</td>
+                                <td class="text-center">227</td>
+                                <td class="text-center">296</td>
+                                <td class="text-center">327</td>
+                                <td class="text-center">184</td>
+                                <td class="text-center">100</td>
+                                <td class="text-center">184</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ── CHART 1: 2017 Benchmark Bar Chart ── -->
+                <h5 class="fw-bold mb-1">Gyan Shala vs ASSET Benchmark (2017)</h5>
+                <p class="text-muted small mb-3">Scaled score comparison across all tested subjects and grades. ASSET
+                    baseline = 500.</p>
+                <div class="assessment-table-wrap mb-5 p-3">
+                    <canvas id="chartBenchmark" height="90"></canvas>
+                </div>
+
+                <!-- ── CHART 2: Trend Lines (tabbed) ── -->
+                <h5 class="fw-bold mb-1">Performance Trend (2012–2017)</h5>
+                <p class="text-muted small mb-3">Gyan Shala scaled score vs ASSET national average over six years, by
+                    subject and grade.</p>
+                <ul class="nav nav-pills mb-3 flex-wrap gap-1" id="trendTabs" role="tablist">
+                    <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#t-g3m"
+                            type="button">Gr 3 – Maths</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g3e"
+                            type="button">Gr 3 – EVS</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g5m"
+                            type="button">Gr 5 – Maths</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g5l"
+                            type="button">Gr 5 – Language</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7m"
+                            type="button">Gr 7 – Maths</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7e"
+                            type="button">Gr 7 – EVS</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7l"
+                            type="button">Gr 7 – Language</button></li>
+                </ul>
+                <div class="tab-content assessment-table-wrap mb-5 p-3">
+                    <div class="tab-pane fade show active" id="t-g3m"><canvas id="c-g3m" height="90"></canvas></div>
+                    <div class="tab-pane fade" id="t-g3e"><canvas id="c-g3e" height="90"></canvas></div>
+                    <div class="tab-pane fade" id="t-g5m"><canvas id="c-g5m" height="90"></canvas></div>
+                    <div class="tab-pane fade" id="t-g5l"><canvas id="c-g5l" height="90"></canvas></div>
+                    <div class="tab-pane fade" id="t-g7m"><canvas id="c-g7m" height="90"></canvas></div>
+                    <div class="tab-pane fade" id="t-g7e"><canvas id="c-g7e" height="90"></canvas></div>
+                    <div class="tab-pane fade" id="t-g7l"><canvas id="c-g7l" height="90"></canvas></div>
+                </div>
+
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+                <script>
+                    (function () {
+                        const YEARS = ['2012', '2013', '2014', '2015', '2016', '2017'];
+                        const GS_BLUE = '#00afef';
+                        const AS_RED = '#e74c3c';
+                        const GS_FILL = 'rgba(0,175,239,0.12)';
+                        const AS_FILL = 'rgba(231,76,60,0.08)';
+
+                        // ── Trend line helper ──
+                        function trendChart(id, title, gsData, asData) {
+                            const ctx = document.getElementById(id);
+                            if (!ctx) return;
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: YEARS,
+                                    datasets: [
+                                        {
+                                            label: 'Gyan Shala Scaled Score',
+                                            data: gsData,
+                                            borderColor: GS_BLUE,
+                                            backgroundColor: GS_FILL,
+                                            fill: true,
+                                            tension: 0.35,
+                                            pointRadius: 5,
+                                            pointHoverRadius: 7,
+                                            borderWidth: 2.5,
+                                            pointBackgroundColor: GS_BLUE
+                                        },
+                                        {
+                                            label: 'ASSET National Average',
+                                            data: asData,
+                                            borderColor: AS_RED,
+                                            backgroundColor: AS_FILL,
+                                            fill: false,
+                                            tension: 0.2,
+                                            pointRadius: 4,
+                                            pointHoverRadius: 6,
+                                            borderWidth: 2,
+                                            borderDash: [6, 3],
+                                            pointBackgroundColor: AS_RED
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    interaction: { mode: 'index', intersect: false },
+                                    plugins: {
+                                        title: { display: true, text: title, font: { size: 14, weight: '600' }, color: '#1e293b', padding: { bottom: 16 } },
+                                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
+                                        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}` } }
+                                    },
+                                    scales: {
+                                        y: {
+                                            min: 300, max: 650,
+                                            title: { display: true, text: 'Scaled Score', font: { size: 12 }, color: '#64748b' },
+                                            grid: { color: '#f1f5f9' },
+                                            ticks: { color: '#64748b' }
+                                        },
+                                        x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                                    }
+                                }
+                            });
+                        }
+
+                        // ── Trend data (GS scaled scores read from original charts) ──
+                        trendChart('c-g3m', 'Class 3 – Maths Performance',
+                            [430, 440, 530, 545, 500, 475],
+                            [500, 500, 500, 500, 500, 500]);
+                        trendChart('c-g3e', 'Class 3 – EVS Performance',
+                            [420, 480, 545, 575, 505, 464],
+                            [500, 505, 500, 500, 500, 500]);
+                        trendChart('c-g5m', 'Class 5 – Maths Performance',
+                            [400, 400, 430, 410, 490, 472],
+                            [500, 500, 505, 510, 500, 500]);
+                        trendChart('c-g5l', 'Class 5 – Language Performance',
+                            [415, 460, 410, 390, 450, 427],
+                            [520, 510, 500, 510, 500, 500]);
+                        trendChart('c-g7m', 'Class 7 – Maths Performance',
+                            [420, 430, 420, 400, 460, 452],
+                            [500, 500, 500, 500, 500, 500]);
+                        trendChart('c-g7e', 'Class 7 – EVS/Science Performance',
+                            [410, 430, 440, 420, 440, 425],
+                            [500, 500, 505, 505, 500, 500]);
+                        trendChart('c-g7l', 'Class 7 – Language Performance',
+                            [400, 500, 460, 440, 460, 491],
+                            [520, 495, 500, 510, 495, 500]);
+
+                        // ── Bar chart: 2017 benchmark ──
+                        new Chart(document.getElementById('chartBenchmark'), {
+                            type: 'bar',
+                            data: {
+                                labels: ['Gr3\nMaths', 'Gr3\nEVS', 'Gr5\nMaths', 'Gr5\nEVS', 'Gr5\nLanguage', 'Gr7\nMaths', 'Gr7\nScience', 'Gr7\nLanguage'],
+                                datasets: [
+                                    {
+                                        label: 'Gyan Shala (2017)',
+                                        data: [475, 464, 472, 456, 427, 452, 425, 491],
+                                        backgroundColor: GS_BLUE,
+                                        borderRadius: 6,
+                                        barPercentage: 0.4
+                                    },
+                                    {
+                                        label: 'ASSET National Average',
+                                        data: [500, 500, 500, 500, 500, 500, 500, 500],
+                                        backgroundColor: AS_RED,
+                                        borderRadius: 6,
+                                        barPercentage: 0.4
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                interaction: { mode: 'index', intersect: false },
+                                plugins: {
+                                    legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
+                                    tooltip: {
+                                        callbacks: {
+                                            afterBody: items => {
+                                                const diff = items[0].raw - items[1].raw;
+                                                return [`Difference: ${diff}`];
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        min: 380, max: 540,
+                                        title: { display: true, text: 'Scaled Score', font: { size: 12 }, color: '#64748b' },
+                                        grid: { color: '#f1f5f9' },
+                                        ticks: { color: '#64748b' }
+                                    },
+                                    x: { grid: { display: false }, ticks: { color: '#334155', font: { size: 11 } } }
+                                }
+                            }
+                        });
+                    })();
+                </script>
+
+                <!-- Table 2: Detailed 2016-17 scaled scores -->
+                <h5 class="fw-bold mb-1">Detailed ASSET Results — Ahmedabad Centres (2016–17)</h5>
+                <p class="text-muted small mb-3">Comparison of Gyan Shala Gujarat averages against the national ASSET
+                    benchmark (scaled score 500).</p>
+                <div class="assessment-table-wrap mb-3">
+                    <table class="assessment-table">
+                        <thead>
+                            <tr>
+                                <th>Grade</th>
+                                <th>Subject</th>
+                                <th class="text-center">Students</th>
+                                <th class="text-center">GS Avg %</th>
+                                <th class="text-center">GS SD</th>
+                                <th class="text-center fw-bold">GS Scaled Score</th>
+                                <th class="text-center">ASSET Avg %</th>
+                                <th class="text-center">ASSET SD</th>
+                                <th class="text-center fw-bold">ASSET Scaled Score</th>
+                                <th class="text-center fw-bold">Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3</td>
+                                <td>Maths</td>
+                                <td class="text-center">1,013</td>
+                                <td class="text-center">41.4</td>
+                                <td class="text-center">17.8</td>
+                                <td class="text-center fw-bold">475</td>
+                                <td class="text-center">46.8</td>
+                                <td class="text-center">14.7</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−25</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>EVS</td>
+                                <td class="text-center">1,039</td>
+                                <td class="text-center">46.6</td>
+                                <td class="text-center">18.4</td>
+                                <td class="text-center fw-bold">464</td>
+                                <td class="text-center">54.0</td>
+                                <td class="text-center">15.5</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−36</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Maths</td>
+                                <td class="text-center">255</td>
+                                <td class="text-center">39.4</td>
+                                <td class="text-center">16.3</td>
+                                <td class="text-center fw-bold">472</td>
+                                <td class="text-center">44.6</td>
+                                <td class="text-center">15.9</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−28</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>EVS</td>
+                                <td class="text-center">302</td>
+                                <td class="text-center">39.7</td>
+                                <td class="text-center">11.7</td>
+                                <td class="text-center fw-bold">456</td>
+                                <td class="text-center">54.0</td>
+                                <td class="text-center">15.5</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−44</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Language</td>
+                                <td class="text-center">321</td>
+                                <td class="text-center">36.3</td>
+                                <td class="text-center">18.8</td>
+                                <td class="text-center fw-bold">427</td>
+                                <td class="text-center">55.3</td>
+                                <td class="text-center">6.9</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−73</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Maths</td>
+                                <td class="text-center">337</td>
+                                <td class="text-center">29.3</td>
+                                <td class="text-center">8.4</td>
+                                <td class="text-center fw-bold">452</td>
+                                <td class="text-center">36.2</td>
+                                <td class="text-center">11.8</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−48</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Science</td>
+                                <td class="text-center">260</td>
+                                <td class="text-center">26.5</td>
+                                <td class="text-center">7.2</td>
+                                <td class="text-center fw-bold">425</td>
+                                <td class="text-center">36.1</td>
+                                <td class="text-center">12.0</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−75</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Language</td>
+                                <td class="text-center">227</td>
+                                <td class="text-center">46.3</td>
+                                <td class="text-center">19.8</td>
+                                <td class="text-center fw-bold">491</td>
+                                <td class="text-center">48.2</td>
+                                <td class="text-center">14.1</td>
+                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center fw-bold">−9</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Legend -->
+                <div class="mb-4">
+                    <p class="small fw-bold text-muted mb-2">Legend — Difference with ASSET Scaled Score:</p>
+                    <div class="table-responsive">
+                        <table class="legend-table">
+                            <tr>
+                                <td>−150 &amp; Below</td>
+                                <td>−150 to −50</td>
+                                <td>−50 to 50</td>
+                                <td>50 to 150</td>
+                                <td>150 &amp; Above</td>
+                            </tr>
+                            <tr>
+                                <td class="legend-vfar">Very Far from ASSET</td>
+                                <td class="legend-far">Far from ASSET</td>
+                                <td class="legend-close">Close to ASSET</td>
+                                <td class="legend-sbetter">Slightly better than ASSET</td>
+                                <td class="legend-better">Better than ASSET</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Summary chart -->
+                <div class="text-center mb-3">
+                    <img src="media/assest.png" alt="ASSET performance summary chart" class="chart-img"
+                        style="max-width:700px;">
+                </div>
+
+                <div class="note-box">
+                    <i class="bi bi-info-circle me-2"></i>
+                    Progress in Maths and Science (EVS) in both primary and middle schools (in addition to Language) was
+                    seen as
+                    satisfactory in the context of Gyan Shala's goal to match children's performance in India's elite
+                    schools,
+                    represented by the ASSET average score. Performance over 2009–18 confirms that Gyan Shala achieves
+                    comparable
+                    or better results consistently at a much lower per child cost
+                    (<strong>INR 3,000 to 6,000 per child annually</strong>).
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- RESOURCES -->
+        <section class="py-5 bg-light" id="resources">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <div class="section-eyebrow mb-2">Reports &amp; Data</div>
+                    <h2 class="section-heading">Detailed Reports &amp; Digitized Data</h2>
+                    <p class="text-muted mx-auto mt-3" style="max-width:580px;">
+                        Access the complete assessment repository, program impact analyses, and institutional audit
+                        reports.
+                    </p>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <!-- EI Drive -->
+                    <div class="col-md-6">
+                        <a href="https://drive.google.com/open?id=1COuvLdx6oLT6_UNQgKnz6e4f_aY_gzPi" target="_blank"
+                            class="resource-link">
+                            <div class="resource-icon icon-drive"><i class="bi bi-google-drive"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark">EI Student Assessments (2009–2018)</h6>
+                                <span class="small text-muted">Complete Google Drive repository of all ASSET
+                                    results</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- AGP Report -->
+                    <div class="col-md-6">
+                        <a href="https://gyanshala.org/wp-content/uploads/2019/01/GyanShala-AGP-Program-Report.pdf"
+                            target="_blank" class="resource-link">
+                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark">GyanShala AGP Program Report</h6>
+                                <span class="small text-muted">In-depth program impact analysis</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- AGP Report 1 -->
+                    <div class="col-md-6">
+                        <a href="https://gyanshala.org/wp-content/uploads/2019/01/GyanShala-AGP-Program-Report-1.pdf"
+                            target="_blank" class="resource-link">
+                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark">GyanShala AGP Program Report 1</h6>
+                                <span class="small text-muted">Extended program impact report</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- CfBT -->
+                    <div class="col-md-6">
+                        <a href="https://gyanshala.org/wp-content/uploads/2018/12/GyanShala_External-Impact-Assessment-Elementary-Education_CfBT_UK_Feb-2010.pdf"
+                            target="_blank" class="resource-link">
+                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark">External Impact Assessment (CfBT UK, 2010)</h6>
+                                <span class="small text-muted">Independent institutional audit — Feb 2010</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Gray Matters India -->
+                    <div class="col-md-6">
+                        <a href="https://gyanshala.org/wp-content/uploads/2019/01/GyanShala_Adolescent-Girls-Program_GMI_Impact-Report_2014-15_GMI.pdf"
+                            target="_blank" class="resource-link">
+                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark">External Impact Assessment — Gray Matters India</h6>
+                                <span class="small text-muted">Adolescent Girls Program impact report (2014–15)</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Other Reports dropdown -->
+                    <div class="col-md-6">
+                        <div class="dropdown h-100">
+                            <button class="resource-link w-100 border bg-white" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="cursor:pointer;">
+                                <div class="resource-icon icon-files flex-shrink-0"><i class="bi bi-files"></i></div>
+                                <div class="text-start flex-grow-1">
+                                    <h6 class="fw-bold mb-1 text-dark">Other Intervention Reports</h6>
+                                    <span class="small text-muted">AMC Schools &amp; High School Programs</span>
+                                </div>
+                                <i class="bi bi-chevron-down text-muted ms-2"></i>
+                            </button>
+                            <ul class="dropdown-menu w-100 border-0 shadow-lg mt-2">
+                                <li><a class="dropdown-item py-2"
+                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-AMC-Intervention-%E2%80%93-Government-Schools-2010.pdf"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>AMC Intervention —
+                                        Government Schools (2010)</a></li>
+                                <li><a class="dropdown-item py-2"
+                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-AMC-Intervention-%E2%80%93-Government-Schools-2011.pdf"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>AMC Intervention —
+                                        Government Schools (2011)</a></li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li><a class="dropdown-item py-2"
+                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-High-School-Program-2016.pdf"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>High School Program
+                                        (2016)</a></li>
+                                <li><a class="dropdown-item py-2"
+                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-High-School-Program-2017.pdf"
+                                        target="_blank">
+                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>High School Program
+                                        (2017)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center pt-3 border-top mt-2">
+                    <p class="small text-muted mb-2">Original assessment data provided by Gyan Shala Organisation.</p>
+                    <a href="https://gyanshala.org/student-assessments/" target="_blank"
+                        class="btn btn-outline-primary btn-sm rounded-pill px-4">
+                        Visit the official Gyan Shala page <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-5" style="background:linear-gradient(135deg,#f0f9ff,#e0f2fe);">
+            <div class="container text-center">
+                <h3 class="fw-bold mb-3" style="letter-spacing:-0.02em;">Want to explore more of our impact?</h3>
+                <p class="text-muted mb-4 mx-auto" style="max-width:500px;">
+                    Return to the Impact page for student testimonials, program reviews, and annual reports.
+                </p>
+                <a href="impact.html" class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm me-2">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Impact
+                </a>
+                <a href="index.html" class="btn btn-outline-secondary rounded-pill px-5 py-3 fw-bold">Home</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-load"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Gyan Shala</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        /* Team Section - Refined Icon Style */
+        .joining-year {
+            display: inline-block;
+            width: fit-content;
+            margin: 0 auto 0.75rem auto;
+            background-color: #e1f5fe;
+            color: #00afef;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        /* --- CORE TEAM ICON STYLE --- */
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background-color: transparent;
+            color: #00afef;
+            border: 2px solid #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.5rem;
+        }
+
+        /* --- TRUSTEE PHOTO STYLE --- */
+        .photo-wrapper {
+            width: 100px;
+            height: 100px;
+            background-color: #f8f9fa;
+            border: 2px solid #00afef;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-wrapper i {
+            font-size: 2.5rem;
+            color: #dee2e6;
+        }
+
+        /* --- SHARED CARD HEIGHT --- */
+        /* This keeps cards in the same row equal, but allows different rows to be different heights */
+        .team-card {
+            text-align: center;
+            padding: 2rem 1.2rem;
+            background: #ffffff;
+            border-radius: 1rem;
+            height: 100%;
+            /* Important for equal height in a row */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-image-wrapper {
+            width: 120px;
+            /* Increased size for photos */
+            height: 120px;
+            background-color: #f8f9fa;
+            /* Light grey placeholder */
+            border: 3px solid #00afef;
+            /* Your brand color as a border */
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            /* Ensures images stay circular */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Crops photo to fill the circle */
+        }
+
+        /* Default icon if no image is present */
+        .team-image-wrapper i {
+            font-size: 3rem;
+            color: #dee2e6;
+        }
+
+        .team-image-wrapper .fas {
+            font-size: 1.3em;
+            /* Scales the icon down to roughly 85% of the container font-size */
+        }
+
+        .team-name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: #2d3436;
+        }
+
+        .team-role {
+            display: block;
+            color: #00afef;
+            /* Match the role text to the icon color */
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 3px;
+            background: #00afef;
+            /* Consistent color for the divider */
+            margin: 1.25rem auto;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-load"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="about-hero" class="text-white py-5 mb-5">
+            <div class="container py-5 text-center">
+                <h1 class="display-4 fw-bold mb-3">About Gyan Shala</h1>
+                <p class="lead mb-0 opacity-75 mx-auto" style="max-width: 700px;">
+                    Dedicated to providing quality education to underprivileged children since 1999.
+                </p>
+            </div>
+        </section>
+
+        <div class="container px-3 px-md-5">
+
+            <!-- History Section -->
+            <section id="about-history" class="mb-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold text-primary">Our History & Journey</h2>
+                    <p class="text-muted">A timeline of innovation in education</p>
+                </div>
+
+                <!-- Foundation -->
+                <div class="row align-items-center g-5 mb-5">
+                    <div class="col-lg-6">
+                        <img src="/media/images/founder.jpg" alt="Founding of Gyan Shala"
+                            class="img-fluid rounded-4 shadow-sm w-100">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="fw-bold mb-3">The Foundation</h3>
+                        <p>
+                            Gyan Shala was founded by <strong>Prof. Pankaj Jain in 1999</strong> with the aim of
+                            providing quality education to underprivileged children. Prof. Jain's vision was shaped by
+                            his experience as a member of the terminal review mission for the Andhra Pradesh Primary
+                            Education Project (APPEP) in the early 90s.
+                        </p>
+                        <p>
+                            Despite substantial funding and well-designed implementation, Prof. Jain observed that the
+                            project failed to make a significant impact on students' learning outcomes, prompting him to
+                            seek a more effective educational model.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- The Motivation -->
+                <div class="row align-items-center g-5 mb-5">
+                    <div class="col-lg-6 order-lg-last">
+                        <div class="mt-4">
+                            <h3 class="fw-bold mb-3">The Motivation</h3>
+                            <p>
+                                During his work in the mid-90s, Prof. Jain observed that girls from poor families in
+                                Bangladesh improved significantly in early schooling compared to their Indian
+                                counterparts, despite Bangladesh being economically poorer and socially less developed
+                                than India.
+                            </p>
+                            <p>
+                                At the same time, India faced a critical challenge: while school enrollment was rising,
+                                nearly half of all children dropped out before completing grade five. Studies showed
+                                that most students in grades four and five could not read or perform basic arithmetic—a
+                                trend that threatened to leave half of adult India functionally illiterate by 2030.
+                            </p>
+                            <p>
+                                These experiences posed a profound intellectual challenge. It led Prof. Jain to realize
+                                that traditional schooling needed a completely different approach to succeed at scale,
+                                eventually leading him to initiate the research that would define the Gyan Shala model.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/Individual-Support.png"
+                            alt="The Inspiration" class="img-fluid rounded-4 shadow-sm w-100">
+                    </div>
+                </div>
+
+                <!-- Model Evolution -->
+                <div class="row align-items-center g-5 mb-5">
+                    <div class="col-lg-6">
+                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/Whole-Class.png"
+                            alt="Model Evolution" class="img-fluid rounded-4 shadow-sm w-100">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="fw-bold mb-3">Need of a New Model</h3>
+                        <p>
+                            Prof. Jain spent four years studying various programs like AMUL and BRAC. He learned that
+                            traditional model of a team of teachers headed by a principal only served the top 5% of the
+                            population effectively.
+                        </p>
+                        <p>
+                            Furthermore, with government spending per student being high, universal coverage under the
+                            existing system would cost upwards of INR 3,600 billion—well beyond India's budgetary
+                            capacity. We needed a model that delivers <strong>high-quality learning
+                                outcomes at a mass scale</strong>, while keeping costs low and leveraging available
+                            resources.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Growth and Scaling -->
+                <div class="row align-items-center g-5 mb-5">
+                    <div class="col-lg-6 order-lg-last">
+                        <h3 class="fw-bold mb-3">Genesis & Growth</h3>
+                        <p>
+                            From all his learnings and experiences, Prof. Jain, along with some of his colleagues at IIM
+                            Ahmedabad and IRMA, initiated the Gyan Shala program under the Education Support
+                            Organization (ESO) in 2000.
+                        </p>
+                        <p>
+                            Gyan Shala began with just 10 1st-grade classes in Ahmedabad. By 2015-16, Gyan Shala then
+                            expanded to 1,270 classes, reaching around 35,000 children across 9 cities in 4 states.
+                        </p>
+                        <p>
+                            Gyan Shala's work continues as they test the viability of their model in rural settings and
+                            partner with state governments in Gujarat and Bihar to improve school quality.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/Worksheet.png"
+                            alt="Gyan Shala Growth" class="img-fluid rounded-4 shadow-sm w-100">
+                    </div>
+                </div>
+
+                <div class="row mt-5 g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
+                            <div class="card-body">
+                                <h3 class="fw-bold text-primary mb-1">2000</h3>
+                                <p class="text-muted small mb-0">Started with 10 classes in Ahmedabad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
+                            <div class="card-body">
+                                <h3 class="fw-bold text-primary mb-1">2015-16</h3>
+                                <p class="text-muted small mb-0">Expanded to 1,270 classes & 35,000 children</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
+                            <div class="card-body">
+                                <h3 class="fw-bold text-primary mb-1">4 States</h3>
+                                <p class="text-muted small mb-0">Reaching slums across 9 cities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
+                            <div class="card-body">
+                                <h3 class="fw-bold text-primary mb-1">Govt. Partnership</h3>
+                                <p class="text-muted small mb-0">Improving quality in state schools</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Approach Section -->
+            <section id="about-approach" class="my-5 py-5 bg-white rounded-4 shadow-sm px-4 px-md-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bold">Our Approach</h2>
+                    <p class="text-muted">The system of education that Prof. Jain developed have four distinct features:
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Four Features Row -->
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-circle bg-primary text-white flex-shrink-0"
+                                style="width: 50px; height: 50px;">
+                                <i class="bi bi-person-check fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Child-Centric Focus</h5>
+                                <p class="text-muted small">More focus on children's capability to learn rather than on
+                                    enhancing the teacher's capability to teach.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-circle bg-primary text-white flex-shrink-0"
+                                style="width: 50px; height: 50px;">
+                                <i class="bi bi-people fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Team-Based Teaching</h5>
+                                <p class="text-muted small">Reengineering the class's teacher's role into a team effort,
+                                    six-tiered team, to bring curriculum designing close to the classroom, and
+                                    demystifying the teacher's role.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-circle bg-primary text-white flex-shrink-0"
+                                style="width: 50px; height: 50px;">
+                                <i class="bi bi-diagram-3 fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">System Organization</h5>
+                                <p class="text-muted small">Take an overall system organization perspective to design a
+                                    school program, instead of just focusing on only teaching, learning, and curriculum
+                                    processes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start gap-3">
+                            <div class="icon-circle bg-primary text-white flex-shrink-0"
+                                style="width: 50px; height: 50px;">
+                                <i class="bi bi-graph-up-arrow fs-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold">Independent Assessment</h5>
+                                <p class="text-muted small">Periodic assessments by reputed external agencies (like EI
+                                    using ASSET tests) to gauge effectiveness and drive continuous program improvement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Features -->
+                    <div class="col-12 mt-4">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold mb-3"><i class="bi bi-clock-history me-2 text-primary"></i>Ensuring
+                                    Regularity</h6>
+                                <p class="text-muted small mb-0">We ensure students stay in school by locating classes
+                                    near homes,
+                                    maintaining a positive environment free of physical punishment, and providing all
+                                    learning materials free of charge.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="fw-bold mb-3"><i class="bi bi-shield-check me-2 text-primary"></i>Teacher
+                                    Support</h6>
+                                <p class="text-muted small mb-0">Teachers receive extensive Program-specific training
+                                    and supervisory support visits twice a week, ensuring quality remains consistent
+                                    across
+                                    all classes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5A Framework Integration -->
+                <div class="mt-5 pt-5 border-top">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-5 text-center">
+                            <img src="https://gyanshala.org/wp-content/uploads/2023/12/approach-300x243.png"
+                                alt="5A Approach Diagram" class="img-fluid"
+                                style="max-width: 100%; height: auto; mix-blend-mode: multiply;">
+                        </div>
+
+                        <div class="col-lg-7 text-start">
+                            <h3 class="fw-bold mb-4" style="color: #2d3436; font-size: 1.5rem;">The 5A Implementation
+                            </h3>
+                            <p class="small text-muted mb-4">Complementing our academic features, the 5A approach
+                                ensures we
+                                overcome socio-economic barriers to reach every child:</p>
+                            <div class="approach-section border-primary">
+                                <div class="approach-item">
+                                    <div class="approach-title text-primary">Awareness</div>
+                                    <p class="small text-secondary mb-0">Behavioral Change towards education through
+                                        continuous community engagement and motivation.</p>
+                                </div>
+
+                                <div class="approach-item">
+                                    <div class="approach-title text-primary">Availability</div>
+                                    <p class="small text-secondary mb-0">Ensuring quality schooling is present in every
+                                        slum
+                                        cluster, making education available to all marginalized children.</p>
+                                </div>
+
+                                <div class="approach-item">
+                                    <div class="approach-title text-primary">Accessibility</div>
+                                    <p class="small text-secondary mb-0">Equitable residential education held within the
+                                        community (walking distance) with suitable timings for students.</p>
+                                </div>
+
+                                <div class="approach-item">
+                                    <div class="approach-title text-primary">Affordability</div>
+                                    <p class="small text-secondary mb-0">No indirect costs (books, transport,
+                                        stationeries),
+                                        removing barriers for poor families.</p>
+                                </div>
+
+                                <div class="approach-item">
+                                    <div class="approach-title text-primary">Accountability</div>
+                                    <p class="small text-secondary mb-0">Daily evaluations and external assessments
+                                        guided
+                                        by dedicated MEL staff for course correction.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-center">
+                    <p class="text-secondary mx-auto" style="max-width: 900px;">
+                        We learn from various education experts and best practices from across the world, and ensure
+                        implementation through our 1,200-person team, which includes teachers, field supervisors, and
+                        curriculum designer-cum-managers. Despite being conducted in slum areas, our classrooms are
+                        equipped with all the necessary facilities and follow best classroom practices such as whole
+                        class teaching, small group activities for peer learning, and self-learning through daily
+                        workbooks.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section id="about-team" class="my-5 py-5">
+
+                <div class="text-center mb-5 pt-5">
+                    <h2 class="fw-bold mt-2">Our Team</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-card shadow-sm">
+                            <div class="icon-wrapper">
+                                <i class="fa-solid fa-users-gear" style="font-size: 1.3em;"></i>
+                            </div>
+                            <h5 class="team-name">Executive Management</h5>
+                            <p class="team-bio">Leading our strategic initiatives and ensuring the long-term
+                                sustainability of our programs.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-card shadow-sm">
+                            <div class="icon-wrapper">
+                                <i class="fa-solid fa-book-reader"></i>
+                            </div>
+                            <h5 class="team-name">Curriculum Designers</h5>
+                            <p class="team-bio">Highly qualified professionals creating engaging and effective learning
+                                materials for our students.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-card shadow-sm">
+                            <div class="icon-wrapper">
+                                <i class="fa-solid fa-clipboard-user"></i>
+                            </div>
+                            <h5 class="team-name">Field Supervisors</h5>
+                            <p class="team-bio">Providing continuous support and quality control across all our
+                                slum-based classrooms.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-card shadow-sm">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h5 class="team-name">Community Teachers</h5>
+                            <p class="team-bio">Dedicated teachers recruited from local communities, trained to deliver
+                                our specialized curriculum.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+
+                    <a href="team.html" class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm">
+
+                        Meet Our Entire Team <i class="bi bi-arrow-right ms-2"></i>
+
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- Transparency Section -->
+            <section id="about-transparency" class="my-5 py-5 border-top">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-8">
+                        <h2 class="fw-bold mb-3">Commitment to Transparency</h2>
+                        <p class="text-muted lead mb-0">
+                            We maintain full disclosure of our financial performance and legal compliance. Access our
+                            audit reports, tax returns, and statutory documents.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="transparency.html" class="btn btn-outline-primary rounded-pill px-5 py-3 fw-bold">
+                            View Transparency Reports
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-load"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
