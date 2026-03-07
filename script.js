@@ -26,6 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const impactCarousel = document.querySelector('#impact');
+    if (impactCarousel) {
+        new bootstrap.Carousel(impactCarousel, {
+            interval: 5000,
+            ride: 'carousel',
+            pause: 'hover'
+        });
+    }
+
     loadComponent('header-load', 'header.html').then(() => {
         // Dynamic Header Height Calculation
         const updateHeaderHeight = () => {
@@ -137,8 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const link = Array.from(navLinks).find(l => l.getAttribute('href') === `#${id}`);
 
                 if (link && scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+                    if (!link.classList.contains('active')) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+
+                        // Automatically scroll the navbar link into view if it's hidden
+                        link.scrollIntoView({
+                            behavior: 'smooth',
+                            inline: 'center',
+                            block: 'nearest'
+                        });
+                    }
                 }
             });
         };

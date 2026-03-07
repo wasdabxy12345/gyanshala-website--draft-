@@ -66,7 +66,7 @@
             letter-spacing: -0.5px;
         }
 
-        .banner-national {
+        .banner-Management {
             background-color: #cbd5e1;
             color: #1e293b;
         }
@@ -174,7 +174,26 @@
 
         /* Optional: Smooth transition for the container shadow */
         #teamTabs {
-            border: 1px solid #e2e8f0;
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        #teamTabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Ensure tab items don't shrink and stay in line */
+        #teamTabs .nav-item {
+            flex: 0 0 auto;
         }
 
         /* Full-Width Horizontal Card Style */
@@ -349,63 +368,530 @@
             }
         }
 
-        /* National Team - Professional Text-Only Style */
-        .national-card {
+        /* Stack Board Cards vertically on mobile */
+        @media (max-width: 576px) {
+            .board-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .board-photo-container {
+                margin-right: 0 !important;
+                /* Remove side margin */
+                margin-bottom: 1rem;
+                /* Add bottom margin for spacing */
+                flex: 0 0 100px;
+                /* Keep fixed size */
+            }
+
+            .board-meta {
+                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .board-year {
+                border-left: none;
+                margin-left: 0;
+                padding-left: 0;
+                width: 100%;
+                /* Forces year to its own line, or remove for side-by-side */
+            }
+        }
+
+        /* Specific fix for Board and Management images on mobile */
+        @media (max-width: 768px) {
+
+            .board-photo-container,
+            .Management-photo-container,
+            .trustee-photo-container {
+                flex: 0 0 120px !important;
+                /* Give it a bit more size on mobile */
+                height: 120px !important;
+                width: 120px !important;
+                margin-right: 0 !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                margin-bottom: 1rem !important;
+            }
+
+            /* Force the image to fit perfectly without distortion */
+            .board-photo-container img,
+            .Management-photo-container img,
+            .trustee-photo-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* This is the magic property to prevent 'chopping' */
+                object-position: center;
+            }
+
+            /* Stack the card content */
+            .board-card,
+            .Management-card {
+                flex-direction: column !important;
+                text-align: center !important;
+                align-items: center !important;
+            }
+
+            .board-info,
+            .Management-info {
+                width: 100%;
+            }
+        }
+
+        /* Management Team - Professional Text-Only Style */
+        .Management-card {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
             background: #ffffff;
             border-radius: 1rem;
             padding: 1.5rem;
             height: 100%;
             border: 1px solid #edf2f7;
+            transition: transform 0.2s ease;
             position: relative;
-            transition: all 0.3s ease;
+            width: 100%;
         }
 
-        .national-card:hover {
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-            border-color: #00afef;
+        .Management-card:hover {
+            transform: translateY(-5px);
         }
 
-        .national-name {
+        .Management-photo-container {
+            flex: 0 0 100px;
+            /* Compact photo size for 2-column layout */
+            height: 100px;
+            background-color: #f8f9fa;
+            border: 2px solid #00afef;
+            border-radius: 12px;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .Management-photo-container i {
+            font-size: 2.5rem;
+            color: #dee2e6;
+        }
+
+        .Management-info {
+            flex: 1;
+        }
+
+        .Management-name {
             font-size: 1.25rem;
             font-weight: 700;
             color: #2d3436;
-            margin-bottom: 0.25rem;
-            position: relative;
-            padding-left: 15px;
+            margin-bottom: 0.15rem;
         }
 
-        /* Subtle brand accent on the left of the name */
-        .national-name::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 15%;
-            height: 70%;
-            width: 3px;
-            background-color: #00afef;
-            border-radius: 2px;
-        }
-
-        .national-meta {
-            font-size: 0.85rem;
-            color: #636e72;
-            /* Muted grey for a cleaner look */
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-left: 15px;
-            display: block;
-        }
-
-        .national-qual {
+        .Management-meta {
             font-size: 0.9rem;
-            line-height: 1.4;
+            color: #00afef;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .Management-year {
+            color: #636e72;
+            font-weight: 400;
+            margin-left: 8px;
+            padding-left: 8px;
+            border-left: 1px solid #cbd5e0;
+        }
+
+        .Management-bio {
+            font-size: 0.9rem;
+            line-height: 1.5;
             color: #4a5568;
-            margin-top: auto;
-            /* Pushes qualification to bottom if name/role heights vary */
-            padding-top: 0.75rem;
-            border-top: 1px dotted #e2e8f0;
+            margin-bottom: 0;
+        }
+
+        /* Tablet/Mobile optimization */
+        @media (max-width: 991px) {
+            .Management-card {
+                padding: 1.25rem;
+            }
+
+            .Management-photo-container {
+                flex: 0 0 80px;
+                height: 80px;
+                margin-right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Management-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.25rem;
+            }
+
+            .Management-photo-container {
+                margin-right: 0 !important;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Optimization for Laptops and Desktop (Management Tab) */
+        @media (min-width: 992px) {
+            .Management-photo-container {
+                flex: 0 0 150px;
+                /* Increased from 100px */
+                height: 150px;
+                /* Increased from 100px */
+                width: 150px;
+                margin-right: 2rem;
+            }
+
+            /* Professional image fit */
+            .Management-photo-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .Management-name {
+                font-size: 1.4rem;
+            }
+
+            .Management-card {
+                padding: 2rem;
+                align-items: flex-start;
+                /* Aligns text to the top of the larger photo */
+            }
+        }
+
+        /* Optimization for Laptops and Desktop (Board Tab) */
+        @media (min-width: 992px) {
+            .board-photo-container {
+                flex: 0 0 150px;
+                /* Increased from 100px */
+                height: 150px;
+                /* Increased from 100px */
+                margin-right: 2rem;
+            }
+
+            /* Ensure images fill the larger container without distortion */
+            .board-photo-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .board-name {
+                font-size: 1.4rem;
+                /* Slightly larger name for the larger card */
+            }
+        }
+
+        /* Ensure the cards in a row have consistent alignment with larger photos */
+        .board-card {
+            align-items: flex-start;
+            /* Keeps text aligned to the top of the larger photo */
+            padding: 2rem;
+        }
+
+        #Management-pane .row {
+            --bs-gutter-y: 1.5rem;
+        }
+
+        /* Mobile Optimization: Full-width photos for all team cards */
+        @media (max-width: 576px) {
+
+            /* Target all photo containers */
+            .trustee-photo-container,
+            .board-photo-container,
+            .Management-photo-container {
+                width: 100% !important;
+                flex: 0 0 auto !important;
+                /* Allow it to take natural width */
+                height: 250px !important;
+                /* Set a consistent height for the "banner" look */
+                margin-right: 0 !important;
+                margin-bottom: 1.5rem !important;
+                border-radius: 12px;
+            }
+
+            /* Ensure images fill the new wider container */
+            .trustee-photo-container img,
+            .board-photo-container img,
+            .Management-photo-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* Prevents stretching */
+                object-position: center top;
+                /* Keeps faces visible if cropped */
+            }
+
+            /* Stack the card content vertically */
+            .trustee-full-card,
+            .board-card,
+            .Management-card {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                /* Align text to the left for better readability */
+                padding: 1.25rem !important;
+            }
+
+            /* Reset info containers to full width */
+            .trustee-info,
+            .board-info,
+            .Management-info {
+                width: 100% !important;
+                text-align: left !important;
+            }
+
+            /* Optional: Center the Name and Meta for a cleaner look */
+            .trustee-name,
+            .board-name,
+            .Management-name,
+            .trustee-meta,
+            .board-meta,
+            .Management-meta {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 576px) {
+            /* ... (keep your existing mobile code here) ... */
+
+            /* Specifically center the Trustee header area */
+            .trustee-header {
+                text-align: center !important;
+                width: 100%;
+            }
+
+            .trustee-name {
+                text-align: center !important;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .trustee-meta {
+                justify-content: center !important;
+                /* Centers the "Founder & Trustee | Since 1996" row */
+                text-align: center;
+            }
+
+            /* Keep the bio left-aligned for better readability of long text */
+            .trustee-bio {
+                text-align: left;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Center Board Names and Meta Information */
+            .board-info {
+                text-align: center !important;
+            }
+
+            .board-name {
+                text-align: center !important;
+                margin-bottom: 0.5rem;
+            }
+
+            .board-meta {
+                display: flex;
+                justify-content: center;
+                /* Centers the Role and Year */
+                align-items: center;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            /* Keep the Bio text left-aligned for readability */
+            .board-bio {
+                text-align: left !important;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Center Management Names and Meta Information */
+            .Management-info {
+                text-align: center !important;
+            }
+
+            .Management-name {
+                text-align: center !important;
+                margin-bottom: 0.5rem;
+            }
+
+            .Management-meta {
+                display: flex;
+                justify-content: center;
+                /* Centers the Role and Year */
+                align-items: center;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            /* Keep the Bio text left-aligned for readability */
+            .Management-bio {
+                text-align: left !important;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* 1. Remove the Trustee-specific vertical separator */
+            .trustee-year {
+                border-left: none !important;
+                padding-left: 8px !important;
+                margin-left: 0 !important;
+                color: #636e72;
+                font-weight: 400;
+            }
+
+            /* 2. Add a simple dash or dot separator for Trustees to match Board logic */
+            .trustee-year::before {
+                content: "-";
+                /* Or use "•" if you prefer a dot */
+                margin-right: 8px;
+                color: #cbd5e0;
+            }
+
+            /* 3. Unify the Meta Row (Designation + Year) for both */
+            .trustee-meta,
+            .board-meta {
+                display: flex;
+                flex-wrap: wrap;
+                /* Allows wrapping on very small screens */
+                justify-content: center;
+                align-items: center;
+                gap: 0;
+                /* Gap is handled by the ::before content */
+                text-align: center;
+                font-size: 0.9rem;
+                width: 100%;
+            }
+
+            /* 4. Center Name and Info for both */
+            .trustee-info,
+            .board-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            .trustee-name,
+            .board-name {
+                margin-bottom: 0.25rem;
+                text-align: center;
+            }
+
+            /* 5. Maintain left-aligned bio for readability */
+            .trustee-bio,
+            .board-bio {
+                text-align: left;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* 1. Force the Trustee Meta into a column to break the line */
+            .trustee-meta {
+                display: flex !important;
+                flex-direction: column !important;
+                /* Forces Year to the next line */
+                align-items: center !important;
+                text-align: center !important;
+                gap: 4px !important;
+                /* Tight spacing between designation and year */
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            /* 2. Remove any existing separators (vertical lines or dashes) */
+            .trustee-year {
+                border-left: none !important;
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+                display: block !important;
+                /* Ensures it takes its own line */
+
+                /* Matching the Board's subtle year style */
+                font-size: 0.85rem !important;
+                color: #7f8c8d !important;
+                font-weight: 400 !important;
+            }
+
+            /* Remove the separator symbol if we added one previously */
+            .trustee-year::before {
+                content: "" !important;
+            }
+
+            /* 3. Match the Trustee Designation to the Board's blue highlight */
+            .trustee-meta {
+                color: #00afef;
+                /* Or your specific brand blue */
+                font-weight: 600;
+                text-transform: uppercase;
+                /* Optional: matches many 'Board' styles */
+                letter-spacing: 0.5px;
+            }
+
+            /* 4. Ensure the Trustee Name is centered above the new stack */
+            .trustee-name {
+                text-align: center !important;
+                margin-bottom: 0.25rem;
+            }
+        }
+
+        /* Slim Tab Bar Styling */
+        .nav-tabs {
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .nav-tabs .nav-link {
+            padding: 0.5rem 1rem !important;
+            /* Reduced vertical padding from ~1rem to 0.5rem */
+            font-size: 0.9rem !important;
+            /* Slightly smaller text for a refined look */
+            font-weight: 600;
+            color: #495057;
+            border: none !important;
+            /* Optional: cleaner look without individual borders */
+            transition: all 0.3s ease;
+        }
+
+        /* Ensure the active tab stays slim but highlighted */
+        .nav-tabs .nav-link.active {
+            color: #00afef !important;
+            /* Your brand blue */
+            background: transparent !important;
+            border-bottom: 2px solid #00afef !important;
+            /* Bottom line highlight instead of a box */
+        }
+
+        /* Mobile specific thinning */
+        @media (max-width: 576px) {
+            .nav-tabs .nav-link {
+                padding: 0.4rem 0.75rem !important;
+                /* Even thinner on mobile to save vertical space */
+                font-size: 0.85rem !important;
+            }
+
+            .nav-tabs {
+                display: flex;
+                justify-content: space-around;
+                /* Spreads tabs evenly across the thin bar */
+            }
         }
     </style>
 </head>
@@ -435,8 +921,8 @@
 
         <div class="container px-3 px-md-5 mt-n5">
             <!-- Team Tabs Navigation -->
-            <ul class="nav nav-pills justify-content-center mb-5 gap-2 p-3 bg-white shadow-sm rounded-pill border"
-                id="teamTabs" role="tablist" style="margin-top: -40px; position: relative; z-index: 10;">
+            <ul class="nav nav-pills mb-5 gap-2 p-3 bg-white shadow-sm rounded-pill border" id="teamTabs" role="tablist"
+                style="margin-top: -40px; position: relative; z-index: 10;">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active rounded-pill px-4 fw-bold" id="trustees-tab" data-bs-toggle="pill"
                         data-bs-target="#trustees-pane" type="button" role="tab">Trustees</button>
@@ -446,8 +932,8 @@
                         data-bs-target="#governing-pane" type="button" role="tab">Board</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link rounded-pill px-4 fw-bold" id="national-tab" data-bs-toggle="pill"
-                        data-bs-target="#national-pane" type="button" role="tab">National</button>
+                    <button class="nav-link rounded-pill px-4 fw-bold" id="Management-tab" data-bs-toggle="pill"
+                        data-bs-target="#Management-pane" type="button" role="tab">Management</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link rounded-pill px-4 fw-bold" id="gujarat-tab" data-bs-toggle="pill"
@@ -713,83 +1199,132 @@
                     </div>
                 </section>
 
-                <!-- NATIONAL TEAM -->
-                <section id="national-pane" class="mb-5 py-5 tab-pane fade" role="tabpanel"
-                    aria-labelledby="national-tab">
-                    <div class="row g-4">
+                <!-- Management TEAM -->
+                <section id="Management-pane" class="mb-5 py-5 bg-light rounded-4 px-3 tab-pane fade" role="tabpanel"
+                    aria-labelledby="Management-tab">
+                    <div class="container">
+                        <div class="row g-4">
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Chirantan Shah</h5>
-                                <span class="national-meta">Chief Executive Officer</span>
-                                <p class="national-qual">B.Tech. (NIT, Nagpur), PGDM (IIM K)</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="https://cdn.theorg.com/f32a2b9f-079d-40b5-b3f7-e9ed543c0528_medium.jpg"
+                                            alt="Chirantan Shah" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Chirantan Shah</h4>
+                                        <div class="Management-meta">Chief Executive Officer</div>
+                                        <p class="Management-qual">B.Tech. (NIT, Nagpur), PGDM (IIM K)</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Zalak Desai</h5>
-                                <span class="national-meta">Deputy CEO</span>
-                                <p class="national-qual">M. Sc., MEP (IIM A), HHH fellowship (Fulbright-US)</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Zalak Desai" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Zalak Desai</h4>
+                                        <div class="Management-meta">Deputy CEO</div>
+                                        <p class="Management-qual">M. Sc., MEP (IIM A), HHH fellowship (Fulbright-US)
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Hetal Raval</h5>
-                                <span class="national-meta">Language Mentor</span>
-                                <p class="national-qual">M. Com., B. Ed.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Hetal Raval" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Hetal Raval</h4>
+                                        <div class="Management-meta">Language Mentor</div>
+                                        <p class="Management-qual">M. Com., B. Ed.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Neha Shah</h5>
-                                <span class="national-meta">Finance – Core team Officer</span>
-                                <p class="national-qual">M. Com.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Neha Shah" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Neha Shah</h4>
+                                        <div class="Management-meta">Finance – Core team Officer</div>
+                                        <p class="Management-qual">M. Com.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Nisha Goswami</h5>
-                                <span class="national-meta">Accounts – Core team Officer</span>
-                                <p class="national-qual">M. Com., B. Ed.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Nisha Goswami" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Nisha Goswami</h4>
+                                        <div class="Management-meta">Accounts – Core team Officer</div>
+                                        <p class="Management-qual">M. Com., B. Ed.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Yogini Parekh</h5>
-                                <span class="national-meta">MIS – Core team Officer</span>
-                                <p class="national-qual">M. Com., B. Ed.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Yogini Parekh" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Yogini Parekh</h4>
+                                        <div class="Management-meta">MIS – Core team Officer</div>
+                                        <p class="Management-qual">M. Com., B. Ed.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Tabassum Shaikh</h5>
-                                <span class="national-meta">MIS – Senior Supervisor</span>
-                                <p class="national-qual">B. A.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Tabassum Shaikh" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Tabassum Shaikh</h4>
+                                        <div class="Management-meta">MIS – Senior Supervisor</div>
+                                        <p class="Management-qual">B. A.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Kareena Chavda</h5>
-                                <span class="national-meta">Accounts Supervisor</span>
-                                <p class="national-qual">B. Com., M.B. A.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Kareena Chavda" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Kareena Chavda</h4>
+                                        <div class="Management-meta">Accounts Supervisor</div>
+                                        <p class="Management-qual">B. Com., M.B. A.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6">
-                            <div class="national-card shadow-sm">
-                                <h5 class="national-name">Padma Parmar</h5>
-                                <span class="national-meta">Stock – Materials Supervisor</span>
-                                <p class="national-qual">B. A.</p>
+                            <div class="col-lg-6">
+                                <div class="Management-card shadow-sm">
+                                    <div class="Management-photo-container">
+                                        <img src="" alt="Padma Parmar" class="img-fluid">
+                                    </div>
+                                    <div class="Management-info">
+                                        <h4 class="Management-name">Padma Parmar</h4>
+                                        <div class="Management-meta">Stock – Materials Supervisor</div>
+                                        <p class="Management-qual">B. A.</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </section>
 
@@ -2077,6 +2612,36 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        const tabList = document.getElementById('teamTabs');
+        const tabs = tabList.querySelectorAll('.nav-link');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function (event) {
+                scrollToActiveTab(event.target);
+            });
+        });
+
+        function scrollToActiveTab(activeTab) {
+            const tabRect = activeTab.getBoundingClientRect();
+            const listRect = tabList.getBoundingClientRect();
+
+            // Calculate the scroll position to center the tab
+            const scrollOffset = (tabRect.left - listRect.left) + (tabRect.width / 2) - (listRect.width / 2);
+
+            tabList.scrollTo({
+                left: tabList.scrollLeft + scrollOffset,
+                behavior: 'smooth'
+            });
+        }
+
+        // Optional: Scroll to the active tab on initial page load
+        window.addEventListener('load', () => {
+            const active = tabList.querySelector('.nav-link.active');
+            if (active) scrollToActiveTab(active);
+        });
+    </script>
 </body>
 
 </html>

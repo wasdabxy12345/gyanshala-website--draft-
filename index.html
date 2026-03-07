@@ -18,97 +18,193 @@
     <style>
         /* Container padding creates space for the arrows */
         .impact-slider-container {
-            padding: 60px 80px;
-            /* Top/Bottom 60px, Sides 80px */
+            padding: 40px 60px;
             background: #fff;
             position: relative;
             border: 1px solid #eee;
             border-radius: 20px;
             margin-bottom: 60px;
-            /* Room for the dots so they don't overlap the next section */
-            overflow: visible;
-            /* Crucial: allows dots to be seen outside the container */
+            overflow: hidden;
+        }
+
+        .impact-slider-container .carousel-indicators {
+            bottom: 15px;
+            margin-bottom: 0;
+            z-index: 5;
+        }
+
+        .impact-slider-container .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            border: none;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .impact-slider-container .carousel-indicators .active {
+            background-color: var(--primary-color, rgb(0, 175, 239));
+            transform: scale(1.2);
         }
 
         /* Fix images from being too huge or overlapping */
         .impact-slide-image {
-            max-width: 100%;
+            width: 100%;
+            max-width: 350px;
             height: 300px;
             object-fit: cover;
             border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         /* Content spacing */
         .impact-slide-content {
-            padding-left: 40px;
-            padding-right: 20px;
-            min-height: 200px;
+            padding: 20px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            text-align: left;
         }
 
-        /* Position the arrows in the side gutters */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 60px;
-            /* Limits the arrow clickable area to the padding zone */
+        /* Hero Carousel specific handle */
+        #img-carousel {
+            width: 100%;
+            position: relative;
+            display: block;
         }
 
-        /* Make arrows black so they show up on your white background */
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(1);
+        #img-carousel .carousel-item img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+            display: block;
         }
 
-        /* 1. Move the indicator area below the actual content */
-        .carousel-indicators {
-            bottom: 5px;
-            margin-bottom: 0;
-            /* color: #111; */
-        }
-
-        /* 2. Style the dots (rectangles) */
-        .carousel-indicators button {
-            width: 12px;
-            height: 12px;
-            background-color: #ddd !important;
-            opacity: 0.5;
-            transition: all 0.3s ease;
-            margin: 0 6px;
-            margin-left: 6px !important;
-            margin-right: 6px !important;
-            padding: 0;
-        }
-
-        /* 3. Style the "Active" dot */
-        .carousel-indicators .active {
-            opacity: 1;
-            background-color: var(--primary-color) !important;
-            /* Use your brand primary color here */
-            transform: scale(1.2);
-            /* Makes the active slide dot slightly larger */
-        }
-
-        /* Responsive fix for mobile */
-        @media (max-width: 991px) {
-            .impact-slider-container {
-                padding: 40px 15px;
+        @media (max-width: 768px) {
+            #img-carousel .carousel-item img {
+                height: auto !important;
+                min-height: 300px;
+                object-fit: contain;
+                background: #000;
+                /* Subtle background for aspect ratio gaps */
             }
 
-            .impact-slide-content {
-                padding: 20px 0;
-                text-align: center;
+            #img-carousel {
+                height: auto !important;
+            }
+        }
+
+        #img-carousel .carousel-welcome-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+
+        /* Modernized Impact Carousel Controls */
+        #impact .carousel-control-prev,
+        #impact .carousel-control-next {
+            width: 45px;
+            height: 45px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #impact .carousel-control-prev {
+            left: 10px;
+        }
+
+        #impact .carousel-control-next {
+            right: 10px;
+        }
+
+        #impact .carousel-control-prev:hover,
+        #impact .carousel-control-next:hover {
+            opacity: 1;
+            background: #fff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #impact .carousel-control-prev-icon,
+        #impact .carousel-control-next-icon {
+            filter: invert(1);
+            /* Makes icons black */
+            width: 20px;
+            height: 20px;
+        }
+
+        main {
+            display: block;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-welcome-overlay {
+                padding: 5px;
+                background: rgba(0, 0, 0, 0.25);
+            }
+
+            .carousel-welcome-overlay h1 {
+                font-size: 1.25rem !important;
+                margin-bottom: 4px !important;
+            }
+
+            .carousel-welcome-overlay p {
+                display: none !important;
+            }
+
+            .carousel-welcome-overlay .btn {
+                padding: 4px 10px !important;
+                font-size: 0.7rem !important;
+                margin: 2px !important;
+            }
+
+            .carousel-indicators {
+                margin-bottom: 0.3rem;
+            }
+
+            .carousel-indicators [button] {
+                width: 10px;
+                height: 2px;
             }
 
             .carousel-control-prev,
             .carousel-control-next {
                 display: none;
-                /* Hide arrows on small phones to save space */
             }
         }
 
-        /* New clickable slide styles */
+        @media (max-width: 991px) {
+            .impact-slider-container {
+                padding: 30px 15px;
+            }
+
+            .impact-slide-image {
+                height: 250px;
+                margin-bottom: 20px;
+            }
+
+            .impact-slide-content {
+                padding: 0 10px;
+                text-align: center;
+            }
+        }
+
         .impact-slider-container .carousel-item {
             cursor: pointer;
         }
@@ -118,7 +214,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Modal Video */
         .modal-video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -142,8 +237,8 @@
 <body>
     <div id="header-load"></div>
 
-    <main class="container-fluid px-3 px-md-5">
-        <div id="img-carousel" class="carousel slide carousel-fade mb-4" data-bs-ride="carousel" data-bs-pause="hover">
+    <main class="container-fluid px-0">
+        <div id="img-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="hover">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#img-carousel" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -484,8 +579,8 @@
                     <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#chavdaModal">
                         <div class="row g-0 align-items-center">
                             <div class="col-lg-5 text-center">
-                                <img src="media/images/Screenshot 2026-03-06 at 12-16-34 Chavda Sisters - YouTube.png"
-                                    alt="Chavda Sisters" class="impact-slide-image">
+                                <img src="media/images/chavda_sisters.png" alt="Chavda Sisters"
+                                    class="impact-slide-image">
                             </div>
                             <div class="col-lg-7">
                                 <div class="impact-slide-content">
@@ -832,8 +927,8 @@
                             allowfullscreen></iframe>
                     </div>
                     <div class="d-flex align-items-center mb-4">
-                        <img src="media/images/Screenshot 2026-03-06 at 12-16-34 Chavda Sisters - YouTube.png"
-                            alt="Chavda sisters" class="rounded-circle mb-0 me-3 shadow-sm"
+                        <img src="media/images/chavda_sisters.png" alt="Chavda sisters"
+                            class="rounded-circle mb-0 me-3 shadow-sm"
                             style="width: 80px; height: 80px; object-fit: cover;">
                         <div>
                             <h4 class="fw-bold mb-0">Chavda sisters</h4>
