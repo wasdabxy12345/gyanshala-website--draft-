@@ -11,48 +11,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- PDF.js for rendering PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background: #fff;
         }
 
-        .sa-hero {
-            background: linear-gradient(135deg, #00afef 0%, #0070b8 100%);
-            padding: 90px 0 70px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sa-hero::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            right: -80px;
-            width: 380px;
-            height: 380px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .breadcrumb-item a {
-            color: rgba(255, 255, 255, 0.75);
-            text-decoration: none;
-        }
-
-        .breadcrumb-item a:hover {
-            color: #fff;
-        }
-
-        .breadcrumb-item.active {
-            color: rgba(255, 255, 255, 0.95);
-        }
-
-        .breadcrumb-item+.breadcrumb-item::before {
-            color: rgba(255, 255, 255, 0.5);
-        }
+        /* sa-hero style moved to style.css */
 
         .section-eyebrow {
             font-size: 0.75rem;
@@ -227,43 +195,14 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* Resource links */
-        .resource-link {
-            display: flex;
-            align-items: center;
-            padding: 16px 18px;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            text-decoration: none;
-            background: #fff;
-            gap: 14px;
-            height: 100%;
-        }
-
-        .resource-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        .icon-drive {
-            background: rgba(0, 175, 239, 0.1);
-            color: #0070b8;
-        }
-
-        .icon-pdf {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
         .icon-files {
             background: rgba(100, 116, 139, 0.1);
             color: #64748b;
+        }
+
+        /* Standardized doc-card overrides for this page if any */
+        .doc-card .pdf-thumbnail-container {
+            height: 160px;
         }
 
         .note-box {
@@ -293,9 +232,7 @@
                 padding: 24px 16px;
             }
 
-            .sa-hero {
-                padding: 60px 0 50px;
-            }
+            /* sa-hero mobile logic managed in style.css */
         }
     </style>
 </head>
@@ -305,74 +242,17 @@
 
     <main>
         <!-- HERO -->
-        <section class="sa-hero">
-            <div class="container position-relative" style="z-index:2;">
-                <nav aria-label="breadcrumb" class="mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="impact.html">Our Impact</a></li>
-                        <li class="breadcrumb-item active">Student Assessments</li>
-                    </ol>
-                </nav>
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-7">
-                        <div class="d-inline-flex align-items-center gap-2 mb-3 px-3 py-1 rounded-pill"
-                            style="background:rgba(255,255,255,0.15);font-size:0.8rem;color:#fff;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">
-                            <i class="bi bi-bar-chart-line-fill"></i> Data-Driven Impact
-                        </div>
-                        <h1 class="display-4 fw-bold text-white mb-4" style="letter-spacing:-0.03em;line-height:1.1;">
-                            External Student<br>Assessments
-                        </h1>
-                        <p class="lead mb-4" style="color:rgba(255,255,255,0.85);max-width:560px;">
-                            Independent, internationally benchmarked assessments confirming Gyan Shala students
-                            perform on par with — or better than — India's best CBSE schools.
-                        </p>
-                        <div class="d-flex flex-wrap gap-3">
-                            <a href="#results" class="btn rounded-pill px-4 py-2 fw-bold shadow"
-                                style="background:#fff;color:var(--primary-color);">
-                                View Results <i class="bi bi-arrow-down ms-1"></i>
-                            </a>
-                            <a href="#resources" class="btn btn-outline-light rounded-pill px-4 py-2 fw-bold">
-                                Download Reports
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 d-none d-lg-block">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div class="rounded-4 p-4 text-center"
-                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
-                                    <div class="fw-bold fs-3 text-white">2009–18</div>
-                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">EI Assessment Period
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="rounded-4 p-4 text-center"
-                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
-                                    <div class="fw-bold fs-3 text-white">3</div>
-                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Global Audit Bodies
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="rounded-4 p-4 text-center"
-                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
-                                    <div class="fw-bold fs-3 text-white">₹3–6K</div>
-                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Per Child / Year</div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="rounded-4 p-4 text-center"
-                                    style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
-                                    <div class="fw-bold fs-3 text-white">Gr. 3,5,7</div>
-                                    <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Grades Tested</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-6">
+            <div class="rounded-4 p-4 text-center"
+                style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+                <div class="fw-bold fs-3 text-white">Gr. 3,5,7</div>
+                <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Grades Tested</div>
             </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
         </section>
 
         <!-- OVERVIEW -->
@@ -385,7 +265,7 @@
                         <p class="text-muted" style="font-size:1.05rem;line-height:1.8;">
                             Gyan Shala learns from various education experts as well as best practices from the world
                             and ensures
-                            implementation through its team of around <strong>1,500 people</strong> including teachers,
+                            implementation through its team of around <strong>1,200 people</strong> including teachers,
                             field
                             supervisors and designers cum managers. Although Gyan Shala classes are held in slum
                             settings, it
@@ -622,22 +502,24 @@
                 <h5 class="fw-bold mb-1">Performance Trend (2012–2017)</h5>
                 <p class="text-muted small mb-3">Gyan Shala scaled score vs ASSET national average over six years, by
                     subject and grade.</p>
-                <ul class="nav nav-pills mb-3 flex-wrap gap-1" id="trendTabs" role="tablist">
-                    <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#t-g3m"
-                            type="button">Gr 3 – Maths</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g3e"
-                            type="button">Gr 3 – EVS</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g5m"
-                            type="button">Gr 5 – Maths</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g5l"
-                            type="button">Gr 5 – Language</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7m"
-                            type="button">Gr 7 – Maths</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7e"
-                            type="button">Gr 7 – EVS</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7l"
-                            type="button">Gr 7 – Language</button></li>
-                </ul>
+                <div class="tabs-nav-container shadow-sm mb-4">
+                    <ul class="nav custom-pill-tabs" id="trendTabs" role="tablist">
+                        <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
+                                data-bs-target="#t-g3m" type="button">Gr 3 – Maths</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g3e"
+                                type="button">Gr 3 – EVS</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g5m"
+                                type="button">Gr 5 – Maths</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g5l"
+                                type="button">Gr 5 – Language</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7m"
+                                type="button">Gr 7 – Maths</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7e"
+                                type="button">Gr 7 – EVS</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#t-g7l"
+                                type="button">Gr 7 – Language</button></li>
+                    </ul>
+                </div>
                 <div class="tab-content assessment-table-wrap mb-5 p-3">
                     <div class="tab-pane fade show active" id="t-g3m"><canvas id="c-g3m" height="90"></canvas></div>
                     <div class="tab-pane fade" id="t-g3e"><canvas id="c-g3e" height="90"></canvas></div>
@@ -965,100 +847,102 @@
                     </p>
                 </div>
 
-                <div class="row g-3 mb-4">
+                <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
                     <!-- EI Drive -->
-                    <div class="col-md-6">
+                    <div class="col">
                         <a href="https://drive.google.com/open?id=1COuvLdx6oLT6_UNQgKnz6e4f_aY_gzPi" target="_blank"
-                            class="resource-link">
-                            <div class="resource-icon icon-drive"><i class="bi bi-google-drive"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1 text-dark">EI Student Assessments (2009–2018)</h6>
-                                <span class="small text-muted">Complete Google Drive repository of all ASSET
-                                    results</span>
+                            class="doc-card text-decoration-none">
+                            <div class="resource-icon icon-drive mb-3"
+                                style="width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(0,175,239,0.1); color:#0070b8; font-size:1.5rem;">
+                                <i class="bi bi-google-drive"></i>
                             </div>
+                            <h3 class="doc-title">EI Student Assessments</h3>
+                            <p class="doc-desc">Complete Google Drive repository of all ASSET results (2009–2018)</p>
+                            <div class="mt-auto pt-3 text-primary small fw-bold">OPEN DRIVE <i
+                                    class="bi bi-box-arrow-up-right ms-1"></i></div>
                         </a>
                     </div>
+
                     <!-- AGP Report -->
-                    <div class="col-md-6">
-                        <a href="https://gyanshala.org/wp-content/uploads/2019/01/GyanShala-AGP-Program-Report.pdf"
-                            target="_blank" class="resource-link">
-                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1 text-dark">GyanShala AGP Program Report</h6>
-                                <span class="small text-muted">In-depth program impact analysis</span>
+                    <div class="col">
+                        <div class="doc-card" onclick="openModal('documents-pdf/assessment-reports/agp-report.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-agp"></canvas>
                             </div>
-                        </a>
+                            <h3 class="doc-title">AGP Program Report</h3>
+                            <p class="doc-desc">In-depth program impact analysis</p>
+                        </div>
                     </div>
-                    <!-- AGP Report 1 -->
-                    <div class="col-md-6">
-                        <a href="https://gyanshala.org/wp-content/uploads/2019/01/GyanShala-AGP-Program-Report-1.pdf"
-                            target="_blank" class="resource-link">
-                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1 text-dark">GyanShala AGP Program Report 1</h6>
-                                <span class="small text-muted">Extended program impact report</span>
-                            </div>
-                        </a>
-                    </div>
+
                     <!-- CfBT -->
-                    <div class="col-md-6">
-                        <a href="https://gyanshala.org/wp-content/uploads/2018/12/GyanShala_External-Impact-Assessment-Elementary-Education_CfBT_UK_Feb-2010.pdf"
-                            target="_blank" class="resource-link">
-                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1 text-dark">External Impact Assessment (CfBT UK, 2010)</h6>
-                                <span class="small text-muted">Independent institutional audit — Feb 2010</span>
+                    <div class="col">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/assessment-reports/cfbt-assessment.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-cfbt"></canvas>
                             </div>
-                        </a>
+                            <h3 class="doc-title">CfBT UK (2010)</h3>
+                            <p class="doc-desc">Independent institutional audit assessment</p>
+                        </div>
                     </div>
+
                     <!-- Gray Matters India -->
-                    <div class="col-md-6">
-                        <a href="https://gyanshala.org/wp-content/uploads/2019/01/GyanShala_Adolescent-Girls-Program_GMI_Impact-Report_2014-15_GMI.pdf"
-                            target="_blank" class="resource-link">
-                            <div class="resource-icon icon-pdf"><i class="bi bi-file-earmark-pdf"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1 text-dark">External Impact Assessment — Gray Matters India</h6>
-                                <span class="small text-muted">Adolescent Girls Program impact report (2014–15)</span>
+                    <div class="col">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/assessment-reports/gmi-impact-report.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-gmi"></canvas>
                             </div>
-                        </a>
+                            <h3 class="doc-title">Gray Matters India</h3>
+                            <p class="doc-desc">Adolescent Girls Program impact report (2014–15)</p>
+                        </div>
                     </div>
-                    <!-- Other Reports dropdown -->
-                    <div class="col-md-6">
-                        <div class="dropdown h-100">
-                            <button class="resource-link w-100 border bg-white" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false" style="cursor:pointer;">
-                                <div class="resource-icon icon-files flex-shrink-0"><i class="bi bi-files"></i></div>
-                                <div class="text-start flex-grow-1">
-                                    <h6 class="fw-bold mb-1 text-dark">Other Intervention Reports</h6>
-                                    <span class="small text-muted">AMC Schools &amp; High School Programs</span>
-                                </div>
-                                <i class="bi bi-chevron-down text-muted ms-2"></i>
-                            </button>
-                            <ul class="dropdown-menu w-100 border-0 shadow-lg mt-2">
-                                <li><a class="dropdown-item py-2"
-                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-AMC-Intervention-%E2%80%93-Government-Schools-2010.pdf"
-                                        target="_blank">
-                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>AMC Intervention —
-                                        Government Schools (2010)</a></li>
-                                <li><a class="dropdown-item py-2"
-                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-AMC-Intervention-%E2%80%93-Government-Schools-2011.pdf"
-                                        target="_blank">
-                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>AMC Intervention —
-                                        Government Schools (2011)</a></li>
-                                <li>
-                                    <div class="dropdown-divider"></div>
-                                </li>
-                                <li><a class="dropdown-item py-2"
-                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-High-School-Program-2016.pdf"
-                                        target="_blank">
-                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>High School Program
-                                        (2016)</a></li>
-                                <li><a class="dropdown-item py-2"
-                                        href="https://gyanshala.org/wp-content/uploads/2018/12/Gyan-Shala-High-School-Program-2017.pdf"
-                                        target="_blank">
-                                        <i class="bi bi-file-earmark-pdf text-danger me-2"></i>High School Program
-                                        (2017)</a></li>
-                            </ul>
+
+                    <!-- AMC 2010 -->
+                    <div class="col">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/assessment-reports/amc-intervention-2010.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-amc-2010"></canvas>
+                            </div>
+                            <h3 class="doc-title">AMC Schools (2010)</h3>
+                            <p class="doc-desc">Government schools intervention report</p>
+                        </div>
+                    </div>
+
+                    <!-- AMC 2011 -->
+                    <div class="col">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/assessment-reports/amc-intervention-2011.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-amc-2011"></canvas>
+                            </div>
+                            <h3 class="doc-title">AMC Schools (2011)</h3>
+                            <p class="doc-desc">Government schools intervention report</p>
+                        </div>
+                    </div>
+
+                    <!-- HS 2016 -->
+                    <div class="col">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/assessment-reports/hs-program-2016.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-hs-2016"></canvas>
+                            </div>
+                            <h3 class="doc-title">High School (2016)</h3>
+                            <p class="doc-desc">High School program assessment</p>
+                        </div>
+                    </div>
+
+                    <!-- HS 2017 -->
+                    <div class="col">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/assessment-reports/hs-program-2017.pdf')">
+                            <div class="pdf-thumbnail-container">
+                                <canvas id="thumb-hs-2017"></canvas>
+                            </div>
+                            <h3 class="doc-title">High School (2017)</h3>
+                            <p class="doc-desc">High School program assessment</p>
                         </div>
                     </div>
                 </div>
@@ -1081,8 +965,262 @@
     </main>
 
     <div id="footer-load"></div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdfModal">
+        <div class="pdf-toolbar">
+            <div class="pdf-toolbar-group">
+                <button onclick="changeZoom(0.2)"><i class="bi bi-zoom-in"></i> Zoom In</button>
+                <button onclick="changeZoom(-0.2)"><i class="bi bi-zoom-out"></i> Zoom Out</button>
+            </div>
+
+            <div class="pdf-page-indicator">
+                Page: <span id="page_num">1</span> / <span id="page_count">0</span>
+            </div>
+
+            <div class="pdf-toolbar-group">
+                <button onclick="downloadPDF()" class="btn-download">
+                    <i class="bi bi-download"></i> Download
+                </button>
+                <button onclick="closeModal()" class="btn-close-viewer">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="scroll-container">
+            <div id="canvas-wrapper"></div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Set worker globally and explicitly
+        const PDF_JS_VERSION = '3.11.174';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDF_JS_VERSION}/pdf.worker.min.js`;
+
+        let pdfDoc = null;
+        let scale = 1.5;
+        let currentUrl = '';
+        let renderQueue = new Set();
+
+        async function renderThumbnail(url, canvasId) {
+            const canvasElement = document.getElementById(canvasId);
+            if (!canvasElement) return;
+
+            const container = canvasElement.parentElement;
+            console.log(`[Thumbnail] Fetching: ${url}`);
+
+            try {
+                // Ensure the path is relative for the server
+                const path = url.startsWith('http') ? url : './' + url;
+
+                const loadingTask = pdfjsLib.getDocument({
+                    url: path,
+                    disableAutoFetch: true,
+                    disableStream: true
+                });
+
+                const doc = await loadingTask.promise;
+                const page = await doc.getPage(1);
+
+                const newCanvas = document.getElementById(canvasId);
+                const context = newCanvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 0.4 });
+
+                newCanvas.height = viewport.height;
+                newCanvas.width = viewport.width;
+
+                await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                newCanvas.setAttribute('data-rendered', 'true');
+                const loader = document.getElementById(`loader-${canvasId}`);
+                if (loader) loader.style.display = 'none';
+                newCanvas.style.display = 'block';
+                console.log(`[Thumbnail] Success: ${canvasId}`);
+            } catch (e) {
+                console.error(`[Thumbnail] Error [${canvasId}]:`, e);
+                container.innerHTML = `
+                    <div style="text-align:center; padding: 20px; color: #64748b;">
+                        <i class="bi bi-file-earmark-pdf" style="font-size: 2rem; color:#ef4444;"></i>
+                        <div style="font-size:0.75rem; margin-top:5px;">Preview unavailable</div>
+                        <div style="font-size:0.6rem; color:#94a3b8;">${e.message.substring(0, 40)}</div>
+                    </div>`;
+            }
+        }
+
+        async function openModal(url) {
+            if (!url || url === '#') return;
+
+            currentUrl = url.startsWith('http') ? url : './' + url;
+            console.log(`[Viewer] Target: ${currentUrl}`);
+
+            const modal = document.getElementById('pdfModal');
+            const container = document.getElementById('scroll-container');
+            const wrapper = document.getElementById('canvas-wrapper');
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            container.scrollTop = 0;
+            wrapper.innerHTML = '<div style="color:white; padding: 40px; font-family: sans-serif;">Loading Document...</div>';
+
+            try {
+                const loadingTask = pdfjsLib.getDocument({
+                    url: currentUrl,
+                    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',
+                    cMapPacked: true,
+                });
+                pdfDoc = await loadingTask.promise;
+                document.getElementById('page_count').textContent = pdfDoc.numPages;
+                renderAllPages();
+            } catch (e) {
+                console.error("[Viewer] Load failed:", e);
+                window.open(url, '_blank');
+                closeModal();
+            }
+        }
+
+        async function renderAllPages(maintainScroll = false) {
+            const wrapper = document.getElementById('canvas-wrapper');
+            const container = document.getElementById('scroll-container');
+            const currentRatio = container.scrollTop / container.scrollHeight;
+
+            wrapper.innerHTML = '';
+            if (!pdfDoc) return;
+
+            // Get Page 1 to determine the scale for a consistent width (e.g., 700px)
+            const firstPage = await pdfDoc.getPage(1);
+            const targetWidth = 500; // Fixed visual width for consistency
+            const unscaledViewport = firstPage.getViewport({ scale: 1 });
+            const fitScale = (targetWidth * scale) / unscaledViewport.width;
+
+            for (let i = 1; i <= pdfDoc.numPages; i++) {
+                const pageContainer = document.createElement('div');
+                pageContainer.className = 'page-container';
+                pageContainer.dataset.pageNumber = i;
+                pageContainer.dataset.fitScale = fitScale; // Store for lazy rendering
+                pageContainer.style.height = (unscaledViewport.height * fitScale) + 'px';
+                pageContainer.style.width = (unscaledViewport.width * fitScale) + 'px';
+                wrapper.appendChild(pageContainer);
+                observer.observe(pageContainer);
+            }
+
+            if (maintainScroll && container.scrollHeight > 0) {
+                container.scrollTop = currentRatio * container.scrollHeight;
+            }
+        }
+
+        const visibilityMap = new Map();
+        let updateTimeout;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                visibilityMap.set(entry.target.dataset.pageNumber, entry.intersectionRatio);
+
+                if (entry.isIntersecting) {
+                    const container = entry.target;
+                    const pageNum = parseInt(container.dataset.pageNumber);
+                    if (!container.querySelector('canvas') && !renderQueue.has(pageNum)) {
+                        renderLazyPage(pageNum, container);
+                    }
+                }
+            });
+
+            // Stabilize the page number update
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(() => {
+                let maxRatio = -1;
+                let activePage = '1';
+
+                visibilityMap.forEach((ratio, page) => {
+                    if (ratio > maxRatio) {
+                        maxRatio = ratio;
+                        activePage = page;
+                    }
+                });
+
+                if (maxRatio > 0) {
+                    const indicator = document.getElementById('page_num');
+                    if (indicator) indicator.textContent = activePage;
+                }
+            }, 100); // 100ms stabilization period
+        }, { root: document.getElementById('scroll-container'), threshold: [0, 0.25, 0.5, 0.75, 1.0] });
+
+        async function renderLazyPage(num, container) {
+            renderQueue.add(num);
+            const canvas = document.createElement('canvas');
+            container.appendChild(canvas);
+
+            const page = await pdfDoc.getPage(num);
+            const fitScale = parseFloat(container.dataset.fitScale);
+            const viewport = page.getViewport({ scale: fitScale });
+
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            await page.render({ canvasContext: context, viewport: viewport }).promise;
+            renderQueue.delete(num);
+        }
+
+        function changeZoom(delta) {
+            scale = Math.max(0.2, Math.min(3.0, scale + delta));
+            renderAllPages(true);
+        }
+
+        async function downloadPDF() {
+            try {
+                const response = await fetch(currentUrl);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = currentUrl.split('/').pop() || 'document.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(blobUrl);
+            } catch (e) {
+                window.open(currentUrl, '_blank');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('pdfModal').style.display = 'none';
+            document.body.style.overflow = '';
+            const wrapper = document.getElementById('canvas-wrapper');
+            wrapper.innerHTML = '';
+            pdfDoc = null;
+            renderQueue.clear();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const reports = [
+                { url: 'documents-pdf/assessment-reports/agp-report.pdf', id: 'thumb-agp' },
+                { url: 'documents-pdf/assessment-reports/agp-report-1.pdf', id: 'thumb-agp-1' },
+                { url: 'documents-pdf/assessment-reports/cfbt-assessment.pdf', id: 'thumb-cfbt' },
+                { url: 'documents-pdf/assessment-reports/gmi-impact-report.pdf', id: 'thumb-gmi' },
+                { url: 'documents-pdf/assessment-reports/amc-intervention-2010.pdf', id: 'thumb-amc-2010' },
+                { url: 'documents-pdf/assessment-reports/amc-intervention-2011.pdf', id: 'thumb-amc-2011' },
+                { url: 'documents-pdf/assessment-reports/hs-program-2016.pdf', id: 'thumb-hs-2016' },
+                { url: 'documents-pdf/assessment-reports/hs-program-2017.pdf', id: 'thumb-hs-2017' }
+            ];
+
+            reports.forEach(report => {
+                renderThumbnail(report.url, report.id);
+            });
+        });
+
+        document.getElementById('scroll-container').addEventListener('click', (e) => {
+            if (e.target.id === 'scroll-container' || e.target.id === 'canvas-wrapper') closeModal();
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
 </body>
 
 </html>

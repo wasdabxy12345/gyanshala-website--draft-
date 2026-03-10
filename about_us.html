@@ -13,134 +13,118 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        /* Team Section - Refined Icon Style */
-        .joining-year {
-            display: inline-block;
-            width: fit-content;
-            margin: 0 auto 0.75rem auto;
-            background-color: #e1f5fe;
-            color: #00afef;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
+        /* #team {
+            padding: 13px;
+        } */
 
-        /* --- CORE TEAM ICON STYLE --- */
-        .icon-wrapper {
-            width: 60px;
-            height: 60px;
-            background-color: transparent;
-            color: #00afef;
-            border: 2px solid #f0f0f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.2rem;
-            font-size: 1.5rem;
-        }
-
-        /* --- TRUSTEE PHOTO STYLE --- */
-        .photo-wrapper {
-            width: 100px;
-            height: 100px;
-            background-color: #f8f9fa;
-            border: 2px solid #00afef;
-            border-radius: 50%;
-            margin: 0 auto 1.2rem;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .photo-wrapper i {
-            font-size: 2.5rem;
-            color: #dee2e6;
-        }
-
-        /* --- SHARED CARD HEIGHT --- */
-        /* This keeps cards in the same row equal, but allows different rows to be different heights */
-        .team-card {
-            text-align: center;
-            padding: 2rem 1.2rem;
-            background: #ffffff;
-            border-radius: 1rem;
-            height: 100%;
-            /* Important for equal height in a row */
+        /* Container to hold the pyramid */
+        .pyramid-main-container {
+            max-width: 800px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-        }
-
-        .team-image-wrapper {
-            width: 120px;
-            /* Increased size for photos */
-            height: 120px;
-            background-color: #f8f9fa;
-            /* Light grey placeholder */
-            border: 3px solid #00afef;
-            /* Your brand color as a border */
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            /* Ensures images stay circular */
-            display: flex;
             align-items: center;
-            justify-content: center;
         }
 
-        .team-image-wrapper img {
+        .p-row {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Crops photo to fill the circle */
+            color: white;
+            text-align: center;
+            transition: all 0.4s ease-in-out;
+            cursor: help;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 15px 0;
+            min-height: 50px;
         }
 
-        /* Default icon if no image is present */
-        .team-image-wrapper i {
-            font-size: 3rem;
-            color: #dee2e6;
+        .p-row-1 {
+            background-color: #004b69;
+            clip-path: polygon(50% 0%, 50% 0%, 58.33% 100%, 41.67% 100%);
         }
 
-        .team-image-wrapper .fas {
-            font-size: 1.3em;
-            /* Scales the icon down to roughly 85% of the container font-size */
+        .p-row-2 {
+            background-color: #006086;
+            clip-path: polygon(41.67% 0%, 58.33% 0%, 66.67% 100%, 33.33% 100%);
         }
 
-        .team-name {
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: #2d3436;
+        .p-row-3 {
+            background-color: #0076a3;
+            clip-path: polygon(33.33% 0%, 66.67% 0%, 75% 100%, 25% 100%);
         }
 
-        .team-role {
+        .p-row-4 {
+            background-color: #008dc2;
+            clip-path: polygon(25% 0%, 75% 0%, 83.33% 100%, 16.67% 100%);
+        }
+
+        .p-row-5 {
+            background-color: #1bb7f1;
+            clip-path: polygon(16.66% 0%, 83.33% 0%, 91.67% 100%, 8.33% 100%);
+        }
+
+        .p-row-6 {
+            background-color: #44c6f4;
+            clip-path: polygon(8.33% 0%, 91.67% 0%, 100% 100%, 0% 100%);
+        }
+
+        /* Hover State: Flatten out to show full text */
+        .p-row:hover {
+            background-color: #2d3436 !important;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important;
+            z-index: 100;
+            transform: scale(1.02);
+            padding: 25px 15px;
+        }
+
+        .p-inner-content {
+            max-width: 100%;
+            pointer-events: none;
+        }
+
+        .p-name {
+            font-weight: 800;
+            font-size: 1.1rem;
             display: block;
-            color: #00afef;
-            /* Match the role text to the icon color */
-            font-weight: 600;
-            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
         }
 
-        .team-bio {
-            font-size: 0.9rem;
-            color: #636e72;
-            line-height: 1.6;
+        .p-details {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            display: none;
         }
 
-        .section-divider {
-            width: 50px;
-            height: 3px;
-            background: #00afef;
-            /* Consistent color for the divider */
-            margin: 1.25rem auto;
-            border-radius: 2px;
+        .p-row:hover .p-details {
+            display: block;
+        }
+
+        /* Tablet/Mobile adjustment */
+        @media (max-width: 768px) {
+            .p-row {
+                padding: 10px 0;
+            }
+
+            .p-row:hover {
+                padding: 15px 10px;
+            }
+
+            .p-name {
+                font-size: 0.6rem;
+                padding: 0 40px;
+            }
+
+            .p-details {
+                font-size: 0.6rem;
+                margin-top: 5px;
+                padding: 0 10px;
+            }
+
+            #team a {
+                font-size: 0.926562rem;
+            }
         }
     </style>
 </head>
@@ -150,10 +134,10 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="about-hero" class="text-white py-5 mb-5">
-            <div class="container py-5 text-center">
-                <h1 class="display-4 fw-bold mb-3">About Gyan Shala</h1>
-                <p class="lead mb-0 opacity-75 mx-auto" style="max-width: 700px;">
+        <section id="about-hero">
+            <div class="container">
+                <h1>About Gyan Shala</h1>
+                <p>
                     Dedicated to providing quality education to underprivileged children since 1999.
                 </p>
             </div>
@@ -165,149 +149,51 @@
             <section id="about-history" class="mb-5">
                 <div class="text-center mb-5">
                     <h2 class="fw-bold text-primary">Our History & Journey</h2>
-                    <p class="text-muted">A timeline of innovation in education</p>
                 </div>
-
-                <!-- Foundation -->
-                <div class="row align-items-center g-5 mb-5">
-                    <div class="col-lg-6">
-                        <img src="/media/images/founder.jpg" alt="Founding of Gyan Shala"
-                            class="img-fluid rounded-4 shadow-sm w-100">
-                    </div>
-                    <div class="col-lg-6">
-                        <h3 class="fw-bold mb-3">The Foundation</h3>
-                        <p>
-                            Gyan Shala was founded by <strong>Prof. Pankaj Jain in 1999</strong> with the aim of
-                            providing quality education to underprivileged children. Prof. Jain's vision was shaped by
-                            his experience as a member of the terminal review mission for the Andhra Pradesh Primary
-                            Education Project (APPEP) in the early 90s.
-                        </p>
-                        <p>
-                            Despite substantial funding and well-designed implementation, Prof. Jain observed that the
-                            project failed to make a significant impact on students' learning outcomes, prompting him to
-                            seek a more effective educational model.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- The Motivation -->
-                <div class="row align-items-center g-5 mb-5">
-                    <div class="col-lg-6 order-lg-last">
-                        <div class="mt-4">
-                            <h3 class="fw-bold mb-3">The Motivation</h3>
-                            <p>
-                                During his work in the mid-90s, Prof. Jain observed that girls from poor families in
-                                Bangladesh improved significantly in early schooling compared to their Indian
-                                counterparts, despite Bangladesh being economically poorer and socially less developed
-                                than India.
-                            </p>
-                            <p>
-                                At the same time, India faced a critical challenge: while school enrollment was rising,
-                                nearly half of all children dropped out before completing grade five. Studies showed
-                                that most students in grades four and five could not read or perform basic arithmetic—a
-                                trend that threatened to leave half of adult India functionally illiterate by 2030.
-                            </p>
-                            <p>
-                                These experiences posed a profound intellectual challenge. It led Prof. Jain to realize
-                                that traditional schooling needed a completely different approach to succeed at scale,
-                                eventually leading him to initiate the research that would define the Gyan Shala model.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/Individual-Support.png"
-                            alt="The Inspiration" class="img-fluid rounded-4 shadow-sm w-100">
-                    </div>
-                </div>
-
-                <!-- Model Evolution -->
-                <div class="row align-items-center g-5 mb-5">
-                    <div class="col-lg-6">
-                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/Whole-Class.png"
-                            alt="Model Evolution" class="img-fluid rounded-4 shadow-sm w-100">
-                    </div>
-                    <div class="col-lg-6">
-                        <h3 class="fw-bold mb-3">Need of a New Model</h3>
-                        <p>
-                            Prof. Jain spent four years studying various programs like AMUL and BRAC. He learned that
-                            traditional model of a team of teachers headed by a principal only served the top 5% of the
-                            population effectively.
-                        </p>
-                        <p>
-                            Furthermore, with government spending per student being high, universal coverage under the
-                            existing system would cost upwards of INR 3,600 billion—well beyond India's budgetary
-                            capacity. We needed a model that delivers <strong>high-quality learning
-                                outcomes at a mass scale</strong>, while keeping costs low and leveraging available
-                            resources.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Growth and Scaling -->
-                <div class="row align-items-center g-5 mb-5">
-                    <div class="col-lg-6 order-lg-last">
-                        <h3 class="fw-bold mb-3">Genesis & Growth</h3>
-                        <p>
-                            From all his learnings and experiences, Prof. Jain, along with some of his colleagues at IIM
-                            Ahmedabad and IRMA, initiated the Gyan Shala program under the Education Support
-                            Organization (ESO) in 2000.
-                        </p>
-                        <p>
-                            Gyan Shala began with just 10 1st-grade classes in Ahmedabad. By 2015-16, Gyan Shala then
-                            expanded to 1,270 classes, reaching around 35,000 children across 9 cities in 4 states.
-                        </p>
-                        <p>
-                            Gyan Shala's work continues as they test the viability of their model in rural settings and
-                            partner with state governments in Gujarat and Bihar to improve school quality.
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="https://gyanshala.org/wp-content/uploads/2016/12/Worksheet.png"
-                            alt="Gyan Shala Growth" class="img-fluid rounded-4 shadow-sm w-100">
-                    </div>
-                </div>
-
-                <div class="row mt-5 g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
-                            <div class="card-body">
-                                <h3 class="fw-bold text-primary mb-1">2000</h3>
-                                <p class="text-muted small mb-0">Started with 10 classes in Ahmedabad</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
-                            <div class="card-body">
-                                <h3 class="fw-bold text-primary mb-1">2015-16</h3>
-                                <p class="text-muted small mb-0">Expanded to 1,270 classes & 35,000 children</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
-                            <div class="card-body">
-                                <h3 class="fw-bold text-primary mb-1">4 States</h3>
-                                <p class="text-muted small mb-0">Reaching slums across 9 cities</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card h-100 border-0 shadow-sm bg-light text-center p-3 vm-card">
-                            <div class="card-body">
-                                <h3 class="fw-bold text-primary mb-1">Govt. Partnership</h3>
-                                <p class="text-muted small mb-0">Improving quality in state schools</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p>
+                    Gyan Shala was founded by <strong>Prof. Pankaj Jain</strong>, alongside colleagues from
+                    Indian Institute of Management, Ahmedabad (IIMA) and Institute of Rural Management, Anand
+                    (IRMA), to develop and implement a highly effective and quality education model for India's
+                    underserved children at scale.
+                </p>
+                <p>
+                    The initiation was sparked by Prof. Jain's experience on the terminal review mission for the
+                    Andhra Pradesh Primary Education Project (APPEP) in the early 90s. Despite being well-funded
+                    and professionally executed, the British-backed program failed to produce significant gains
+                    in student learning outcomes. During his other work, he observed that Bangladeshi girls from
+                    poor families in Bangladesh were outperforming their Indian counterparts in early schooling,
+                    despite Bangladesh being economically poorer and socially more conservative at the time.
+                    These observations challenged his fundamental understanding of pedagogy and led him on a
+                    quest.
+                </p>
+                <p>
+                    Throughout the mid-to-late 90s, he studied various government and non-government school
+                    programs in India and many other countries. His research led to a critical insight that the
+                    traditional model of quality schooling, which relied heavily on exceptional teachers led by
+                    exceptional principals or leaders, could only serve the top 5% of children. But for the
+                    remaining 95%, a new approach was needed to evolve that could deliver effective,
+                    high-quality education on a mass scale using readily available and sustainable human and
+                    financial resources. To bridge this gap, he wanted to evolve and implement a pedagogical
+                    model inspired by various excellent schooling systems and the world's leading large-scale
+                    development programs like AMUL and BRAC. To implement this vision, Prof. Jain and his
+                    colleagues founded Gyan Shala under the Education Support Organization.
+                </p>
+                <p>
+                    They began with just 10 1st-grade classes in Ahmedabad in 1999. By 2015-16, Gyan Shala then
+                    expanded to 1,270 classes, reaching around 35,000 children across 9 cities in 4 states.
+                </p>
+                <p>
+                    Our work continues as we test the viability of our model in rural settings and partner with
+                    state governments in Gujarat and Bihar to improve government school outcomes.
+                </p>
             </section>
 
             <!-- Approach Section -->
             <section id="about-approach" class="my-5 py-5 bg-white rounded-4 shadow-sm px-4 px-md-5">
                 <div class="text-center mb-5">
                     <h2 class="fw-bold">Our Approach</h2>
-                    <p class="text-muted">The system of education that Prof. Jain developed have four distinct features:
+                    <p class="text-muted">The system of education that Prof. Jain developed have four distinct
+                        features:
                     </p>
                 </div>
 
@@ -321,7 +207,8 @@
                             </div>
                             <div>
                                 <h5 class="fw-bold">Child-Centric Focus</h5>
-                                <p class="text-muted small">More focus on children's capability to learn rather than on
+                                <p class="text-muted small">More focus on children's capability to learn rather than
+                                    on
                                     enhancing the teacher's capability to teach.</p>
                             </div>
                         </div>
@@ -334,8 +221,9 @@
                             </div>
                             <div>
                                 <h5 class="fw-bold">Team-Based Teaching</h5>
-                                <p class="text-muted small">Reengineering the class's teacher's role into a team effort,
-                                    six-tiered team, to bring curriculum designing close to the classroom, and
+                                <p class="text-muted small">Reengineering the class's teacher's role into a team
+                                    effort,
+                                    four-tiered team, to bring curriculum designing close to the classroom, and
                                     demystifying the teacher's role.</p>
                             </div>
                         </div>
@@ -348,8 +236,10 @@
                             </div>
                             <div>
                                 <h5 class="fw-bold">System Organization</h5>
-                                <p class="text-muted small">Take an overall system organization perspective to design a
-                                    school program, instead of just focusing on only teaching, learning, and curriculum
+                                <p class="text-muted small">Take an overall system organization perspective to
+                                    design a
+                                    school program, instead of just focusing on only teaching, learning, and
+                                    curriculum
                                     processes.</p>
                             </div>
                         </div>
@@ -362,8 +252,10 @@
                             </div>
                             <div>
                                 <h5 class="fw-bold">Independent Assessment</h5>
-                                <p class="text-muted small">Periodic assessments by reputed external agencies (like EI
-                                    using ASSET tests) to gauge effectiveness and drive continuous program improvement.
+                                <p class="text-muted small">Periodic assessments by reputed external agencies (like
+                                    EI
+                                    using ASSET tests) to gauge effectiveness and drive continuous program
+                                    improvement.
                                 </p>
                             </div>
                         </div>
@@ -375,15 +267,18 @@
                             <div class="col-md-6">
                                 <h6 class="fw-bold mb-3"><i class="bi bi-clock-history me-2 text-primary"></i>Ensuring
                                     Regularity</h6>
-                                <p class="text-muted small mb-0">We ensure students stay in school by locating classes
+                                <p class="text-muted small mb-0">We ensure students stay in school by locating
+                                    classes
                                     near homes,
-                                    maintaining a positive environment free of physical punishment, and providing all
+                                    maintaining a positive environment free of physical punishment, and providing
+                                    all
                                     learning materials free of charge.</p>
                             </div>
                             <div class="col-md-6">
                                 <h6 class="fw-bold mb-3"><i class="bi bi-shield-check me-2 text-primary"></i>Teacher
                                     Support</h6>
-                                <p class="text-muted small mb-0">Teachers receive extensive Program-specific training
+                                <p class="text-muted small mb-0">Teachers receive extensive Program-specific
+                                    training
                                     and supervisory support visits twice a week, ensuring quality remains consistent
                                     across
                                     all classes.</p>
@@ -402,7 +297,8 @@
                         </div>
 
                         <div class="col-lg-7 text-start">
-                            <h3 class="fw-bold mb-4" style="color: #2d3436; font-size: 1.5rem;">The 5A Implementation
+                            <h3 class="fw-bold mb-4" style="color: #2d3436; font-size: 1.5rem;">The 5A
+                                Implementation
                             </h3>
                             <p class="small text-muted mb-4">Complementing our academic features, the 5A approach
                                 ensures we
@@ -416,14 +312,16 @@
 
                                 <div class="approach-item">
                                     <div class="approach-title text-primary">Availability</div>
-                                    <p class="small text-secondary mb-0">Ensuring quality schooling is present in every
+                                    <p class="small text-secondary mb-0">Ensuring quality schooling is present in
+                                        every
                                         slum
                                         cluster, making education available to all marginalized children.</p>
                                 </div>
 
                                 <div class="approach-item">
                                     <div class="approach-title text-primary">Accessibility</div>
-                                    <p class="small text-secondary mb-0">Equitable residential education held within the
+                                    <p class="small text-secondary mb-0">Equitable residential education held within
+                                        the
                                         community (walking distance) with suitable timings for students.</p>
                                 </div>
 
@@ -448,7 +346,8 @@
                 <div class="mt-5 text-center">
                     <p class="text-secondary mx-auto" style="max-width: 900px;">
                         We learn from various education experts and best practices from across the world, and ensure
-                        implementation through our 1,200-person team, which includes teachers, field supervisors, and
+                        implementation through our 1,200-person team, which includes teachers, field supervisors,
+                        and
                         curriculum designer-cum-managers. Despite being conducted in slum areas, our classrooms are
                         equipped with all the necessary facilities and follow best classroom practices such as whole
                         class teaching, small group activities for peer learning, and self-learning through daily
@@ -458,63 +357,100 @@
             </section>
 
             <!-- Team Section -->
-            <section id="about-team" class="my-5 py-5">
+            <section id="team" class="bg-white py-5">
 
                 <div class="text-center mb-5 pt-5">
                     <h2 class="fw-bold mt-2">Our Team</h2>
                     <div class="section-divider"></div>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-card shadow-sm">
-                            <div class="icon-wrapper">
-                                <i class="fa-solid fa-users-gear" style="font-size: 1.3em;"></i>
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-8 text-center">
+                        <p class="lead text-secondary">
+                            To deliver high-quality education at a mass scale, Gyan Shala operates through a
+                            <strong>specialized six-tier team structure</strong>.
+                        </p>
+                        <p class="text-muted">
+                            This model deconstructs the traditional role of a single teacher into a team-based
+                            effort, ensuring that curriculum design, field support, and classroom delivery
+                            work in perfect harmony.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pyramid-main-container px-2">
+                    <div class="p-row p-row-1">
+                        <div class="p-inner-content">
+                            <span class="p-name">CEO</span>
+                            <div class="p-details">Coordinate with all Team Leads to manage cross-city programs,
+                                handle
+                                donor relations, fundraise, and ensure the long-term sustainability of the
+                                organization.
                             </div>
-                            <h5 class="team-name">Executive Management</h5>
-                            <p class="team-bio">Leading our strategic initiatives and ensuring the long-term
-                                sustainability of our programs.</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-card shadow-sm">
-                            <div class="icon-wrapper">
-                                <i class="fa-solid fa-book-reader"></i>
-                            </div>
-                            <h5 class="team-name">Curriculum Designers</h5>
-                            <p class="team-bio">Highly qualified professionals creating engaging and effective learning
-                                materials for our students.</p>
+
+                    <div class="p-row p-row-2">
+                        <div class="p-inner-content">
+                            <span class="p-name">Team Leaders</span>
+                            <div class="p-details">Instruct and coordinate the curriculum design teams, evaluate
+                                study
+                                materials, and serve as the vital link between academic operations and executive
+                                leadership.</div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-card shadow-sm">
-                            <div class="icon-wrapper">
-                                <i class="fa-solid fa-clipboard-user"></i>
+
+                    <div class="p-row p-row-3">
+                        <div class="p-inner-content">
+                            <span class="p-name">Curriculum Designers</span>
+                            <div class="p-details">Architect the student workbooks and teacher guides. They
+                                transform
+                                high-level goals into daily lessons and iterate materials based on field feedback.
                             </div>
-                            <h5 class="team-name">Field Supervisors</h5>
-                            <p class="team-bio">Providing continuous support and quality control across all our
-                                slum-based classrooms.</p>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-card shadow-sm">
-                            <div class="icon-wrapper">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <h5 class="team-name">Community Teachers</h5>
-                            <p class="team-bio">Dedicated teachers recruited from local communities, trained to deliver
-                                our specialized curriculum.</p>
+
+                    <div class="p-row p-row-4">
+                        <div class="p-inner-content">
+                            <span class="p-name">Senior Supervisors</span>
+                            <div class="p-details">Lead monthly supervisor meetings, prepare staff for teacher
+                                training,
+                                and bridge the gap between the Curriculum team and field implementation.Oversee the
+                                work
+                                of supervisors, conduct regular field visits, and ensure the quality of instruction
+                                and
+                                student outcomes across multiple centers.</div>
+                        </div>
+                    </div>
+
+                    <div class="p-row p-row-5">
+                        <div class="p-inner-content">
+                            <span class="p-name">Supervisors</span>
+                            <div class="p-details">Provide on-ground support to teachers in conducting classes,
+                                assist
+                                with community fieldwork, and attend monthly alignment meetings to maintain
+                                instructional quality.</div>
+                        </div>
+                    </div>
+
+                    <div class="p-row p-row-6">
+                        <div class="p-inner-content">
+                            <span class="p-name">Class Teachers</span>
+                            <div class="p-details">Gyan Shala replaces the traditional single-teacher model with a
+                                robust "Chain of Support." This ensures that our 1,200+ frontline educators are
+                                backed
+                                by layers of academic, supervisory, and strategic expertise.</div>
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-5">
 
-                    <a href="team.html" class="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm">
-
-                        Meet Our Entire Team <i class="bi bi-arrow-right ms-2"></i>
-
+                <div class="text-center mt-5 pt-3">
+                    <p class="small text-muted mb-3">While our teachers are too numerous to list, you can meet the
+                        core
+                        organization here:</p>
+                    <a href="team.html" class="btn btn-outline-primary rounded-pill px-5 py-3 fw-bold">
+                        Meet Our Core Organization <i class="bi bi-arrow-right ms-2"></i>
                     </a>
-
                 </div>
             </section>
 
@@ -524,7 +460,8 @@
                     <div class="col-lg-8">
                         <h2 class="fw-bold mb-3">Commitment to Transparency</h2>
                         <p class="text-muted lead mb-0">
-                            We maintain full disclosure of our financial performance and legal compliance. Access our
+                            We maintain full disclosure of our financial performance and legal compliance. Access
+                            our
                             audit reports, tax returns, and statutory documents.
                         </p>
                     </div>
