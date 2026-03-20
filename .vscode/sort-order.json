@@ -17,6 +17,13 @@
     "extract_full_paths.py",
     "extract_paths.py",
     "target_paths.txt",
-    "trace_p21.py"
+    "trace_p21.py",
+    "test.txt",
+    "admin"
+  ],
+  "admin": [
+    "index.html",
+    "config.yml",
+    "data.json"
   ]
 }

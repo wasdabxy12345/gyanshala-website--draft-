@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        /* Container padding creates space for the arrows */
         .impact-slider-container {
             padding: 40px 60px;
             background: #fff;
@@ -305,7 +304,7 @@
         </div>
 
         <!-- Impact Bar -->
-        <div id="impact-bar" class="my-5 p-4 bg-primary text-white rounded-4 shadow-sm">
+        <div id="impact-bar" class="my-5 p-4 bg-primary text-white rounded-4 shadow-sm container">
             <div class="row text-center g-4">
                 <div class="col-6 col-md-3">
                     <div class="stat-item">
@@ -338,18 +337,20 @@
         <div id="roots" class="my-5 p-4 p-md-5 bg-light rounded-4 border-0">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
-                    <h2 class="fw-bold mb-4">Our Roots</h2>
-                    <p class="text-secondary mb-0">
-                        Gyan Shala was founded by <strong>Prof. Pankaj Jain</strong> and a team of academic colleagues
-                        from
-                        <strong>IIMA</strong> and <strong>IRMA</strong>. Driven by the mission to provide "elite-school"
-                        quality education at a fraction of the cost, they established a model that bridges the learning
-                        gap for children in India's most marginalized urban slum communities.
-                    </p>
+                    <div class="p-4 bg-white rounded-4 shadow-sm border-primary border-4">
+                        <h4 class="fw-bold mb-3">Our Roots</h4>
+                        <p class="small text-muted mb-0">
+                            Gyan Shala was founded by <strong>Prof. Pankaj Jain</strong> and a team of academic
+                            colleagues from <strong>IIMA</strong> and <strong>IRMA</strong>. Driven by the mission to
+                            provide "elite-school" quality education at a fraction of the cost, they established a model
+                            that bridges the learning gap for children in India's most marginalized urban slum
+                            communities.
+                        </p>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="p-4 bg-white rounded-4 shadow-sm border-start border-primary border-4">
-                        <h4 class="fw-bold mb-3"><i class="bi bi-cpu text-primary me-2"></i>The Gyan Shala Model</h4>
+                    <div class="p-4 bg-white rounded-4 shadow-sm border-primary border-4">
+                        <h4 class="fw-bold mb-3">Our Model</h4>
                         <p class="small text-muted mb-0">
                             Our unique pedagogy uses <strong>daily worksheets</strong> and a highly structured
                             <strong>team-based teaching</strong> approach. This system ensures high accountability,
@@ -362,7 +363,7 @@
         </div>
 
 
-        <div id="vision" class="my-5 p-4 p-md-5 bg-white rounded">
+        <div id="vision" class="my-5 p-4 p-md-5 bg-white rounded container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Vision, Mission & Goal</h2>
                 <p class="text-muted fst-italic">
@@ -525,16 +526,16 @@
                 </div>
 
                 <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#tulsiModal">
+                    <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#amishaModal">
                         <div class="row g-0 align-items-center">
                             <div class="col-lg-5 text-center">
-                                <img src="media/tulsi.jpg" alt="Tulsi Khetaji Meghwal" class="impact-slide-image">
+                                <img src="media/amisha.jpg" alt="Amisha Parmar" class="impact-slide-image">
                             </div>
                             <div class="col-lg-7">
                                 <div class="impact-slide-content">
-                                    <h3 class="fw-bold mb-3">Tulsi Khetaji Meghwal</h3>
-                                    <p class="impact-slide-quote">Daughter of a vegetable vendor, Tulsi scored 89% in
-                                        Grade 12 Science. "Every child should be made to undergo education like me."</p>
+                                    <h3 class="fw-bold mb-3">Amisha Parmar</h3>
+                                    <p class="impact-slide-quote">Scored 98.97 percentile in Grade 12 Science. She now
+                                        aspires to become a doctor.</p>
                                     <span class="text-primary small fw-bold">Read Full Story <i
                                             class="bi bi-arrow-right"></i></span>
                                 </div>
@@ -559,23 +560,6 @@
                         </div>
                     </div>
 
-                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#amishaModal">
-                        <div class="row g-0 align-items-center">
-                            <div class="col-lg-5 text-center">
-                                <img src="media/amisha.jpg" alt="Amisha Parmar" class="impact-slide-image">
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="impact-slide-content">
-                                    <h3 class="fw-bold mb-3">Amisha Parmar</h3>
-                                    <p class="impact-slide-quote">Scored 98.97 percentile in Grade 12 Science. She now
-                                        aspires to become a doctor.</p>
-                                    <span class="text-primary small fw-bold">Read Full Story <i
-                                            class="bi bi-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#chavdaModal">
                         <div class="row g-0 align-items-center">
                             <div class="col-lg-5 text-center">
@@ -587,6 +571,23 @@
                                     <h3 class="fw-bold mb-3">Jinkal & Kinjal Chavda</h3>
                                     <p class="impact-slide-quote">Despite family struggles, both sisters passed their
                                         boards with 89th and 90th percentiles.</p>
+                                    <span class="text-primary small fw-bold">Read Full Story <i
+                                            class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#tulsiModal">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-5 text-center">
+                                <img src="media/tulsi.jpg" alt="Tulsi Khetaji Meghwal" class="impact-slide-image">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="impact-slide-content">
+                                    <h3 class="fw-bold mb-3">Tulsi Khetaji Meghwal</h3>
+                                    <p class="impact-slide-quote">Daughter of a vegetable vendor, Tulsi scored 89% in
+                                        Grade 12 Science. "Every child should be made to undergo education like me."</p>
                                     <span class="text-primary small fw-bold">Read Full Story <i
                                             class="bi bi-arrow-right"></i></span>
                                 </div>
@@ -792,82 +793,6 @@
     </main>
 
     <!-- Student Story Modals -->
-    <!-- Tulsi Modal -->
-    <div class="modal fade" id="tulsiModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
-                <div class="modal-header border-0 pb-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4 p-md-5 pt-0">
-                    <div class="modal-video-container">
-                        <iframe src="https://www.youtube.com/embed/J-d5cgKhYEQ?enablejsapi=1" title="Tulsi's Story"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="d-flex align-items-center mb-4">
-                        <img src="media/tulsi.jpg" alt="Tulsi Meghwal" class="rounded-circle mb-0 me-3 shadow-sm"
-                            style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <h4 class="fw-bold mb-0">Tulsi Meghwal</h4>
-                            <span class="text-primary fw-bold">Computer Engineering Student</span>
-                        </div>
-                    </div>
-                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
-                        <p>Tulsi Khetaji Meghwal, a bright student and a daughter of a vegetable vendor, studied until
-                            Grade 7 under Gyan Shala’s guidance in the Yogeshwarnagar slum area of Ahmedabad. One of our
-                            brightest minds, she achieved a distinction (89%) in her 12th Grade Science stream and is
-                            now successfully pursuing her degree in Computer Engineering.</p>
-                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
-                            "Every child should be made to undergo education like me. What quality education enables a
-                            child to do cannot be easily measured. With basic education and inner motivation, it can
-                            work wonders for an underprivileged child."
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Meena Modal -->
-    <div class="modal fade" id="meenaModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
-                <div class="modal-header border-0 pb-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4 p-md-5 pt-0">
-                    <div class="modal-video-container">
-                        <iframe src="https://www.youtube.com/embed/lyR6KaE_ckw?enablejsapi=1" title="Meena's Story"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="d-flex align-items-center mb-4">
-                        <img src="media/meena.jpg" alt="Meena Parmar" class="rounded-circle mb-0 me-3 shadow-sm"
-                            style="width: 80px; height: 80px; object-fit: cover;">
-                        <div>
-                            <h4 class="fw-bold mb-0">Meena Parmar</h4>
-                            <span class="text-primary fw-bold">Grade 10 Graduate</span>
-                        </div>
-                    </div>
-                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
-                        <p>At age 8, Meena's family faced a tragedy when her father passed away, leaving her mother to
-                            support seven siblings through field labor. Poverty reached a stage where her brothers had
-                            to polish shoes to earn meals.</p>
-                        <p>During this period, Gyan Shala motivated Meena to stay in school. She successfully passed her
-                            10th Board exams—the only one among her seven siblings to study that far.</p>
-                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
-                            "I want to give special thanks to Gyan Shala and my teachers who always guided me in the
-                            right direction and played a role of parents."
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Amisha Modal -->
     <div class="modal fade" id="amishaModal" tabindex="-1" aria-labelledby="amishaModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -912,6 +837,44 @@
         </div>
     </div>
 
+    <!-- Meena Modal -->
+    <div class="modal fade" id="meenaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/lyR6KaE_ckw?enablejsapi=1" title="Meena's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/meena.jpg" alt="Meena Parmar" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Meena Parmar</h4>
+                            <span class="text-primary fw-bold">Grade 10 Graduate</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>At age 8, Meena's family faced a tragedy when her father passed away, leaving her mother to
+                            support seven siblings through field labor. Poverty reached a stage where her brothers had
+                            to polish shoes to earn meals.</p>
+                        <p>During this period, Gyan Shala motivated Meena to stay in school. She successfully passed her
+                            10th Board exams—the only one among her seven siblings to study that far.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "I want to give special thanks to Gyan Shala and my teachers who always guided me in the
+                            right direction and played a role of parents."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Chavda Modal -->
     <div class="modal fade" id="chavdaModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -943,6 +906,44 @@
                         <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
                             "We are blessed to have Gyan Shala platform which helped us to continue our education even
                             though in sheer struggles."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tulsi Modal -->
+    <div class="modal fade" id="tulsiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div class="modal-video-container">
+                        <iframe src="https://www.youtube.com/embed/J-d5cgKhYEQ?enablejsapi=1" title="Tulsi's Story"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="media/tulsi.jpg" alt="Tulsi Meghwal" class="rounded-circle mb-0 me-3 shadow-sm"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        <div>
+                            <h4 class="fw-bold mb-0">Tulsi Meghwal</h4>
+                            <span class="text-primary fw-bold">Computer Engineering Student</span>
+                        </div>
+                    </div>
+                    <div class="story-content" style="font-size: 1.1rem; line-height: 1.7; color: #444;">
+                        <p>Tulsi Khetaji Meghwal, a bright student and a daughter of a vegetable vendor, studied until
+                            Grade 7 under Gyan Shala’s guidance in the Yogeshwarnagar slum area of Ahmedabad. One of our
+                            brightest minds, she achieved a distinction (89%) in her 12th Grade Science stream and is
+                            now successfully pursuing her degree in Computer Engineering.</p>
+                        <blockquote class="border-start border-4 border-primary ps-4 my-4 fst-italic">
+                            "Every child should be made to undergo education like me. What quality education enables a
+                            child to do cannot be easily measured. With basic education and inner motivation, it can
+                            work wonders for an underprivileged child."
                         </blockquote>
                     </div>
                 </div>

@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- 1. Variables --- */
         :root {
             --primary-color: #00afef;
             --text-dark: #1e293b;
@@ -20,42 +19,10 @@
             --bg-light: #f8f9fa;
         }
 
-        /* --- 2. Navigation Tabs (Fixed Scrollable Row) --- */
-        #teamTabs.nav {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            /* Forces single row */
-            overflow-x: auto !important;
-            /* Enables horizontal scroll */
-            -webkit-overflow-scrolling: touch;
-            /* Smooth scroll for iOS */
-            justify-content: flex-start !important;
-            border: 1px solid #dee2e6;
-            padding: 0.5rem !important;
-            margin-bottom: 2rem;
-            scrollbar-width: none;
-            /* Firefox hide scrollbar */
-            background: white;
+        .tab-pane.fade {
+            transition: opacity 0.25s ease-in-out;
         }
 
-        #teamTabs::-webkit-scrollbar {
-            display: none;
-            /* Chrome/Safari hide scrollbar */
-        }
-
-        #teamTabs .nav-item {
-            flex: 0 0 auto;
-            /* Prevents tabs from shrinking */
-        }
-
-        /* Desktop Centering */
-        @media (min-width: 992px) {
-            #teamTabs.nav {
-                justify-content: center !important;
-            }
-        }
-
-        /* --- 3. Card Components (Trustee, Board, Management) --- */
         .trustee-full-card,
         .board-card,
         .Management-card {
@@ -187,9 +154,6 @@
 
         @media (max-width: 576px) {
 
-            /* 1. Ensure Tabs don't wrap and stay scrollable */
-
-            /* 2. Make Photos Same Width as Content */
             .trustee-full-card,
             .board-card,
             .Management-card {
@@ -219,12 +183,10 @@
                 object-fit: cover;
             }
 
-            /* 3. Text Alignment for Mobile */
             .trustee-info,
             .board-info,
             .Management-info {
                 text-align: left;
-                /* Better readability than centered for long bios */
             }
 
             .trustee-meta,
@@ -288,6 +250,7 @@
             color: var(--text-muted);
             line-height: 1.4;
         }
+
     </style>
 </head>
 
@@ -308,34 +271,34 @@
         <div class="container px-3 px-md-5 mt-n5">
             <!-- Team Tabs Navigation -->
             <div class="tabs-nav-container shadow-sm" style="margin-top: -40px; position: relative; z-index: 10;">
-                <ul class="nav custom-pill-tabs" id="teamTabs" role="tablist">
+                <ul class="nav custom-pill-tabs justify-content-center" id="teamTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active rounded-pill px-4 fw-bold" id="trustees-tab"
+                        <button class="nav-link active" id="trustees-tab"
                             data-bs-toggle="pill" data-bs-target="#trustees-pane" type="button"
                             role="tab">Trustees</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-bold" id="governing-tab" data-bs-toggle="pill"
+                        <button class="nav-link" id="governing-tab" data-bs-toggle="pill"
                             data-bs-target="#governing-pane" type="button" role="tab">Board</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-bold" id="Management-tab" data-bs-toggle="pill"
+                        <button class="nav-link" id="management-tab" data-bs-toggle="pill"
                             data-bs-target="#Management-pane" type="button" role="tab">Management</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-bold" id="gujarat-tab" data-bs-toggle="pill"
+                        <button class="nav-link" id="gujarat-tab" data-bs-toggle="pill"
                             data-bs-target="#gujarat-pane" type="button" role="tab">Gujarat</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-bold" id="bihar-tab" data-bs-toggle="pill"
+                        <button class="nav-link" id="bihar-tab" data-bs-toggle="pill"
                             data-bs-target="#bihar-pane" type="button" role="tab">Bihar</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-bold" id="up-tab" data-bs-toggle="pill"
+                        <button class="nav-link" id="up-tab" data-bs-toggle="pill"
                             data-bs-target="#up-pane" type="button" role="tab">Uttar Pradesh</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link rounded-pill px-4 fw-bold" id="haryana-tab" data-bs-toggle="pill"
+                        <button class="nav-link" id="haryana-tab" data-bs-toggle="pill"
                             data-bs-target="#haryana-pane" type="button" role="tab">Haryana</button>
                     </li>
                 </ul>
@@ -358,7 +321,7 @@
                                         Founder & Trustee <span class="trustee-year">Since 1996</span>
                                     </div>
                                 </div>
-                                <p class="trustee-bio">BE (IITR), Ph.D. (IIMA), Faculty (IRMA) 1982–94, visiting faculty
+                                <p class="trustee-bio">BE (IITR), Ph.D. (IIMA), Faculty (IRMA) 1982–94, visiting Faculty
                                     in UK/USA leading universities, international development consultant
                                 </p>
                             </div>
@@ -589,7 +552,7 @@
 
                 <!-- Management TEAM -->
                 <section id="Management-pane" class="mb-5 py-5 bg-light rounded-4 px-3 tab-pane fade" role="tabpanel"
-                    aria-labelledby="Management-tab">
+                    aria-labelledby="management-tab">
                     <div class="container">
                         <div class="row g-4">
 

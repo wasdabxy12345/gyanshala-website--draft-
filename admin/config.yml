@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main # or master
+
+media_folder: "assets/images" # Where images will be saved
+public_folder: "/assets/images"
+
+collections:
+  - name: "content"
+    label: "Website Content"
+    files:
+      - name: "homepage"
+        label: "Home Page Text"
+        file: "data.json" # The CMS now edits this file only
+        fields:
+          - { label: "Main Title", name: "hero_title", widget: "string" }
+          - { label: "Subtitle", name: "hero_subtitle", widget: "string" }
+          - { label: "About Us Section", name: "about_text", widget: "markdown" }
