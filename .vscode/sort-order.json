@@ -19,7 +19,8 @@
     "target_paths.txt",
     "trace_p21.py",
     "test.txt",
-    "admin"
+    "admin",
+    "get involved.html"
   ],
   "admin": [
     "index.html",

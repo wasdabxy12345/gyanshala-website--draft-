@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Involved | Gyan Shala</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF.js for rendering PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+<body>
+
+    <div id="header-load"></div>
+
+    <main>
+        <section id="donate" class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-0 align-items-stretch shadow-lg rounded-4 overflow-hidden bg-white">
+                    <div class="col-lg-5 bg-primary text-white p-4 p-md-5">
+                        <div class="h-100 d-flex flex-column">
+                            <h2 class="fw-bold mb-3">Make an Impact</h2>
+                            <p class="lead mb-4 opacity-90">Your contribution ensures poverty is not a barrier to
+                                education.</p>
+                            <p class="small opacity-75 mb-5">Gyan Shala’s model is one of the most cost-effective in
+                                providing quality education to urban slums.</p>
+
+                            <div class="mt-auto p-3 rounded-3 bg-white bg-opacity-10 border border-white border-opacity-25"
+                                onclick="openModal('documents-pdf/80G.pdf')" style="cursor: pointer;">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="flex-shrink-0 bg-white p-1 rounded shadow-sm">
+                                        <canvas id="thumb-80g" style="width: 60px; height: 80px;"></canvas>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-white">80G Tax Exempt</h6>
+                                        <p class="mb-0 text-white-50 small">Click to view certificate</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 p-4 p-md-5 bg-white">
+                        <form id="donation-form">
+                            <label class="form-label small fw-bold text-uppercase text-muted mb-3">Choose an amount
+                                (INR)</label>
+                            <div class="row g-2 mb-4">
+                                <div class="col-4"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2 fw-bold"
+                                        onclick="setAmount(1000)">₹1,000</button></div>
+                                <div class="col-4"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2 fw-bold"
+                                        onclick="setAmount(5000)">₹5,000</button></div>
+                                <div class="col-4"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2 fw-bold"
+                                        onclick="setAmount(10000)">₹10,000</button></div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-group input-group-lg border rounded-3 overflow-hidden">
+                                    <span class="input-group-text bg-light border-0 text-muted px-4">₹</span>
+                                    <input type="text" id="custom-amount"
+                                        class="form-control border-0 fw-bold fs-4 py-3" placeholder="Enter amount"
+                                        oninput="handleInput(this)">
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-warning btn-lg w-100 fw-bold rounded-pill shadow-sm py-3 text-uppercase">Proceed
+                                to Donate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partner" class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-0 align-items-stretch shadow-lg rounded-4 overflow-hidden bg-white">
+                    <div class="col-lg-5 bg-indigo text-white p-4 p-md-5" style="background-color: #4e73df;">
+                        <div class="h-100 d-flex flex-column">
+                            <h2 class="fw-bold mb-3">Partner With Us</h2>
+                            <p class="lead mb-4 opacity-90">Build a sustainable ecosystem through collaboration.</p>
+                            <div class="mt-4">
+                                <div class="d-flex mb-4">
+                                    <i class="bi bi-building-check fs-2 me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Corporate CSR</h6>
+                                        <p class="small opacity-75 mb-0">High-impact, measurable educational programs.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <i class="bi bi-globe fs-2 me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Institutional / NGO</h6>
+                                        <p class="small opacity-75 mb-0">Replicate and scale the Gyan Shala model
+                                            globally.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-auto pt-4 border-top border-white border-opacity-25">
+                                <a href="projects.html"
+                                    class="btn btn-sm btn-outline-light rounded-pill px-3 fw-bold">View Partnered
+                                    Projects</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 p-4 p-md-5 bg-white">
+                        <form id="partner-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Contact
+                                        Name</label>
+                                    <input type="text" id="partner-name" class="form-control bg-light border-0 py-2"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Work Email</label>
+                                    <input type="email" id="partner-email" class="form-control bg-light border-0 py-2"
+                                        required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label
+                                        class="form-label small fw-bold text-uppercase text-muted">Organization</label>
+                                    <input type="text" id="partner-org" class="form-control bg-light border-0 py-2"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Collaboration
+                                        Goals</label>
+                                    <textarea id="partner-goals" class="form-control bg-light border-0" rows="3"
+                                        required></textarea>
+                                </div>
+                                <div class="col-12"><button type="submit"
+                                        class="btn btn-primary btn-lg w-100 fw-bold rounded-pill py-3 text-uppercase">Submit
+                                        Inquiry</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="volunteer" class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-0 align-items-stretch shadow-lg rounded-4 overflow-hidden bg-white">
+                    <div class="col-lg-5 bg-success text-white p-4 p-md-5">
+                        <div class="h-100 d-flex flex-column">
+                            <h2 class="fw-bold mb-3">Volunteer</h2>
+                            <p class="lead mb-4 opacity-90">Share your expertise to bridge the learning gap.</p>
+                            <div class="mt-4">
+                                <div class="d-flex mb-4">
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Student and TeacherMentorship</h6>
+                                        <p class="small opacity-75 mb-0">Tutor students and mentor teachers to improve
+                                            learning outcomes.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Educational Material Creation and Translation</h6>
+                                        <p class="small opacity-75 mb-0">Help us create and translate educational
+                                            materials for various locations.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-4">
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Student Enrollment Drives</h6>
+                                        <p class="small opacity-75 mb-0">Help us inform parents of our programs and
+                                            enroll students in them.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 p-4 p-md-5 bg-white">
+                        <form id="volunteer-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Full Name</label>
+                                    <input type="text" id="volunteer-name" class="form-control bg-light border-0 py-2"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Primary
+                                        Interest</label>
+                                    <select id="volunteer-interest" class="form-select bg-light border-0 py-2" required>
+                                        <option value="" selected disabled>Select Area</option>
+                                        <option>Mentoring and Tutoring</option>
+                                        <option>Curriculum Work</option>
+                                        <option>Student Enrollment</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Email
+                                        Address</label>
+                                    <input type="email" id="volunteer-email" class="form-control bg-light border-0 py-2"
+                                        required>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Phone
+                                        Number</label>
+                                    <input type="tel" id="volunteer-phone" class="form-control bg-light border-0 py-2"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold text-uppercase text-muted">Why join
+                                        us?</label>
+                                    <textarea id="volunteer-message" class="form-control bg-light border-0" rows="3"
+                                        required></textarea>
+                                </div>
+                                <div class="col-12"><button type="submit"
+                                        class="btn btn-success btn-lg w-100 fw-bold rounded-pill py-3 text-uppercase">Apply
+                                        Now</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="careers" class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-0 align-items-stretch shadow-lg rounded-4 overflow-hidden bg-white">
+                    <div class="col-lg-5 bg-dark text-white p-4 p-md-5">
+                        <div class="h-100 d-flex flex-column">
+                            <h2 class="fw-bold mb-3">Join Our Team</h2>
+                            <p class="lead mb-4 opacity-90">Work at the forefront of educational innovation.</p>
+                            <p class="small opacity-75">Join our team of 1,200+ staff members dedicated to changing the
+                                educational landscape of India.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 p-4 p-md-5 bg-white">
+                        <h5 class="fw-bold mb-4">Current Openings</h5>
+                        <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+                            <a href="#"
+                                class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Senior Teacher Trainer</h6><small
+                                        class="text-muted">Ahmedabad • Full-time</small>
+                                </div>
+                                <i class="bi bi-arrow-right-short fs-4"></i>
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action p-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Program Coordinator</h6><small class="text-muted">Patna •
+                                        Full-time</small>
+                                </div>
+                                <i class="bi bi-arrow-right-short fs-4"></i>
+                            </a>
+                        </div>
+                        <button class="btn btn-outline-dark w-100 mt-4 rounded-pill fw-bold">View All Positions</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-load"></div>
+
+    <div id="pdfModal">
+        <div class="pdf-toolbar">
+            <div class="pdf-toolbar-group">
+                <button onclick="changeZoom(0.2)"><i class="bi bi-zoom-in"></i> Zoom In</button>
+                <button onclick="changeZoom(-0.2)"><i class="bi bi-zoom-out"></i> Zoom Out</button>
+            </div>
+
+            <div class="pdf-page-indicator">
+                Page: <span id="page_num">1</span> / <span id="page_count">0</span>
+            </div>
+
+            <div class="pdf-toolbar-group">
+                <button onclick="downloadPDF()" class="btn-download">
+                    <i class="bi bi-download"></i> Download
+                </button>
+                <button onclick="closeModal()" class="btn-close-viewer">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="scroll-container">
+            <div id="canvas-wrapper"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const docs = [
+                { url: 'documents-pdf/80G.pdf', canvasId: 'thumb-80g' }
+            ];
+
+            docs.forEach(doc => {
+                renderThumbnail(doc.url, doc.canvasId);
+            });
+
+            // Re-render thumbnails when modal opens
+            const modal = document.getElementById('pdfModal');
+            if (modal) {
+                modal.addEventListener('shown.bs.modal', () => {
+                    docs.forEach(doc => {
+                        renderThumbnail(doc.url, doc.canvasId);
+                    });
+                });
+            }
+        });
+
+        function setAmount(val) {
+            const input = document.getElementById('custom-amount');
+            input.value = Number(val).toLocaleString('en-IN');
+
+            document.querySelectorAll('.btn-outline-primary').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.includes(val.toLocaleString('en-IN'))) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function handleInput(input) {
+            let value = input.value.replace(/\D/g, '');
+
+            if (value !== "") {
+                input.value = Number(value).toLocaleString('en-IN');
+            } else {
+                input.value = "";
+            }
+        }
+
+        // Function to handle the "bubble" validation
+        function validateField(input, minLength, message) {
+            if (input.value.trim().length < minLength) {
+                input.setCustomValidity(message);
+                input.reportValidity(); // This triggers the browser bubble
+            } else {
+                input.setCustomValidity(""); // Clears the error if valid
+            }
+        }
+
+        // Attach the "blur" listeners
+        const nameInput = document.getElementById('partner-name');
+        const orgInput = document.getElementById('partner-org');
+        const goalsInput = document.getElementById('partner-goals');
+
+        nameInput.addEventListener('blur', function () {
+            validateField(this, 2, "Please enter at least 2 characters for the contact name.");
+        });
+
+        orgInput.addEventListener('blur', function () {
+            validateField(this, 2, "Please enter at least 2 characters for the organization.");
+        });
+
+        goalsInput.addEventListener('blur', function () {
+            validateField(this, 10, "Please provide at least 10 characters describing your goals.");
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const partnerForm = document.getElementById('partner-form');
+
+            // Helper to check if a field is actually empty (even with spaces)
+            const isInvalid = (val, min) => val.trim().length < min;
+
+            const setupValidation = (id, minLength, errorMsg) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+
+                // 1. Check when they leave the field
+                el.addEventListener('blur', function () {
+                    if (isInvalid(this.value, minLength)) {
+                        this.setCustomValidity(errorMsg);
+                        this.reportValidity();
+                    } else {
+                        this.setCustomValidity("");
+                    }
+                });
+
+                // 2. Clear the error immediately as they start typing something real
+                el.addEventListener('input', function () {
+                    if (!isInvalid(this.value, minLength)) {
+                        this.setCustomValidity("");
+                    }
+                });
+            };
+
+            // Initialize listeners for each field
+            setupValidation('partner-name', 2, "Please enter a real name (at least 2 characters).");
+            setupValidation('partner-org', 2, "Please enter a valid organization name.");
+            setupValidation('partner-goals', 10, "Please describe your goals in at least 10 characters.");
+
+            if (partnerForm) {
+                partnerForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const nameEl = document.getElementById('partner-name');
+                    const orgEl = document.getElementById('partner-org');
+                    const goalsEl = document.getElementById('partner-goals');
+                    const typeEl = document.getElementById('partner-type');
+
+                    // Final check on submission
+                    if (isInvalid(nameEl.value, 2)) {
+                        nameEl.setCustomValidity("Name cannot be empty or just spaces.");
+                        nameEl.reportValidity();
+                        return;
+                    }
+
+                    if (isInvalid(orgEl.value, 2)) {
+                        orgEl.setCustomValidity("Organization cannot be empty.");
+                        orgEl.reportValidity();
+                        return;
+                    }
+
+                    if (!typeEl.value) {
+                        typeEl.setCustomValidity("Please select a partner type.");
+                        typeEl.reportValidity();
+                        return;
+                    }
+
+                    if (isInvalid(goalsEl.value, 10)) {
+                        goalsEl.setCustomValidity("Please provide more detail (minimum 10 non-space characters).");
+                        goalsEl.reportValidity();
+                        return;
+                    }
+
+                    // If it passes all guards:
+                    let webSnippet = document.getElementById('partner-web').value.trim().replace(/^https?:\/\//i, '');
+                    const finalFullUrl = webSnippet ? `https://${webSnippet}` : "";
+
+                    alert(`Thank you, ${nameEl.value.trim()}! Your inquiry has been sent.`);
+                    partnerForm.reset();
+
+                    // Clear all custom validities after reset
+                    [nameEl, orgEl, goalsEl, typeEl].forEach(el => el.setCustomValidity(""));
+                });
+            }
+
+            const donateForm = document.getElementById('donation-form');
+            if (donateForm) {
+                donateForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const rawAmount = document.getElementById('custom-amount').value.replace(/,/g, '');
+                    const amount = parseFloat(rawAmount);
+                    if (!amount || amount <= 0) {
+                        alert('Please enter a valid amount.');
+                        return;
+                    }
+                    alert(`Redirecting to secure payment for ₹${Number(amount).toLocaleString('en-IN')}...`);
+                });
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
