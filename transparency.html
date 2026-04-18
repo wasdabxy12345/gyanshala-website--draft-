@@ -42,7 +42,7 @@
 
                 <div class="row g-4 row-cols-1 row-cols-md-3 row-cols-lg-5">
                     <div class="col">
-                        <div class="doc-card" onclick="openModal('documents-pdf/MoA.pdf')">
+                        <div class="doc-card" onclick="openModal('documents-pdf/legal docs/MoA.pdf')">
                             <div class="pdf-thumbnail-container">
                                 <canvas id="thumb-trust-deed"></canvas>
                             </div>
@@ -52,7 +52,8 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="doc-card" onclick="openModal('documents-pdf/Registration-certificate.pdf')">
+                        <div class="doc-card"
+                            onclick="openModal('documents-pdf/legal docs/Registration-certificate.pdf')">
                             <div class="pdf-thumbnail-container">
                                 <canvas id="thumb-registration"></canvas>
                             </div>
@@ -62,7 +63,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="doc-card" onclick="openModal('documents-pdf/12AA.pdf')">
+                        <div class="doc-card" onclick="openModal('documents-pdf/legal docs/12AA.pdf')">
                             <div class="pdf-thumbnail-container">
                                 <canvas id="thumb-12a"></canvas>
                             </div>
@@ -72,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="doc-card" onclick="openModal('documents-pdf/80G.pdf')">
+                        <div class="doc-card" onclick="openModal('documents-pdf/legal docs/80G.pdf')">
                             <div class="pdf-thumbnail-container">
                                 <canvas id="thumb-80g"></canvas>
                             </div>
@@ -82,7 +83,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="doc-card" onclick="openModal('documents-pdf/FCRA.pdf')">
+                        <div class="doc-card" onclick="openModal('documents-pdf/legal docs/FCRA.pdf')">
                             <div class="pdf-thumbnail-container">
                                 <canvas id="thumb-fcra"></canvas>
                             </div>
@@ -320,11 +321,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const docs = [
-                { url: 'documents-pdf/MoA.pdf', id: 'thumb-trust-deed' },
-                { url: 'documents-pdf/Registration-certificate.pdf', id: 'thumb-registration' },
-                { url: 'documents-pdf/12AA.pdf', id: 'thumb-12a' },
-                { url: 'documents-pdf/80G.pdf', id: 'thumb-80g' },
-                { url: 'documents-pdf/FCRA.pdf', id: 'thumb-fcra' },
+                { url: 'documents-pdf/legal docs/MoA.pdf', id: 'thumb-trust-deed' },
+                { url: 'documents-pdf/legal docs/Registration-certificate.pdf', id: 'thumb-registration' },
+                { url: 'documents-pdf/legal docs/12AA.pdf', id: 'thumb-12a' },
+                { url: 'documents-pdf/legal docs/80G.pdf', id: 'thumb-80g' },
+                { url: 'documents-pdf/legal docs/FCRA.pdf', id: 'thumb-fcra' },
                 // Financials - Audits
                 { url: 'documents-pdf/Audit-Report-2023-24.pdf', id: 'thumb-audit-23' },
                 { url: 'documents-pdf/Audit-Report-2022-23.pdf', id: 'thumb-audit-22' },

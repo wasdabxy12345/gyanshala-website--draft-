@@ -725,8 +725,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* Scroll offset for sticky header - applies to all sections with IDs */
-/* --- 17. Standardized Page Hero (Mirroring Home Page Aesthetics) --- */
 .page-hero,
 #about-hero,
 #programs-hero,
@@ -747,7 +745,6 @@ body {
     margin-bottom: 60px;
 }
 
-/* Background Images */
 #about-hero,
 .about-hero-bg {
     background-image: url('https://gyanshala.org/wp-content/uploads/2016/12/Whole-Class.png');
@@ -770,7 +767,6 @@ body {
     background-image: url('https://gyanshala.org/wp-content/uploads/2016/12/Worksheet.png');
 }
 
-/* Dark Overlay Logic (Mirroring Home Page) */
 .page-hero::before,
 #about-hero::before,
 #programs-hero::before,
@@ -1136,7 +1132,6 @@ footer a:hover {
     }
 }
 
-/* --- 16. Document Card & PDF Viewer Styles --- */
 .doc-card {
     background: white;
     border-radius: 12px;

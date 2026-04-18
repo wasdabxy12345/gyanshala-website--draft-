@@ -160,31 +160,30 @@
         }
 
         .legend-vfar {
-            background: #fee2e2;
-            color: #991b1b;
+            background: rgba(0, 175, 239, 0.2);
+            color: #475569;
         }
 
         .legend-far {
-            background: #fef3c7;
-            color: #92400e;
+            background: rgba(0, 175, 239, 0.4);
+            color: #475569;
         }
 
         .legend-close {
-            background: #dcfce7;
-            color: #166534;
+            background: rgba(0, 175, 239, 0.6);
+            color: #475569;
         }
 
         .legend-sbetter {
-            background: #dbeafe;
-            color: #1e40af;
+            background: rgba(0, 175, 239, 0.8);
+            color: #475569;
         }
 
         .legend-better {
-            background: #3b82f6;
-            color: #fff;
+            background: rgba(0, 175, 239, 1.0);
+            color: #475569;
         }
 
-        /* Charts */
         .chart-img {
             width: 100%;
             border-radius: 12px;
@@ -195,6 +194,76 @@
             height: 1px;
             background: linear-gradient(to right, transparent, #e2e8f0, transparent);
             margin: 3.5rem 0;
+        }
+
+        #chartBenchmark {
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #ffffff;
+            padding: 20px;
+            /* Allow the SVG to breathe */
+            overflow: visible;
+            width: 100%;
+            min-height: 450px;
+        }
+
+        .grade-container {
+            display: flex;
+            margin-left: 55px;
+            /* Matches the Y-axis width of the chart */
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #1e293b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .grade-container div {
+            padding: 8px 0;
+        }
+
+        /* Optional: add a subtle border-right to the grade headers to match chart lines */
+        .grade-container div:not(:last-child) {
+            border-right: 2px solid #e2e8f0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            /* Ensure no CSS transforms (like scale or translate) are affecting this container */
+            transform: none !important;
+        }
+
+        canvas {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        /* Darken and Thicken Vertical Separation Lines */
+        .apexcharts-grid-xaxis-lines line,
+        .apexcharts-xaxis-group-lines line {
+            stroke: #475569 !important;
+            /* Dark Slate Gray */
+            stroke-width: 2px !important;
+            stroke-opacity: 1 !important;
+        }
+
+        /* Keep Horizontal Grid Lines Subtle */
+        .apexcharts-grid-yaxis-lines line {
+            stroke: #f1f5f9 !important;
+            stroke-width: 1px !important;
+        }
+
+        /* Make Grade Titles bold and easy to select */
+        .apexcharts-xaxis-group-label {
+            font-weight: 800 !important;
+            user-select: text !important;
         }
 
         @media(max-width:767px) {
@@ -216,37 +285,19 @@
     <div id="header-load"></div>
 
     <main>
-        <!-- HERO -->
-        <div class="col-6">
-            <div class="rounded-4 p-4 text-center"
-                style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
-                <div class="fw-bold fs-3 text-white">Gr. 3,5,7</div>
-                <div class="small mt-1" style="color:rgba(255,255,255,0.7);">Grades Tested</div>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </section>
-
         <!-- OVERVIEW -->
         <section class="py-5 bg-light">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-9 text-center mb-5">
-                        <div class="section-eyebrow mb-2">External Assessments</div>
-                        <h2 class="section-heading mb-4">Transparent. Verified. Accountable.</h2>
+                        <h2 class="section-heading mb-4">External Assessments</h2>
                         <p class="text-muted" style="font-size:1.05rem;line-height:1.8;">
                             Gyan Shala learns from various education experts as well as best practices from the world
-                            and ensures
-                            implementation through its team of around <strong>1,200 people</strong> including teachers,
-                            field
-                            supervisors and designers cum managers. Although Gyan Shala classes are held in slum
-                            settings, it
-                            follows best classroom transactions such as whole class teaching, small group activities for
-                            peer
-                            learning and self-learning through daily workbooks.
+                            and ensures implementation through its team of around <strong>1,200 people</strong>
+                            including teachers, field supervisors and curriculum designers cum managers. Although Gyan
+                            Shala classes are held in slum settings, it follows best classroom transactions such as
+                            whole class teaching, small group activities for peer learning and self-learning through
+                            daily workbooks.
                         </p>
                         <p class="text-muted" style="line-height:1.8;">
                             Gyan Shala facilitates external program and student assessments by reputed agencies
@@ -360,8 +411,8 @@
                     <table class="assessment-table">
                         <thead>
                             <tr>
-                                <th>Subject</th>
                                 <th>Grade</th>
+                                <th>Subject</th>
                                 <th class="text-center">Mar '17</th>
                                 <th class="text-center">Mar '16</th>
                                 <th class="text-center">Mar '15</th>
@@ -372,8 +423,8 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td rowspan="3" class="text-center align-middle fw-bold">3</td>
                                 <td>Maths</td>
-                                <td>3</td>
                                 <td class="text-center">1,013</td>
                                 <td class="text-center">689</td>
                                 <td class="text-center">1,126</td>
@@ -383,7 +434,6 @@
                             </tr>
                             <tr>
                                 <td>EVS</td>
-                                <td>3</td>
                                 <td class="text-center">1,039</td>
                                 <td class="text-center">714</td>
                                 <td class="text-center">1,126</td>
@@ -393,7 +443,6 @@
                             </tr>
                             <tr>
                                 <td>Language</td>
-                                <td>3</td>
                                 <td class="text-center text-muted">–</td>
                                 <td class="text-center text-muted">–</td>
                                 <td class="text-center text-muted">–</td>
@@ -402,8 +451,8 @@
                                 <td class="text-center">185</td>
                             </tr>
                             <tr>
+                                <td rowspan="3" class="text-center align-middle fw-bold">5</td>
                                 <td>Maths</td>
-                                <td>5</td>
                                 <td class="text-center">355</td>
                                 <td class="text-center">528</td>
                                 <td class="text-center">522</td>
@@ -413,7 +462,6 @@
                             </tr>
                             <tr>
                                 <td>EVS</td>
-                                <td>5</td>
                                 <td class="text-center">302</td>
                                 <td class="text-center">452</td>
                                 <td class="text-center">522</td>
@@ -423,7 +471,6 @@
                             </tr>
                             <tr>
                                 <td>Language</td>
-                                <td>5</td>
                                 <td class="text-center">321</td>
                                 <td class="text-center">601</td>
                                 <td class="text-center">512</td>
@@ -432,8 +479,8 @@
                                 <td class="text-center">297</td>
                             </tr>
                             <tr>
+                                <td rowspan="3" class="text-center align-middle fw-bold">7</td>
                                 <td>Maths</td>
-                                <td>7</td>
                                 <td class="text-center">237</td>
                                 <td class="text-center">298</td>
                                 <td class="text-center">332</td>
@@ -443,7 +490,6 @@
                             </tr>
                             <tr>
                                 <td>EVS</td>
-                                <td>7</td>
                                 <td class="text-center">260</td>
                                 <td class="text-center">262</td>
                                 <td class="text-center">332</td>
@@ -453,7 +499,6 @@
                             </tr>
                             <tr>
                                 <td>Language</td>
-                                <td>7</td>
                                 <td class="text-center">227</td>
                                 <td class="text-center">296</td>
                                 <td class="text-center">327</td>
@@ -465,15 +510,6 @@
                     </table>
                 </div>
 
-                <!-- ── CHART 1: 2017 Benchmark Bar Chart ── -->
-                <h5 class="fw-bold mb-1">Gyan Shala vs ASSET Benchmark (2017)</h5>
-                <p class="text-muted small mb-3">Scaled score comparison across all tested subjects and grades. ASSET
-                    baseline = 500.</p>
-                <div class="assessment-table-wrap mb-5 p-3">
-                    <canvas id="chartBenchmark" height="90"></canvas>
-                </div>
-
-                <!-- ── CHART 2: Trend Lines (tabbed) ── -->
                 <h5 class="fw-bold mb-1">Performance Trend (2012–2017)</h5>
                 <p class="text-muted small mb-3">Gyan Shala scaled score vs ASSET national average over six years, by
                     subject and grade.</p>
@@ -505,146 +541,6 @@
                     <div class="tab-pane fade" id="t-g7l"><canvas id="c-g7l" height="90"></canvas></div>
                 </div>
 
-                <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-                <script>
-                    (function () {
-                        const YEARS = ['2012', '2013', '2014', '2015', '2016', '2017'];
-                        const GS_BLUE = '#00afef';
-                        const AS_RED = '#e74c3c';
-                        const GS_FILL = 'rgba(0,175,239,0.12)';
-                        const AS_FILL = 'rgba(231,76,60,0.08)';
-
-                        // ── Trend line helper ──
-                        function trendChart(id, title, gsData, asData) {
-                            const ctx = document.getElementById(id);
-                            if (!ctx) return;
-                            new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    labels: YEARS,
-                                    datasets: [
-                                        {
-                                            label: 'Gyan Shala Scaled Score',
-                                            data: gsData,
-                                            borderColor: GS_BLUE,
-                                            backgroundColor: GS_FILL,
-                                            fill: true,
-                                            tension: 0.35,
-                                            pointRadius: 5,
-                                            pointHoverRadius: 7,
-                                            borderWidth: 2.5,
-                                            pointBackgroundColor: GS_BLUE
-                                        },
-                                        {
-                                            label: 'ASSET National Average',
-                                            data: asData,
-                                            borderColor: AS_RED,
-                                            backgroundColor: AS_FILL,
-                                            fill: false,
-                                            tension: 0.2,
-                                            pointRadius: 4,
-                                            pointHoverRadius: 6,
-                                            borderWidth: 2,
-                                            borderDash: [6, 3],
-                                            pointBackgroundColor: AS_RED
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    interaction: { mode: 'index', intersect: false },
-                                    plugins: {
-                                        title: { display: true, text: title, font: { size: 14, weight: '600' }, color: '#1e293b', padding: { bottom: 16 } },
-                                        legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
-                                        tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}` } }
-                                    },
-                                    scales: {
-                                        y: {
-                                            min: 300, max: 650,
-                                            title: { display: true, text: 'Scaled Score', font: { size: 12 }, color: '#64748b' },
-                                            grid: { color: '#f1f5f9' },
-                                            ticks: { color: '#64748b' }
-                                        },
-                                        x: { grid: { display: false }, ticks: { color: '#64748b' } }
-                                    }
-                                }
-                            });
-                        }
-
-                        // ── Trend data (GS scaled scores read from original charts) ──
-                        trendChart('c-g3m', 'Class 3 – Maths Performance',
-                            [430, 440, 530, 545, 500, 475],
-                            [500, 500, 500, 500, 500, 500]);
-                        trendChart('c-g3e', 'Class 3 – EVS Performance',
-                            [420, 480, 545, 575, 505, 464],
-                            [500, 505, 500, 500, 500, 500]);
-                        trendChart('c-g5m', 'Class 5 – Maths Performance',
-                            [400, 400, 430, 410, 490, 472],
-                            [500, 500, 505, 510, 500, 500]);
-                        trendChart('c-g5l', 'Class 5 – Language Performance',
-                            [415, 460, 410, 390, 450, 427],
-                            [520, 510, 500, 510, 500, 500]);
-                        trendChart('c-g7m', 'Class 7 – Maths Performance',
-                            [420, 430, 420, 400, 460, 452],
-                            [500, 500, 500, 500, 500, 500]);
-                        trendChart('c-g7e', 'Class 7 – EVS/Science Performance',
-                            [410, 430, 440, 420, 440, 425],
-                            [500, 500, 505, 505, 500, 500]);
-                        trendChart('c-g7l', 'Class 7 – Language Performance',
-                            [400, 500, 460, 440, 460, 491],
-                            [520, 495, 500, 510, 495, 500]);
-
-                        // ── Bar chart: 2017 benchmark ──
-                        new Chart(document.getElementById('chartBenchmark'), {
-                            type: 'bar',
-                            data: {
-                                labels: ['Gr3\nMaths', 'Gr3\nEVS', 'Gr5\nMaths', 'Gr5\nEVS', 'Gr5\nLanguage', 'Gr7\nMaths', 'Gr7\nScience', 'Gr7\nLanguage'],
-                                datasets: [
-                                    {
-                                        label: 'Gyan Shala (2017)',
-                                        data: [475, 464, 472, 456, 427, 452, 425, 491],
-                                        backgroundColor: GS_BLUE,
-                                        borderRadius: 6,
-                                        barPercentage: 0.4
-                                    },
-                                    {
-                                        label: 'ASSET National Average',
-                                        data: [500, 500, 500, 500, 500, 500, 500, 500],
-                                        backgroundColor: AS_RED,
-                                        borderRadius: 6,
-                                        barPercentage: 0.4
-                                    }
-                                ]
-                            },
-                            options: {
-                                responsive: true,
-                                interaction: { mode: 'index', intersect: false },
-                                plugins: {
-                                    legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
-                                    tooltip: {
-                                        callbacks: {
-                                            afterBody: items => {
-                                                const diff = items[0].raw - items[1].raw;
-                                                return [`Difference: ${diff}`];
-                                            }
-                                        }
-                                    }
-                                },
-                                scales: {
-                                    y: {
-                                        min: 380, max: 540,
-                                        title: { display: true, text: 'Scaled Score', font: { size: 12 }, color: '#64748b' },
-                                        grid: { color: '#f1f5f9' },
-                                        ticks: { color: '#64748b' }
-                                    },
-                                    x: { grid: { display: false }, ticks: { color: '#334155', font: { size: 11 } } }
-                                }
-                            }
-                        });
-                    })();
-                </script>
-
-                <!-- Table 2: Detailed 2016-17 scaled scores -->
                 <h5 class="fw-bold mb-1">Detailed ASSET Results — Ahmedabad Centres (2016–17)</h5>
                 <p class="text-muted small mb-3">Comparison of Gyan Shala Gujarat averages against the national ASSET
                     benchmark (scaled score 500).</p>
@@ -652,157 +548,161 @@
                     <table class="assessment-table">
                         <thead>
                             <tr>
-                                <th>Grade</th>
-                                <th>Subject</th>
-                                <th class="text-center">Students</th>
-                                <th class="text-center">GS Avg %</th>
-                                <th class="text-center">GS SD</th>
-                                <th class="text-center fw-bold">GS Scaled Score</th>
-                                <th class="text-center">ASSET Avg %</th>
-                                <th class="text-center">ASSET SD</th>
-                                <th class="text-center fw-bold">ASSET Scaled Score</th>
-                                <th class="text-center fw-bold">Difference</th>
+                                <th rowspan="2" class="text-center align-middle">Grade</th>
+                                <th rowspan="2" class="text-center align-middle">Subject</th>
+                                <th rowspan="2" class="text-center align-middle">Students</th>
+                                <th colspan="2" class="text-center">Average (%)</th>
+                                <th colspan="2" class="text-center">Standard Deviation</th>
+                                <th colspan="2" class="text-center">Scaled Score</th>
+                                <th rowspan="2" class="text-center align-middle fw-bold">Difference</th>
+                            </tr>
+                            <tr>
+                                <th class="text-center" style="color: #00afef;">GS</th>
+                                <th class="text-center" style="color: #e74c3c;">ASSET</th>
+                                <th class="text-center" style="color: #00afef;">GS</th>
+                                <th class="text-center" style="color: #e74c3c;">ASSET</th>
+                                <th class="text-center" style="color: #00afef;">GS</th>
+                                <th class="text-center" style="color: #e74c3c;">ASSET</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Grade 3 -->
                             <tr>
-                                <td>3</td>
-                                <td>Maths</td>
-                                <td class="text-center">1,013</td>
+                                <td rowspan="2" class="text-center align-middle fw-bold" style="font-size: 1.1rem;">3
+                                </td>
+                                <td class="text-center fw-medium">Maths</td>
+                                <td class="text-center text-muted">1,013</td>
                                 <td class="text-center">41.4</td>
-                                <td class="text-center">17.8</td>
-                                <td class="text-center fw-bold">475</td>
                                 <td class="text-center">46.8</td>
-                                <td class="text-center">14.7</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">17.8</td>
+                                <td class="text-center text-muted">14.7</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">475</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−25</td>
                             </tr>
                             <tr>
-                                <td>3</td>
-                                <td>EVS</td>
-                                <td class="text-center">1,039</td>
+                                <td class="text-center fw-medium">EVS</td>
+                                <td class="text-center text-muted">1,039</td>
                                 <td class="text-center">46.6</td>
-                                <td class="text-center">18.4</td>
-                                <td class="text-center fw-bold">464</td>
                                 <td class="text-center">54.0</td>
-                                <td class="text-center">15.5</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">18.4</td>
+                                <td class="text-center text-muted">15.5</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">464</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−36</td>
                             </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Maths</td>
-                                <td class="text-center">255</td>
+                            <!-- Grade 5 -->
+                            <tr style="border-top: 2px solid #cbd5e1;">
+                                <td rowspan="3" class="text-center align-middle fw-bold" style="font-size: 1.1rem;">5
+                                </td>
+                                <td class="text-center fw-medium">Maths</td>
+                                <td class="text-center text-muted">255</td>
                                 <td class="text-center">39.4</td>
-                                <td class="text-center">16.3</td>
-                                <td class="text-center fw-bold">472</td>
                                 <td class="text-center">44.6</td>
-                                <td class="text-center">15.9</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">16.3</td>
+                                <td class="text-center text-muted">15.9</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">472</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−28</td>
                             </tr>
                             <tr>
-                                <td>5</td>
-                                <td>EVS</td>
-                                <td class="text-center">302</td>
+                                <td class="text-center fw-medium">EVS</td>
+                                <td class="text-center text-muted">302</td>
                                 <td class="text-center">39.7</td>
-                                <td class="text-center">11.7</td>
-                                <td class="text-center fw-bold">456</td>
                                 <td class="text-center">54.0</td>
-                                <td class="text-center">15.5</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">11.7</td>
+                                <td class="text-center text-muted">15.5</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">456</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−44</td>
                             </tr>
                             <tr>
-                                <td>5</td>
-                                <td>Language</td>
-                                <td class="text-center">321</td>
+                                <td class="text-center fw-medium">Language</td>
+                                <td class="text-center text-muted">321</td>
                                 <td class="text-center">36.3</td>
-                                <td class="text-center">18.8</td>
-                                <td class="text-center fw-bold">427</td>
                                 <td class="text-center">55.3</td>
-                                <td class="text-center">6.9</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">18.8</td>
+                                <td class="text-center text-muted">6.9</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">427</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−73</td>
                             </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Maths</td>
-                                <td class="text-center">337</td>
+                            <!-- Grade 7 -->
+                            <tr style="border-top: 2px solid #cbd5e1;">
+                                <td rowspan="3" class="text-center align-middle fw-bold" style="font-size: 1.1rem;">7
+                                </td>
+                                <td class="text-center fw-medium">Maths</td>
+                                <td class="text-center text-muted">337</td>
                                 <td class="text-center">29.3</td>
-                                <td class="text-center">8.4</td>
-                                <td class="text-center fw-bold">452</td>
                                 <td class="text-center">36.2</td>
-                                <td class="text-center">11.8</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">8.4</td>
+                                <td class="text-center text-muted">11.8</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">452</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−48</td>
                             </tr>
                             <tr>
-                                <td>7</td>
-                                <td>Science</td>
-                                <td class="text-center">260</td>
+                                <td class="text-center fw-medium">Science</td>
+                                <td class="text-center text-muted">260</td>
                                 <td class="text-center">26.5</td>
-                                <td class="text-center">7.2</td>
-                                <td class="text-center fw-bold">425</td>
                                 <td class="text-center">36.1</td>
-                                <td class="text-center">12.0</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">7.2</td>
+                                <td class="text-center text-muted">12.0</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">425</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−75</td>
                             </tr>
                             <tr>
-                                <td>7</td>
-                                <td>Language</td>
-                                <td class="text-center">227</td>
+                                <td class="text-center fw-medium">Language</td>
+                                <td class="text-center text-muted">227</td>
                                 <td class="text-center">46.3</td>
-                                <td class="text-center">19.8</td>
-                                <td class="text-center fw-bold">491</td>
                                 <td class="text-center">48.2</td>
-                                <td class="text-center">14.1</td>
-                                <td class="text-center fw-bold">500</td>
+                                <td class="text-center text-muted">19.8</td>
+                                <td class="text-center text-muted">14.1</td>
+                                <td class="text-center fw-bold" style="color: #00afef;">491</td>
+                                <td class="text-center fw-bold" style="color: #e74c3c;">500</td>
                                 <td class="text-center fw-bold">−9</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Legend -->
                 <div class="mb-4">
                     <p class="small fw-bold text-muted mb-2">Legend — Difference with ASSET Scaled Score:</p>
                     <div class="table-responsive">
-                        <table class="legend-table">
+                        <table class="legend-table"
+                            style="width: 100%; table-layout: fixed; border-collapse: collapse;">
                             <tr>
-                                <td>−150 &amp; Below</td>
-                                <td>−150 to −50</td>
-                                <td>−50 to 50</td>
-                                <td>50 to 150</td>
-                                <td>150 &amp; Above</td>
+                                <td style="width: 20%; text-align: center;">−150 &amp; Below</td>
+                                <td style="width: 20%; text-align: center;">−150 to −50</td>
+                                <td style="width: 20%; text-align: center;">−50 to 50</td>
+                                <td style="width: 20%; text-align: center;">50 to 150</td>
+                                <td style="width: 20%; text-align: center;">150 &amp; Above</td>
                             </tr>
                             <tr>
-                                <td class="legend-vfar">Very Far from ASSET</td>
-                                <td class="legend-far">Far from ASSET</td>
-                                <td class="legend-close">Close to ASSET</td>
-                                <td class="legend-sbetter">Slightly better than ASSET</td>
-                                <td class="legend-better">Better than ASSET</td>
+                                <td class="legend-vfar" style="text-align: center;">Very Far from ASSET</td>
+                                <td class="legend-far" style="text-align: center;">Far from ASSET</td>
+                                <td class="legend-close" style="text-align: center;">Close to ASSET</td>
+                                <td class="legend-sbetter" style="text-align: center;">Slightly better than ASSET</td>
+                                <td class="legend-better" style="text-align: center;">Better than ASSET</td>
                             </tr>
                         </table>
                     </div>
                 </div>
 
-                <!-- Summary chart -->
-                <div class="text-center mb-3">
-                    <img src="media/assest.png" alt="ASSET performance summary chart" class="chart-img"
-                        style="max-width:700px;">
+                <h5 class="fw-bold mb-1">Gyan Shala vs ASSET Benchmark (2017)</h5>
+                <p class="text-muted small mb-3">Scaled score comparison. ASSET baseline = 500.</p>
+
+                <div class="assessment-table-wrap">
+                    <div id="chartBenchmark"></div>
                 </div>
 
                 <div class="note-box">
                     <i class="bi bi-info-circle me-2"></i>
                     Progress in Maths and Science (EVS) in both primary and middle schools (in addition to Language) was
-                    seen as
-                    satisfactory in the context of Gyan Shala's goal to match children's performance in India's elite
-                    schools,
-                    represented by the ASSET average score. Performance over 2009–18 confirms that Gyan Shala achieves
-                    comparable
-                    or better results consistently at a much lower per child cost
+                    seen as satisfactory in the context of Gyan Shala's goal to match children's performance in India's
+                    elite schools, represented by the ASSET average score. Performance over 2009–18 confirms that Gyan
+                    Shala achieves comparable or better results consistently at a much lower per child cost
                     (<strong>INR 3,000 to 6,000 per child annually</strong>).
                 </div>
             </div>
@@ -810,7 +710,6 @@
 
         <div class="section-divider"></div>
 
-        <!-- RESOURCES -->
         <section class="py-5 bg-light" id="resources">
             <div class="container">
                 <div class="text-center mb-5">
@@ -823,7 +722,6 @@
                 </div>
 
                 <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-4">
-                    <!-- EI Drive -->
                     <div class="col">
                         <a href="https://drive.google.com/open?id=1COuvLdx6oLT6_UNQgKnz6e4f_aY_gzPi" target="_blank"
                             class="doc-card text-decoration-none">
@@ -838,7 +736,6 @@
                         </a>
                     </div>
 
-                    <!-- AGP Report -->
                     <div class="col">
                         <div class="doc-card" onclick="openModal('documents-pdf/assessment-reports/agp-report.pdf')">
                             <div class="pdf-thumbnail-container">
@@ -849,7 +746,6 @@
                         </div>
                     </div>
 
-                    <!-- CfBT -->
                     <div class="col">
                         <div class="doc-card"
                             onclick="openModal('documents-pdf/assessment-reports/cfbt-assessment.pdf')">
@@ -861,7 +757,6 @@
                         </div>
                     </div>
 
-                    <!-- Gray Matters India -->
                     <div class="col">
                         <div class="doc-card"
                             onclick="openModal('documents-pdf/assessment-reports/gmi-impact-report.pdf')">
@@ -873,7 +768,6 @@
                         </div>
                     </div>
 
-                    <!-- AMC 2010 -->
                     <div class="col">
                         <div class="doc-card"
                             onclick="openModal('documents-pdf/assessment-reports/amc-intervention-2010.pdf')">
@@ -885,7 +779,6 @@
                         </div>
                     </div>
 
-                    <!-- AMC 2011 -->
                     <div class="col">
                         <div class="doc-card"
                             onclick="openModal('documents-pdf/assessment-reports/amc-intervention-2011.pdf')">
@@ -897,7 +790,6 @@
                         </div>
                     </div>
 
-                    <!-- HS 2016 -->
                     <div class="col">
                         <div class="doc-card"
                             onclick="openModal('documents-pdf/assessment-reports/hs-program-2016.pdf')">
@@ -909,7 +801,6 @@
                         </div>
                     </div>
 
-                    <!-- HS 2017 -->
                     <div class="col">
                         <div class="doc-card"
                             onclick="openModal('documents-pdf/assessment-reports/hs-program-2017.pdf')">
@@ -927,7 +818,6 @@
 
     <div id="footer-load"></div>
 
-    <!-- PDF Preview Modal -->
     <div id="pdfModal">
         <div class="pdf-toolbar">
             <div class="pdf-toolbar-group">
@@ -953,11 +843,181 @@
             <div id="canvas-wrapper"></div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
+        (function () {
+            const YEARS = ['2012', '2013', '2014', '2015', '2016', '2017'];
+            const GS_BLUE = '#00afef';
+            const AS_RED = '#e74c3c';
+            const GS_FILL = 'rgba(0,175,239,0.12)';
+            const AS_FILL = 'rgba(231,76,60,0.08)';
+
+            function trendChart(id, title, gsData, asData) {
+                const ctx = document.getElementById(id);
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: YEARS,
+                        datasets: [
+                            {
+                                label: 'Gyan Shala Scaled Score',
+                                data: gsData,
+                                borderColor: GS_BLUE,
+                                backgroundColor: GS_FILL,
+                                fill: true,
+                                tension: 0.35,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                borderWidth: 2.5,
+                                pointBackgroundColor: GS_BLUE
+                            },
+                            {
+                                label: 'ASSET National Average',
+                                data: asData,
+                                borderColor: AS_RED,
+                                backgroundColor: AS_FILL,
+                                fill: false,
+                                tension: 0.2,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                borderWidth: 2,
+                                borderDash: [6, 3],
+                                pointBackgroundColor: AS_RED
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        interaction: { mode: 'index', intersect: false },
+                        plugins: {
+                            title: { display: true, text: title, font: { size: 14, weight: '600' }, color: '#1e293b', padding: { bottom: 16 } },
+                            legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
+                            tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}` } }
+                        },
+                        scales: {
+                            y: {
+                                min: 300, max: 650,
+                                title: { display: true, text: 'Scaled Score', font: { size: 12 }, color: '#64748b' },
+                                grid: { color: '#f1f5f9' },
+                                ticks: { color: '#64748b' }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                        }
+                    }
+                });
+            }
+
+            trendChart('c-g3m', 'Class 3 – Maths Performance',
+                [430, 440, 530, 545, 500, 475],
+                [500, 500, 500, 500, 500, 500]);
+            trendChart('c-g3e', 'Class 3 – EVS Performance',
+                [420, 480, 545, 575, 505, 464],
+                [500, 505, 500, 500, 500, 500]);
+            trendChart('c-g5m', 'Class 5 – Maths Performance',
+                [400, 400, 430, 410, 490, 472],
+                [500, 500, 505, 510, 500, 500]);
+            trendChart('c-g5l', 'Class 5 – Language Performance',
+                [415, 460, 410, 390, 450, 427],
+                [520, 510, 500, 510, 500, 500]);
+            trendChart('c-g7m', 'Class 7 – Maths Performance',
+                [420, 430, 420, 400, 460, 452],
+                [500, 500, 500, 500, 500, 500]);
+            trendChart('c-g7e', 'Class 7 – EVS/Science Performance',
+                [410, 430, 440, 420, 440, 425],
+                [500, 500, 505, 505, 500, 500]);
+            trendChart('c-g7l', 'Class 7 – Language Performance',
+                [400, 500, 460, 440, 460, 491],
+                [520, 495, 500, 510, 495, 500]);
+
+            var options = {
+                series: [{
+                    name: 'Gyan Shala (2017)',
+                    data: [475, 464, 472, 456, 427, 452, 425, 491]
+                }, {
+                    name: 'ASSET National Average',
+                    data: [500, 500, 500, 500, 500, 500, 500, 500]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 450, // Increased height to ensure header fits
+                    toolbar: { show: false },
+                    parentHeightOffset: 0
+                },
+                colors: [GS_BLUE, AS_RED],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '70%',
+                        borderRadius: 6,
+                        borderRadiusApplication: 'end', // 'end' rounds only the top of the bars
+                        borderRadiusWhenStacked: 'last',
+                        rangeBarGroupRows: false,
+                        dataLabels: { position: 'top' }
+                    }
+                },
+                // This allows the "Grade" row to appear below or above
+                xaxis: {
+                    type: 'category',
+                    // Categorize the subjects
+                    categories: ['Maths', 'EVS', 'Maths', 'EVS', 'Language', 'Maths', 'Science', 'Language'],
+                    labels: {
+                        style: {
+                            colors: '#64748b',
+                            fontSize: '12px',
+                            fontWeight: 600
+                        },
+                        offsetY: 0
+                    },
+                    // This creates the SVG "Group" row
+                    group: {
+                        style: {
+                            fontSize: '14px',
+                            fontWeight: 700,
+                            colors: ['#1e293b']
+                        },
+                        groups: [
+                            { title: 'GRADE 3', cols: 2 },
+                            { title: 'GRADE 5', cols: 3 },
+                            { title: 'GRADE 7', cols: 3 }
+                        ]
+                    },
+                    axisBorder: { show: true, color: '#e2e8f0' },
+                    axisTicks: { show: true }
+                },
+                yaxis: {
+                    min: 0,
+                    max: 500,
+                    labels: {
+                        style: { colors: '#64748b' }
+                    }
+                },
+                grid: {
+                    show: true,
+                    borderColor: '#f1f5f9',
+                    xaxis: {
+                        lines: { show: true } // This draws the vertical separators
+                    }
+                },
+                legend: {
+                    position: 'bottom',
+                    offsetY: 10
+                },
+                // Extra padding to prevent the SVG text from clipping
+                padding: {
+                    top: 20,
+                    bottom: 20
+                }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chartBenchmark"), options);
+            chart.render();
+        })();
+
         document.addEventListener('DOMContentLoaded', () => {
             const reports = [
                 { url: 'documents-pdf/assessment-reports/agp-report.pdf', id: 'thumb-agp' },
@@ -969,13 +1029,13 @@
                 { url: 'documents-pdf/assessment-reports/hs-program-2016.pdf', id: 'thumb-hs-2016' },
                 { url: 'documents-pdf/assessment-reports/hs-program-2017.pdf', id: 'thumb-hs-2017' }
             ];
-
             reports.forEach(report => {
                 renderThumbnail(report.url, report.id);
             });
         });
-    </script>
 
+
+    </script>
 </body>
 
 </html>

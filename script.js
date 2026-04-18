@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (href === activePath || (activePath === 'index.html' && href === 'index.html')) {
                 link.classList.add('active');
 
-                // If it's a dropdown item, highlight the parent dropdown toggle as well
                 const parentDropdown = link.closest('.dropdown');
                 if (parentDropdown) {
                     const toggle = parentDropdown.querySelector('.dropdown-toggle');
@@ -84,8 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (secondaryNavList && main) {
-            // Keep useful content sections, skip utility/internal ones
-            const skips = ['header-load', 'footer-load', 'img-carousel', 'impact-bar', 'roots', 'impact', 'about-hero', 'testimonialSlider'];
+            const skips = ['header-load', 'footer-load', 'img-carousel', 'impact-bar', 'roots', 'impact', 'about-hero', 'testimonialSlider', 'job-list', 'more-jobs', 'view-more-container', 'job-list-wrapper', 'no-results'];
             const pageSections = Array.from(main.querySelectorAll('section[id], div[id]')).filter(el => {
                 return !skips.includes(el.id) && !el.classList.contains('tab-pane') && !el.classList.contains('tab-content');
             });
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const nav = secondaryNavList.closest('nav');
                 if (nav) nav.style.display = 'none';
             } else {
-                secondaryNavList.innerHTML = ''; // Clear existing
+                secondaryNavList.innerHTML = '';
                 pageSections.forEach(section => {
                     const id = section.id;
                     let title = id.replace('about-', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());

@@ -20,7 +20,11 @@
     "trace_p21.py",
     "test.txt",
     "admin",
-    "get involved.html"
+    "get involved.html",
+    "test.html",
+    "program-reviews.html",
+    "program-reviews.txt",
+    "test.md"
   ],
   "admin": [
     "index.html",

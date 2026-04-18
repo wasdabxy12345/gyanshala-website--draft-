@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Assessments | Gyan Shala</title>
+    <meta name="description"
+        content="Independent student assessment results for Gyan Shala — benchmarked against India's top CBSE schools by Educational Initiatives (EI-India), CfBT Trust UK, and DFID UK.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+        }
+
+        .section-heading {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .agency-card {
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 26px 22px;
+            height: 100%;
+        }
+
+
+
+        .agency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .badge-blue {
+            background: rgba(0, 175, 239, 0.1);
+            color: #0070b8;
+        }
+
+        .badge-green {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        .badge-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #b45309;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 32px 40px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 6px;
+        }
+
+        /* Tables */
+        .assessment-table-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .assessment-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .assessment-table thead {
+            background: #f1f5f9;
+        }
+
+        .assessment-table thead th {
+            padding: 12px 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .assessment-table tbody td {
+            padding: 11px 14px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+        }
+
+        .assessment-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .assessment-table tbody tr:hover td {
+            background: #f8fafc;
+        }
+
+        .text-success-custom {
+            color: #16a34a !important;
+        }
+
+        /* Legend */
+        .legend-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .legend-table td {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .legend-table tr:first-child td {
+            background: #f1f5f9;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #475569;
+        }
+
+        .legend-vfar {
+            background: rgba(0, 175, 239, 0.2);
+            color: #475569;
+        }
+
+        .legend-far {
+            background: rgba(0, 175, 239, 0.4);
+            color: #475569;
+        }
+
+        .legend-close {
+            background: rgba(0, 175, 239, 0.6);
+            color: #475569;
+        }
+
+        .legend-sbetter {
+            background: rgba(0, 175, 239, 0.8);
+            color: #475569;
+        }
+
+        .legend-better {
+            background: rgba(0, 175, 239, 1.0);
+            color: #475569;
+        }
+
+        .chart-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 3.5rem 0;
+        }
+
+        #chartBenchmark {
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #ffffff;
+            padding: 20px;
+            /* Allow the SVG to breathe */
+            overflow: visible;
+            width: 100%;
+            min-height: 450px;
+        }
+
+        .grade-container {
+            display: flex;
+            margin-left: 55px;
+            /* Matches the Y-axis width of the chart */
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #1e293b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .grade-container div {
+            padding: 8px 0;
+        }
+
+        /* Optional: add a subtle border-right to the grade headers to match chart lines */
+        .grade-container div:not(:last-child) {
+            border-right: 2px solid #e2e8f0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            /* Ensure no CSS transforms (like scale or translate) are affecting this container */
+            transform: none !important;
+        }
+
+        canvas {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        /* Darken and Thicken Vertical Separation Lines */
+        .apexcharts-grid-xaxis-lines line,
+        .apexcharts-xaxis-group-lines line {
+            stroke: #475569 !important;
+            /* Dark Slate Gray */
+            stroke-width: 2px !important;
+            stroke-opacity: 1 !important;
+        }
+
+        /* Keep Horizontal Grid Lines Subtle */
+        .apexcharts-grid-yaxis-lines line {
+            stroke: #f1f5f9 !important;
+            stroke-width: 1px !important;
+        }
+
+        /* Make Grade Titles bold and easy to select */
+        .apexcharts-xaxis-group-label {
+            font-weight: 800 !important;
+            user-select: text !important;
+        }
+
+        @media(max-width:767px) {
+
+            .assessment-table thead th,
+            .assessment-table tbody td {
+                padding: 8px 8px;
+                font-size: 0.74rem;
+            }
+
+            .stats-strip {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-load"></div>
+
+    <main>
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 text-center mb-5">
+                        <div class="section-eyebrow mb-2">Institutional Credibility</div>
+                        <h2 class="section-heading mb-4">External Program Reviews</h2>
+                        <p class="text-muted" style="font-size:1.05rem;line-height:1.8;">
+                            Gyan Shala subjects its entire organizational model to rigorous external audits.
+                            While student assessments prove <strong>what</strong> children learn, our program
+                            reviews evaluate <strong>how</strong> we deliver high-quality education at a fraction
+                            of the cost of traditional private schools.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-12">
+                        <div class="agency-card">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 text-center border-end">
+                                    <div class="doc-card"
+                                        onclick="openModal('documents-pdf/program reviews/Brookings-QEI-DIB-From-Evidence-to-Scale.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-brookings"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9 ps-md-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h4 class="fw-bold mb-3">Brookings Institution: QEI DIB Impact Study</h4>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <ul class="small mb-0">
+                                                <li class="mb-2">
+                                                    Quality Education India Development Impact Bond (QEI DIB), the
+                                                    largest education impact bond, included Gyan Shala alongside three
+                                                    other education providers, running from 2018 to 2022, focused on
+                                                    improving literacy and numeracy for 200,000 students across four
+                                                    states in India.
+                                                </li>
+                                                <li class="mb-2">
+                                                    Gyan Shala operated community learning centers in underprivileged
+                                                    urban areas and provided teacher support in pedagogy and learning
+                                                    plans.
+                                                </li>
+                                                <li class="mb-2">
+                                                    During school shutdowns, Gyan Shala quickly adopted phone-based
+                                                    instruction, worksheets for students at home, small-group TV lessons
+                                                    in community classrooms, etc., and altered their strategy based on
+                                                    results.
+                                                </li>
+                                                <li class="mb-2">
+                                                    The program produced rare high-quality data, which can be used by
+                                                    other educators to improve their learning outcomes. Consequently,
+                                                    the Back-to-School Outcomes Fund, with similar goals for government
+                                                    school students, has learned from and implemented QEI DIB's
+                                                    learning.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-12">
+                        <div class="agency-card">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 text-center border-end">
+                                    <div class="doc-card"
+                                        onclick="openModal('documents-pdf/program reviews/Brookings-QEI-DIB-From-Evidence-to-Scale.pdf')">
+                                        <div class="pdf-thumbnail-container">
+                                            <canvas id="thumb-brookings"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-9 ps-md-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h4 class="fw-bold mb-3">Brookings Institution: QEI DIB Impact Study</h4>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-12">
+                                            <ul class="small mb-0">
+                                                <li class="mb-2">
+                                                    Quality Education India Development Impact Bond (QEI DIB), the
+                                                    largest education impact bond, included Gyan Shala alongside three
+                                                    other education providers, running from 2018 to 2022, focused on
+                                                    improving literacy and numeracy for 200,000 students across four
+                                                    states in India.
+                                                </li>
+                                                <li class="mb-2">
+                                                    Gyan Shala operated community learning centers in underprivileged
+                                                    urban areas and provided teacher support in pedagogy and learning
+                                                    plans.
+                                                </li>
+                                                <li class="mb-2">
+                                                    During school shutdowns, Gyan Shala quickly adopted phone-based
+                                                    instruction, worksheets for students at home, small-group TV lessons
+                                                    in community classrooms, etc., and altered their strategy based on
+                                                    results.
+                                                </li>
+                                                <li class="mb-2">
+                                                    The program produced rare high-quality data, which can be used by
+                                                    other educators to improve their learning outcomes. Consequently,
+                                                    the Back-to-School Outcomes Fund, with similar goals for government
+                                                    school students, has learned from and implemented QEI DIB's
+                                                    learning.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-load"></div>
+
+    <div id="pdfModal">
+        <div class="pdf-toolbar">
+            <div class="pdf-toolbar-group">
+                <button onclick="changeZoom(0.2)"><i class="bi bi-zoom-in"></i> Zoom In</button>
+                <button onclick="changeZoom(-0.2)"><i class="bi bi-zoom-out"></i> Zoom Out</button>
+            </div>
+
+            <div class="pdf-page-indicator">
+                Page: <span id="page_num">1</span> / <span id="page_count">0</span>
+            </div>
+
+            <div class="pdf-toolbar-group">
+                <button onclick="downloadPDF()" class="btn-download">
+                    <i class="bi bi-download"></i> Download
+                </button>
+                <button onclick="closeModal()" class="btn-close-viewer">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="scroll-container">
+            <div id="canvas-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        (function () {
+            const YEARS = ['2012', '2013', '2014', '2015', '2016', '2017'];
+            const GS_BLUE = '#00afef';
+            const AS_RED = '#e74c3c';
+            const GS_FILL = 'rgba(0,175,239,0.12)';
+            const AS_FILL = 'rgba(231,76,60,0.08)';
+
+            function trendChart(id, title, gsData, asData) {
+                const ctx = document.getElementById(id);
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: YEARS,
+                        datasets: [
+                            {
+                                label: 'Gyan Shala Scaled Score',
+                                data: gsData,
+                                borderColor: GS_BLUE,
+                                backgroundColor: GS_FILL,
+                                fill: true,
+                                tension: 0.35,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                borderWidth: 2.5,
+                                pointBackgroundColor: GS_BLUE
+                            },
+                            {
+                                label: 'ASSET National Average',
+                                data: asData,
+                                borderColor: AS_RED,
+                                backgroundColor: AS_FILL,
+                                fill: false,
+                                tension: 0.2,
+                                pointRadius: 4,
+                                pointHoverRadius: 6,
+                                borderWidth: 2,
+                                borderDash: [6, 3],
+                                pointBackgroundColor: AS_RED
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        interaction: { mode: 'index', intersect: false },
+                        plugins: {
+                            title: { display: true, text: title, font: { size: 14, weight: '600' }, color: '#1e293b', padding: { bottom: 16 } },
+                            legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
+                            tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}` } }
+                        },
+                        scales: {
+                            y: {
+                                min: 300, max: 650,
+                                title: { display: true, text: 'Scaled Score', font: { size: 12 }, color: '#64748b' },
+                                grid: { color: '#f1f5f9' },
+                                ticks: { color: '#64748b' }
+                            },
+                            x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                        }
+                    }
+                });
+            }
+
+            trendChart('c-g3m', 'Class 3 – Maths Performance',
+                [430, 440, 530, 545, 500, 475],
+                [500, 500, 500, 500, 500, 500]);
+            trendChart('c-g3e', 'Class 3 – EVS Performance',
+                [420, 480, 545, 575, 505, 464],
+                [500, 505, 500, 500, 500, 500]);
+            trendChart('c-g5m', 'Class 5 – Maths Performance',
+                [400, 400, 430, 410, 490, 472],
+                [500, 500, 505, 510, 500, 500]);
+            trendChart('c-g5l', 'Class 5 – Language Performance',
+                [415, 460, 410, 390, 450, 427],
+                [520, 510, 500, 510, 500, 500]);
+            trendChart('c-g7m', 'Class 7 – Maths Performance',
+                [420, 430, 420, 400, 460, 452],
+                [500, 500, 500, 500, 500, 500]);
+            trendChart('c-g7e', 'Class 7 – EVS/Science Performance',
+                [410, 430, 440, 420, 440, 425],
+                [500, 500, 505, 505, 500, 500]);
+            trendChart('c-g7l', 'Class 7 – Language Performance',
+                [400, 500, 460, 440, 460, 491],
+                [520, 495, 500, 510, 495, 500]);
+
+            var options = {
+                series: [{
+                    name: 'Gyan Shala (2017)',
+                    data: [475, 464, 472, 456, 427, 452, 425, 491]
+                }, {
+                    name: 'ASSET National Average',
+                    data: [500, 500, 500, 500, 500, 500, 500, 500]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 450, // Increased height to ensure header fits
+                    toolbar: { show: false },
+                    parentHeightOffset: 0
+                },
+                colors: [GS_BLUE, AS_RED],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '70%',
+                        borderRadius: 6,
+                        borderRadiusApplication: 'end', // 'end' rounds only the top of the bars
+                        borderRadiusWhenStacked: 'last',
+                        rangeBarGroupRows: false,
+                        dataLabels: { position: 'top' }
+                    }
+                },
+                // This allows the "Grade" row to appear below or above
+                xaxis: {
+                    type: 'category',
+                    // Categorize the subjects
+                    categories: ['Maths', 'EVS', 'Maths', 'EVS', 'Language', 'Maths', 'Science', 'Language'],
+                    labels: {
+                        style: {
+                            colors: '#64748b',
+                            fontSize: '12px',
+                            fontWeight: 600
+                        },
+                        offsetY: 0
+                    },
+                    // This creates the SVG "Group" row
+                    group: {
+                        style: {
+                            fontSize: '14px',
+                            fontWeight: 700,
+                            colors: ['#1e293b']
+                        },
+                        groups: [
+                            { title: 'GRADE 3', cols: 2 },
+                            { title: 'GRADE 5', cols: 3 },
+                            { title: 'GRADE 7', cols: 3 }
+                        ]
+                    },
+                    axisBorder: { show: true, color: '#e2e8f0' },
+                    axisTicks: { show: true }
+                },
+                yaxis: {
+                    min: 0,
+                    max: 500,
+                    labels: {
+                        style: { colors: '#64748b' }
+                    }
+                },
+                grid: {
+                    show: true,
+                    borderColor: '#f1f5f9',
+                    xaxis: {
+                        lines: { show: true } // This draws the vertical separators
+                    }
+                },
+                legend: {
+                    position: 'bottom',
+                    offsetY: 10
+                },
+                // Extra padding to prevent the SVG text from clipping
+                padding: {
+                    top: 20,
+                    bottom: 20
+                }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chartBenchmark"), options);
+            chart.render();
+        })();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const docs = [
+                { url: 'documents-pdf/program reviews/Brookings-QEI-DIB-From-Evidence-to-Scale.pdf', id: 'thumb-brookings' },
+            ];
+
+            docs.forEach(doc => {
+                renderThumbnail(doc.url, doc.id);
+            });
+
+            const tabEl = document.querySelectorAll('button[data-bs-toggle="tab"]');
+            tabEl.forEach(el => {
+                el.addEventListener('shown.bs.tab', () => {
+                    docs.forEach(doc => {
+                        const canvas = document.getElementById(doc.id);
+                        if (canvas && canvas.offsetParent !== null && !canvas.getAttribute('data-rendered')) {
+                            renderThumbnail(doc.url, doc.id);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
