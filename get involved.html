@@ -296,14 +296,14 @@
                     <div class="col-lg-7 p-4 p-md-5 bg-white d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h5 class="fw-bold mb-0">Current Openings</h5>
-                            <span class="badge bg-dark rounded-pill" id="job-count">Calculating...</span>
+                            <!-- <span class="badge bg-dark rounded-pill" id="job-count">Calculating...</span> -->
                         </div>
 
-                        <div class="mt-auto p-3 rounded-3 bg-white bg-opacity-10 border border-white border-opacity-25"
-                            onclick="openModal('documents-pdf/legal docs/80G.pdf')" style="cursor: pointer;">
+                        <div class="mt-auto p-3 rounded-3 bg-dark border border-white border-opacity-25"
+                            onclick="openModal('documents-pdf/Appli Supervisor.pdf')" style="cursor: pointer;">
                             <div class="d-flex align-items-center gap-3">
                                 <div class="flex-shrink-0 bg-white p-1 rounded shadow-sm">
-                                    <canvas id="thumb-80g" style="width: 60px; height: 80px;"></canvas>
+                                    <canvas id="app_sv" style="width: 60px; height: 80px;"></canvas>
                                 </div>
                                 <div>
                                     <h6 class="fw-bold mb-0 text-white">Open position details</h6>
@@ -424,6 +424,26 @@
         document.addEventListener('DOMContentLoaded', () => {
             const docs = [
                 { url: 'documents-pdf/legal docs/80G.pdf', canvasId: 'thumb-80g' }
+            ];
+
+            docs.forEach(doc => {
+                renderThumbnail(doc.url, doc.canvasId);
+            });
+
+            // Re-render thumbnails when modal opens
+            const modal = document.getElementById('pdfModal');
+            if (modal) {
+                modal.addEventListener('shown.bs.modal', () => {
+                    docs.forEach(doc => {
+                        renderThumbnail(doc.url, doc.canvasId);
+                    });
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const docs = [
+                { url: 'documents-pdf/Appli Supervisor.pdf', canvasId: 'app_sv' }
             ];
 
             docs.forEach(doc => {
@@ -583,11 +603,11 @@
                 });
             }
 
-            const jobItems = document.querySelectorAll('.job-item');
-            const jobCountBadge = document.getElementById('job-count');
-            if (jobCountBadge) {
-                jobCountBadge.innerText = `${jobItems.length} Roles`;
-            }
+            // const jobItems = document.querySelectorAll('.job-item');
+            // const jobCountBadge = document.getElementById('job-count');
+            // if (jobCountBadge) {
+            //     jobCountBadge.innerText = `${jobItems.length} Roles`;
+            // }
         });
 
         // 2. Open Modal and Inject Job Data
@@ -636,8 +656,7 @@
                 noResults.classList.add('d-none');
             }
 
-            // Update the counter
-            document.getElementById('job-count').innerText = `${visibleCount} Roles`;
+            // document.getElementById('job-count').innerText = `${visibleCount} Roles`;
         });
     </script>
 
