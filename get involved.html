@@ -284,136 +284,43 @@
         <section id="careers" class="py-5 bg-light">
             <div class="container">
                 <div class="row g-0 align-items-stretch shadow-lg rounded-4 overflow-hidden bg-white">
+
                     <!-- Left Info Panel -->
                     <div class="col-lg-5 p-4 p-md-5 text-white d-flex flex-column justify-content-between"
                         style="background: linear-gradient(135deg, #1f2937, #111827);">
                         <div>
-                            <span
-                                class="badge bg-warning text-dark fw-bold text-uppercase tracking-wider px-3 py-2 mb-3">We
-                                are hiring!</span>
                             <h2 class="fw-bold mb-3">Join Our Team</h2>
                             <p class="lead mb-4 opacity-90">Work at the forefront of educational innovation.</p>
-                            <p class="small opacity-75 mb-4">Join our team of 1,200+ staff members dedicated to
-                                improving the education of underprivileged children across India.</p>
-
-                            <div class="d-none d-lg-block mt-4">
-                                <div class="d-flex align-items-center gap-3 mb-3 opacity-90">
-                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
-                                    <span class="small fw-medium">Meaningful, high-impact ground work</span>
-                                </div>
-                                <div class="d-flex align-items-center gap-3 mb-3 opacity-90">
-                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
-                                    <span class="small fw-medium">Professional growth & mentorship</span>
-                                </div>
-                            </div>
+                            <p class="small opacity-75">Join our team of 1,200+ staff members dedicated to improving the
+                                education of underprivileged children across India.</p>
                         </div>
+                    </div>
 
-                        <!-- Sticky PDF Guideline attachment -->
-                        <div class="mt-4 p-3 rounded-3 bg-white bg-opacity-10 border border-white border-opacity-15 shadow-sm hover-up transition-base"
-                            onclick="openModal('documents-pdf/Appli Supervisor.pdf')" style="cursor: pointer;">
-                            <div class="d-flex align-items-center gap-3">
+                    <!-- Right Panel: Dedicated PDF Viewer Card -->
+                    <div class="col-lg-7 p-4 p-md-5 bg-white d-flex flex-column justify-content-center">
+                        <div class="text-center max-w-md mx-auto w-100">
+
+                            <h4 class="fw-bold text-dark mb-2">Current Openings Information</h4>
+
+                            <!-- Interactive Document Preview Box -->
+                            <div class="p-4 rounded-4 border bg-light bg-opacity-50 mb-4 d-flex flex-column align-items-center justify-content-center transition-base border-dashed"
+                                onclick="openModal('documents-pdf/Appli Supervisor.pdf')"
+                                style="cursor: pointer; border: 2px dashed #dee2e6;">
+
+                                <!-- White card container mimicking a folder or paper asset -->
                                 <div
-                                    class="flex-shrink-0 bg-white p-2 rounded shadow-sm d-flex align-items-center justify-content-center">
-                                    <canvas id="app_sv" style="width: 45px; height: 60px;"></canvas>
+                                    class="bg-white p-3 rounded-3 shadow-sm mb-3 d-inline-flex align-items-center justify-content-center">
+                                    <canvas id="app_sv"
+                                        style="width: 105px; height: 140px; border: 1px solid #eee;"></canvas>
                                 </div>
-                                <div class="overflow-hidden">
-                                    <h6 class="fw-bold mb-1 text-white text-truncate">Application Guidelines</h6>
-                                    <p class="text-white opacity-50 small mb-0"><i
-                                            class="bi bi-file-earmark-pdf me-1"></i>View Supervisor Roles PDF</p>
-                                </div>
+
+                                <h6 class="fw-bold text-dark mb-1">Supervisor Roles & Requirements</h6>
+                                <p class="text-muted small mb-0"><i class="bi bi-file-earmark-pdf text-danger me-1"></i>
+                                    Official Document (PDF)</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Interactive Job Portal Panel -->
-                    <div class="col-lg-7 p-4 p-md-5 bg-white d-flex flex-column">
-                        <div
-                            class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
-                            <div>
-                                <h4 class="fw-bold mb-1 text-dark">Current Openings</h4>
-                                <p class="text-muted small mb-0">Find a role that matches your passion and skillset</p>
-                            </div>
-                            <div>
-                                <span class="badge bg-secondary-subtle text-secondary px-3 py-2 rounded-pill fw-bold"
-                                    id="job-count">3 Open Roles</span>
-                            </div>
-                        </div>
-
-                        <!-- Real-time Filter Searchbar -->
-                        <div class="mb-4">
-                            <div class="input-group border rounded-3 overflow-hidden shadow-sm bg-light">
-                                <span class="input-group-text bg-transparent border-0 text-muted ps-3"><i
-                                        class="bi bi-search"></i></span>
-                                <input type="text" id="jobSearch"
-                                    class="form-control bg-transparent border-0 py-2 ps-2 text-dark fs-6"
-                                    placeholder="Search by job title or location...">
-                            </div>
-                        </div>
-
-                        <!-- Scrollable Dynamic Job List Context wrapper -->
-                        <div class="job-scroll-container flex-grow-1 pe-2" style="max-height: 320px; overflow-y: auto;">
-
-                            <!-- Job Item 1 -->
-                            <div class="job-item d-flex align-items-center justify-content-between p-3 mb-2 rounded-3 border bg-light bg-opacity-50 transition-base cursor-pointer"
-                                data-job-title="Academic Supervisor" data-job-loc="Ahmedabad"
-                                onclick="openJobModal('Academic Supervisor', 'Ahmedabad', 'Full-time')"
-                                style="cursor: pointer;">
-                                <div class="pe-3 overflow-hidden">
-                                    <h6 class="fw-bold mb-2 text-dark text-truncate">Academic Supervisor</h6>
-                                    <div class="d-flex flex-wrap gap-2 text-muted small">
-                                        <span><i class="bi bi-geo-alt me-1"></i>Ahmedabad</span>
-                                        <span class="text-opacity-50">•</span>
-                                        <span><i class="bi bi-briefcase me-1"></i>Full-time</span>
-                                    </div>
-                                </div>
-                                <button
-                                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold flex-shrink-0">Apply</button>
-                            </div>
-
-                            <!-- Job Item 2 -->
-                            <div class="job-item d-flex align-items-center justify-content-between p-3 mb-2 rounded-3 border bg-light bg-opacity-50 transition-base cursor-pointer"
-                                data-job-title="Curriculum Developer" data-job-loc="Remote / Mumbai"
-                                onclick="openJobModal('Curriculum Developer', 'Remote / Mumbai', 'Full-time')"
-                                style="cursor: pointer;">
-                                <div class="pe-3 overflow-hidden">
-                                    <h6 class="fw-bold mb-2 text-dark text-truncate">Curriculum Developer (Primary
-                                        School)</h6>
-                                    <div class="d-flex flex-wrap gap-2 text-muted small">
-                                        <span><i class="bi bi-geo-alt me-1"></i>Remote / Mumbai</span>
-                                        <span class="text-opacity-50">•</span>
-                                        <span><i class="bi bi-briefcase me-1"></i>Full-time</span>
-                                    </div>
-                                </div>
-                                <button
-                                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold flex-shrink-0">Apply</button>
-                            </div>
-
-                            <!-- Job Item 3 -->
-                            <div class="job-item d-flex align-items-center justify-content-between p-3 mb-2 rounded-3 border bg-light bg-opacity-50 transition-base cursor-pointer"
-                                data-job-title="Community Center Coordinator" data-job-loc="Surat"
-                                onclick="openJobModal('Community Center Coordinator', 'Surat', 'Part-time')"
-                                style="cursor: pointer;">
-                                <div class="pe-3 overflow-hidden">
-                                    <h6 class="fw-bold mb-2 text-dark text-truncate">Community Center Coordinator</h6>
-                                    <div class="d-flex flex-wrap gap-2 text-muted small">
-                                        <span><i class="bi bi-geo-alt me-1"></i>Surat</span>
-                                        <span class="text-opacity-50">•</span>
-                                        <span><i class="bi bi-briefcase me-1"></i>Part-time</span>
-                                    </div>
-                                </div>
-                                <button
-                                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold flex-shrink-0">Apply</button>
-                            </div>
-
-                            <!-- No Results Fallback Status State -->
-                            <div id="no-results" class="text-center py-5 d-none">
-                                <i class="bi bi-patch-question text-muted fs-1 mb-2 d-block"></i>
-                                <h6 class="fw-bold text-dark">No positions found</h6>
-                                <p class="text-muted small mb-0">Try matching different query criteria words.</p>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
